@@ -1,0 +1,68 @@
+Name:                   prometheus-kube-prometheus-operator
+Namespace:              default
+CreationTimestamp:      Wed, 31 May 2023 15:17:41 -0400
+Labels:                 app=kube-prometheus-stack-operator
+                        app.kubernetes.io/instance=prometheus
+                        app.kubernetes.io/managed-by=Helm
+                        app.kubernetes.io/part-of=kube-prometheus-stack
+                        app.kubernetes.io/version=46.5.0
+                        chart=kube-prometheus-stack-46.5.0
+                        heritage=Helm
+                        release=prometheus
+Annotations:            deployment.kubernetes.io/revision: 1
+                        meta.helm.sh/release-name: prometheus
+                        meta.helm.sh/release-namespace: default
+Selector:               app=kube-prometheus-stack-operator,release=prometheus
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:           app=kube-prometheus-stack-operator
+                    app.kubernetes.io/instance=prometheus
+                    app.kubernetes.io/managed-by=Helm
+                    app.kubernetes.io/part-of=kube-prometheus-stack
+                    app.kubernetes.io/version=46.5.0
+                    chart=kube-prometheus-stack-46.5.0
+                    heritage=Helm
+                    release=prometheus
+  Service Account:  prometheus-kube-prometheus-operator
+  Containers:
+   kube-prometheus-stack:
+    Image:      quay.io/prometheus-operator/prometheus-operator:v0.65.1
+    Port:       10250/TCP
+    Host Port:  0/TCP
+    Args:
+      --kubelet-service=kube-system/prometheus-kube-prometheus-kubelet
+      --localhost=127.0.0.1
+      --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.65.1
+      --config-reloader-cpu-request=200m
+      --config-reloader-cpu-limit=200m
+      --config-reloader-memory-request=50Mi
+      --config-reloader-memory-limit=50Mi
+      --thanos-default-base-image=quay.io/thanos/thanos:v0.31.0
+      --secret-field-selector=type!=kubernetes.io/dockercfg,type!=kubernetes.io/service-account-token,type!=helm.sh/release.v1
+      --web.enable-tls=true
+      --web.cert-file=/cert/cert
+      --web.key-file=/cert/key
+      --web.listen-address=:10250
+      --web.tls-min-version=VersionTLS13
+    Environment:  <none>
+    Mounts:
+      /cert from tls-secret (ro)
+  Volumes:
+   tls-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  prometheus-kube-prometheus-admission
+    Optional:    false
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   prometheus-kube-prometheus-operator-69cfc4b8fd (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  19m   deployment-controller  Scaled up replica set prometheus-kube-prometheus-operator-69cfc4b8fd to 1
