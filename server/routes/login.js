@@ -1,9 +1,9 @@
 import express from 'express';
-import userController from './controllers/userController.js';
-import sessionController from './controllers/sessionController.js';
-import cookieController from './controllers/cookieController.js';
+import { userController } from '../controllers/userController.js';
+import { sessionController } from '../controllers/sessionController.js';
+import { cookieController } from '../controllers/cookieController.js';
 
-// const loginRouter = express.Router();
+const loginRouter = express.Router();
 
 // login
 loginRouter.post(
@@ -12,7 +12,7 @@ loginRouter.post(
   sessionController.startSession,
   cookieController.setSSIDCookie,
   (req, res) => {
-    res.status(200);
+    return res.status(200);
   }
 );
 
@@ -23,8 +23,8 @@ loginRouter.post(
   sessionController.startSession,
   cookieController.setSSIDCookie,
   (req, res) => {
-    res.status(200);
+    return res.status(200);
   }
 );
 
-export const loginRouter = express.Router();
+export { loginRouter };

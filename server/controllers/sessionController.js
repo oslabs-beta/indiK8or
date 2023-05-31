@@ -1,4 +1,4 @@
-import Session from './models/sessionModel.js';
+import { Session } from '../models/sessionModel.js';
 
 const sessionController = {};
 
@@ -6,11 +6,10 @@ const sessionController = {};
 
 sessionController.isLoggedIn = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE isLoggedIn middleware -----');
-  const { ssid } = req.cookies;
-  Session.findOne({ cookieId: ssid })
+  Session.findOne({ cookieId: req.cookies.ssid })
     .then((session) => {
       if (!session) {
-        res.status(404);
+        res.redirect('/signup');
       } else {
         return next();
       }
@@ -18,8 +17,8 @@ sessionController.isLoggedIn = (req, res, next) => {
     .catch((err) => {
       return next({
         log: `isLoggedIn: ${err}`,
-        status: 400,
-        message: { err: 'error occurred in isLoggedIn controller' },
+        status: 500,
+        message: { err: 'error occurred in sessionController.isLoggedIn' },
       });
     });
 };
@@ -27,16 +26,17 @@ sessionController.isLoggedIn = (req, res, next) => {
 // startSession - create and save a new Session into the database.
 sessionController.startSession = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE startSession middleware -----');
-  const id = res.locals.userId;
-  Session.create({ cookieId: id })
+  Session.create({ cookieId: res.locals.user })
     .then(() => {
       return next();
     })
     .catch((err) => {
       return next({
         log: `startSession: ${err}`,
-        status: 400,
-        message: { err: 'error occurred in startSession controller' },
+        status: 500,
+        message: { err: 'error occurred in sessionController.startSession' },
       });
     });
 };
+
+export { sessionController };
