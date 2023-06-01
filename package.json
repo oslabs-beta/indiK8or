@@ -11,6 +11,7 @@
     "start": "nodemon server/server.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
