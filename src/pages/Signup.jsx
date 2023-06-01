@@ -87,7 +87,7 @@ const SignupPage = () => {
     }
 
     // Make the POST request to your server here using username, firstName, lastName, and password
-    fetch('/api/signup', {
+    fetch('http://localhost:4000/login/signupRequest', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
