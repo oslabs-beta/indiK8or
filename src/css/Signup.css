@@ -1,0 +1,31 @@
+.signup-grid {
+    /* Add styles for the Grid component */
+  }
+
+  .signup-paper {
+    /* Add styles for the Paper component */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) !important;
+    padding: 30px 20px !important;
+    width: 300px !important;
+    margin: 20px auto !important;
+  }
+  
+  .signup-avatar {
+    /* Add styles for the Avatar component */
+    background-color: #1bbd7e !important;
+  }
+  
+  .signup-heading {
+    /* Add styles for the heading */
+    margin: 0 !important;
+  }
+  
+  .signup-form {
+    /* Add styles for the form */
+  }
+
+  .form-field {
+    /* Add styles for the Grid component */
+    margin-top: 10px !important;
+  }
+  
