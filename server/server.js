@@ -8,7 +8,7 @@ import { loginRouter } from './routes/login.js';
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 // eslint-disable-next-line no-undef
 const mongoURI = process.env.MONGO_URI;
@@ -25,6 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // route handlers
+
 app.use('/login', loginRouter);
 
 // catch-all handler
