@@ -10,7 +10,7 @@ sessionController.isLoggedIn = (req, res, next) => {
     .then((session) => {
       // redirect to signup page if session does not exist
       if (!session) {
-        res.redirect('/signupRequest');
+        res.status(404).json('No active session exists');
       } else {
         return next();
       }

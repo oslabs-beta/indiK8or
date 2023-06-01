@@ -12,17 +12,18 @@ loginRouter.post(
   sessionController.startSession,
   cookieController.setSSIDCookie,
   (req, res) => {
-    return res.status(200).json('You are logged in');
+    return res.sendStatus(200).json('You are logged in');
   }
 );
 
 // signup
 loginRouter.post(
   '/signupRequest',
+  userController.verifyAccount,
   userController.createUser,
   (req, res) => {
     console.log('----INSIDE signupRequest----');
-    return res.status(200).json('You have successfully signed up');
+    return res.status(201);
   }
 );
 
