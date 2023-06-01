@@ -7,23 +7,22 @@ const loginRouter = express.Router();
 
 // login
 loginRouter.post(
-  '/login',
+  '/loginRequest',
   userController.verifyUser,
   sessionController.startSession,
   cookieController.setSSIDCookie,
   (req, res) => {
-    return res.status(200);
+    return res.status(200).json('You are logged in');
   }
 );
 
 // signup
 loginRouter.post(
-  '/signup',
+  '/signupRequest',
   userController.createUser,
-  sessionController.startSession,
-  cookieController.setSSIDCookie,
   (req, res) => {
-    return res.status(200);
+    console.log('----INSIDE signupRequest----');
+    return res.status(200).json('You have successfully signed up');
   }
 );
 

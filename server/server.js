@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // route handlers
-app.use('/api', loginRouter);
+app.use('/login', loginRouter);
 
 // catch-all handler
 app.use((req, res) => res.status(404).send('Invalid endpoint'));

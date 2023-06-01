@@ -3,13 +3,14 @@ import { Session } from '../models/sessionModel.js';
 const sessionController = {};
 
 // isLoggedIn - find appropriate session for this request in DB - verify whether or not session is still valid
-
 sessionController.isLoggedIn = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE isLoggedIn middleware -----');
+  // finding the session which cookieId matches the cookie ssid sent along with the request
   Session.findOne({ cookieId: req.cookies.ssid })
     .then((session) => {
+      // redirect to signup page if session does not exist
       if (!session) {
-        res.redirect('/signup');
+        res.redirect('/signupRequest');
       } else {
         return next();
       }
@@ -26,6 +27,7 @@ sessionController.isLoggedIn = (req, res, next) => {
 // startSession - create and save a new Session into the database.
 sessionController.startSession = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE startSession middleware -----');
+  // creating a session with a cookieId equals to the user id saved in res.locals
   Session.create({ cookieId: res.locals.user })
     .then(() => {
       return next();
