@@ -23,7 +23,9 @@ loginRouter.post(
   userController.createUser,
   (req, res) => {
     console.log('----INSIDE signupRequest----');
-    return res.sendStatus(201);
+    return res
+    .status(201)
+    .json('You have signed up');
   }
 );
 
