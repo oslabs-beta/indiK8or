@@ -2,8 +2,8 @@ import { useState, useRef } from 'react';
 import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import '../css/Signup.css'
-
+import '../css/Signup.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   // State variables to hold form data
@@ -21,6 +21,7 @@ const SignupPage = () => {
   // Refs for password confirmation and password input fields
   const passwordConfirmationRef = useRef(null);
   const passwordRef = useRef(null);
+  const navigate = useNavigate();
   
   // Event handlers for input field changes
   const handleUsernameChange = (event) => {
@@ -97,10 +98,9 @@ const SignupPage = () => {
     .then((response) => {
         if (response.ok) {
             // Handle success response
-            console.log('User created successfully');
             // Update the state to indicate user creation success
             setShowSuccessAlert(true);
-            
+            navigate('/');
         }
         else if (response.status === 409) {
           // Handle the case where the account already exists

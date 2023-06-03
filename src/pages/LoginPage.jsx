@@ -3,6 +3,7 @@ import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typ
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LoginIcon from '@mui/icons-material/Login';
 import '../css/Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -12,6 +13,7 @@ const LoginPage = () => {
   const [showErrorAlert, setShowErrorAlert] = useState(false);
 
   const passwordRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -44,6 +46,7 @@ const LoginPage = () => {
           console.log('Login successful');
           setUsername('');
           setPassword('');
+          navigate('/home');
         } else if (response.status === 404) {
           setLoginError('Invalid username or password');
           setPassword('');
