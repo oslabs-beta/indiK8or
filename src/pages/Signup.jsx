@@ -100,6 +100,7 @@ const SignupPage = () => {
             console.log('User created successfully');
             // Update the state to indicate user creation success
             setShowSuccessAlert(true);
+            
         }
         else if (response.status === 409) {
           // Handle the case where the account already exists
