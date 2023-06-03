@@ -13,7 +13,6 @@ dist-ssr
 *.local
 package-lock.json
 .env
-prometheus/
 
 # Editor directories and files
 .vscode/*
