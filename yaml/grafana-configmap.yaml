@@ -25,7 +25,7 @@ metadata:
   annotations:
     meta.helm.sh/release-name: prometheus
     meta.helm.sh/release-namespace: default
-  creationTimestamp: "2023-05-31T19:17:41Z"
+  creationTimestamp: "2023-06-03T19:51:17Z"
   labels:
     app.kubernetes.io/instance: prometheus
     app.kubernetes.io/managed-by: Helm
@@ -34,5 +34,5 @@ metadata:
     helm.sh/chart: grafana-6.56.6
   name: prometheus-grafana
   namespace: default
-  resourceVersion: "1003"
-  uid: e8e1b59c-ed6e-4aa7-81da-129d199dab8b
+  resourceVersion: "472"
+  uid: 0c9121c6-33e7-48be-bdfe-d1769a635299
