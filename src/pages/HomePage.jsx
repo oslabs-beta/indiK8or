@@ -1,36 +1,32 @@
 // import './App.css' 
-import { Box } from '@mui/material'
-import { useState, useEffect } from 'react';
+import * as React from 'react';
+import { Grid } from '@mui/material'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 // import { Routes,Route } from 'react-router-dom'
+// import {Navigation, Modal, Dashboard} from '<div className="" />components'
+import Navigation from '../components/Navigation.jsx'
+import Modal from '../components/Modal.jsx'
+import Dashboard from '../components/Dashboard.jsx'
+
 
 const HomePage = () => {
-  const [dashboardUid, setDashboardUid] = useState(null);
-  async function fetchData() {
-    try {
-      const response = await fetch('http://localhost:4000/dashboard/');
-      const data = await response.json();
-      // Do something with the data
-      setDashboardUid(data);
-      console.log(data);
-    } catch (error) {
-      // Handle any errors
-      console.error('Error:', error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
-    <Box>
-      {dashboardUid ? (
-     <iframe className="grafanaDashboard dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} width='1200' height='1320'/>
-      ) : (
-        <p></p>
-      )}
-    </Box>
-  );
-};
+    <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
+      <Grid>
+          <Navigation/>
+          <Dashboard />
+          <Modal/>
+      </Grid>
+    </ThemeProvider>
+  )
+}
 
 export default HomePage;
