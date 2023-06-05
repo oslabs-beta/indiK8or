@@ -28,17 +28,21 @@ sessionController.isLoggedIn = (req, res, next) => {
 sessionController.startSession = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE startSession middleware -----');
   // creating a session with a cookieId equals to the user id saved in res.locals
-  Session.create({ cookieId: res.locals.user })
-    .then(() => {
-      return next();
-    })
-    .catch((err) => {
-      return next({
-        log: `startSession: ${err}`,
-        status: 500,
-        message: { err: 'error occurred in sessionController.startSession' },
-      });
+  Session.findOne({cookieId: req.cookies.ssid})
+  .then((session) => {
+    if (session) {     res.status(409).json('Active session exists');
+    } else {
+    Session.create({ cookieId: res.locals.user })
+  .then(() => {
+    return next();
+  })
+  .catch((err) => {
+    return next({
+      log: `startSession: ${err}`,
+      status: 500,
+      message: { err: 'error occurred in sessionController.startSession' },
     });
+  })}})
 };
 
 export { sessionController };

@@ -39,6 +39,8 @@ const LoginPage = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      // include cookies from cross origin request
+      credentials: 'include',
       body: JSON.stringify({ username, password }),
     })
       .then((response) => {
@@ -52,7 +54,10 @@ const LoginPage = () => {
           setPassword('');
           passwordRef.current.focus();
           setShowErrorAlert(true);
-        } else {
+        } else if (response.status === 409) {
+          navigate('/home');
+        }
+         else {
           console.error('Server error:', response.statusText);
         }
       })
