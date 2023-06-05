@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { loginRouter } from './routes/login.js';
+import grafanaRouter from './routes/grafana.js';
 
 // require .env files in
 dotenv.config();
@@ -27,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 // route handlers
 
 app.use('/login', loginRouter);
-
+app.use('/dashboard', grafanaRouter)
 // catch-all handler
 app.use((req, res) => res.status(404).send('Invalid endpoint'));
 
