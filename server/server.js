@@ -25,7 +25,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // route handlers
-
 app.use('/login', loginRouter);
 
 // catch-all handler
