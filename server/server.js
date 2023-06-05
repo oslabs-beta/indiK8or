@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 // route handlers
 app.use('/login', loginRouter);
 app.use('/dashboard', grafanaRouter)
+
 // catch-all handler
 app.use((req, res) => res.status(404).send('Invalid endpoint'));
 

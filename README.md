@@ -1,3 +1,7 @@
+
+# indiK8or
+Kubernetes Visualization Tool
+
 # Getting Started
 
 indiK8or functionality assumes that you have Docker and Kubernetes already installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
@@ -14,3 +18,4 @@ If you do not have a Kubernetes cluster up and running, use Minikube to quickly 
 - `minikube start`
 1. Make sure you have kubectl installed to add deployments 
 - `brew install kubectl`
+
