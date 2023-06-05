@@ -1,18 +1,36 @@
 // import './App.css' 
 import { Box } from '@mui/material'
+import { useState, useEffect } from 'react';
 // import { Routes,Route } from 'react-router-dom'
 
 const HomePage = () => {
+  const [dashboardUid, setDashboardUid] = useState(null);
+  async function fetchData() {
+    try {
+      const response = await fetch('http://localhost:4000/dashboard/');
+      const data = await response.json();
+      // Do something with the data
+      setDashboardUid(data);
+      console.log(data);
+    } catch (error) {
+      // Handle any errors
+      console.error('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <Box>
-    <iframe src="http://localhost:3000/d-solo/ab7bce75-b357-41b4-9b41-7e023d8ae16c/node-exporter-nodes?orgId=1&refresh=30s&from=1685821407175&to=1685825007175&theme=dark&panelId=6" width="450" height="200" frameBorder="0"></iframe>
-    <iframe src="http://localhost:3000/d-solo/ab7bce75-b357-41b4-9b41-7e023d8ae16c/node-exporter-nodes?orgId=1&refresh=30s&from=1685821407175&to=1685825007175&theme=dark&panelId=5" width="450" height="200" frameBorder="0"></iframe>
-    <iframe src="http://localhost:3000/d-solo/ab7bce75-b357-41b4-9b41-7e023d8ae16c/node-exporter-nodes?orgId=1&refresh=30s&from=1685821407175&to=1685825007175&theme=dark&panelId=5" width="450" height="200" frameBorder="0"></iframe>
-    <iframe src="http://localhost:3000/d-solo/ab7bce75-b357-41b4-9b41-7e023d8ae16c/node-exporter-nodes?orgId=1&refresh=30s&from=1685821407175&to=1685825007175&theme=dark&panelId=3" width="450" height="200" frameBorder="0"></iframe>
-    <iframe src="http://localhost:3000/d-solo/ab7bce75-b357-41b4-9b41-7e023d8ae16c/node-exporter-nodes?orgId=1&refresh=5s&from=1685821407175&to=1685825007175&panelId=2" width="450" height="200" frameBorder="0"></iframe>
+      {dashboardUid ? (
+     <iframe className="grafanaDashboard dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} width='1200' height='1320'/>
+      ) : (
+        <p></p>
+      )}
     </Box>
-  )
-}
+  );
+};
 
 export default HomePage;
