@@ -28,4 +28,11 @@
     /* Add styles for the Grid component */
     margin-top: 10px !important;
   }
+
+  body {
+    height: 80vh;
+    margin: 0;
+    background: url('../assets/Kubernetes.png') no-repeat center center fixed;
+    background-size: 80% 120%;
+  }
   
