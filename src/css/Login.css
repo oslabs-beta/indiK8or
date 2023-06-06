@@ -1,3 +1,10 @@
+body {
+    height: 80vh;
+    margin: 0;
+    background: url('../assets/signup-login.gif') no-repeat center center fixed;
+    background-size: 100% 100%;
+  }
+
 .login-grid {
     height: 100vh;
 }
@@ -31,9 +38,3 @@ bottom: 10px !important;
 left: 10px !important;
 }
 
-body {
-    height: 80vh;
-    margin: 0;
-    background: url('../assets/Kubernetes.png') no-repeat center center fixed;
-    background-size: 80% 120%;
-  }

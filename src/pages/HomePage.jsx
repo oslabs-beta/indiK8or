@@ -5,6 +5,7 @@ import Navigation from '../components/Navigation.jsx'
 import Dashboard from '../components/Dashboard.jsx'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../css/HomePage.css"
 
 const darkTheme = createTheme({
   palette: {
