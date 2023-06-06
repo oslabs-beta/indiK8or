@@ -18,10 +18,10 @@ import MailIcon from '@mui/icons-material/Mail';
 import GridViewIcon from '@mui/icons-material/GridView';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-
+import { useState } from 'react';
 const drawerWidth = 175;
 
-export default function Navigation() {
+export default function Navigation(handleDashboard) {
 
   return (
     <Box sx={{ display: 'flex'}}>
@@ -38,12 +38,12 @@ export default function Navigation() {
         variant="permanent"
         anchor="left"
       >
-        {/* add our logo here */}
         <Toolbar />
+        <img src="src/assets/logo2.png" alt="logo" />
         <Divider />
         <List > 
-           <ListItem key='navigation' disablePadding >
-              <ListItemButton>
+           <ListItem key='navigation' disablePadding>
+              <ListItemButton onClick={ handleDashboard } >
                 <ListItemIcon >
                   <GridViewIcon 
                   sx={{ fontSize: 40 }} 
