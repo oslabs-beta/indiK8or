@@ -45,7 +45,7 @@ export default function Navigation() {
            <ListItem key='navigation' disablePadding >
               <ListItemButton>
                 <ListItemIcon >
-                  <GridViewIcon display='flex' justifyContent='center' alignItems='center'
+                  <GridViewIcon 
                   sx={{ fontSize: 40 }} 
                   color="primary"
                    /> 
