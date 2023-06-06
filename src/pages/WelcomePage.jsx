@@ -28,7 +28,7 @@ const WelcomePage = () => {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [navigate]);
 
   return (
     <Grid
