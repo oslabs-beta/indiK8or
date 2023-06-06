@@ -30,24 +30,18 @@ sessionController.isLoggedIn = (req, res, next) => {
 // startSession - create and save a new Session into the database.
 sessionController.startSession = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE startSession middleware -----');
-  console.log('req.cookies.ssid', req.cookies.ssid);
   // creating a session with a cookieId equals to the user id saved in res.locals
-  Session.findOne({cookieId: req.cookies.ssid})
-  .then((session) => {
-    if (session) {
-      res.send('Active session found');
-    } else {
-    Session.create({ cookieId: res.locals.user })
-  .then(() => {
-    return next();
-  })
-  .catch((err) => {
-    return next({
-      log: `startSession: ${err}`,
-      status: 500,
-      message: { err: 'error occurred in sessionController.startSession' },
+  Session.create({ cookieId: res.locals.user })
+    .then(() => {
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: `startSession: ${err}`,
+        status: 500,
+        message: { err: 'error occurred in sessionController.startSession' },
+      });
     });
-  })}})
 };
 
 sessionController.logout = async (req, res, next) => {
