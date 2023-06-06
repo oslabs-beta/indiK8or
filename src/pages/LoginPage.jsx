@@ -66,10 +66,7 @@ const LoginPage = () => {
           setPassword('');
           passwordRef.current.focus();
           setShowErrorAlert(true);
-        } else if (response.status === 409) {
-          navigate('/home');
-        }
-         else {
+        } else {
           console.error('Server error:', response.statusText);
         }
       })
