@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { loginRouter } from './routes/login.js';
+import { logoutRouter } from './routes/logout.js';
 import grafanaRouter from './routes/grafana.js';
 import cookieParser from 'cookie-parser';
 
@@ -22,7 +23,6 @@ mongoose
   .catch((err) => console.log(err));
 
 // allow cors
-
 app.use(cors({
   origin: 'http://localhost:5000',
   credentials: true
@@ -30,10 +30,12 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // route handlers
-app.use('/login', cookieParser(), loginRouter);
-app.use('/dashboard', grafanaRouter)
+app.use('/login', loginRouter);
+app.use('/dashboard', grafanaRouter);
+app.use('/logout', logoutRouter);
 
 // catch-all handler
 app.use((req, res) => res.status(404).send('Invalid endpoint'));

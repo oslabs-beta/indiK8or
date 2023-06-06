@@ -50,4 +50,34 @@ sessionController.startSession = (req, res, next) => {
   })}})
 };
 
+sessionController.logout = async (req, res, next) => {
+  console.log('inside logout controller');
+  console.log('req.cookies', req.cookies)
+  try {
+    if(req.cookies && req.cookies.ssid){
+    const { ssid } = req.cookies;
+    console.log('ssid cookie', ssid);
+
+    const loggedOutUser = await Session.findOneAndDelete({cookieId: ssid});
+    if (loggedOutUser) {
+      console.log('successfull logout for user', loggedOutUser);
+      res.locals.loggedOut = loggedOutUser;
+      return next();
+    } else {
+      console.log('Unsuccessful logout. User session not found')
+      res.send('User session not found. Unable to logout');
+    }
+  } else {
+    console.log('No cookie found');
+    res.status(404).send('User cookie not found');
+  }
+  } catch (err) {
+    return next({
+      log: `logout: ${err}`,
+      status: 500,
+      message: { err: 'error occurred in sessionController.logout' },
+    });
+  }
+}
+
 export { sessionController };
