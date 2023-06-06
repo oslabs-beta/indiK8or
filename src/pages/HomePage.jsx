@@ -13,10 +13,13 @@ const darkTheme = createTheme({
 });
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
   const [dashboardClicked, setDashboardClicked] = useState(false);
   const handleDashboard = () => setDashboardClicked(true);
+  const navigate = useNavigate();
   
+  // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
+  // if they are not logged in we will receive a 302 and send them to the loginPage
   useEffect(() => {
     fetch('http://localhost:4000/login/isLoggedIn', {
         method: 'POST',
@@ -30,10 +33,11 @@ const HomePage = () => {
       .then((response) => {
         console.log(response);
         if (response.status === 303) {
-          // Handle success response
-          // Update the state to indicate user creation success
+          // Handle failed response
           alert('You must be logged in to view this page');
           navigate('/login/loginRequest');
+        } else {
+          setLoggedIn(true);
         }
       })
       .catch((error) => {
@@ -42,15 +46,20 @@ const HomePage = () => {
       });
   }, [navigate]);
 
+  // only render ThemeProvider if loggedIn is true, otherwise render nothing
   return (
-    <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-      <Grid>
-          <Navigation setDashboardClicked={ handleDashboard }/>
-          <Dashboard dashboardClicked={ dashboardClicked }/>
-      </Grid>
-    </ThemeProvider>
-  )
-}
+    <>
+      {loggedIn &&(
+      <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+        <Grid>
+            <Navigation setDashboardClicked={ handleDashboard }/>
+            <Dashboard dashboardClicked={ dashboardClicked }/>
+        </Grid>
+      </ThemeProvider>
+      )}
+    </>
+  );
+};
 
 export default HomePage;
