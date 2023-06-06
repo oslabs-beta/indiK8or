@@ -6,6 +6,7 @@ import { loginRouter } from './routes/login.js';
 import grafanaRouter from './routes/grafana.js';
 import cookieParser from 'cookie-parser';
 
+
 // require .env files in
 dotenv.config();
 
@@ -21,6 +22,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // allow cors
+
 app.use(cors({
   origin: 'http://localhost:5000',
   credentials: true
@@ -30,7 +32,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // route handlers
-
 app.use('/login', cookieParser(), loginRouter);
 app.use('/dashboard', grafanaRouter)
 
