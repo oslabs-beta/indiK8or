@@ -27,10 +27,12 @@ sessionController.isLoggedIn = (req, res, next) => {
 // startSession - create and save a new Session into the database.
 sessionController.startSession = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE startSession middleware -----');
+  console.log('req.cookies.ssid', req.cookies.ssid);
   // creating a session with a cookieId equals to the user id saved in res.locals
   Session.findOne({cookieId: req.cookies.ssid})
   .then((session) => {
-    if (session) {     res.status(409).json('Active session exists');
+    if (session) {
+      res.send('Active session found');
     } else {
     Session.create({ cookieId: res.locals.user })
   .then(() => {
