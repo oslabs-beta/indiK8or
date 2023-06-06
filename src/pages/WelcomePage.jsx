@@ -1,5 +1,5 @@
-import { Grid, Paper, Link } from '@mui/material';
-import '../css/Login.css';
+import { Grid, Paper, Link, Button, Container } from '@mui/material';
+import '../css/Welcome.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -8,14 +8,14 @@ const WelcomePage = () => {
 
   useEffect(() => {
     fetch('http://localhost:4000/login/isLoggedIn', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // include cookies from cross origin request
-        credentials: 'include',
-        body: JSON.stringify({}),
-      })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // include cookies from cross origin request
+      credentials: 'include',
+      body: JSON.stringify({}),
+    })
       .then((response) => {
         console.log(response);
         if (response.status === 302) {
@@ -31,20 +31,15 @@ const WelcomePage = () => {
   }, [navigate]);
 
   return (
-    <Grid
-      container
-      className="login-grid"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Paper className="login-paper">
-        <Grid align="center">
-          <h2 className="login-heading">Welcome</h2>
-        </Grid>
-        <Link href="/login/signupRequest">Sign up</Link>
-        <Link href="/login/loginRequest">Log in</Link>
-      </Paper>
-    </Grid>
+    <Container className="welcome-container">
+      <h2 className="welcome-heading">Welcome</h2>
+      <Button className="signin" variant="text" href="/login/loginRequest">
+        Sign in
+      </Button>
+      <Button className="signup" variant="outlined" href="/login/signupRequest">
+        Sign up
+      </Button>
+    </Container>
   );
 };
 

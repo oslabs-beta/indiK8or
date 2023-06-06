@@ -1,0 +1,36 @@
+.welcome-heading {
+  position: relative !important;
+}
+
+.signin {
+  position: absolute !important;
+  top: 20px !important;
+  right: 125px !important;
+  background-color: white !important;
+  color: black !important;
+  width: 90px !important;
+}
+
+.signup {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  background-color: rgb(96, 88, 88) !important;
+  color: white !important;
+}
+
+body {
+    background: 
+    radial-gradient(circle at bottom, white, transparent 80%),    
+    linear-gradient(to top, dodgerblue 0%, transparent 70%),    
+    linear-gradient(to bottom, transparent, rgba(white, 0.4) 70%),
+    rgb(71, 71, 173) !important;  
+  animation: bg 20s infinite !important;
+}
+
+@keyframes bg {
+    0%, 100% { background-color: rgb(147, 147, 218); }
+    25% { background-color: rgb(140, 187, 140); }
+    50% { background-color: rgb(196, 196, 153); }
+    75% { background-color: rgb(210, 189, 193); }
+  }

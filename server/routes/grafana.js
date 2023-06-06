@@ -11,7 +11,4 @@ grafanaRouter.get('/', grafanaController.nodeExporter, (req, res) => {
   json(res.locals.node);
 })
 
-
-
-
 export default grafanaRouter;
