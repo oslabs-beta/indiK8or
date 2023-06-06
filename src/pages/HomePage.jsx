@@ -14,7 +14,7 @@ const darkTheme = createTheme({
 const HomePage = () => {
 
   const [dashboardClicked, setDashboardClicked] = useState(false);
-  const handleDashboard = () => setDashboardClicked(true);
+  const handleDashboard = () => {setDashboardClicked(true)};
   
 
   return (

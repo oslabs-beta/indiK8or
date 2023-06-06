@@ -22,7 +22,6 @@ import { useState } from 'react';
 const drawerWidth = 175;
 
 export default function Navigation(handleDashboard) {
-
   return (
     <Box sx={{ display: 'flex'}}>
       <CssBaseline />

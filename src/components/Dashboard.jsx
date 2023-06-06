@@ -24,7 +24,7 @@ export default function Dashboard(dashboardClicked) {
     fetchData();
   }, []);
 
-  return dashboardUid ? (
+  return (dashboardUid) ? (
    <Grid container alignItems="center" justifyContent="center"> 
         <Box>
             <iframe className="grafanaDashboard dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} width='1200' height='1320'/>
