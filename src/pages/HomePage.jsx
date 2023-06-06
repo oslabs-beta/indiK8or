@@ -19,7 +19,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   
   // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
-  // if they are not logged in we will receive a 302 and send them to the loginPage
+  // if they are not logged in we will receive a 303 and send them to the loginPage
   useEffect(() => {
     fetch('http://localhost:4000/login/isLoggedIn', {
         method: 'POST',
