@@ -37,9 +37,4 @@ loginRouter.post(
   }
 );
 
-
-// authorized users
-// loginRouter.get('/', sessionController.isLoggedIn, (req, res) => {
-//   return res.status(200).json('You have an active session');
-// })
 export { loginRouter };
