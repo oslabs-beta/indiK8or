@@ -1,5 +1,17 @@
 import { useState, useRef } from 'react';
-import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert, Link } from '@mui/material';
+import {
+  IconButton,
+  InputAdornment,
+  TextField,
+  Button,
+  Grid,
+  Paper,
+  Avatar,
+  Typography,
+  Snackbar,
+  Alert,
+  Link,
+} from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LoginIcon from '@mui/icons-material/Login';
 import '../css/Login.css';
@@ -39,6 +51,8 @@ const LoginPage = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      // include cookies from cross origin request
+      credentials: 'include',
       body: JSON.stringify({ username, password }),
     })
       .then((response) => {
@@ -62,14 +76,21 @@ const LoginPage = () => {
   };
 
   return (
-    <Grid container className="login-grid" alignItems="center" justifyContent="center">
+    <Grid
+      container
+      className="login-grid"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Paper className="login-paper">
         <Grid align="center">
           <Avatar className="login-avatar">
             <LoginIcon />
           </Avatar>
           <h2 className="login-heading">Login</h2>
-          <Typography variant="caption" gutterBottom>Enter your username and password</Typography>
+          <Typography variant="caption" gutterBottom>
+            Enter your username and password
+          </Typography>
         </Grid>
         <form className="login-form" onSubmit={handleSubmit}>
           <TextField
@@ -107,14 +128,25 @@ const LoginPage = () => {
               ),
             }}
           />
-
-          <Button className="form-field" type="submit" variant="contained" color="primary">Login</Button>
+          <Button
+            className="form-field"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Login
+          </Button>
           <Typography variant="body2" align="center">
-            Don't have an account? <Link href="/login/signupRequest">Sign up</Link>
+            Dont have an account?{' '}
+            <Link href="/login/signupRequest">Sign up</Link>
           </Typography>
         </form>
         <div className="snackbar-container">
-          <Snackbar open={showErrorAlert} autoHideDuration={3000} onClose={handleSnackbarClose}>
+          <Snackbar
+            open={showErrorAlert}
+            autoHideDuration={3000}
+            onClose={handleSnackbarClose}
+          >
             <Alert onClose={handleSnackbarClose} severity="error">
               Invalid username or password
             </Alert>
@@ -126,4 +158,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

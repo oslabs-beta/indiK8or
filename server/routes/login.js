@@ -5,6 +5,16 @@ import { cookieController } from '../controllers/cookieController.js';
 
 const loginRouter = express.Router();
 
+// authorizing user who has already logged in
+loginRouter.post(
+  '/isLoggedIn', 
+  sessionController.isLoggedIn, 
+  (req, res) => {
+    console.log('INSIDE AUTHORIZING USER WHO HAS LOGGED IN');
+    return res.status(302).json('User has an active session');
+  }
+)
+
 // login
 loginRouter.post(
   '/loginRequest',

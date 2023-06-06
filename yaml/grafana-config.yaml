@@ -18,14 +18,12 @@ data:
     allow_embedding: true
     [auth.anonymous]
     enabled: true
-    [dataproxy]
-    timeout: 600
 kind: ConfigMap
 metadata:
   annotations:
     meta.helm.sh/release-name: prometheus
     meta.helm.sh/release-namespace: default
-  creationTimestamp: "2023-06-05T18:52:32Z"
+  creationTimestamp: "2023-06-01T19:39:17Z"
   labels:
     app.kubernetes.io/instance: prometheus
     app.kubernetes.io/managed-by: Helm
@@ -34,5 +32,5 @@ metadata:
     helm.sh/chart: grafana-6.56.6
   name: prometheus-grafana
   namespace: default
-  resourceVersion: "506"
-  uid: bc386cd3-d209-46af-9f43-43c71e18e793
+  resourceVersion: "564"
+  uid: c02ad144-e19d-40dc-b5f5-c8f2de9595ae

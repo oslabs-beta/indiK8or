@@ -8,10 +8,13 @@ sessionController.isLoggedIn = (req, res, next) => {
   // finding the session which cookieId matches the cookie ssid sent along with the request
   Session.findOne({ cookieId: req.cookies.ssid })
     .then((session) => {
+      console.log('FINDING SESSION');
       // redirect to signup page if session does not exist
       if (!session) {
-        res.status(404).json('No active session exists');
+        console.log('SESSION NOT FOUND');
+        res.status(303).json('No active session exists');
       } else {
+        console.log('SESSION FOUND');
         return next();
       }
     })

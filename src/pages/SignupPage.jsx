@@ -100,7 +100,7 @@ const SignupPage = () => {
             // Handle success response
             // Update the state to indicate user creation success
             setShowSuccessAlert(true);
-            navigate('/');
+            navigate('/login/loginRequest');
         }
         else if (response.status === 409) {
           // Handle the case where the account already exists
