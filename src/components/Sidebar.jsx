@@ -37,6 +37,7 @@ const Sidebar = (props) => {
   
       if (response.status === 202) {
         // Handle successful logout
+        alert('You have been successfully logged out. Redirecting to Welcome Page');
         navigate('/');
       }
     } catch (error) {
