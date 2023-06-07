@@ -2,7 +2,8 @@ import { Container, Button, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import "../css/Welcome.css"
+import '../css/Welcome.css';
+import logo from '../assets/logo1.png';
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const WelcomePage = () => {
 
   return (
     <div id="back">
+      <img className="logo" src={logo}></img>
       <Container className="welcome-container">
         <h1 className="intro-heading" align="left">
           Introducing indiK8or: Simplify and Visualize Your Kubernetes
@@ -56,7 +58,12 @@ const WelcomePage = () => {
           Sign up
         </Button>
         <Container className="button-container" align="left">
-          <Button className="authors" variant="text" disabled="true"align="left">
+          <Button
+            className="authors"
+            variant="text"
+            disabled="true"
+            align="left"
+          >
             Our engineers:
           </Button>
           <Button className="name" variant="text" disabled="true">
