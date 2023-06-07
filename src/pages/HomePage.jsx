@@ -1,21 +1,20 @@
 import { Grid } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Navigation from '../components/Navigation.jsx'
 import Dashboard from '../components/Dashboard.jsx'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+import Sidebar from '../components/Sidebar.jsx';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  // Declare the dashboardClicked state
   const [dashboardClicked, setDashboardClicked] = useState(false);
-  const handleDashboard = () => setDashboardClicked(true);
+  // Declare the darkMode state
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Set the value of dashboardClicked to the opposite of its current value using func
+  const handleDashboard = () => setDashboardClicked(prevDashboardClicked => !prevDashboardClicked);
   
   useEffect(() => {
     fetch('http://localhost:4000/login/isLoggedIn', {
@@ -42,12 +41,20 @@ const HomePage = () => {
       });
   }, [navigate]);
 
+  // Create a dark theme if darkMode is true, otherwise create a light theme
+  const darkTheme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
+
   return (
+    //pass props to the children
     <ThemeProvider theme={darkTheme}>
     <CssBaseline />
       <Grid>
-          <Navigation setDashboardClicked={ handleDashboard }/>
-          <Dashboard dashboardClicked={ dashboardClicked }/>
+          <Sidebar dashboardClicked={dashboardClicked} handleDashboard={handleDashboard} darkMode={ darkMode } setDarkMode={ setDarkMode }/>
+          <Dashboard dashboardClicked={ dashboardClicked } />
       </Grid>
     </ThemeProvider>
   )

@@ -1,9 +1,9 @@
-import React from 'react'
-import { Box, Grid, } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { useState, useEffect } from 'react';
+import '../css/Dashboard.css'
 
-
-export default function Dashboard(dashboardClicked) {
+//pass props from parent component (HomePage)
+export default function Dashboard(props) {
 
   const [dashboardUid, setDashboardUid] = useState(null);
   
@@ -24,14 +24,15 @@ export default function Dashboard(dashboardClicked) {
     fetchData();
   }, []);
 
-  return dashboardUid ? (
-   <Grid container alignItems="center" justifyContent="center"> 
-        <Box>
-            <iframe className="grafanaDashboard dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} width='1200' height='1320'/>
-        </Box> 
-    </Grid>) : (<p>indiK8or makes viewing your cluster so easy!</p>)
-
-  
+  return props.dashboardClicked ? (
+    <Grid container alignItems="center" justifyContent="center"> 
+    <Box className='dash-box'>
+        <iframe className="grafanaDashboard dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} width='1300' height='800'/>
+    </Box> 
+</Grid>) 
+: <Grid container alignItems="center" justifyContent="center"> 
+    <Typography variant='h3' className='dash-typography'>indiK8or make viewing your cluster easy!</Typography>
+    </Grid>
 }
 
 
