@@ -2,12 +2,34 @@
     /* Add styles for the Grid component */
   }
 
+  body .signup-back {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   .signup-paper {
     /* Add styles for the Paper component */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) !important;
     padding: 30px 20px !important;
     width: 300px !important;
-    margin: 20px auto !important;
+    position: fixed; /* Use a fixed position to center the element */
+    top: 50%; /* Position the element vertically in the middle */
+    left: 50%; /* Position the element horizontally in the middle */
+    transform: translate(-50%, -50%); /* Move the element back by half of its width and height */
   }
   
   .signup-avatar {
@@ -28,11 +50,5 @@
     /* Add styles for the Grid component */
     margin-top: 10px !important;
   }
-/* 
-  body {
-    height: 80vh;
-    margin: 0;
-    background: url('../assets/signup-login.gif') no-repeat center center fixed;
-    background-size: 100% 100%;
-  } */
+
   
