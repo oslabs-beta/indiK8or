@@ -11,7 +11,8 @@ loginRouter.post(
   sessionController.isLoggedIn, 
   (req, res) => {
     console.log('INSIDE AUTHORIZING USER WHO HAS LOGGED IN');
-    return res.status(302).json('User has an active session');
+    console.log('res.locals.userId', res.locals.userId);
+    return res.status(302).json(res.locals.userId);
   }
 )
 

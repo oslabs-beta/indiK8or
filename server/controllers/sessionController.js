@@ -15,6 +15,8 @@ sessionController.isLoggedIn = (req, res, next) => {
         res.status(303).json('No active session exists');
       } else {
         console.log('SESSION FOUND');
+        res.locals.userId = req.cookies.ssid;
+        console.log('res.locals.userId', res.locals.userId);
         return next();
       }
     })
