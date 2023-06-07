@@ -3,25 +3,28 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    width: 200px !important;
-    background-color: #f36d6d !important;
-    padding: 16px !important;
-    position: fixed !important;
-    left: 4% !important;
-    top: 10% !important;
-    height: 80% !important;
+    width: 15% !important;
+    /* background-color: #f36d6d !important; */
+    background:
+        linear-gradient(rgb(121, 94, 94), transparent),
+        linear-gradient(to top left, rgb(61, 118, 138), transparent),
+        linear-gradient(to top right, rgb(171, 168, 228), transparent);
+    background-blend-mode: screen;
+    padding: 10px !important;
+    height: 100% !important;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) !important;
-    border-radius: 15px !important;
   }
   
-  .logoContainer {
-    margin-bottom: 16px !important;
+  #logo {
+    width: 100%;
+    margin-bottom: 100px !important;
+    margin-top: 20%;
   }
   
   .listItem {
     display: flex !important;
     align-items: center !important;
-    padding: 8px !important;
+    padding: 12px !important;
     cursor: pointer !important;
   }
   
@@ -33,6 +36,11 @@
   
   .listItemText {
     transition: color 0.3s !important;
+    font-style: bold !important;
+  }
+
+  .list {
+    margin-top: 60% !important;
   }
   
 

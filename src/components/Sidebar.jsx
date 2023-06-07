@@ -86,13 +86,9 @@ const Sidebar = (props) => {
 
   return (
     <Box className="sidebar">
-      <Box className="logoContainer">
-        {/* Add logo here */}
-        <Typography variant="h6">Logo Placeholder</Typography>
-      </Box>
-      <hr></hr> 
+      <img id='logo' src="src/assets/logo1.png" alt="logo" />
       {/* Navigation List */}
-      <List>
+      <List className='list'>
         {/* Dashboard */}
         <ListItemButton
             //onMouse*** is property when cursor is hovering over element
@@ -101,17 +97,13 @@ const Sidebar = (props) => {
             onClick={handleDashToggle}
         >
             <ListItemIcon className="listItemIcon">
-                <DashboardIcon sx={{ fontSize: 40}}/>
+                <DashboardIcon sx={{ fontSize: 50}}/>
             </ListItemIcon>
             <ListItemText
                 // primary is the content of the ListItemText, which is a conditional in this case
                 primary={showDashText ? 'Dashboard' : ''}
                 className="listItemText"
-                //styling for text but might do it in css later on
-                primaryTypographyProps={{
-                variant: 'body1',
-                color: 'textPrimary',
-                }}
+                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}} 
             />
          </ListItemButton>
 
@@ -122,15 +114,12 @@ const Sidebar = (props) => {
             onClick={handleLogout}
         >
             <ListItemIcon className="listItemIcon">
-                <LogoutIcon sx={{ fontSize: 40}}/>
+                <LogoutIcon sx={{ fontSize: 50}}/>
             </ListItemIcon>
             <ListItemText
                 primary={showLogoutText ? 'Logout' : ''}
                 className="listItemText"
-                primaryTypographyProps={{
-                variant: 'body1',
-                color: 'textPrimary',
-                }}
+                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
             />
          </ListItemButton>
 
@@ -142,15 +131,12 @@ const Sidebar = (props) => {
             onClick={handleThemeToggle}
         >
             <ListItemIcon >
-                {props.darkMode ? <Brightness7Icon sx={{ fontSize: 40}}/> : <Brightness4Icon sx={{ fontSize: 40}}/>}
+                {props.darkMode ? <Brightness7Icon sx={{ fontSize: 50}}/> : <Brightness4Icon sx={{ fontSize: 50}}/>}
             </ListItemIcon>
             <ListItemText
-                primary={showThemeText ? 'Theme' : ''}
+                primary={showThemeText ? 'Light/Dark' : ''}
                 className="listItemText"
-                primaryTypographyProps={{
-                variant: 'body1',
-                color: 'textPrimary',
-                }}
+               primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
             />
             </ListItemButton>
         </List>
