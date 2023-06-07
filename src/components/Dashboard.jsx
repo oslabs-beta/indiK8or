@@ -25,13 +25,13 @@ export default function Dashboard(props) {
   }, []);
 
   return props.dashboardClicked ? (
-    <Grid container alignItems="center" justifyContent="center"> 
-    <Box className='dash-box'>
-        <iframe className="grafanaDashboard dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} width='1300' height='800'/>
-    </Box> 
+    <Grid className='dash-box' container alignItems="center" justifyContent="center"> 
+    
+        <iframe className="grafanaDashboard-dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} />
+  
 </Grid>) 
 : <Grid container alignItems="center" justifyContent="center"> 
-    <Typography variant='h3' className='dash-typography'>indiK8or make viewing your cluster easy!</Typography>
+    <Typography variant='h3' className='dash-typography'>indiK8or makes viewing your cluster metrics easy!</Typography>
     </Grid>
 }
 

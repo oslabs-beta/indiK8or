@@ -76,6 +76,7 @@ const LoginPage = () => {
   };
 
   return (
+    <div className='login-back'>
     <Grid
       container
       className="login-grid"
@@ -154,6 +155,7 @@ const LoginPage = () => {
         </div>
       </Paper>
     </Grid>
+    </div>
   );
 };
 

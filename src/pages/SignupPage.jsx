@@ -129,6 +129,7 @@ const SignupPage = () => {
   };
 
   return (
+    <div className='signup-back'>
     <Grid container className="signup-grid" alignItems="center" justifyContent="center">
     <Paper className='signup-paper'>
         <Grid align='center'>
@@ -236,6 +237,7 @@ const SignupPage = () => {
         </div>
     </Paper>
 </Grid>
+</div>
   );
 };
 
