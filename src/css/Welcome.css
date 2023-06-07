@@ -1,11 +1,59 @@
-.welcome-heading {
+.intro-heading {
   position: relative !important;
+  width: 1000px !important;
+  margin-top: 0% !important;
+  font-size: 55px;
+  bottom: 10px !important;
+}
+
+.intro {
+  position: relative !important;
+  width: 1000px !important;
+  color: black !important;
+  font-size: 30px;
+  bottom: 20px !important;
+}
+
+.authors {
+  position: absolute !important;
+  width: 1000px !important;
+  color: black !important;
+  font-size: 25px;
+  bottom: 20px !important;
+  left: 220px !important;
+}
+
+.link-container {
+position: absolute !important;
+  width: 1000px !important;
+  bottom: 40px !important;
+  left: 50px !important;
+}
+
+.ivy {
+    font-size: 20px !important;
+    color: black !important;
+}
+
+.yueran {
+    font-size: 20px !important;
+    color: black !important;
+}
+
+.julian {
+    font-size: 20px !important;
+    color: black !important;
+}
+
+.tadd {
+    font-size: 20px !important;
+    color: black !important;
 }
 
 .signin {
   position: absolute !important;
   top: 20px !important;
-  right: 125px !important;
+  right: 140px !important;
   background-color: white !important;
   color: black !important;
   width: 90px !important;
@@ -14,23 +62,31 @@
 .signup {
   position: absolute !important;
   top: 20px !important;
-  right: 20px !important;
+  right: 35px !important;
   background-color: rgb(96, 88, 88) !important;
   color: white !important;
 }
 
 body {
-    background: 
-    radial-gradient(circle at bottom, white, transparent 80%),    
-    linear-gradient(to top, dodgerblue 0%, transparent 70%),    
+  background: radial-gradient(circle at bottom, white, transparent 80%),
+    linear-gradient(to top, dodgerblue 0%, transparent 70%),
     linear-gradient(to bottom, transparent, rgba(white, 0.4) 70%),
-    rgb(71, 71, 173) !important;  
+    rgb(71, 71, 173) !important;
   animation: bg 20s infinite !important;
 }
 
 @keyframes bg {
-    0%, 100% { background-color: rgb(147, 147, 218); }
-    25% { background-color: rgb(140, 187, 140); }
-    50% { background-color: rgb(196, 196, 153); }
-    75% { background-color: rgb(210, 189, 193); }
+  0%,
+  100% {
+    background-color: rgb(82, 131, 222);
   }
+  25% {
+    background-color: rgb(89, 179, 101);
+  }
+  50% {
+    background-color: rgb(227, 167, 127);
+  }
+  75% {
+    background-color: rgb(210, 141, 194);
+  }
+}

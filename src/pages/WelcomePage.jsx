@@ -32,13 +32,21 @@ const WelcomePage = () => {
 
   return (
     <Container className="welcome-container">
-      <h2 className="welcome-heading">Welcome</h2>
+      <h1 className="intro-heading" align="left">Introducing indiK8or: Simplify and Visualize Your Kubernetes Environment</h1>
+      <h2 className="intro" align="left">We are excited to present our powerful Kubernetes visualization tool, designed to enhance your Kubernetes cluster management experience. With our tool, you can gain valuable insights into the structure, status, and performance of your Kubernetes environment, empowering you to make informed decisions and optimize your infrastructure.</h2>
       <Button className="signin" variant="text" href="/login/loginRequest">
         Sign in
       </Button>
       <Button className="signup" variant="outlined" href="/login/signupRequest">
         Sign up
       </Button>
+      <h3 className="authors" align="left">Our engineers:</h3>
+      <Container className="link-container" align="right">
+        <Button className="ivy" variant="text" href="https://www.linkedin.com/in/wanwang12/">Ivy wang</Button>
+        <Button className="julian" variant="text" href="https://www.linkedin.com/in/julianbabon/">Julian Babon</Button>
+        <Button className="tadd" variant="text" href="https://www.linkedin.com/in/tadd-lerocque-120a0287/">Tadd LeRocque</Button>
+        <Button className="yueran" variant="text" href="https://www.linkedin.com/in/yueran-li-ba79bb46/">Yueran Li</Button>
+      </Container>
     </Container>
   );
 };
