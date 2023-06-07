@@ -48,25 +48,20 @@ sessionController.startSession = (req, res, next) => {
 
 sessionController.logout = async (req, res, next) => {
   console.log('inside logout controller');
-  console.log('req.cookies', req.cookies)
+  console.log('req.body', req.body)
   try {
-    if(req.cookies && req.cookies.ssid){
-    const { ssid } = req.cookies;
-    console.log('ssid cookie', ssid);
-
-    const loggedOutUser = await Session.findOneAndDelete({cookieId: ssid});
+    const { userId } = req.body;
+    const loggedOutUser = await Session.findOneAndDelete({cookieId: userId});
     if (loggedOutUser) {
-      console.log('successfull logout for user', loggedOutUser);
+      console.log('successfull logout for user', loggedOutUser._id);
+      // clear HttpOnly cookie
+      res.clearCookie('ssid', { httpOnly: true });
       res.locals.loggedOut = loggedOutUser;
       return next();
     } else {
       console.log('Unsuccessful logout. User session not found')
       res.send('User session not found. Unable to logout');
     }
-  } else {
-    console.log('No cookie found');
-    res.status(404).send('User cookie not found');
-  }
   } catch (err) {
     return next({
       log: `logout: ${err}`,

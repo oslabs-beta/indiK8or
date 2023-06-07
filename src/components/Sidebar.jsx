@@ -25,7 +25,14 @@ const Sidebar = (props) => {
       // Send logout request to the backend
       console.log('userId', userId)
       const response = await fetch('http://localhost:4000/logout', {
-        method: 'GET',
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            userId: userId
+          }),
       });
   
       if (response.status === 202) {
@@ -151,7 +158,7 @@ const Sidebar = (props) => {
 };
 
 Sidebar.propTypes = {
-  userId: PropTypes.number,
+  userId: PropTypes.string,
   dashboardClicked: PropTypes.bool,
   darkMode: PropTypes.bool,
   handleDashboard: PropTypes.func,
