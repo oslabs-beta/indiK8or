@@ -1,9 +1,22 @@
+.welcome-container {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 .intro-heading {
   position: relative !important;
   width: 1000px !important;
   margin-top: 0% !important;
   font-size: 55px;
-  bottom: 10px !important;
+  top: 200px !important;
 }
 
 .intro {
@@ -11,43 +24,31 @@
   width: 1000px !important;
   color: black !important;
   font-size: 30px;
-  bottom: 20px !important;
+  top: 200px !important;
+}
+
+.button-container {
+  position: relative !important;
+  width: 1000px !important;
+  top: 300px !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
 }
 
 .authors {
-  position: absolute !important;
-  width: 1000px !important;
+  font-size: 20px !important;
   color: black !important;
-  font-size: 25px;
-  bottom: 20px !important;
-  left: 220px !important;
+  padding-left: 0 !important;
 }
 
-.link-container {
-position: absolute !important;
-  width: 1000px !important;
-  bottom: 40px !important;
-  left: 50px !important;
+.name {
+  font-size: 20px !important;
+  color: black !important;
+  padding-right: 0px !important;
 }
 
-.ivy {
-    font-size: 20px !important;
-    color: black !important;
-}
-
-.yueran {
-    font-size: 20px !important;
-    color: black !important;
-}
-
-.julian {
-    font-size: 20px !important;
-    color: black !important;
-}
-
-.tadd {
-    font-size: 20px !important;
-    color: black !important;
+.linkedin {
+  padding-left: 0px !important;
 }
 
 .signin {
@@ -67,26 +68,21 @@ position: absolute !important;
   color: white !important;
 }
 
-body {
-  background: radial-gradient(circle at bottom, white, transparent 80%),
-    linear-gradient(to top, dodgerblue 0%, transparent 70%),
-    linear-gradient(to bottom, transparent, rgba(white, 0.4) 70%),
-    rgb(71, 71, 173) !important;
-  animation: bg 20s infinite !important;
+#back {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
-@keyframes bg {
-  0%,
-  100% {
-    background-color: rgb(82, 131, 222);
-  }
-  25% {
-    background-color: rgb(89, 179, 101);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    background-color: rgb(227, 167, 127);
+    background-position: 100% 50%;
   }
-  75% {
-    background-color: rgb(210, 141, 194);
+  100% {
+    background-position: 0% 50%;
   }
 }

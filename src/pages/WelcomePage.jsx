@@ -1,7 +1,15 @@
-import { Grid, Paper, Link, Button, Container } from '@mui/material';
+import {
+  Grid,
+  Paper,
+  Link,
+  Button,
+  Container,
+  IconButton,
+} from '@mui/material';
 import '../css/Welcome.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -31,23 +39,72 @@ const WelcomePage = () => {
   }, [navigate]);
 
   return (
-    <Container className="welcome-container">
-      <h1 className="intro-heading" align="left">Introducing indiK8or: Simplify and Visualize Your Kubernetes Environment</h1>
-      <h2 className="intro" align="left">We are excited to present our powerful Kubernetes visualization tool, designed to enhance your Kubernetes cluster management experience. With our tool, you can gain valuable insights into the structure, status, and performance of your Kubernetes environment, empowering you to make informed decisions and optimize your infrastructure.</h2>
-      <Button className="signin" variant="text" href="/login/loginRequest">
-        Sign in
-      </Button>
-      <Button className="signup" variant="outlined" href="/login/signupRequest">
-        Sign up
-      </Button>
-      <h3 className="authors" align="left">Our engineers:</h3>
-      <Container className="link-container" align="right">
-        <Button className="ivy" variant="text" href="https://www.linkedin.com/in/wanwang12/">Ivy wang</Button>
-        <Button className="julian" variant="text" href="https://www.linkedin.com/in/julianbabon/">Julian Babon</Button>
-        <Button className="tadd" variant="text" href="https://www.linkedin.com/in/tadd-lerocque-120a0287/">Tadd LeRocque</Button>
-        <Button className="yueran" variant="text" href="https://www.linkedin.com/in/yueran-li-ba79bb46/">Yueran Li</Button>
+    <div id="back">
+      <Container className="welcome-container">
+        <h1 className="intro-heading" align="left">
+          Introducing indiK8or: Simplify and Visualize Your Kubernetes
+          Environment
+        </h1>
+        <h2 className="intro" align="left">
+          We are excited to present our powerful Kubernetes visualization tool,
+          designed to enhance your Kubernetes cluster management experience.
+          With our tool, you can gain valuable insights into the structure,
+          status, and performance of your Kubernetes environment, empowering you
+          to make informed decisions and optimize your infrastructure.
+        </h2>
+        <Button className="signin" variant="text" href="/login/loginRequest">
+          Sign in
+        </Button>
+        <Button
+          className="signup"
+          variant="outlined"
+          href="/login/signupRequest"
+        >
+          Sign up
+        </Button>
+        <Container className="button-container" align="left">
+          <Button className="authors" variant="text" disabled="true"align="left">
+            Our engineers:
+          </Button>
+          <Button className="name" variant="text" disabled="true">
+            Ivy Wang
+          </Button>
+          <IconButton
+            className="linkedin"
+            href="https://www.linkedin.com/in/wanwang12/"
+          >
+            <LinkedInIcon></LinkedInIcon>
+          </IconButton>
+          <Button className="name" variant="text" disabled="true">
+            Julian Babon
+          </Button>
+          <IconButton
+            className="linkedin"
+            href="https://www.linkedin.com/in/julianbabon/"
+          >
+            <LinkedInIcon></LinkedInIcon>
+          </IconButton>
+          <Button className="name" variant="text" disabled="true">
+            Tadd LeRocque
+          </Button>
+          <IconButton
+            className="linkedin"
+            href="https://www.linkedin.com/in/tadd-lerocque-120a0287/"
+          >
+            <LinkedInIcon></LinkedInIcon>
+          </IconButton>
+          <Button className="name" variant="text" disabled="true">
+            Yueran Li
+          </Button>
+          <IconButton
+            className="linkedin"
+            href="https://www.linkedin.com/in/yueran-li-ba79bb46/"
+          >
+            <LinkedInIcon></LinkedInIcon>
+          </IconButton>
+        </Container>
       </Container>
-    </Container>
+    </div>
   );
 };
 
