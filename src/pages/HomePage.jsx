@@ -10,6 +10,7 @@ const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [dashboardClicked, setDashboardClicked] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [userId, setUserId] = useState(null);
   
   const navigate = useNavigate();
   
@@ -19,29 +20,33 @@ const HomePage = () => {
   // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
   // if they are not logged in we will receive a 303 and send them to the loginPage
   useEffect(() => {
-    fetch('http://localhost:4000/login/isLoggedIn', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // include cookies from cross origin request
-        credentials: 'include',
-        body: JSON.stringify({}),
-      })
-      .then((response) => {
-        console.log(response);
+    const checkLoggedIn = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/login/isLoggedIn', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({}),
+        });
         if (response.status === 303) {
           // Handle failed response
           alert('You must be logged in to view this page');
           navigate('/login/loginRequest');
         } else {
+          const userId = await response.json();
+          console.log('userId', userId);
+          setUserId(userId);
           setLoggedIn(true);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         // Handle any errors
         console.error(error);
-      });
+      }
+    };
+  
+    checkLoggedIn();
   }, [navigate]);
 
   // Create a dark theme if darkMode is true, otherwise create a light theme
@@ -59,7 +64,7 @@ const HomePage = () => {
       <ThemeProvider theme={darkTheme}>
       <CssBaseline />
         <Grid>
-            <Sidebar dashboardClicked={dashboardClicked} handleDashboard={handleDashboard} darkMode={ darkMode } setDarkMode={ setDarkMode }/>
+            <Sidebar dashboardClicked={dashboardClicked} handleDashboard={handleDashboard} darkMode={ darkMode } setDarkMode={ setDarkMode } userId ={ userId }/>
             <Dashboard dashboardClicked={ dashboardClicked } />
         </Grid>
       </ThemeProvider>

@@ -5,10 +5,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import PropTypes from 'prop-types'
 import '../css/Sidebar.css'
 
 // Pass the props component from the parent component (HomePage)
 const Sidebar = (props) => {
+  const { userId, dashboardClicked, darkMode, handleDashboard, setDarkMode } = props;
   // State variables to control the visibility of different texts in the sidebar
   const [showLogoutText, setShowLogoutText] = useState(false);
   const [showThemeText, setShowThemeText] = useState(false);
@@ -21,12 +23,21 @@ const Sidebar = (props) => {
   const handleLogout = async () => {
     try {
       // Send logout request to the backend
+      console.log('userId', userId)
       const response = await fetch('http://localhost:4000/logout', {
-        method: 'GET',
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            userId: userId
+          }),
       });
   
       if (response.status === 202) {
         // Handle successful logout
+        alert('You have been successfully logged out. Redirecting to Welcome Page');
         navigate('/');
       }
     } catch (error) {
@@ -62,15 +73,15 @@ const Sidebar = (props) => {
 
   // Function to handle dashboard toggle
   const handleDashToggle = () => {
-    console.log(props.dashboardClicked, 'props')
-    props.handleDashboard();
+    console.log(dashboardClicked, 'props')
+    handleDashboard();
   };
 
   // Function to handle theme toggle
   const handleThemeToggle = () => {
-    console.log(props.darkMode, 'props')
+    console.log(darkMode, 'props')
     // Set dark mode to opposite of current mode using prevState
-    props.setDarkMode((prevDarkMode) => !prevDarkMode);
+    setDarkMode((prevDarkMode) => !prevDarkMode);
   };
 
   return (
@@ -131,5 +142,13 @@ const Sidebar = (props) => {
     </Box>
   );
 };
+
+Sidebar.propTypes = {
+  userId: PropTypes.string,
+  dashboardClicked: PropTypes.bool,
+  darkMode: PropTypes.bool,
+  handleDashboard: PropTypes.func,
+  setDarkMode: PropTypes.func,
+}
 
 export default Sidebar;
