@@ -4,7 +4,12 @@
     align-items: center !important;
     justify-content: flex-start !important;
     width: 200px !important;
-    background-color: #f36d6d !important;
+    /* background-color: #f36d6d !important; */
+    background:
+        linear-gradient(red, transparent),
+        linear-gradient(to top left, lime, transparent),
+        linear-gradient(to top right, blue, transparent);
+    background-blend-mode: screen;
     padding: 16px !important;
     position: fixed !important;
     left: 4% !important;
@@ -14,7 +19,8 @@
     border-radius: 15px !important;
   }
   
-  .logoContainer {
+  #logo {
+    width: 130%;
     margin-bottom: 16px !important;
   }
   
@@ -33,6 +39,7 @@
   
   .listItemText {
     transition: color 0.3s !important;
+    font-style: bold !important;
   }
   
 

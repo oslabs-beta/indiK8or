@@ -75,11 +75,7 @@ const Sidebar = (props) => {
 
   return (
     <Box className="sidebar">
-      <Box className="logoContainer">
-        {/* Add logo here */}
-        <Typography variant="h6">Logo Placeholder</Typography>
-      </Box>
-      <hr></hr> 
+        <img id='logo' src="src/assets/logo2.png" alt="logo" />
       {/* Navigation List */}
       <List>
         {/* Dashboard */}
@@ -96,11 +92,8 @@ const Sidebar = (props) => {
                 // primary is the content of the ListItemText, which is a conditional in this case
                 primary={showDashText ? 'Dashboard' : ''}
                 className="listItemText"
-                //styling for text but might do it in css later on
-                primaryTypographyProps={{
-                variant: 'body1',
-                color: 'textPrimary',
-                }}
+                //todo: check how to change text to bold !
+                primaryTypographyProps={{fontSize: '20px'}} 
             />
          </ListItemButton>
 
@@ -116,10 +109,6 @@ const Sidebar = (props) => {
             <ListItemText
                 primary={showLogoutText ? 'Logout' : ''}
                 className="listItemText"
-                primaryTypographyProps={{
-                variant: 'body1',
-                color: 'textPrimary',
-                }}
             />
          </ListItemButton>
 
@@ -136,10 +125,6 @@ const Sidebar = (props) => {
             <ListItemText
                 primary={showThemeText ? 'Theme' : ''}
                 className="listItemText"
-                primaryTypographyProps={{
-                variant: 'body1',
-                color: 'textPrimary',
-                }}
             />
             </ListItemButton>
         </List>
