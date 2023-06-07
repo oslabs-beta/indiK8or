@@ -1,0 +1,88 @@
+.welcome-container {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.intro-heading {
+  position: relative !important;
+  width: 1000px !important;
+  margin-top: 0% !important;
+  font-size: 55px;
+  top: 200px !important;
+}
+
+.intro {
+  position: relative !important;
+  width: 1000px !important;
+  color: black !important;
+  font-size: 30px;
+  top: 200px !important;
+}
+
+.button-container {
+  position: relative !important;
+  width: 1000px !important;
+  top: 300px !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+}
+
+.authors {
+  font-size: 20px !important;
+  color: black !important;
+  padding-left: 0 !important;
+}
+
+.name {
+  font-size: 20px !important;
+  color: black !important;
+  padding-right: 0px !important;
+}
+
+.linkedin {
+  padding-left: 0px !important;
+}
+
+.signin {
+  position: absolute !important;
+  top: 20px !important;
+  right: 140px !important;
+  background-color: white !important;
+  color: black !important;
+  width: 90px !important;
+}
+
+.signup {
+  position: absolute !important;
+  top: 20px !important;
+  right: 35px !important;
+  background-color: rgb(96, 88, 88) !important;
+  color: white !important;
+}
+
+#back {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
