@@ -31,7 +31,7 @@ export default function Dashboard(props) {
   
 </Grid>) 
 : <Grid container alignItems="center" justifyContent="center"> 
-    <Typography variant='h3' className='dash-typography'>indiK8or make viewing your cluster easy!</Typography>
+    <Typography variant='h3' className='dash-typography'>indiK8or makes viewing your cluster metrics easy!</Typography>
     </Grid>
 }
 
