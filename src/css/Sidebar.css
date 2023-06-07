@@ -3,7 +3,7 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    width: 200px !important;
+    width: 15% !important;
     /* background-color: #f36d6d !important; */
     background:
         linear-gradient(rgb(121, 94, 94), transparent),
@@ -16,8 +16,9 @@
   }
   
   #logo {
-    width: 130%;
-    margin-bottom: 50px !important;
+    width: 100%;
+    margin-bottom: 100px !important;
+    margin-top: 20%;
   }
   
   .listItem {
@@ -36,6 +37,10 @@
   .listItemText {
     transition: color 0.3s !important;
     font-style: bold !important;
+  }
+
+  .list {
+    margin-top: 60% !important;
   }
   
 

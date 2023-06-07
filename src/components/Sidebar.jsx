@@ -86,9 +86,9 @@ const Sidebar = (props) => {
 
   return (
     <Box className="sidebar">
-        <img id='logo' src="src/assets/logo2.png" alt="logo" />
+      <img id='logo' src="src/assets/logo1.png" alt="logo" />
       {/* Navigation List */}
-      <List>
+      <List className='list'>
         {/* Dashboard */}
         <ListItemButton
             //onMouse*** is property when cursor is hovering over element
@@ -97,7 +97,7 @@ const Sidebar = (props) => {
             onClick={handleDashToggle}
         >
             <ListItemIcon className="listItemIcon">
-                <DashboardIcon sx={{ fontSize: 40}}/>
+                <DashboardIcon sx={{ fontSize: 50}}/>
             </ListItemIcon>
             <ListItemText
                 // primary is the content of the ListItemText, which is a conditional in this case
@@ -114,7 +114,7 @@ const Sidebar = (props) => {
             onClick={handleLogout}
         >
             <ListItemIcon className="listItemIcon">
-                <LogoutIcon sx={{ fontSize: 40}}/>
+                <LogoutIcon sx={{ fontSize: 50}}/>
             </ListItemIcon>
             <ListItemText
                 primary={showLogoutText ? 'Logout' : ''}
@@ -131,7 +131,7 @@ const Sidebar = (props) => {
             onClick={handleThemeToggle}
         >
             <ListItemIcon >
-                {props.darkMode ? <Brightness7Icon sx={{ fontSize: 40}}/> : <Brightness4Icon sx={{ fontSize: 40}}/>}
+                {props.darkMode ? <Brightness7Icon sx={{ fontSize: 50}}/> : <Brightness4Icon sx={{ fontSize: 50}}/>}
             </ListItemIcon>
             <ListItemText
                 primary={showThemeText ? 'Light/Dark' : ''}
