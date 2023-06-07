@@ -27,7 +27,13 @@
   }
 
   .dash-box{
+    height: 100%;
     border-radius: 15px !important;
+  }
+
+.grafanaDashboard-dashboardExtended{
+  width: 90%;
+  height: 80%;
   }
  
   

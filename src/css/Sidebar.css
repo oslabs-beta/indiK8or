@@ -6,28 +6,24 @@
     width: 200px !important;
     /* background-color: #f36d6d !important; */
     background:
-        linear-gradient(red, transparent),
-        linear-gradient(to top left, lime, transparent),
-        linear-gradient(to top right, blue, transparent);
+        linear-gradient(rgb(121, 94, 94), transparent),
+        linear-gradient(to top left, rgb(61, 118, 138), transparent),
+        linear-gradient(to top right, rgb(171, 168, 228), transparent);
     background-blend-mode: screen;
-    padding: 16px !important;
-    position: fixed !important;
-    left: 4% !important;
-    top: 10% !important;
-    height: 80% !important;
+    padding: 10px !important;
+    height: 100% !important;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) !important;
-    border-radius: 15px !important;
   }
   
   #logo {
     width: 130%;
-    margin-bottom: 16px !important;
+    margin-bottom: 50px !important;
   }
   
   .listItem {
     display: flex !important;
     align-items: center !important;
-    padding: 8px !important;
+    padding: 12px !important;
     cursor: pointer !important;
   }
   

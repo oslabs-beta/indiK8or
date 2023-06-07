@@ -103,8 +103,7 @@ const Sidebar = (props) => {
                 // primary is the content of the ListItemText, which is a conditional in this case
                 primary={showDashText ? 'Dashboard' : ''}
                 className="listItemText"
-                //todo: check how to change text to bold !
-                primaryTypographyProps={{fontSize: '20px'}} 
+                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}} 
             />
          </ListItemButton>
 
@@ -120,6 +119,7 @@ const Sidebar = (props) => {
             <ListItemText
                 primary={showLogoutText ? 'Logout' : ''}
                 className="listItemText"
+                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
             />
          </ListItemButton>
 
@@ -136,6 +136,7 @@ const Sidebar = (props) => {
             <ListItemText
                 primary={showThemeText ? 'Theme' : ''}
                 className="listItemText"
+               primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
             />
             </ListItemButton>
         </List>
