@@ -1,7 +1,14 @@
+/* body {
+    height: 80vh;
+    margin: 0;
+    background: url('../assets/signup-login.gif') no-repeat center center fixed;
+    background-size: 100% 100%;
+  } */
+
 .login-grid {
     height: 100vh;
 }
-  
+
 .login-paper {
 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) !important;
 padding: 30px 20px !important;
@@ -30,3 +37,4 @@ position: fixed !important;
 bottom: 10px !important;
 left: 10px !important;
 }
+

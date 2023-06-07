@@ -28,4 +28,11 @@
     /* Add styles for the Grid component */
     margin-top: 10px !important;
   }
+/* 
+  body {
+    height: 80vh;
+    margin: 0;
+    background: url('../assets/signup-login.gif') no-repeat center center fixed;
+    background-size: 100% 100%;
+  } */
   

@@ -1,15 +1,8 @@
-import {
-  Grid,
-  Paper,
-  Link,
-  Button,
-  Container,
-  IconButton,
-} from '@mui/material';
-import '../css/Welcome.css';
+import { Container, Button, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import "../css/Welcome.css"
 
 const WelcomePage = () => {
   const navigate = useNavigate();
