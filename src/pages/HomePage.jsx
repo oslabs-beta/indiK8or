@@ -1,23 +1,20 @@
 import { Grid } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Navigation from '../components/Navigation.jsx'
 import Dashboard from '../components/Dashboard.jsx'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import "../css/HomePage.css"
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+import Sidebar from '../components/Sidebar.jsx';
 
 const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [dashboardClicked, setDashboardClicked] = useState(false);
-  const handleDashboard = () => setDashboardClicked(true);
+  const [darkMode, setDarkMode] = useState(false);
+  
   const navigate = useNavigate();
+  
+  // Set the value of dashboardClicked to the opposite of its current value using func
+  const handleDashboard = () => setDashboardClicked(prevDashboardClicked => !prevDashboardClicked);
   
   // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
   // if they are not logged in we will receive a 303 and send them to the loginPage
@@ -47,20 +44,28 @@ const HomePage = () => {
       });
   }, [navigate]);
 
+  // Create a dark theme if darkMode is true, otherwise create a light theme
+  const darkTheme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
+  
   // only render ThemeProvider if loggedIn is true, otherwise render nothing
   return (
-    <>
-      {loggedIn &&(
+     <>
+      {loggedIn && (
+      //pass props to the children
       <ThemeProvider theme={darkTheme}>
       <CssBaseline />
         <Grid>
-            <Navigation setDashboardClicked={ handleDashboard }/>
-            <Dashboard dashboardClicked={ dashboardClicked }/>
+            <Sidebar dashboardClicked={dashboardClicked} handleDashboard={handleDashboard} darkMode={ darkMode } setDarkMode={ setDarkMode }/>
+            <Dashboard dashboardClicked={ dashboardClicked } />
         </Grid>
       </ThemeProvider>
       )}
     </>
-  );
-};
+  )
+}
 
 export default HomePage;
