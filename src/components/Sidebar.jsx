@@ -134,7 +134,7 @@ const Sidebar = (props) => {
                 {props.darkMode ? <Brightness7Icon sx={{ fontSize: 40}}/> : <Brightness4Icon sx={{ fontSize: 40}}/>}
             </ListItemIcon>
             <ListItemText
-                primary={showThemeText ? 'Theme' : ''}
+                primary={showThemeText ? 'Light/Dark' : ''}
                 className="listItemText"
                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
             />
