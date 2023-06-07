@@ -11,12 +11,20 @@ body,
   margin: 0;
 }
 
+.logo {
+  position: relative !important;
+  padding-bottom: 0 !important;
+  right: 21% !important;
+  top: 5% !important;
+  height: 200px !important;
+}
+
 .intro-heading {
   position: relative !important;
   width: 1000px !important;
-  margin-top: 0% !important;
+  margin-top: 0 !important;
   font-size: 55px;
-  top: 200px !important;
+  top: 150px !important;
 }
 
 .intro {
@@ -24,13 +32,13 @@ body,
   width: 1000px !important;
   color: black !important;
   font-size: 30px;
-  top: 200px !important;
+  top: 150px !important;
 }
 
 .button-container {
   position: relative !important;
   width: 1000px !important;
-  top: 300px !important;
+  top: 200px !important;
   margin: 0 !important;
   padding-left: 0 !important;
 }
@@ -72,7 +80,7 @@ body,
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  height: 100vh;
+  height: 150%;
 }
 
 @keyframes gradient {
