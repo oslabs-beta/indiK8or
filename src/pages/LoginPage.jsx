@@ -88,7 +88,7 @@ const LoginPage = () => {
           <Avatar className="login-avatar">
             <LoginIcon />
           </Avatar>
-          <h2 className="login-heading">Login</h2>
+          <h2 className="login-heading">Sign In</h2>
           <Typography variant="caption" gutterBottom>
             Enter your username and password
           </Typography>
