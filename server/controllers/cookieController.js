@@ -1,12 +1,5 @@
 const cookieController = {};
 
-// setCookie - set a cookie with a random number
-// cookieController.setCookie = (req, res, next) => {
-//   console.log('----- SUCCESS! INSIDE setCookie middleware -----');
-//   res.cookie('id', Math.floor(Math.random() * 100).toString());
-//   return next();
-// };
-
 // setSSIDCookie - store the user id in a cookie
 cookieController.setSSIDCookie = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE setSSIDCookie middleware -----');

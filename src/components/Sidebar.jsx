@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Box, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Box, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -10,7 +10,8 @@ import '../css/Sidebar.css'
 
 // Pass the props component from the parent component (HomePage)
 const Sidebar = (props) => {
-  const { userId, dashboardClicked, darkMode, handleDashboard, setDarkMode } = props;
+  // deconstruct props
+  const { userId, darkMode, handleDashboard, setDarkMode } = props;
   // State variables to control the visibility of different texts in the sidebar
   const [showLogoutText, setShowLogoutText] = useState(false);
   const [showThemeText, setShowThemeText] = useState(false);
@@ -23,7 +24,6 @@ const Sidebar = (props) => {
   const handleLogout = async () => {
     try {
       // Send logout request to the backend
-      console.log('userId', userId)
       const response = await fetch('http://localhost:4000/logout', {
         method: 'POST',
           headers: {
@@ -73,13 +73,11 @@ const Sidebar = (props) => {
 
   // Function to handle dashboard toggle
   const handleDashToggle = () => {
-    console.log(dashboardClicked, 'props')
     handleDashboard();
   };
 
   // Function to handle theme toggle
   const handleThemeToggle = () => {
-    console.log(darkMode, 'props')
     // Set dark mode to opposite of current mode using prevState
     setDarkMode((prevDarkMode) => !prevDarkMode);
   };
@@ -89,7 +87,7 @@ const Sidebar = (props) => {
       <img id='logo' src="src/assets/logo1.png" alt="logo" />
       {/* Navigation List */}
       <List className='list'>
-        {/* Dashboard */}
+        {/* Dashboard button */}
         <ListItemButton
             //onMouse*** is property when cursor is hovering over element
             onMouseEnter={handleMouseEnterDash}
@@ -103,11 +101,10 @@ const Sidebar = (props) => {
                 // primary is the content of the ListItemText, which is a conditional in this case
                 primary={showDashText ? 'Dashboard' : ''}
                 className="listItemText"
-                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}} 
+                primaryTypographyProps={{fontSize: '20px', fontWeight: 'bold'}} 
             />
          </ListItemButton>
-
-        {/* Logout */}
+        {/* Logout button */}
         <ListItemButton
             onMouseEnter={handleMouseEnterLogout}
             onMouseLeave={handleMouseLeaveLogout}
@@ -119,10 +116,9 @@ const Sidebar = (props) => {
             <ListItemText
                 primary={showLogoutText ? 'Logout' : ''}
                 className="listItemText"
-                primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
+                primaryTypographyProps={{fontSize: '20px', fontWeight: 'bold'}}
             />
          </ListItemButton>
-
         {/* Theme (Icon is conditional based on the current state)*/}
         <ListItemButton
             className="listItem"
@@ -131,12 +127,12 @@ const Sidebar = (props) => {
             onClick={handleThemeToggle}
         >
             <ListItemIcon >
-                {props.darkMode ? <Brightness7Icon sx={{ fontSize: 50}}/> : <Brightness4Icon sx={{ fontSize: 50}}/>}
+                {darkMode ? <Brightness7Icon sx={{ fontSize: 50}}/> : <Brightness4Icon sx={{ fontSize: 50}}/>}
             </ListItemIcon>
             <ListItemText
                 primary={showThemeText ? 'Light/Dark' : ''}
                 className="listItemText"
-               primaryTypographyProps={{fontSize: '20px'}, {fontWeight: 'bold'}}
+                primaryTypographyProps={{fontSize: '20px', fontWeight: 'bold'}}
             />
             </ListItemButton>
         </List>
@@ -146,7 +142,6 @@ const Sidebar = (props) => {
 
 Sidebar.propTypes = {
   userId: PropTypes.string,
-  dashboardClicked: PropTypes.bool,
   darkMode: PropTypes.bool,
   handleDashboard: PropTypes.func,
   setDarkMode: PropTypes.func,

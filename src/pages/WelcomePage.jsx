@@ -19,7 +19,6 @@ const WelcomePage = () => {
       body: JSON.stringify({}),
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 302) {
           // Handle success response
           // Update the state to indicate user creation success
@@ -36,11 +35,11 @@ const WelcomePage = () => {
     <div id="back">
       <img className="logo" src={logo}></img>
       <Container className="welcome-container">
-        <h1 className="intro-heading" align="left">
+        <h1 className="intro-heading">
           Introducing indiK8or: Simplify and Visualize Your Kubernetes
           Environment
         </h1>
-        <h2 className="intro" align="left">
+        <h2 className="intro">
           We are excited to present our powerful Kubernetes visualization tool,
           designed to enhance your Kubernetes cluster management experience.
           With our tool, you can gain valuable insights into the structure,
@@ -61,12 +60,12 @@ const WelcomePage = () => {
           <Button
             className="authors"
             variant="text"
-            disabled="true"
+            disabled={true}
             align="left"
           >
             Our engineers:
           </Button>
-          <Button className="name" variant="text" disabled="true">
+          <Button className="name" variant="text" disabled={true}>
             Ivy Wang
           </Button>
           <IconButton
@@ -75,7 +74,7 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
-          <Button className="name" variant="text" disabled="true">
+          <Button className="name" variant="text" disabled={true}>
             Julian Babon
           </Button>
           <IconButton
@@ -84,7 +83,7 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
-          <Button className="name" variant="text" disabled="true">
+          <Button className="name" variant="text" disabled={true}>
             Tadd LeRocque
           </Button>
           <IconButton
@@ -93,7 +92,7 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
-          <Button className="name" variant="text" disabled="true">
+          <Button className="name" variant="text" disabled={true}>
             Yueran Li
           </Button>
           <IconButton

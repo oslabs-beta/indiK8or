@@ -20,6 +20,7 @@ body,
   margin-top: 0 !important;
   font-size: 55px;
   top: 150px !important;
+  text-align: left;
 }
 
 .intro {
@@ -28,6 +29,7 @@ body,
   color: black !important;
   font-size: 30px;
   top: 150px !important;
+  text-align: left;
 }
 
 .button-container {
@@ -89,3 +91,4 @@ body,
     background-position: 0% 50%;
   }
 }
+
