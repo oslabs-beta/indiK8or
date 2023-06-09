@@ -68,6 +68,7 @@ const HomePage = () => {
           <CssBaseline />
           <Grid className='homePage'>
             <Sidebar
+              data-testid='sidebarComponent'
               dashboardClicked={dashboardClicked}
               handleDashboard={handleDashboard}
               darkMode={darkMode}
