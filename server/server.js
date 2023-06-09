@@ -7,7 +7,6 @@ import { logoutRouter } from './routes/logout.js';
 import grafanaRouter from './routes/grafana.js';
 import cookieParser from 'cookie-parser';
 
-
 // require .env files in
 dotenv.config();
 
