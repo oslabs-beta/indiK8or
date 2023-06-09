@@ -4,7 +4,6 @@
     align-items: center !important;
     justify-content: flex-start !important;
     width: 15% !important;
-    /* background-color: #f36d6d !important; */
     background:
         linear-gradient(rgb(121, 94, 94), transparent),
         linear-gradient(to top left, rgb(61, 118, 138), transparent),
@@ -44,13 +43,3 @@
   }
   
 
-  
-  /* Add this section to align the icons vertically */
-  /* .listItemIcon svg {
-    display: block !important;
-    height: 100% !important;
-  }
-  
-  .listItemIcon .MuiSvgIcon-root {
-    height: 100% !important;
-  } */

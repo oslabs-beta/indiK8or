@@ -57,7 +57,6 @@ const LoginPage = () => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log('Login successful');
           setUsername('');
           setPassword('');
           navigate('/home');

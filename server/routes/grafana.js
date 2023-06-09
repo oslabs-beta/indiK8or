@@ -1,5 +1,4 @@
 import express from "express";
-// import fetch from "node-fetch";
 import { grafanaController } from "../controllers/grafanaController.js";
 
 const grafanaRouter = express.Router();
