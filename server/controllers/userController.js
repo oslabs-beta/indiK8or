@@ -6,6 +6,7 @@ const userController = {};
 // Verifying if an account exists
 userController.verifyAccount = (req, res, next) => {
   console.log('----- SUCCESS! INSIDE verifyAccount middleware -----');
+  if (req.body.username){
   const { username } = req.body;
   // creating a new user and save the user's id to res.locals
   User.findOne({ username })
@@ -23,6 +24,7 @@ userController.verifyAccount = (req, res, next) => {
         message: { err: 'error occurred in userController-verifyAccount' },
       });
     });
+  } else res.send('Username is required');
 };
 
 // Creating a new user
