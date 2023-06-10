@@ -66,7 +66,7 @@ const HomePage = () => {
         //pass props to the children
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
-          <Grid className='homePage'>
+          <Grid className='homePage' data-testid='screenElement'>
             <Sidebar
               data-testid='sidebarComponent'
               dashboardClicked={dashboardClicked}
@@ -80,6 +80,7 @@ const HomePage = () => {
         </ThemeProvider>
       )}
     </>
+
   );
 };
 
