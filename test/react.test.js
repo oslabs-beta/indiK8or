@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import HomePage from '../src/pages/HomePage.jsx';
+import { describe, it, expect } from 'vitest';
 // import Dashboard from '../src/components/Dashboard.jsx';
 
 describe('renders Sidebar and Dashboard component correctly', ()=> {
