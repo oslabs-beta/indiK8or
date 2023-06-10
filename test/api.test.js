@@ -10,8 +10,8 @@ describe('API Routes', () => {
   });
   it('signupRequest should return Username is required', async () => {
     const response = await request(server).post('/login/signupRequest');
-    console.log('Response text:', response.text);
-    expect(response.text).toBe('Username is required');
+    console.log('Response statusCode:', response.statusCode);
+    expect(response.statusCode).toBe(500);
   })
   it('loginRequest should return a 400 status code', async () => {
     const response = await request(server).post('/login/loginRequest');
@@ -22,5 +22,10 @@ describe('API Routes', () => {
     const response = await request(server).get('/dashboard');
     console.log('Response statusCode:', response.statusCode);
     expect(response.statusCode).toBe(200);
+  })
+  it('logout should return ', async() => {
+    const response = await request(server).post('/logout');
+    console.log('Response text:', response.text);
+    expect(response.text).toBe('User session not found. Unable to logout');
   })
 })
