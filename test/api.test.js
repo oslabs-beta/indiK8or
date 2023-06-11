@@ -8,7 +8,7 @@ describe('API Routes', () => {
     console.log('Response statusCode:', response.statusCode);
     expect(response.statusCode).toBe(303);
   });
-  it('signupRequest should return Username is required', async () => {
+  it('signupRequest should return a 500 status code', async () => {
     const response = await request(server).post('/login/signupRequest');
     console.log('Response statusCode:', response.statusCode);
     expect(response.statusCode).toBe(500);
