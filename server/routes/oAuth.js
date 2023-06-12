@@ -23,6 +23,7 @@ function(req, res, next) {next()}, sessionController.startGitSession, (req, res)
 oAuthRouter.get('/error', (req, res) => {
   console.log('Inside OauthRouter error')
   return res
+  .status(500)
   .send(`Error occured during GitHub Oauth`);
 })
 
