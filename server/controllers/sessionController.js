@@ -65,6 +65,43 @@ sessionController.startSession = (req, res, next) => {
     })
 };
 
+// startSession - create and save a new Session into the database.
+sessionController.startGitSession = (req, res, next) => {
+  console.log('Start Git called')
+  console.log('req.user', req.user) ;
+  // check if session already exists for user
+  Session.findOne({cookieId: req.user._id})
+    .then((session) => {
+      if (session) {
+        console.log('user has an active session');
+        return next();
+      } else {
+         // creating a session with a cookieId equals to the user id saved in res.locals
+        Session.create({ cookieId: req.user._id})
+        .then(() => {
+          console.log('session created');
+          return next();
+        })
+        .catch((err) => {
+          console.log('session creation error')
+          return next({
+            log: `startSession: ${err}`,
+            status: 500,
+            message: { err: 'error occurred in sessionController.startSession' },
+          });
+        });
+      }
+    })
+    .catch((err) => {
+      console.log('session check error')
+      return next({
+        log: `startSession: ${err}`,
+        status: 500,
+        message: { err: 'error occurred in sessionController.startSession' },
+      })
+    })
+};
+
 sessionController.logout = async (req, res, next) => {
   console.log('inside logout controller');
   console.log('req.body', req.body)

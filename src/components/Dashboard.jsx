@@ -27,7 +27,7 @@ export default function Dashboard(props) {
   return dashboardClicked ? (
     <Grid className='dash-box' container alignItems="center" justifyContent="center"> 
     
-        <iframe className="grafanaDashboard-dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} />
+        <iframe className="grafanaDashboard-dashboardExtended" src={`http://localhost:3000/d/${dashboardUid}/node-exporter-nodes?orgId=1&refresh=5s`} data-testid='DashboardIframe'/>
   
 </Grid>) 
 : <Grid container alignItems="center" justifyContent="center"> 
