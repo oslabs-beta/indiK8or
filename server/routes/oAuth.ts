@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { sessionController } from "../controllers/sessionController.js";
+import { sessionController } from "../controllers/sessionController.ts";
 
 const oAuthRouter = express.Router();
 
