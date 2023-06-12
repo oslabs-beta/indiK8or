@@ -4,9 +4,13 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { loginRouter } from './routes/login.js';
 import { logoutRouter } from './routes/logout.js';
+import { oAuthRouter  } from './routes/oAuth.js';
 import grafanaRouter from './routes/grafana.js';
 import cookieParser from 'cookie-parser';
+import passport from 'passport';
+import session from 'express-session';
 import { startExecCommand, stopChildProcess } from './childProcesses/execcommand.js';
+import './authConfig/passport.js'
 
 // require .env files in
 dotenv.config();
@@ -15,6 +19,7 @@ const app = express();
 const port = 4000;
 /* eslint-disable no-undef */
 const mongoURI = process.env.MONGO_URI;
+const sessionSecret = process.env.SESSION_SECRET;
 // mongoose.connect(mongoURI);
 mongoose
   .connect(mongoURI)
@@ -27,6 +32,14 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(session({
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -35,6 +48,7 @@ app.use(cookieParser());
 app.use('/login', loginRouter);
 app.use('/dashboard', grafanaRouter);
 app.use('/logout', logoutRouter);
+app.use('/auth', oAuthRouter);
 
 // catch-all handler
 app.use((req, res) => res.status(404).send('Invalid endpoint'));
