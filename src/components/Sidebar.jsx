@@ -35,7 +35,7 @@ const Sidebar = (props) => {
           }),
       });
   
-      if (response.status === 202) {
+      if (response.ok) {
         // Handle successful logout
         alert('You have been successfully logged out. Redirecting to Welcome Page');
         navigate('/');
@@ -90,6 +90,7 @@ const Sidebar = (props) => {
         {/* Dashboard button */}
         <ListItemButton
             //onMouse*** is property when cursor is hovering over element
+            data-testid='DashboardButton'
             onMouseEnter={handleMouseEnterDash}
             onMouseLeave={handleMouseLeaveDash}
             onClick={handleDashToggle}
@@ -106,6 +107,7 @@ const Sidebar = (props) => {
          </ListItemButton>
         {/* Logout button */}
         <ListItemButton
+            data-testid='LogoutButton'
             onMouseEnter={handleMouseEnterLogout}
             onMouseLeave={handleMouseLeaveLogout}
             onClick={handleLogout}
@@ -121,13 +123,14 @@ const Sidebar = (props) => {
          </ListItemButton>
         {/* Theme (Icon is conditional based on the current state)*/}
         <ListItemButton
+            data-testid='ThemeButton'
             className="listItem"
             onMouseEnter={handleMouseEnterTheme}
             onMouseLeave={handleMouseLeaveTheme}
             onClick={handleThemeToggle}
         >
             <ListItemIcon >
-                {darkMode ? <Brightness7Icon sx={{ fontSize: 50}}/> : <Brightness4Icon sx={{ fontSize: 50}}/>}
+                {darkMode ? <Brightness7Icon sx={{ fontSize: 50}} data-testid='Brightness7Icon'/> : <Brightness4Icon sx={{ fontSize: 50}} data-testid='Brightness4Icon'/>}
             </ListItemIcon>
             <ListItemText
                 primary={showThemeText ? 'Light/Dark' : ''}
