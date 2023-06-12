@@ -2,15 +2,15 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { loginRouter } from './routes/login.js';
-import { logoutRouter } from './routes/logout.js';
-import { oAuthRouter  } from './routes/oAuth.js';
-import grafanaRouter from './routes/grafana.js';
+import { loginRouter } from './routes/login.ts';
+import { logoutRouter } from './routes/logout.ts';
+import { oAuthRouter  } from './routes/oAuth.ts';
+import grafanaRouter from './routes/grafana.ts';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import session from 'express-session';
-import { startExecCommand, stopChildProcess } from './childProcesses/execcommand.js';
-import './authConfig/passport.js'
+import { startExecCommand, stopChildProcess } from './childProcesses/execcommand.ts';
+import './authConfig/passport.ts'
 
 // require .env files in
 dotenv.config();

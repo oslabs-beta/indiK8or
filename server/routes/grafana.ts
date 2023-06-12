@@ -1,5 +1,5 @@
 import express from "express";
-import { grafanaController } from "../controllers/grafanaController.js";
+import { grafanaController } from "../controllers/grafanaController.ts";
 
 const grafanaRouter = express.Router();
 

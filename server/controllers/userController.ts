@@ -1,4 +1,4 @@
-import { User } from '../models/userModel.js';
+import { User } from '../models/userModel.ts';
 import bcrypt from 'bcryptjs';
 
 const userController = {};

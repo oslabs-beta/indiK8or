@@ -1,5 +1,5 @@
 import passport from "passport";
-import { GitUser } from '../models/GitHubModel.js'
+import { GitUser } from '../models/GitHubModel.ts'
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import dotenv from 'dotenv';
 
