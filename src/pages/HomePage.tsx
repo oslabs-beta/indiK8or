@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Dashboard from '../components/Dashboard.jsx';
+import Dashboard from '../components/Dashboard.tsx';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from '../components/Sidebar.jsx';
+import Sidebar from '../components/Sidebar.tsx';
 import '../css/HomePage.css';
 
 const HomePage = () => {

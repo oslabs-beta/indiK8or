@@ -1,16 +1,24 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { loginRouter } from './routes/login.js';
-import { logoutRouter } from './routes/logout.js';
-import { oAuthRouter  } from './routes/oAuth.js';
-import grafanaRouter from './routes/grafana.js';
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+import { NextFunction, Request, Response } from 'express';
+// import mongoose from 'mongoose';
+// import cors from 'cors';
+// import dotenv from 'dotenv';
+import { loginRouter } from './routes/login.ts';
+import { logoutRouter } from './routes/logout.ts';
+import { oAuthRouter } from './routes/oAuth.ts';
+import grafanaRouter from './routes/grafana.ts';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import session from 'express-session';
-import { startExecCommand, stopChildProcess } from './childProcesses/execcommand.js';
-import './authConfig/passport.js'
+import {
+  startExecCommand,
+  stopChildProcess,
+} from './childProcesses/execcommand.ts';
+import './authConfig/passport.ts';
+// import {Request, Response} from "express";
 
 // require .env files in
 dotenv.config();
@@ -18,25 +26,29 @@ dotenv.config();
 const app = express();
 const port = 4000;
 /* eslint-disable no-undef */
-const mongoURI = process.env.MONGO_URI;
-const sessionSecret = process.env.SESSION_SECRET;
+const mongoURI: string = process.env.MONGO_URI!;
+const sessionSecret: string = process.env.SESSION_SECRET!;
 // mongoose.connect(mongoURI);
 mongoose
   .connect(mongoURI)
   .then(() => console.log('Connected to Mongo DB'))
-  .catch((err) => console.log(err)); 
+  .catch((err: any) => console.log(err));
 
 // allow cors
-app.use(cors({
-  origin: 'http://localhost:5000',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:5000',
+    credentials: true,
+  })
+);
 
-app.use(session({
-  secret: sessionSecret,
-  resave: false,
-  saveUninitialized: false
-}));
+app.use(
+  session({
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -51,10 +63,12 @@ app.use('/logout', logoutRouter);
 app.use('/auth', oAuthRouter);
 
 // catch-all handler
-app.use((req, res) => res.status(404).send('Invalid endpoint'));
+app.use((req: Request, res: Response) =>
+  res.status(404).send('Invalid endpoint')
+);
 
 // global handler
-app.use((err, req, res) => {
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
@@ -62,6 +76,7 @@ app.use((err, req, res) => {
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj);
+  // return res.status(errorObj.status).json(errorObj.message);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
@@ -73,7 +88,7 @@ startExecCommand();
  The process.once() method is used instead of process.on() to ensure that the listener function is executed only once for the first occurrence of the SIGUSR2 signal.
 */
 process.once('SIGUSR2', async () => {
-  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding 
+  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
   await stopChildProcess();
   // Restart the server after stopping the child process
   process.kill(process.pid, 'SIGUSR2');
@@ -81,7 +96,7 @@ process.once('SIGUSR2', async () => {
 
 // Handle the process exit event
 process.on('exit', async () => {
-  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding 
+  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
   await stopChildProcess();
 });
 
@@ -89,5 +104,3 @@ process.on('exit', async () => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-

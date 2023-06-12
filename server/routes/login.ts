@@ -1,7 +1,7 @@
 import express from 'express';
-import { userController } from '../controllers/userController.js';
-import { sessionController } from '../controllers/sessionController.js';
-import { cookieController } from '../controllers/cookieController.js';
+import { userController } from '../controllers/userController.ts';
+import { sessionController } from '../controllers/sessionController.ts';
+import { cookieController } from '../controllers/cookieController.ts';
 
 const loginRouter = express.Router();
 
