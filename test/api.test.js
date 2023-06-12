@@ -8,7 +8,7 @@ describe('API Routes', () => {
     console.log('Response statusCode:', response.statusCode);
     expect(response.statusCode).toBe(303);
   });
-  it('signupRequest should return Username is required', async () => {
+  it('signupRequest should return a 500 status code', async () => {
     const response = await request(server).post('/login/signupRequest');
     console.log('Response statusCode:', response.statusCode);
     expect(response.statusCode).toBe(500);
@@ -23,9 +23,35 @@ describe('API Routes', () => {
     console.log('Response statusCode:', response.statusCode);
     expect(response.statusCode).toBe(200);
   })
-  it('logout should return ', async() => {
+  it('logout should return User session not found. Unable to logout ', async() => {
     const response = await request(server).post('/logout');
     console.log('Response text:', response.text);
     expect(response.text).toBe('User session not found. Unable to logout');
+  })
+})
+
+describe('OAuth Routes', () => {
+  it('Github oAuth should return a 302 status code and redirect to GitHub login', async () => {
+    const response = await request(server).get('/auth/github');
+    // 302 is a redirect code
+    expect(response.statusCode).toBe(302);
+    console.log('Response statusCode', response.statusCode);
+    // the headers location is where github should redirect, and it should redirect to githubs OAuth
+    expect(response.headers.location).toMatch(/^https:\/\/github.com\/login\/oauth\/authorize\?/);
+    console.log('Response headers location', response.headers.location);
+  });
+  it('Github callback should return a 302 status code and redirect to the home page', async () => {
+    const response = await request(server).get('/auth/github/callback');
+    // 302 is a redirect code
+    expect(response.statusCode).toBe(302);
+    console.log('Response statusCode', response.statusCode);
+    // the headers location is where github should redirect, and it should redirect to githubs OAuth
+    expect(response.headers.location).toMatch(/^https:\/\/github.com\/login\/oauth\/authorize\?/);
+    console.log('Response headers location', response.headers.location);
+  });
+  it('Github oAuth error should return a 500 status code', async() => {
+    const response = await request(server).get('/auth/error');
+    console.log('Response statusCode', response.statusCode);
+    expect(response.statusCode).toBe(500);
   })
 })
