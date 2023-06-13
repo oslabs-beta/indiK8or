@@ -1,12 +1,13 @@
 import express from "express";
-import { sessionController } from "../controllers/sessionController.ts";
+import { Request, Response } from "express";
+import { sessionController } from "../controllers/sessionController";
 
 const logoutRouter = express.Router();
 
-logoutRouter.post('/', sessionController.logout,  (req, res) => {
-  return res
+logoutRouter.post('/', sessionController.logout, (_req: Request, res: Response): void => {
+   res
   .status(202)
-  .send(`Successful logout`);
+  .send(`Successful logout`)
 })
 
 export { logoutRouter };

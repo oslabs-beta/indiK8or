@@ -1,24 +1,17 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-import { NextFunction, Request, Response } from 'express';
-// import mongoose from 'mongoose';
-// import cors from 'cors';
-// import dotenv from 'dotenv';
-import { loginRouter } from './routes/login.ts';
-import { logoutRouter } from './routes/logout.ts';
-import { oAuthRouter } from './routes/oAuth.ts';
-import grafanaRouter from './routes/grafana.ts';
+import express, { NextFunction, Request, Response } from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { loginRouter } from './routes/login';
+import { logoutRouter } from './routes/logout';
+import { oAuthRouter } from './routes/oAuth';
+import grafanaRouter from './routes/grafana';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import session from 'express-session';
-import {
-  startExecCommand,
-  stopChildProcess,
-} from './childProcesses/execcommand.ts';
-import './authConfig/passport.ts';
-// import {Request, Response} from "express";
+import { startExecCommand, stopChildProcess } from './childProcesses/execcommand';
+import './authConfig/passport';
+import { ServerError } from '../types';
 
 // require .env files in
 dotenv.config();
@@ -63,18 +56,18 @@ app.use('/logout', logoutRouter);
 app.use('/auth', oAuthRouter);
 
 // catch-all handler
-app.use((req: Request, res: Response) =>
+app.use((_req: Request, res: Response) =>
   res.status(404).send('Invalid endpoint')
 );
 
 // global handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  const defaultErr = {
+app.use((err: ServerError, _req: Request, res: Response, _next: NextFunction) => {
+  const defaultErr: ServerError = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
     message: { err: 'An error occurred' },
   };
-  const errorObj = Object.assign({}, defaultErr, err);
+  const errorObj: ServerError = Object.assign({}, defaultErr, err);
   console.log(errorObj);
   // return res.status(errorObj.status).json(errorObj.message);
   return res.status(errorObj.status).json(errorObj.message);
