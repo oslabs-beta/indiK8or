@@ -142,7 +142,7 @@ const LoginPage = () => {
             <Link href="/login/signupRequest">Sign up</Link>
           </Typography>
         </form>
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" marginTop="1em">
           <Button
             startIcon={<GitHubIcon />}
             variant="contained"
