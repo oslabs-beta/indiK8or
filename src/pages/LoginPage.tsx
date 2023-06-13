@@ -145,6 +145,7 @@ const LoginPage = () => {
         <Grid container justifyContent="center" marginTop="1em">
           <Button
             startIcon={<GitHubIcon />}
+            size="large"
             variant="contained"
             color="secondary"
             onClick={() => {
