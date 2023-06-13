@@ -1,67 +1,50 @@
-{
+// {
+//     "compilerOptions": {
+//       "target": "ESNext",
+//       "module": "ESNext",
+//       "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//       "allowJs": true,
+//       "skipLibCheck": true,
+//       "esModuleInterop": true,
+//       "strict": true,
+//       "forceConsistentCasingInFileNames": true,
+//       "isolatedModules": true,
+//       "noEmit": true,
+//       "jsx": "react-jsx",
+//       "allowImportingTsExtensions": true,
+//       "resolveJsonModule": true,
+//       "moduleResolution": "nodenext"
+//     },
+//     "include": ["src"],
+//     "references": [
+//       {
+//         "path": "./tsconfig.node.json"
+//       }
+//     ]
+//   }
+
+  {
     "compilerOptions": {
-      "target": "ESNext",
+      "target": "ES2020",
       "useDefineForClassFields": true,
-      "lib": ["DOM", "DOM.Iterable", "ESNext"],
-      "allowJs": true,
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
       "module": "ESNext",
-      "moduleResolution": "Node",
+      "skipLibCheck": true,
+  
+      /* Bundler mode */
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": true,
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
       "jsx": "react-jsx",
-    //   "types": ["vite/client", "test"],   
-      "noImplicitAny": true,
-      "allowImportingTsExtensions": true
+  
+      /* Linting */
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true
     },
-    "include": ["src/**/*", "tests/**/*"],
+    "include": ["src"],
     "references": [{ "path": "./tsconfig.node.json" }]
-    // "ts-node": {
-    //     // Tell ts-node CLI to install the --loader automatically
-    //     "esm": true
-    // }
   }
-
-// {
-// 	"compilerOptions": {
-// 		"target": "ES6",
-// 		"jsx": "react",
-// 		"module": "CommonJS",
-// 		"moduleResolution": "node",
-// 		"strict": true,
-// 		"esModuleInterop": true,
-//   }
-// }
-
-// {
-//   "compilerOptions": {
-//     "target": "ESNext",
-//     "useDefineForClassFields": true,
-//     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-//     "module": "ESNext",
-//     "skipLibCheck": true,
-
-//     /* Bundler mode */
-//     "moduleResolution": "bundler",
-//     "allowImportingTsExtensions": true,
-//     "resolveJsonModule": true,
-//     "isolatedModules": true,
-//     "noEmit": true,
-//     "jsx": "react-jsx",
-
-//     /* Linting */
-//     "strict": true,
-//     "noUnusedLocals": true,
-//     "noUnusedParameters": true,
-//     "noFallthroughCasesInSwitch": true
-//   },
-//   "include": ["src"],
-//   "references": [{ "path": "./tsconfig.node.json" }]
-// }
-
-
