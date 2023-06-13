@@ -6,7 +6,7 @@
 // }
 
 // const GitUserModel = getModelForClass(GitUser);
-// export default GitUserModel;
+// export default GitUserModel; 
 // export type GitUserDocument = GitUser & ReturnModelType<typeof GitUser>;
 
 import { Schema, Document, Model, model} from 'mongoose';
