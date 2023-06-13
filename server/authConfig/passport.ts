@@ -1,7 +1,8 @@
 import passport from "passport";
-import { GitUser } from '../models/GitHubModel.ts'
+// import { GitUser } from '../models/GitHubModel.js'
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import dotenv from 'dotenv';
+import { GitUser, IGitUser} from './gitUser'
 
 dotenv.config();
 
@@ -9,15 +10,19 @@ dotenv.config();
 const clientID = process.env.GitHubClientID;
 const clientSecret = process.env.GitHubClientSecret;
 
+interface GitUser {
+  id?: string;
+}
+
 // Serialize the user object into a session
-passport.serializeUser((user, done) => {
+passport.serializeUser((user: GitUser, done) => {
   done(null, user.id);
 });
 
 // Deserialize the user object from a session
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (id: string, done) => {
   try {
-    const user = await GitUser.findById(id);
+    const user: IGitUser | null = await GitUser.findById(id);
     done(null, user);
   } catch (err) {
     done(err);
@@ -26,11 +31,11 @@ passport.deserializeUser(async (id, done) => {
 
 /* eslint-disable no-undef */
 const strategy = new GitHubStrategy({
-  clientID: clientID,
-  clientSecret: clientSecret,
+  clientID: clientID as string,
+  clientSecret: clientSecret as string,
   callbackURL: 'http://localhost:4000/auth/github/callback'
 },
-async (accessToken, refreshToken, profile, done) => {
+async (_accessToken: string, _refreshToken: string, profile: any, done:Function) => {
   const { username } = profile;
   console.log('Authenticated user profile', profile);
   try {

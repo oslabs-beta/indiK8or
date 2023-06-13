@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 import treeKill from 'tree-kill';
 
 // initialize childProcess variable
-let childProcess
+let childProcess: any;
 // declare a function to start the grafana port forwarding command. We want this as a function that we are able to call it anytime we reset the server or Nodemon restarts due to changes 
 const startExecCommand = () => {
   /*
@@ -17,7 +17,7 @@ const startExecCommand = () => {
   when the executed shell command produces any standard output, this event will trigger
   and the provided callback will be exected
   */
-  childProcess.stdout.on('data', (data) => {
+  childProcess.stdout.on('data:', (data: Buffer | string) => {
     console.log(`kubectl stdout: ${data}`);
   });
 
@@ -26,7 +26,7 @@ const startExecCommand = () => {
   when the executed shell command produces any error, this event will trigger
   and the provided callback will be exected
   */
-  childProcess.stderr.on('data', (data) => {
+  childProcess.stderr.on('data', (data: Buffer | string) => {
     console.error(`kubectl stderr: ${data}`);
   });
 
@@ -36,15 +36,15 @@ const startExecCommand = () => {
   The provided callback will be exected when this event occurs 
   */
 
-  childProcess.on('close', (code) => {
+  childProcess.on('close', (code: number) => {
     console.log(`kubectl process exited with code ${code}`);
   });
 }
 
 // Function to stop the child process
-const stopChildProcess = () => {
+const stopChildProcess = (): Promise<void> => {
   // A new Promise is created, which will allow us to handle the asynchronous nature of stopping the child process.
-  return new Promise((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     // check if the childProcess variable is defined. If it is, it means there is an active child process that needs to be stopped.
     if (childProcess) {
       /* 

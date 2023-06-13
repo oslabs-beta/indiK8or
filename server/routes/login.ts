@@ -1,7 +1,8 @@
 import express from 'express';
-import { userController } from '../controllers/userController.ts';
-import { sessionController } from '../controllers/sessionController.ts';
-import { cookieController } from '../controllers/cookieController.ts';
+import {Request, Response} from 'express';
+import { userController } from '../controllers/userController';
+import { sessionController } from '../controllers/sessionController';
+import { cookieController } from '../controllers/cookieController';
 
 const loginRouter = express.Router();
 
@@ -9,10 +10,10 @@ const loginRouter = express.Router();
 loginRouter.post(
   '/isLoggedIn', 
   sessionController.isLoggedIn, 
-  (req, res) => {
+  (_req: Request, res: Response): void => {
     console.log('INSIDE AUTHORIZING USER WHO HAS LOGGED IN');
     console.log('res.locals.userId', res.locals.userId);
-    return res.status(302).json(res.locals.userId);
+    res.status(302).json(res.locals.userId);
   }
 )
 
@@ -22,8 +23,8 @@ loginRouter.post(
   userController.verifyUser,
   sessionController.startSession,
   cookieController.setSSIDCookie,
-  (req, res) => {
-    return res.status(200).json('You are logged in');
+  (_req: Request, res: Response): void => {
+    res.status(200).json('You are logged in');
   }
 );
 
@@ -32,9 +33,9 @@ loginRouter.post(
   '/signupRequest',
   userController.verifyAccount,
   userController.createUser,
-  (req, res) => {
+  (_req: Request, res: Response): void => {
     console.log('----INSIDE signupRequest----');
-    return res.status(201).json('You have signed up');
+    res.status(201).json('You have signed up');
   }
 );
 

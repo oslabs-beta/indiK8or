@@ -1,9 +1,10 @@
-import { Session } from '../models/sessionModel.ts';
+import { Request, Response, NextFunction } from 'express';
+import { Session } from '../models/sessionModel.js';
 
-const sessionController = {};
+const sessionController: any = {};
 
 // isLoggedIn - find appropriate session for this request in DB - verify whether or not session is still valid
-sessionController.isLoggedIn = (req, res, next) => {
+sessionController.isLoggedIn = (req: Request, res: Response, next: NextFunction): void => {
   console.log('----- SUCCESS! INSIDE isLoggedIn middleware -----');
   // finding the session which cookieId matches the cookie ssid sent along with the request
   Session.findOne({ cookieId: req.cookies.ssid })
@@ -30,7 +31,7 @@ sessionController.isLoggedIn = (req, res, next) => {
 };
 
 // startSession - create and save a new Session into the database.
-sessionController.startSession = (req, res, next) => {
+sessionController.startSession = (_req: Request, res: Response, next: NextFunction) => {
   console.log('----- SUCCESS! INSIDE startSession middleware -----');
   // check if session already exists for user
   Session.findOne({cookieId: res.locals.user})
@@ -66,18 +67,18 @@ sessionController.startSession = (req, res, next) => {
 };
 
 // startSession - create and save a new Session into the database.
-sessionController.startGitSession = (req, res, next) => {
+sessionController.startGitSession = (req: Request, _res: Response, next: NextFunction) => {
   console.log('Start Git called')
   console.log('req.user', req.user) ;
   // check if session already exists for user
-  Session.findOne({cookieId: req.user._id})
+  Session.findOne({cookieId: (req.user as any)._id})
     .then((session) => {
       if (session) {
         console.log('user has an active session');
         return next();
       } else {
          // creating a session with a cookieId equals to the user id saved in res.locals
-        Session.create({ cookieId: req.user._id})
+        Session.create({ cookieId: (req.user as any)._id})
         .then(() => {
           console.log('session created');
           return next();
@@ -102,7 +103,7 @@ sessionController.startGitSession = (req, res, next) => {
     })
 };
 
-sessionController.logout = async (req, res, next) => {
+sessionController.logout = async (req: Request, res: Response, next: NextFunction) => {
   console.log('inside logout controller');
   console.log('req.body', req.body)
   try {
