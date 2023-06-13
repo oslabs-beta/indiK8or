@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { loginRouter } from './routes/login.ts';
-import { logoutRouter } from './routes/logout.ts';
-import { oAuthRouter  } from './routes/oAuth.ts';
-=======
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -18,22 +9,16 @@ import { NextFunction, Request, Response } from 'express';
 import { loginRouter } from './routes/login.ts';
 import { logoutRouter } from './routes/logout.ts';
 import { oAuthRouter } from './routes/oAuth.ts';
->>>>>>> dev-ts
 import grafanaRouter from './routes/grafana.ts';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import session from 'express-session';
-<<<<<<< HEAD
-import { startExecCommand, stopChildProcess } from './childProcesses/execcommand.ts';
-import './authConfig/passport.ts'
-=======
 import {
   startExecCommand,
   stopChildProcess,
 } from './childProcesses/execcommand.ts';
 import './authConfig/passport.ts';
 // import {Request, Response} from "express";
->>>>>>> dev-ts
 
 // require .env files in
 dotenv.config();
