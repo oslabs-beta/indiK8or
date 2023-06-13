@@ -1,12 +1,21 @@
+import { Request, Response, NextFunction } from 'express';
 import { User } from '../models/userModel.js';
 import bcrypt from 'bcryptjs';
+import { ServerError } from '../../types';
 
-const userController = {};
-
+// Assign any type to the userController object
+const userController: Record<string, any> = {};
+type verifyAccount = Record<'username', string>;
+type createUser = Record<'firstName' | 'lastName' | 'username' | 'password', string>;
+type verifyUser = Record<'username' | 'password', string>;
 // Verifying if an account exists
-userController.verifyAccount = (req, res, next) => {
+userController.verifyAccount = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   console.log('----- SUCCESS! INSIDE verifyAccount middleware -----');
-  const { username } = req.body;
+  const { username } = req.body as verifyAccount;
   // creating a new user and save the user's id to res.locals
   User.findOne({ username })
     .then((user) => {
@@ -26,9 +35,13 @@ userController.verifyAccount = (req, res, next) => {
 };
 
 // Creating a new user
-userController.createUser = (req, res, next) => {
+userController.createUser = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   console.log('----- SUCCESS! INSIDE createUser middleware -----');
-  const { firstName, lastName, username, password } = req.body;
+  const { firstName, lastName, username, password } = req.body as createUser ;
   // creating a new user and save the user's id to res.locals
   User.create({ firstName, lastName, username, password })
     .then((newUser) => {
@@ -45,9 +58,13 @@ userController.createUser = (req, res, next) => {
 };
 
 // Verifying an existing user
-userController.verifyUser = (req, res, next) => {
+userController.verifyUser = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   console.log('----- SUCCESS! INSIDE verifyUser middleware -----');
-  const { username, password } = req.body;
+  const { username, password } = req.body as verifyUser;
   // both username and password needs to be provided by client
   if (!username || !password) {
     return next({
@@ -76,7 +93,7 @@ userController.verifyUser = (req, res, next) => {
         });
       }
     })
-    .catch((err) => {
+    .catch((err: ServerError) => {
       return next({
         log: `verifyUser: ${err}`,
         status: 500,

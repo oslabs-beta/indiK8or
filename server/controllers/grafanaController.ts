@@ -1,6 +1,8 @@
-const grafanaController = {};
+import { Request, Response, NextFunction } from 'express';
 
-grafanaController.nodeExporter = async (req, res, next) => {
+const grafanaController : any = {};
+
+grafanaController.nodeExporter = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     const username = 'admin';
     const password = 'prom-operator';
     console.log('Inside grafanaController.nodeExporter');
