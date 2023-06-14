@@ -1,89 +1,89 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef, ReactElement} from 'react';
 import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import '../css/Signup.css';
 import { useNavigate } from 'react-router-dom';
 
-const SignupPage = () => {
+const SignupPage = (): ReactElement => {
   // State variables to hold form data
-  const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-  const [passwordError, setPasswordError] = useState('');
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const [showConflictAlert, setShowConflictAlert] = useState(false);
+  const [username, setUsername] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<string>('');
+  const [showSuccessAlert, setShowSuccessAlert] = useState<boolean>(false);
+  const [showConflictAlert, setShowConflictAlert] = useState<boolean>(false);
 
   // Refs for password confirmation and password input fields
-  const passwordConfirmationRef = useRef(null);
-  const passwordRef = useRef(null);
+  const passwordConfirmationRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
   
   // Event handlers for input field changes
-  const handleUsernameChange = (event) => {
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
   };
 
-  const handleFirstNameChange = (event) => {
+  const handleFirstNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setFirstName(event.target.value);
   };
 
-  const handleLastNameChange = (event) => {
+  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setLastName(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setPassword(event.target.value);
   };
 
-  const handlePasswordConfirmationChange = (event) => {
+  const handlePasswordConfirmationChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setPasswordConfirmation(event.target.value);
   };
 
   // Toggle password visibility
-  const handleShowPasswordToggle = () => {
+  const handleShowPasswordToggle = (): void => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   // Toggle password confirmation visibility
-  const handleShowPasswordConfirmationToggle = () => {
+  const handleShowPasswordConfirmationToggle = (): void => {
     setShowPasswordConfirmation((prevShowPasswordConfirmation) => !prevShowPasswordConfirmation);
   };
 
   // Reset the state to hide the success alert
-  const handleSnackbarClose = () => {
+  const handleSnackbarClose = (): void => {
     setShowSuccessAlert(false); 
   };
 
   // Reset the state to hide the fail alert
-  const handleConflictSnackbarClose = () => {
+  const handleConflictSnackbarClose = (): void => {
     setShowConflictAlert(false);
   };
  
   // Form submission handler
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    // Check if passwords match, if itdoes not change state of password error and clear the input field
+    // Check if passwords match, if it does not change state of password error and clear the input field
     if (password !== passwordConfirmation) {
         setPasswordError('Passwords does not match');
         setPasswordConfirmation('');
-        passwordConfirmationRef.current.focus();
+        passwordConfirmationRef.current?.focus();
         return;
     }
 
     // Regular expression for password validation
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordRegex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     // Check if password meets the required criteria
     if (!passwordRegex.test(password)) {
         setPasswordError('Password must be at least 8 characters long and include a capital letter, a number, and a symbol');
         setPassword('');
-        passwordRef.current.focus();
+        passwordRef.current?.focus();
         return;
     }
 
@@ -95,7 +95,7 @@ const SignupPage = () => {
       },
       body: JSON.stringify({ username, firstName, lastName, password }),
     })
-    .then((response) => {
+    .then((response: Response) => {
         if (response.ok) {
             // Handle success response
             // Update the state to indicate user creation success
@@ -108,7 +108,7 @@ const SignupPage = () => {
           setUsername('');
           setPassword('');
           setPasswordConfirmation('');
-          passwordRef.current.focus();
+          passwordRef.current?.focus();
           return;   
         }
         else {
@@ -132,7 +132,7 @@ const SignupPage = () => {
     <div className='signup-back'>
     <Grid container className="signup-grid" alignItems="center" justifyContent="center">
     <Paper className='signup-paper'>
-        <Grid align='center'>
+        <Grid>
             <Avatar className='signup-avatar'>
                 <AddCircleOutlineOutlinedIcon />
             </Avatar >
