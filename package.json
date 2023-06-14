@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "start": "concurrently \"vite\" \"nodemon ./server/server.ts\"",
     "test": "vitest",
-    "dev3": "vite & nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' server/server.ts"
+    "dev": "vite & nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm --no-warnings' server/server.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -36,7 +36,6 @@
     "ts-loader": "^9.4.3"
   },
   "devDependencies": {
-    "@typegoose/typegoose": "^11.2.0",
     "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.3",
