@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, FunctionComponent} from 'react';
 import {
   IconButton,
   InputAdornment,
@@ -17,7 +17,15 @@ import LoginIcon from '@mui/icons-material/Login';
 import '../css/Login.css';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+type LoginState = {
+  username: string,
+  password: string,
+  showPassword: boolean,
+  loginError: string,
+  showErrorAlert: boolean
+}
+
+const LoginPage: FunctionComponent <LoginState> = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
