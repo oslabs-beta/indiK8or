@@ -1,11 +1,12 @@
 import './App.css';
+import { ReactElement } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import WelcomePage from './pages/WelcomePage';
 
-function App() {
+function App(): ReactElement {
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />
