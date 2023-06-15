@@ -29,8 +29,7 @@ test('renders iframe when dashboardClicked is true', async () => {
   });
   
   test('renders Typography when dashboardClicked is false', () => {
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-    const dashboardClicked: boolean = false;
+    const dashboardClicked = false as boolean;
   
     render(<Dashboard dashboardClicked={dashboardClicked} />);
   
