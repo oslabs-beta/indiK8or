@@ -48,15 +48,16 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 14. Restart minikube by running below commands separately
     < minikube stop >
     < minikube start >
-15. Forward your grafana to port 3000
-    < kubectl port-forward deployment/prometheus-grafana 3000 >
-16. Open your browser and go to http://localhost:3000 and sign in to your grafana with
+
+15. Open your browser and go to http://localhost:3000 and sign in to your grafana with
    default user: admin
    default password: prom-operator
    
-17. In your terminal, run this command
+   NOTE: You do not have to do step 15 if you have previously logged before.
+   
+16. In your terminal, run this command
     < npm run start >
-18. Now open your browser and go to http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+17. Now open your browser and go to http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
 
 

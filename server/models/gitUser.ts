@@ -1,14 +1,3 @@
-// import { prop, getModelForClass, ReturnModelType } from '@typegoose/typegoose';
-
-// class GitUser {
-//   @prop({ required: true, unique: true })
-//   public username!: string;
-// }
-
-// const GitUserModel = getModelForClass(GitUser);
-// export default GitUserModel;
-// export type GitUserDocument = GitUser & ReturnModelType<typeof GitUser>;
-
 import { Schema, Document, Model, model} from 'mongoose';
 
 interface IGitUser extends Document {

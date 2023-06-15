@@ -10,7 +10,7 @@ import grafanaRouter from './routes/grafana';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import session from 'express-session';
-import { startExecCommand, stopChildProcess } from './childProcesses/execcommand';
+import { startExecCommand, stopChildProcess } from './childProcesses/execCommand';
 import './authConfig/passport';
 import { ServerError } from '../types';
 

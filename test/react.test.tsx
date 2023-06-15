@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import HomePage from '../src/pages/HomePage.js';
+import HomePage from '../src/pages/HomePage';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('sidebar', () => {

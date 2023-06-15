@@ -17,7 +17,7 @@ const startExecCommand = () => {
   when the executed shell command produces any standard output, this event will trigger
   and the provided callback will be exected
   */
-  childProcess.stdout.on('data:', (data: Buffer | string) => {
+  childProcess.stdout.on('data', (data: Buffer | string) => {
     console.log(`kubectl stdout: ${data}`);
   });
 

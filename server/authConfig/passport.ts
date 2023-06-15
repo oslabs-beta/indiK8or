@@ -1,8 +1,7 @@
 import passport from "passport";
-// import { GitUser } from '../models/GitHubModel.js'
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import dotenv from 'dotenv';
-import { GitUser, IGitUser} from './gitUser'
+import { GitUser, IGitUser} from '../models/gitUser'
 
 dotenv.config();
 
