@@ -1,9 +1,9 @@
-import React, { useState, useRef, ReactElement} from 'react';
+import { useState, useRef, ReactElement, ChangeEvent, FormEvent} from 'react';
 import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import '../css/Signup.css';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const SignupPage = (): ReactElement => {
   // State variables to hold form data
@@ -21,26 +21,26 @@ const SignupPage = (): ReactElement => {
   // Refs for password confirmation and password input fields
   const passwordConfirmationRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   
   // Event handlers for input field changes
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
   };
 
-  const handleFirstNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFirstName(event.target.value);
   };
 
-  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleLastNameChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setLastName(event.target.value);
   };
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setPassword(event.target.value);
   };
 
-  const handlePasswordConfirmationChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handlePasswordConfirmationChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setPasswordConfirmation(event.target.value);
   };
 
@@ -65,7 +65,7 @@ const SignupPage = (): ReactElement => {
   };
  
   // Form submission handler
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
     // Check if passwords match, if it does not change state of password error and clear the input field
@@ -77,7 +77,7 @@ const SignupPage = (): ReactElement => {
     }
 
     // Regular expression for password validation
-    const passwordRegex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     // Check if password meets the required criteria
     if (!passwordRegex.test(password)) {
@@ -88,38 +88,34 @@ const SignupPage = (): ReactElement => {
     }
 
     // Make the POST request to your server here using username, firstName, lastName, and password
-    fetch('http://localhost:4000/login/signupRequest', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, firstName, lastName, password }),
-    })
-    .then((response: Response) => {
-        if (response.ok) {
-            // Handle success response
-            // Update the state to indicate user creation success
-            setShowSuccessAlert(true);
-            navigate('/login/loginRequest');
-        }
-        else if (response.status === 409) {
-          // Handle the case where the account already exists
-          setShowConflictAlert(true);
-          setUsername('');
-          setPassword('');
-          setPasswordConfirmation('');
-          passwordRef.current?.focus();
-          return;   
-        }
-        else {
-            console.error('Server error:', response.statusText)
-        }
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
+    try {
+      const response = await fetch('http://localhost:4000/login/signupRequest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, firstName, lastName, password }),
       });
-
+      if (response.ok) {
+          // Handle success response
+          // Update the state to indicate user creation success
+          setShowSuccessAlert(true);
+          navigate('/login/loginRequest');
+      } else if (response.status === 409) {
+        // Handle the case where the account already exists
+        setShowConflictAlert(true);
+        setUsername('');
+        setPassword('');
+        setPasswordConfirmation('');
+        passwordRef.current?.focus();
+        return;   
+      } else {
+        console.error('Server error:', response.statusText)
+      }
+  } catch(error) {
+      // Handle any errors
+      console.error(error);
+    }
     // Clear the form fields
     setUsername('');
     setFirstName('');
@@ -242,4 +238,3 @@ const SignupPage = (): ReactElement => {
 };
 
 export default SignupPage;
-

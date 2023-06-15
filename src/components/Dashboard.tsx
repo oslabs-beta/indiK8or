@@ -1,6 +1,7 @@
 import { Grid, Typography } from '@mui/material'
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css'
+import { DashProps } from '../../types'
 import { DashProps } from '../../types.ts'
 
 //pass props from parent component (HomePage)

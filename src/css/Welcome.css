@@ -38,12 +38,14 @@ body,
   top: 200px !important;
   margin: 0 !important;
   padding-left: 0 !important;
+  text-align: left;
 }
 
 .authors {
   font-size: 20px !important;
   color: black !important;
   padding-left: 0 !important;
+  text-align: left;
 }
 
 .name {

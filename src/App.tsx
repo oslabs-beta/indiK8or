@@ -1,4 +1,5 @@
 import './App.css';
+import { ReactElement } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -7,7 +8,7 @@ import WelcomePage from './pages/WelcomePage';
 import { Provider } from "react-redux"
 import { store } from './store'
 
-function App() {
+function App(): ReactElement {
   return (
     <Provider store={store}>
       <Routes>

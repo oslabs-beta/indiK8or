@@ -7,28 +7,28 @@ import { useAppSelector, useAppDispatch } from '../hooks.ts'
 import Sidebar from '../components/Sidebar.tsx';
 import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from '../components/Dashboard.tsx';
+import { useState, useEffect } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import Sidebar from '../components/Sidebar.tsx';
 import '../css/HomePage.css';
-import { RootState } from '../store.ts';
-
+import { LightDarkTheme } from '../../types.ts';
 
 const HomePage = () => {
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [dashboardClicked, setDashboardClicked] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [userId, setUserId] = useState<string>('');
 
-  const loggedIn = useAppSelector((state: RootState) => state.homePage.loggedIn);
-  const dashboardClicked = useAppSelector((state) => state.homePage.dashboardClicked);
-  const darkMode = useAppSelector((state) => state.homePage.darkMode);
-  const userId = useAppSelector((state) => state.homePage.userId);
-  //dispatch the actions
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   // Set the value of dashboardClicked to the opposite of its current value using func
-  const handleDashboard = () => {
-    dispatch(setDashboardClicked(!dashboardClicked));
-  };
+  const handleDashboard = ():void =>
+    setDashboardClicked((prevDashboardClicked) => !prevDashboardClicked);
+
   // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
   // if they are not logged in we will receive a 303 and send them to the loginPage
   useEffect(() => {
-    const checkLoggedIn = async () => {
+    const checkLoggedIn = async (): Promise<void> => {
       try {
         const response = await fetch('http://localhost:4000/login/isLoggedIn', {
           method: 'POST',
@@ -42,9 +42,9 @@ const HomePage = () => {
           alert('You must be logged in to view this page');
           navigate('/login/loginRequest');
         } else {
-          const userId = await response.json();
-          dispatch(setUserId(userId));
-          dispatch(setLoggedIn());
+          const userId: string = await response.json();
+          setUserId(userId);
+          setLoggedIn(true);
         }
       } catch (error) {
         console.error(error);
@@ -53,7 +53,7 @@ const HomePage = () => {
     checkLoggedIn();
   }, [dispatch, navigate]);
 
-  const darkTheme = createTheme({
+  const darkTheme: LightDarkTheme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
       background: darkMode ? { default: '#212529' } : { default: '#faf3dd' },
