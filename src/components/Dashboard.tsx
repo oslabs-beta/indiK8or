@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material'
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css'
-import { DashProps } from '/home/babonjmc/Codesmith/indiK8or/types.ts'
+import { DashProps } from '../../types'
 
 //pass props from parent component (HomePage)
 export default function Dashboard(props: DashProps): ReactElement {

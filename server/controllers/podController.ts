@@ -18,17 +18,19 @@ console.log('INSIDE GETPODS MIDDLEWARE');
       const data: string = Buffer.concat(chunks).toString();
       console.log('data is: ', data);
       const lines: string[] = data.split('\n');
-      const headers: string[] = lines[0].split(/\s+/);
+      console.log('lines are: ', lines);
+      const headers: string[] = lines[0].split(/\s{2,}/);
+      console.log('headers are:', headers);
       const results: any[] = [];
 
       for (let i = 1; i < lines.length; i++) {
-        const values: string[] = lines[i].split(/\s+/);
+        const values: string[] = lines[i].split(/\s{2,}/);
         if (values.length === headers.length) {
-          const row: any = {};
+          const pod: any = {};
           for (let j = 0; j < headers.length; j++) {
-            row[headers[j]] = values[j];
+            pod[headers[j]] = values[j];
           }
-          results.push(row);
+          results.push(pod);
         }
       }
       console.log('results are: ', results);
