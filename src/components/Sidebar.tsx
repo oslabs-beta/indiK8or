@@ -6,16 +6,15 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import '../css/Sidebar.css'
-import { SidebarProps } from '/home/babonjmc/Codesmith/indiK8or/types.ts'
+import { setShowDashText, setShowLogoutText, setShowThemeText } from '../sideBarSlice';
+import { useAppSelector, useAppDispatch } from '../hooks.ts';
+import { RootState } from '../store.ts';
+
 
 // Pass the props component from the parent component (HomePage)
-const Sidebar = (props: SidebarProps): ReactElement => {
-  // deconstruct props
-  const { userId, darkMode, handleDashboard, setDarkMode } = props;
-  // State variables to control the visibility of different texts in the sidebar
-  const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
-  const [showThemeText, setShowThemeText] = useState<boolean>(false);
-  const [showDashText, setShowDashText] = useState<boolean>(false);
+const Sidebar = () => {
+
+  const handleMouseEnterDash = useAppSelector((state: RootState) => state.sideBar.showDashText);
 
   // React Router hook for navigation
   const navigate: NavigateFunction = useNavigate();
@@ -47,29 +46,29 @@ const Sidebar = (props: SidebarProps): ReactElement => {
   };
 
   // Event handlers for mouse hover text visibility on icons
-  const handleMouseEnterDash = ():void  => {
-    setShowDashText(true);
-  };
+  // const handleMouseEnterDash = ():void  => {
+  //   setShowDashText(true);
+  // };
 
-  const handleMouseLeaveDash = ():void  => {
-    setShowDashText(false);
-  };
+  // const handleMouseLeaveDash = ():void  => {
+  //   setShowDashText(false);
+  // };
 
-  const handleMouseEnterLogout = ():void  => {
-    setShowLogoutText(true);
-  };
+  // const handleMouseEnterLogout = ():void  => {
+  //   setShowLogoutText(true);
+  // };
 
-  const handleMouseLeaveLogout = ():void  => {
-    setShowLogoutText(false);
-  };
+  // const handleMouseLeaveLogout = ():void  => {
+  //   setShowLogoutText(false);
+  // };
 
-  const handleMouseEnterTheme = ():void  => {
-    setShowThemeText(true);
-  };
+  // const handleMouseEnterTheme = ():void  => {
+  //   setShowThemeText(true);
+  // };
 
-  const handleMouseLeaveTheme = ():void => {
-    setShowThemeText(false);
-  };
+  // const handleMouseLeaveTheme = ():void => {
+  //   setShowThemeText(false);
+  // };
 
   // Function to handle dashboard toggle
   const handleDashToggle = ():void  => {
@@ -123,6 +122,23 @@ const Sidebar = (props: SidebarProps): ReactElement => {
          </ListItemButton>
         {/* Theme (Icon is conditional based on the current state)*/}
         <ListItemButton
+            data-testid='ThemeButton'
+            className="listItem"
+            onMouseEnter={handleMouseEnterTheme}
+            onMouseLeave={handleMouseLeaveTheme}
+            onClick={handleThemeToggle}
+        >
+            <ListItemIcon >
+                {darkMode ? <Brightness7Icon sx={{ fontSize: 50}} data-testid='Brightness7Icon'/> : <Brightness4Icon sx={{ fontSize: 50}} data-testid='Brightness4Icon'/>}
+            </ListItemIcon>
+            <ListItemText
+                primary={showThemeText ? 'Light/Dark' : ''}
+                className="listItemText"
+                primaryTypographyProps={{fontSize: '20px', fontWeight: 'bold'}}
+            />
+            </ListItemButton>
+            {/*icon for pod button */}
+            <ListItemButton
             data-testid='ThemeButton'
             className="listItem"
             onMouseEnter={handleMouseEnterTheme}

@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material'
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css'
-import { DashProps } from '/home/babonjmc/Codesmith/indiK8or/types.ts'
+import { DashProps } from '../../types.ts'
 
 //pass props from parent component (HomePage)
 export default function Dashboard(props: DashProps): ReactElement {
@@ -33,7 +33,7 @@ export default function Dashboard(props: DashProps): ReactElement {
 : <Grid container alignItems="center" justifyContent="center"> 
     <Typography variant='h3' className='dash-typography'>indiK8or makes viewing your cluster metrics easy!</Typography>
     </Grid>
-}
+} 
 
 
 

@@ -52,7 +52,7 @@ const LoginPage: FunctionComponent <LoginState> = () => {
     setShowErrorAlert(false);
   };
 
-  const handleSubmit = (event: MouseEvent) => {
+  const handleSubmit = (event: MouseEvent): void => {
     event.preventDefault();
 
     fetch('http://localhost:4000/login/loginRequest', {
