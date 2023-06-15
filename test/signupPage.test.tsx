@@ -1,4 +1,4 @@
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi, SpyInstance } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from "react-router-dom";
 import SignupPage from '../src/pages/SignupPage';
@@ -78,10 +78,11 @@ test('handles form submission', async () => {
     fireEvent.change(confirmPasswordInput, { target: { value: 'Password1!' } });
   
     // Mock the fetch POST request specifically for signup
-    const fetchMockSuccess = vi.spyOn(window, 'fetch').mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve({ success: true }),
-    } as Response);
+    const fetchMockSuccess: SpyInstance<[input: RequestInfo | URL, init?: RequestInit | undefined], Promise<Response>> = 
+      vi.spyOn(window, 'fetch').mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ success: true }),
+      } as Response);
   
     // Submit the form
     fireEvent.click(submitButton);

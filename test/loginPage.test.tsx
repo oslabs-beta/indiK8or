@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor} from "@testing-library/react";
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi, SpyInstance } from 'vitest'
 import { BrowserRouter as Router } from "react-router-dom";
 import LoginPage from '../src/pages/LoginPage';
 import React from 'react';
@@ -64,10 +64,11 @@ test('submits the login form and sends a fetch POST request', async () => {
   fireEvent.change(passwordInput, { target: { value: 'testpassword'} });
 
   // Mock the fetch POST request
-  const fetchMockSuccess = vi.spyOn(window, 'fetch').mockResolvedValueOnce({
-    ok: true,
-    json: () => Promise.resolve({ success: true }),
-  } as Response);
+  const fetchMockSuccess: SpyInstance<[input: RequestInfo | URL, init?: RequestInit | undefined], Promise<Response>> = 
+    vi.spyOn(window, 'fetch').mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    } as Response);
 
   fireEvent.click(loginButton);
 
