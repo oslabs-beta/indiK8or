@@ -2,6 +2,7 @@ import passport from "passport";
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import dotenv from 'dotenv';
 import { GitUser, IGitUser} from '../models/gitUser'
+import { NextFunction } from "express";
 
 dotenv.config();
 
@@ -11,6 +12,14 @@ const clientSecret = process.env.GitHubClientSecret;
 
 interface GitUser {
   id?: string;
+}
+
+interface doneFunction extends NextFunction {
+  (arg1: null, arg2: GitUser ): void
+}
+
+interface GitHubProfile {
+  username: string
 }
 
 // Serialize the user object into a session
@@ -34,7 +43,7 @@ const strategy = new GitHubStrategy({
   clientSecret: clientSecret as string,
   callbackURL: 'http://localhost:4000/auth/github/callback'
 },
-async (_accessToken: string, _refreshToken: string, profile: any, done:Function) => {
+async (_accessToken: string, _refreshToken: string, profile: GitHubProfile, done:doneFunction) => {
   const { username } = profile;
   console.log('Authenticated user profile', profile);
   try {
