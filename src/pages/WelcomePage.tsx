@@ -1,34 +1,36 @@
 import { Container, Button, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import '../css/Welcome.css';
 import logo from '../assets/logo1.png';
 
 const WelcomePage = () => {
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:4000/login/isLoggedIn', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // include cookies from cross origin request
-      credentials: 'include',
-      body: JSON.stringify({}),
-    })
-      .then((response) => {
+    const checkLoggedIn = async (): Promise<void> => {
+      try {
+        const response = await fetch('http://localhost:4000/login/isLoggedIn', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          // include cookies from cross origin request
+          credentials: 'include',
+          body: JSON.stringify({}),
+        });
         if (response.status === 302) {
           // Handle success response
           // Update the state to indicate user creation success
           navigate('/home');
         }
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+      } catch (error) {
+          // Handle any errors
+          console.error(error);
+        }
+      };
+      checkLoggedIn();
   }, [navigate]);
 
   return (
@@ -56,12 +58,11 @@ const WelcomePage = () => {
         >
           Sign up
         </Button>
-        <Container className="button-container" align="left">
+        <Container className="button-container">
           <Button
             className="authors"
             variant="text"
             disabled={true}
-            align="left"
           >
             Our engineers:
           </Button>

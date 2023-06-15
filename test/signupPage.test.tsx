@@ -1,7 +1,8 @@
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi, SpyInstance } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from "react-router-dom";
 import SignupPage from '../src/pages/SignupPage';
+import React from 'react';
 
 test('renders signup form', () => {
     render(
@@ -11,11 +12,11 @@ test('renders signup form', () => {
       );
 
   // Assert that the signup form is rendered
-  const firstNameInput = screen.getByPlaceholderText('Enter your first name');
-  const lastNameInput = screen.getByPlaceholderText('Enter your last name');
-  const usernameInput = screen.getByPlaceholderText('Enter your username');
-  const passwordInput = screen.getByPlaceholderText('Enter your password');
-  const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password');
+  const firstNameInput = screen.getByPlaceholderText('Enter your first name') as HTMLInputElement;
+  const lastNameInput = screen.getByPlaceholderText('Enter your last name') as HTMLInputElement;
+  const usernameInput = screen.getByPlaceholderText('Enter your username') as HTMLInputElement;
+  const passwordInput = screen.getByPlaceholderText('Enter your password') as HTMLInputElement;
+  const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password') as HTMLInputElement;
   const submitButton = screen.getByText('Submit');
 
   expect(firstNameInput).toBeInTheDocument();
@@ -34,11 +35,11 @@ test('handles input field changes', () => {
       );
 
   // Simulate user input in form fields
-  const firstNameInput = screen.getByPlaceholderText('Enter your first name');
-  const lastNameInput = screen.getByPlaceholderText('Enter your last name');
-  const usernameInput = screen.getByPlaceholderText('Enter your username');
-  const passwordInput = screen.getByPlaceholderText('Enter your password');
-  const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password');
+  const firstNameInput = screen.getByPlaceholderText('Enter your first name') as HTMLInputElement;
+  const lastNameInput = screen.getByPlaceholderText('Enter your last name') as HTMLInputElement;
+  const usernameInput = screen.getByPlaceholderText('Enter your username') as HTMLInputElement;
+  const passwordInput = screen.getByPlaceholderText('Enter your password') as HTMLInputElement;
+  const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password') as HTMLInputElement;
 
   fireEvent.change(firstNameInput, { target: { value: 'John' } });
   fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
@@ -62,11 +63,11 @@ test('handles form submission', async () => {
     );
   
     // Simulate user input in form fields
-    const firstNameInput = screen.getByPlaceholderText('Enter your first name');
-    const lastNameInput = screen.getByPlaceholderText('Enter your last name');
-    const usernameInput = screen.getByPlaceholderText('Enter your username');
-    const passwordInput = screen.getByPlaceholderText('Enter your password');
-    const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password');
+    const firstNameInput = screen.getByPlaceholderText('Enter your first name') as HTMLInputElement;
+    const lastNameInput = screen.getByPlaceholderText('Enter your last name') as HTMLInputElement;
+    const usernameInput = screen.getByPlaceholderText('Enter your username') as HTMLInputElement;
+    const passwordInput = screen.getByPlaceholderText('Enter your password') as HTMLInputElement;
+    const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password') as HTMLInputElement;
     const submitButton = screen.getByText('Submit');
   
     fireEvent.change(firstNameInput, { target: { value: 'John' } });
@@ -77,10 +78,11 @@ test('handles form submission', async () => {
     fireEvent.change(confirmPasswordInput, { target: { value: 'Password1!' } });
   
     // Mock the fetch POST request specifically for signup
-    const fetchMockSuccess = vi.spyOn(window, 'fetch').mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve({ success: true }),
-    });
+    const fetchMockSuccess: SpyInstance<[input: RequestInfo | URL, init?: RequestInit | undefined], Promise<Response>> = 
+      vi.spyOn(window, 'fetch').mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ success: true }),
+      } as Response);
   
     // Submit the form
     fireEvent.click(submitButton);
@@ -104,4 +106,8 @@ test('handles form submission', async () => {
         }
       );
     });
+    // Assert that the URL has changed to the login page
+    expect(window.location.pathname).toBe('/login/loginRequest');
+    // Restore the original implementation of fetch
+    fetchMockSuccess.mockRestore();
   });

@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -20,13 +20,14 @@ dotenv.config();
 const app = express();
 const port = 4000;
 /* eslint-disable no-undef */
-const mongoURI: string = process.env.MONGO_URI!;
-const sessionSecret: string = process.env.SESSION_SECRET!;
+// provide default value of empty string when env variables are undefined or null
+const mongoURI: string = process.env.MONGO_URI ?? '';
+const sessionSecret: string = process.env.SESSION_SECRET ?? '';
 // mongoose.connect(mongoURI);
 mongoose
   .connect(mongoURI)
   .then(() => console.log('Connected to Mongo DB'))
-  .catch((err: any) => console.log(err));
+  .catch((err: string) => console.log(err));
 
 // allow cors
 app.use(
@@ -63,7 +64,7 @@ app.use((_req: Request, res: Response) =>
 );
 
 // global handler
-app.use((err: ServerError, _req: Request, res: Response, _next: NextFunction) => {
+app.use((err: ServerError, _req: Request, res: Response) => {
   const defaultErr: ServerError = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,

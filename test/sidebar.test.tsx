@@ -1,21 +1,29 @@
-import { expect, test, vi } from 'vitest';
+import { expect, test, vi, SpyInstance } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from '../src/components/Sidebar';
+import React from 'react';
+
+const sidebarProps = {
+  userId: 'exampleUserId',
+  darkMode: false,
+  handleDashboard: vi.fn(),
+  setDarkMode: vi.fn(),
+};
 
 // Test to check if sidebar component renders
-test('if the logo element renders', () => {
+test('should render the logo element renders', () => {
   render(
     <Router>
-      <Sidebar />
+      <Sidebar {...sidebarProps} />
     </Router>
   );
 
   // Find the sidebar button elements
-  const logoElement = screen.getByAltText('logo');
-  const dashboardButton = screen.getByTestId('DashboardButton');
-  const logoutButton = screen.getByTestId('LogoutButton');
-  const themeButton = screen.getByTestId('ThemeButton');
+  const logoElement = screen.getByAltText('logo') as HTMLInputElement;
+  const dashboardButton = screen.getByTestId('DashboardButton') as HTMLInputElement;
+  const logoutButton = screen.getByTestId('LogoutButton') as HTMLInputElement;
+  const themeButton = screen.getByTestId('ThemeButton') as HTMLInputElement;
 
   // Assert that the elements are in the document
   expect(logoElement).toBeInTheDocument();
@@ -25,45 +33,27 @@ test('if the logo element renders', () => {
 });
 
 // Test to check if the dashboard button click is handled correctly
-test('handles dashboard button click', () => {
-  // Create a variable to track whether the dashboard button is clicked
-  let dashboardClicked = false;
-
-  // Mock the handleDashboard function
-  const handleDashboard = vi.fn(() => {
-    dashboardClicked = true;
-  });
-
+test('should handle dashboard button click', () => {
   render(
     <Router>
-      <Sidebar handleDashboard={handleDashboard} />
+      <Sidebar {...sidebarProps} />
     </Router>
   );
 
-  const dashboardButton = screen.getByTestId('DashboardButton');
+  const dashboardButton: HTMLElement = screen.getByTestId('DashboardButton');
 
   // Simulate dashboard button click
   fireEvent.click(dashboardButton);
 
   // Assert that dashboardClicked is true
-  expect(dashboardClicked).toBe(true);
+  expect(sidebarProps.handleDashboard).toHaveBeenCalled();
 });
 
 // Test to check if the theme button toggles dark mode correctly
-test('theme button toggles dark mode on click', () => {
-  // Create a mock function for setDarkMode
-  let darkMode = false;
-  const setDarkMode = vi.fn(() =>{
-    darkMode = true
-  });
-  
-
+test('should toggle dark mode on theme button click', () => {
   render(
     <Router>
-      <Sidebar
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-      />
+      <Sidebar {...sidebarProps}/>
     </Router>
   );
 
@@ -71,30 +61,33 @@ test('theme button toggles dark mode on click', () => {
   fireEvent.click(screen.getByTestId('ThemeButton'));
 
   // Assert that setDarkMode is called with the expected arguments
-  expect(setDarkMode).toHaveBeenCalledTimes(1);
-
-  // Assert that the callback function returns the updated darkMode value (true)
-  expect(darkMode).toBe(true);
+  expect(sidebarProps.setDarkMode).toHaveBeenCalled();
 });
 
 // Test to check if the logout button click is handled correctly
-test('handles logout button click', async () => {
+test('should handle logout button click', async () => {
   render(
     <Router>
-      <Sidebar/>
+      <Sidebar {...sidebarProps}/>
     </Router>
   );
 
   // Mock the fetch POST request specifically for logout
-  const fetchMockSuccess = vi
-    .spyOn(window, 'fetch')
+  const fetchMockSuccess:SpyInstance<[input: RequestInfo | URL, init?: RequestInit | undefined], Promise<Response>> = 
+  vi.spyOn(window, 'fetch')
     .mockResolvedValueOnce({
       ok: true,
       json: () => Promise.resolve({ success: true }),
+    } as Response);
+
+  // Mock window.alert
+  const mockAlert: SpyInstance<[message?: string], void> = 
+    vi.spyOn(window, 'alert').mockImplementation((message) => {
+      expect(message).toBe('You have been successfully logged out. Redirecting to Welcome Page');
     });
 
   // Simulate logout button click
-  const logoutButton = screen.getByTestId('LogoutButton');
+  const logoutButton: HTMLElement = screen.getByTestId('LogoutButton');
   fireEvent.click(logoutButton);
 
   // Wait for the async operation to complete
@@ -113,4 +106,13 @@ test('handles logout button click', async () => {
       })
     );
   });
+    // Assert that window.alert is called when fetch is successful
+    expect(mockAlert).toHaveBeenCalled();
+
+    // Assert that the URL has changed to the Welcome Page
+    expect(window.location.pathname).toBe('/');
+
+    // Restore the original implementation of window.alert and fetch
+    mockAlert.mockRestore();
+    fetchMockSuccess.mockRestore();
 });
