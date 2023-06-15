@@ -9,6 +9,7 @@ const sidebarProps = {
   darkMode: false,
   handleDashboard: vi.fn(),
   setDarkMode: vi.fn(),
+  dashboardClicked: false
 };
 
 // Test to check if sidebar component renders
