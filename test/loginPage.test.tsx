@@ -1,7 +1,8 @@
 import { render, screen, fireEvent, waitFor} from "@testing-library/react";
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi, SpyInstance } from 'vitest'
 import { BrowserRouter as Router } from "react-router-dom";
 import LoginPage from '../src/pages/LoginPage';
+import React from 'react';
 
 test("renders the login form", () => {
   render(
@@ -11,13 +12,13 @@ test("renders the login form", () => {
   );
 
   // Find the username input field by its label text
-  const usernameInput = screen.getByPlaceholderText("Enter your username");
+  const usernameInput = screen.getByPlaceholderText("Enter your username") as HTMLInputElement;
 
   // Find the password input field by its label text
-  const passwordInput = screen.getByPlaceholderText("Enter your password");
+  const passwordInput = screen.getByPlaceholderText("Enter your password") as HTMLInputElement;
 
   // Find the login button by its visible text content
-  const loginButton = screen.getByText("Login");
+  const loginButton = screen.getByText("Login") as HTMLInputElement;
 
   // Assert that the form elements are present
   expect(usernameInput).toBeInTheDocument();
@@ -33,12 +34,13 @@ test("input fields capture user input correctly", () => {
   );
 
   // Find the username input field by its label text
-  const usernameInput = screen.getByPlaceholderText("Enter your username");
-  const passwordInput = screen.getByPlaceholderText("Enter your password");
+  const usernameInput = screen.getByPlaceholderText("Enter your username") as HTMLInputElement;
+  const passwordInput = screen.getByPlaceholderText("Enter your password") as HTMLInputElement;
 
   // Create fake input values
-  const testUsername = "testuser";
-  const testPassword = "testpassword";
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+  const testUsername = "testuser" as string;
+  const testPassword = "testpassword" as string;
   fireEvent.change(usernameInput, { target: { value: testUsername } });
   fireEvent.change(passwordInput, { target: { value: testPassword } });
 
@@ -54,18 +56,19 @@ test('submits the login form and sends a fetch POST request', async () => {
     </Router>
   );
 
-  const usernameInput = screen.getByPlaceholderText('Enter your username');
-  const passwordInput = screen.getByPlaceholderText('Enter your password');
-  const loginButton = screen.getByText('Login');
+  const usernameInput = screen.getByPlaceholderText('Enter your username') as HTMLInputElement;
+  const passwordInput = screen.getByPlaceholderText('Enter your password') as HTMLInputElement;
+  const loginButton = screen.getByText('Login') as HTMLInputElement;
 
   fireEvent.change(usernameInput, { target: { value: 'testuser' } });
   fireEvent.change(passwordInput, { target: { value: 'testpassword'} });
 
   // Mock the fetch POST request
-  const fetchMockSuccess = vi.spyOn(window, 'fetch').mockResolvedValueOnce({
-    ok: true,
-    json: () => Promise.resolve({ success: true }),
-  });
+  const fetchMockSuccess: SpyInstance<[input: RequestInfo | URL, init?: RequestInit | undefined], Promise<Response>> = 
+    vi.spyOn(window, 'fetch').mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    } as Response);
 
   fireEvent.click(loginButton);
 
@@ -87,4 +90,8 @@ test('submits the login form and sends a fetch POST request', async () => {
       }
     );
   });
+      // Assert that the URL has changed to the homepage
+      expect(window.location.pathname).toBe('/home');
+      // Restore the original implementation of fetch
+      fetchMockSuccess.mockRestore();
 });
