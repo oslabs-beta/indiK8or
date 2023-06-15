@@ -1,3 +1,7 @@
+import React from "react";
+import { Theme } from '@mui/material'
+import { PaletteMode } from "@mui/material";
+
 export type ServerError = {
   log: string;
   status: number;
@@ -12,5 +16,18 @@ export type SidebarProps = {
   userId: string,
   darkMode: boolean,
   handleDashboard: () => void;
-  setDarkMode: Function;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  dashboardClicked: boolean;
+};
+
+export type LightDarkTheme = Theme & {
+  palette: {
+    mode: PaletteMode;
+    background: {
+      default: string;
+    };
+    text: {
+      primary: string;
+    };
+  };
 };

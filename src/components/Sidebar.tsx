@@ -6,7 +6,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import '../css/Sidebar.css'
-import { SidebarProps } from '/home/babonjmc/Codesmith/indiK8or/types.ts'
+import { SidebarProps } from '../../types'
 
 // Pass the props component from the parent component (HomePage)
 const Sidebar = (props: SidebarProps): ReactElement => {

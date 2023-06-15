@@ -1,4 +1,4 @@
-import { useState, useRef, FunctionComponent, ChangeEvent} from 'react';
+import { useState, useRef, ChangeEvent, ReactElement, FormEvent} from 'react';
 import {
   IconButton,
   InputAdornment,
@@ -16,25 +16,17 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LoginIcon from '@mui/icons-material/Login';
 import GitHubIcon from '@mui/icons-material/GitHub'
 import '../css/Login.css';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-type LoginState = {
-  username: string,
-  password: string,
-  showPassword: boolean,
-  loginError: string,
-  showErrorAlert: boolean
-}
+const LoginPage = (): ReactElement => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [loginError, setLoginError] = useState<string>('');
+  const [showErrorAlert, setShowErrorAlert] = useState<boolean>(false);
 
-const LoginPage: FunctionComponent <LoginState> = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [loginError, setLoginError] = useState('');
-  const [showErrorAlert, setShowErrorAlert] = useState(false);
-
-  const passwordRef = useRef(null);
-  const navigate = useNavigate();
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const navigate: NavigateFunction = useNavigate();
 
   const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>):void => {
     setUsername(event.target.value);
@@ -52,10 +44,10 @@ const LoginPage: FunctionComponent <LoginState> = () => {
     setShowErrorAlert(false);
   };
 
-  const handleSubmit = (event: MouseEvent) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    fetch('http://localhost:4000/login/loginRequest', {
+    try {
+    const response = await fetch('http://localhost:4000/login/loginRequest', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,25 +55,23 @@ const LoginPage: FunctionComponent <LoginState> = () => {
       // include cookies from cross origin request
       credentials: 'include',
       body: JSON.stringify({ username, password }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setUsername('');
-          setPassword('');
-          navigate('/home');
-        } else if (response.status === 404) {
-          setLoginError('Invalid username or password');
-          setPassword('');
-          passwordRef.current.focus();
-          setShowErrorAlert(true);
-        } else {
-          console.error('Server error:', response.statusText);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+    });
+    if (response.ok) {
+      setUsername('');
+      setPassword('');
+      navigate('/home');
+    } else if (response.status === 404) {
+      setLoginError('Invalid username or password');
+      setPassword('');
+      passwordRef.current?.focus();
+      setShowErrorAlert(true);
+    } else {
+      console.error('Server error:', response.statusText);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className='login-back'>
@@ -92,7 +82,7 @@ const LoginPage: FunctionComponent <LoginState> = () => {
       justifyContent="center"
     >
       <Paper className="login-paper">
-        <Grid align="center">
+        <Grid>
           <Avatar className="login-avatar">
             <LoginIcon />
           </Avatar>
