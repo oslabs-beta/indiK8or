@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LoginIcon from '@mui/icons-material/Login';
+import GitHubIcon from '@mui/icons-material/GitHub'
 import '../css/Login.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -149,6 +150,20 @@ const LoginPage: FunctionComponent <LoginState> = () => {
             <Link href="/login/signupRequest">Sign up</Link>
           </Typography>
         </form>
+        <Grid container justifyContent="center" marginTop="1em">
+          <Button
+            startIcon={<GitHubIcon />}
+            size="large"
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              const githubLoginUrl = 'http://localhost:4000/auth/github';
+              window.location.href = githubLoginUrl;
+            }}
+            >
+              Login with Github
+            </Button>
+        </Grid>
         <div className="snackbar-container">
           <Snackbar
             open={showErrorAlert}

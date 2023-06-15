@@ -40,7 +40,7 @@ describe('OAuth Routes', () => {
     expect(response.headers.location).toMatch(/^https:\/\/github.com\/login\/oauth\/authorize\?/);
     console.log('Response headers location', response.headers.location);
   });
-  it('Github callback should return a 302 status code and redirect to the home page', async () => {
+  it('Github callback should return a 302 status code and redirect to Github login', async () => {
     const response = await request(server).get('/auth/github/callback');
     // 302 is a redirect code
     expect(response.statusCode).toBe(302);

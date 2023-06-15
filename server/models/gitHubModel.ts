@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+/*
+This file is unused since converting backend to TS, but it is a great example of what a model looks like before it needs to be modified to work with passport js
+*/
+
 const Schema = mongoose.Schema;
 
 const gitSchema = new Schema({
