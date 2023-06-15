@@ -13,8 +13,4 @@ export type SidebarProps = {
   darkMode: boolean,
   handleDashboard: () => void;
   setDarkMode: Function;
-}
-
-
-
-
+};
