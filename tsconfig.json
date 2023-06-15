@@ -1,28 +1,3 @@
-// {
-//     "compilerOptions": {
-//       "target": "ESNext",
-//       "module": "ESNext",
-//       "lib": ["DOM", "DOM.Iterable", "ESNext"],
-//       "allowJs": true,
-//       "skipLibCheck": true,
-//       "esModuleInterop": true,
-//       "strict": true,
-//       "forceConsistentCasingInFileNames": true,
-//       "isolatedModules": true,
-//       "noEmit": true,
-//       "jsx": "react-jsx",
-//       "allowImportingTsExtensions": true,
-//       "resolveJsonModule": true,
-//       "moduleResolution": "nodenext"
-//     },
-//     "include": ["src"],
-//     "references": [
-//       {
-//         "path": "./tsconfig.node.json"
-//       }
-//     ]
-//   }
-
   {
     "compilerOptions": {
       "target": "ES2020",

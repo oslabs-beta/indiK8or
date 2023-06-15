@@ -11,8 +11,8 @@ console.log('INSIDE GETPODS MIDDLEWARE');
 
     child.stdout.on('data', (chunk: Buffer) => {
       chunks.push(chunk);
+      console.log('chunks:', chunks);
     })
-    console.log('chunks:', chunks);
 
     child.stdout.on('end', () => {
       const data: string = Buffer.concat(chunks).toString();
@@ -32,7 +32,7 @@ console.log('INSIDE GETPODS MIDDLEWARE');
         }
       }
       console.log('results are: ', results);
-      
+
       res.locals.pods = results;
       return next();
     })
