@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { loginRouter } from './routes/login';
 import { logoutRouter } from './routes/logout';
 import { oAuthRouter } from './routes/oAuth';
+import { podRouter } from './routes/pod';
 import grafanaRouter from './routes/grafana';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
@@ -54,6 +55,7 @@ app.use('/login', loginRouter);
 app.use('/dashboard', grafanaRouter);
 app.use('/logout', logoutRouter);
 app.use('/auth', oAuthRouter);
+app.use('/pod', podRouter);
 
 // catch-all handler
 app.use((_req: Request, res: Response) =>

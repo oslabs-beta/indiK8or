@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { ReactElement, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { Box, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PropTypes from 'prop-types'
 import '../css/Sidebar.css'
+import { SidebarProps } from '/home/babonjmc/Codesmith/indiK8or/types.ts'
 
 // Pass the props component from the parent component (HomePage)
-const Sidebar = (props) => {
+const Sidebar = (props: SidebarProps): ReactElement => {
   // deconstruct props
   const { userId, darkMode, handleDashboard, setDarkMode } = props;
   // State variables to control the visibility of different texts in the sidebar
-  const [showLogoutText, setShowLogoutText] = useState(false);
-  const [showThemeText, setShowThemeText] = useState(false);
-  const [showDashText, setShowDashText] = useState(false);
+  const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
+  const [showThemeText, setShowThemeText] = useState<boolean>(false);
+  const [showDashText, setShowDashText] = useState<boolean>(false);
 
   // React Router hook for navigation
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   // Handles the logout button click
-  const handleLogout = async () => {
+  const handleLogout = async ():Promise<void> => {
     try {
       // Send logout request to the backend
-      const response = await fetch('http://localhost:4000/logout', {
+      const response: Response = await fetch('http://localhost:4000/logout', {
         method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -47,39 +47,39 @@ const Sidebar = (props) => {
   };
 
   // Event handlers for mouse hover text visibility on icons
-  const handleMouseEnterDash = () => {
+  const handleMouseEnterDash = ():void  => {
     setShowDashText(true);
   };
 
-  const handleMouseLeaveDash = () => {
+  const handleMouseLeaveDash = ():void  => {
     setShowDashText(false);
   };
 
-  const handleMouseEnterLogout = () => {
+  const handleMouseEnterLogout = ():void  => {
     setShowLogoutText(true);
   };
 
-  const handleMouseLeaveLogout = () => {
+  const handleMouseLeaveLogout = ():void  => {
     setShowLogoutText(false);
   };
 
-  const handleMouseEnterTheme = () => {
+  const handleMouseEnterTheme = ():void  => {
     setShowThemeText(true);
   };
 
-  const handleMouseLeaveTheme = () => {
+  const handleMouseLeaveTheme = ():void => {
     setShowThemeText(false);
   };
 
   // Function to handle dashboard toggle
-  const handleDashToggle = () => {
+  const handleDashToggle = ():void  => {
     handleDashboard();
   };
 
   // Function to handle theme toggle
   const handleThemeToggle = () => {
     // Set dark mode to opposite of current mode using prevState
-    setDarkMode((prevDarkMode) => !prevDarkMode);
+    setDarkMode((prevDarkMode: boolean) => !prevDarkMode);
   };
 
   return (
@@ -142,12 +142,5 @@ const Sidebar = (props) => {
     </Box>
   );
 };
-
-Sidebar.propTypes = {
-  userId: PropTypes.string,
-  darkMode: PropTypes.bool,
-  handleDashboard: PropTypes.func,
-  setDarkMode: PropTypes.func,
-}
 
 export default Sidebar;

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, FunctionComponent, ChangeEvent} from 'react';
 import {
   IconButton,
   InputAdornment,
@@ -18,7 +18,15 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import '../css/Login.css';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+type LoginState = {
+  username: string,
+  password: string,
+  showPassword: boolean,
+  loginError: string,
+  showErrorAlert: boolean
+}
+
+const LoginPage: FunctionComponent <LoginState> = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -28,23 +36,23 @@ const LoginPage = () => {
   const passwordRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleUsernameChange = (event) => {
+  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>):void => {
     setUsername(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>):void => {
     setPassword(event.target.value);
   };
 
-  const handleShowPasswordToggle = () => {
+  const handleShowPasswordToggle = ():void => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const handleSnackbarClose = () => {
+  const handleSnackbarClose = ():void => {
     setShowErrorAlert(false);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: MouseEvent) => {
     event.preventDefault();
 
     fetch('http://localhost:4000/login/loginRequest', {
