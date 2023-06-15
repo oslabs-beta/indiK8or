@@ -10,6 +10,9 @@ export type ServerError = {
 
 export type DashProps = {
   dashboardClicked: boolean;
+};
+
+export type PodProps = {
   podClicked: boolean;
 };
 

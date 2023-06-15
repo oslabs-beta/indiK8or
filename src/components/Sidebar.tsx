@@ -95,7 +95,7 @@ const Sidebar = (props: SidebarProps): ReactElement => {
   };
 
   // Function to handle pod toggle
-  const handlePodToggle = (): void => {
+  const handlePodClicked = (): void => {
     handlePod();
   };
 
@@ -134,7 +134,7 @@ const Sidebar = (props: SidebarProps): ReactElement => {
           data-testid="PodButton"
           onMouseEnter={handleMouseEnterPod}
           onMouseLeave={handleMouseLeavePod}
-          onClick={handlePodToggle}
+          onClick={handlePodClicked}
         >
           <ListItemIcon className="listItemIcon">
             <ListAltIcon sx={{ fontSize: 50 }} />

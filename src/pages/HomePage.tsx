@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from '../components/Dashboard.tsx';
+import Pods from '../components/Pods.tsx';
 import { useState, useEffect } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar.tsx';
@@ -81,10 +82,8 @@ const HomePage = () => {
               setDarkMode={setDarkMode}
               userId={userId}
             />
-            <Dashboard
-              dashboardClicked={dashboardClicked}
-              podClicked={podClicked}
-            />
+            <Dashboard dashboardClicked={dashboardClicked}/>
+            <Pods podClicked={podClicked} />
           </Grid>
         </ThemeProvider>
       )}
