@@ -10,14 +10,17 @@ export type ServerError = {
 
 export type DashProps = {
   dashboardClicked: boolean;
+  podClicked: boolean;
 };
 
 export type SidebarProps = {
   userId: string,
   darkMode: boolean,
   handleDashboard: () => void;
+  handlePod: () => void;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   dashboardClicked: boolean;
+  podClicked: boolean;
 };
 
 export type LightDarkTheme = Theme & {
