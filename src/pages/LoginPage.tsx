@@ -44,11 +44,7 @@ const LoginPage = (): ReactElement => {
     setShowErrorAlert(false);
   };
 
-<<<<<<< HEAD
-  const handleSubmit = (event: MouseEvent): void => {
-=======
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
->>>>>>> 515f8faa7004c99f8d5b9ecce68148fa41d723d6
     event.preventDefault();
     try {
     const response = await fetch('http://localhost:4000/login/loginRequest', {

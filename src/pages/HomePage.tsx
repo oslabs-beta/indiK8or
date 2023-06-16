@@ -1,15 +1,10 @@
 import { Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { setLoggedIn, setDashboardClicked, setDarkMode, setUserId } from '../slices/homePageSlice';
-import { useAppSelector, useAppDispatch } from '../hooks.ts'
 import Sidebar from '../components/Sidebar.tsx';
 import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from '../components/Dashboard.tsx';
 import { useState, useEffect } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import Sidebar from '../components/Sidebar.tsx';
 import '../css/HomePage.css';
 import { LightDarkTheme } from '../../types.ts';
 
@@ -51,7 +46,7 @@ const HomePage = () => {
       }
     };
     checkLoggedIn();
-  }, [dispatch, navigate]);
+  }, [navigate]);
 
   const darkTheme: LightDarkTheme = createTheme({
     palette: {
