@@ -1,5 +1,6 @@
 
-![Screenshot 2023-06-16 at 9 54 37 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/4e7df320-28bb-4272-b94f-b382bfc730c8)
+<img width="959" alt="Screenshot 2023-06-16 at 4 59 07 PM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/2530d773-8e61-4969-8431-886757e1013b">
+
 
 # Built With
 
@@ -95,10 +96,6 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 |  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) |  ![Screenshot 2023-06-16 at 4 22 30 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/120f2037-7659-461d-a762-1c81421ad5e7) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
 | ------------- | ------------- |------------- | ------------- |
 | Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
-
-
-https://www.citypng.com/public/uploads/preview/hd-linkedin-official-logo-transparent-background-31623962207jz85kqlqot.png
-
 
 # License Information
 
