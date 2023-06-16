@@ -1,6 +1,33 @@
 
+![Screenshot 2023-06-16 at 9 54 37 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/4e7df320-28bb-4272-b94f-b382bfc730c8)
+
+# Built With
+
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/-react-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Node](https://img.shields.io/badge/-node-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/-Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-000000?style=for-the-badge&logo=MongoDB&logoColor=green)
+![OAuth](https://img.shields.io/badge/-OAuth-white?style=for-the-badge&logo=OAuth&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F2F4F9?style=for-the-badge&logo=grafana&logoColor=orange&labelColor=F2F4F9)
+![Prometheus](https://img.shields.io/badge/Prometheus-000000?style=for-the-badge&logo=prometheus&labelColor=000000)
+![Helm](https://img.shields.io/badge/Helm-0F1689?style=for-the-badge&logo=Helm&labelColor=0F1689)
+![MUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Supertest](https://img.shields.io/badge/-Supertest-C21325?style=for-the-badge&logo=Supertest&logoColor=white)
+![Vitest](https://img.shields.io/badge/-Vitest-C21325?style=for-the-badge&logo=Vitest&logoColor=white)
+
+
+</div>
+
 # indiK8or
-indiK8or is a Kubernetes Visualization Tool that will display your cluster in real-time
+
+indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
 # Getting Started
 
@@ -13,51 +40,55 @@ ________________________________________________________________________________
 
 1. Make sure you have Docker installed on your local machine.
 2. Once Docker is installed, run the following command:
-  < minikube delete >
+   ` minikube delete `
 3. Start the minikube service with the following command:
-  < minikube start --cpus 4 --memory 8192 --vm-driver hyperkit >
+   ` minikube start --cpus 4 --memory 8192 --vm-driver hyperkit `
    Note: it may take a while to fully install. Please be patient
-5. Make sure you have kubectl installed to add deployments 
-   < brew install kubectl >
-6. install helm
-   < brew install helm >
-7. copy the code snippet below into your terminal and run it
-   < helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+4. Make sure you have kubectl installed to add deployments 
+   ` brew install kubectl `
+5. install helm
+   ` brew install helm `
+6. copy the code snippet below into your terminal and run it
+   ```
+   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-    helm repo update >
-9. install prometheus
-   < helm install prometheus prometheus-community/kube-prometheus-stack >
-11. configure a yaml file for grafana, replace the part of 'yourChoiceOfName' with the name you want for your yaml file.
-   < kubectl get configmap prometheus-grafana -o yaml > yourChoiceOfName.yaml
-12. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
-   < [security]
+    helm repo update 
+    ```
+7. install prometheus
+   ` helm install prometheus prometheus-community/kube-prometheus-stack `
+8. configure a yaml file for grafana, replace the part of 'yourChoiceOfName' with the name you want for your yaml file.
+    ` kubectl get configmap prometheus-grafana -o yaml > yourChoiceOfName.yaml `
+9. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
+   ```yaml
+      [security]
       allow_embedding: true
       [auth.anonymous]
       enabled: true
       [dataproxy]
-      timeout: 600 >
-13. Apply the yaml file, and replace 'filePath' with the path of your yaml file
-    < kubectl apply -f 'filePath' >
+      timeout: 600 
+    ```
+10. Apply the yaml file, and replace 'filePath' with the path of your yaml file
+    ` kubectl apply -f 'filePath' `
     
     Here is an example if your yaml file resides in your desktop foler:
-    kubectl apply -f /Users/Ivy/Desktop/newMap.yaml
+    ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 _________________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 
-14. Restart minikube by running below commands separately
-    < minikube stop >
-    < minikube start >
+11. Restart minikube by running below commands separately
+    ` minikube stop `
+    ` minikube start `
 
-15. Open your browser and go to http://localhost:3000 and sign in to your grafana with
+12. Open your browser and go to http://localhost:3000 and sign in to your grafana with
    default user: admin
    default password: prom-operator
    
    NOTE: You do not have to do step 15 if you have previously logged before.
    
-16. In your terminal, run this command
-    < npm run start >
-17. Now open your browser and go to http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+13. In your terminal, run this command
+    ` npm run start `
+14. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
 
 
