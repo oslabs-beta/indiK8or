@@ -9,7 +9,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import Scan from './Scan';
 
 //pass props from parent component (HomePage)
 export default function Dashboard(props: DashProps): ReactElement {
@@ -17,7 +19,10 @@ export default function Dashboard(props: DashProps): ReactElement {
   const { podClicked } = props;
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Array<object>>([{}]);
-  const [openModal, setOpenModal] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   async function fetchDashBoardData() {
     try {
@@ -77,13 +82,13 @@ export default function Dashboard(props: DashProps): ReactElement {
             <TableHead>
               <TableRow>
                 <TableCell>NAME</TableCell>
-                <TableCell >READY</TableCell>
+                <TableCell>READY</TableCell>
                 <TableCell>STATUS</TableCell>
-                <TableCell >RESTARTS</TableCell>
-                <TableCell >AGE</TableCell>
-                <TableCell >IP</TableCell>
-                <TableCell >NODE</TableCell>
-                <TableCell >VULNERABILITY</TableCell>
+                <TableCell>RESTARTS</TableCell>
+                <TableCell>AGE</TableCell>
+                <TableCell>IP</TableCell>
+                <TableCell>NODE</TableCell>
+                <TableCell>VULNERABILITY</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -92,7 +97,9 @@ export default function Dashboard(props: DashProps): ReactElement {
                   key={pod.NAME}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">{pod.NAME}</TableCell>
+                  <TableCell component="th" scope="row">
+                    {pod.NAME}
+                  </TableCell>
                   <TableCell align="left">{pod.READY}</TableCell>
                   <TableCell align="left">{pod.STATUS}</TableCell>
                   <TableCell align="left">{pod.RESTARTS}</TableCell>
@@ -100,8 +107,17 @@ export default function Dashboard(props: DashProps): ReactElement {
                   <TableCell align="left">{pod.IP}</TableCell>
                   <TableCell align="left">{pod.NODE}</TableCell>
                   <TableCell align="left">
-                  <Button variant="contained" onClick={() => {() => {setOpenModal(true)}}}>Scan</Button>
-                  {openModal && <Scan closeModal={setOpenModal} />}
+                    <Button variant="contained" onClick={handleOpen}>
+                      Scan
+                    </Button>
+                    <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Scan />
+                    </Modal>
                   </TableCell>
                 </TableRow>
               ))}
