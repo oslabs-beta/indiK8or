@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import { sessionController } from '../controllers/sessionController';
+import { OAuthUser } from '../../types';
 
 const oAuthRouter = express.Router();
 
@@ -23,8 +24,8 @@ oAuthRouter.get(
   (req: Request, res: Response) => {
     console.log('Inside OauthRouter successful Oauth');
     console.log('req.user', req.user);
-    if (req.user && (req.user as any)._id){
-      const userId = (req.user as any)._id;
+    if (req.user && (req.user as OAuthUser)._id){
+      const userId = (req.user as OAuthUser)._id;
     res.cookie('ssid', userId, { httpOnly: true });
     return res.redirect('http://localhost:5000/home');
     }

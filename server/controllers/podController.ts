@@ -1,33 +1,33 @@
-import { spawn } from 'child_process';
+import { spawn, ChildProcess } from 'child_process';
 import { Request, Response, NextFunction } from 'express';
+import { PodRow } from '../../types';
 
-const podController: any = {};
-
-podController.getPods = (_req: Request, res: Response, next: NextFunction): void => {
+const podController = {
+getPods: (_req: Request, res: Response, next: NextFunction): void => {
 console.log('INSIDE GETPODS MIDDLEWARE');
   try {
-    const child: any = spawn('kubectl', [ 'get', 'pod', '-o', 'wide']);
+    const child: ChildProcess = spawn('kubectl', [ 'get', 'pod', '-o', 'wide']);
     const chunks: Buffer[] = [];
-
+    if (child.stdout){
     child.stdout.on('data', (chunk: Buffer) => {
       chunks.push(chunk);
     })
     console.log('chunks:', chunks);
-
     child.stdout.on('end', () => {
       const data: string = Buffer.concat(chunks).toString();
       console.log('data is: ', data);
       const lines: string[] = data.split('\n');
       const headers: string[] = lines[0].split(/\s+/);
-      const results: any[] = [];
+      const results: PodRow[] = [];
 
       for (let i = 1; i < lines.length; i++) {
         const values: string[] = lines[i].split(/\s+/);
         if (values.length === headers.length) {
-          const row: any = {};
+          const row: PodRow = {} as PodRow;
           for (let j = 0; j < headers.length; j++) {
             row[headers[j]] = values[j];
           }
+          console.log('row here check type', row);
           results.push(row);
         }
       }
@@ -36,7 +36,7 @@ console.log('INSIDE GETPODS MIDDLEWARE');
       res.locals.pods = results;
       return next();
     })
-
+    }
     // child.stdout.on('data', (data: Buffer) => {
     //   console.log('data:', data);
     //   const response = JSON.parse(data.toString());
@@ -57,6 +57,6 @@ console.log('INSIDE GETPODS MIDDLEWARE');
     };
     return next(errMessage);
   }
+}
 };
-
 export { podController };

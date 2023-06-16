@@ -31,3 +31,24 @@ export type LightDarkTheme = Theme & {
     };
   };
 };
+
+export type OAuthUser = {
+  _id: string;
+  username: string;
+  createdAt: string;
+  __v: number;
+}
+
+export type PodRow = {
+  [key: string]: string;
+  NAME: string;
+  READY: string;
+  STATUS: string;
+  RESTARTS:string;
+  AGE: string;
+  IP: string;
+  NODE: string;
+  NOMINATED: string;
+  READINESS: string;
+  GATES: string;
+}
