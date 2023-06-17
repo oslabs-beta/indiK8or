@@ -48,7 +48,7 @@ ________________________________________________________________________________
 2. Once Docker is installed, run the following command:
    ` minikube delete `
 3. Start the minikube service with the following command:
-   ` minikube start --cpus 4 --memory 8192 --vm-driver hyperkit `
+   ` minikube start --cpus 4 --memory 8192 --vm-driver Docker `
    Note: it may take a while to fully install. Please be patient
 4. Make sure you have kubectl installed to add deployments 
    ` brew install kubectl `
