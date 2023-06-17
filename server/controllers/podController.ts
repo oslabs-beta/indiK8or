@@ -1,42 +1,48 @@
-import { spawn } from 'child_process';
+import { spawn, ChildProcess } from 'child_process';
 import { Request, Response, NextFunction } from 'express';
+import { PodRow } from '../../types';
 
-const podController: any = {};
-
-podController.getPods = (_req: Request, res: Response, next: NextFunction): void => {
+const podController = {
+getPods: (_req: Request, res: Response, next: NextFunction): void => {
 console.log('INSIDE GETPODS MIDDLEWARE');
   try {
-    const child: any = spawn('kubectl', [ 'get', 'pod', '-o', 'wide']);
+    const child: ChildProcess = spawn('kubectl', [ 'get', 'pod', '-o', 'wide']);
     const chunks: Buffer[] = [];
-
+    if (child.stdout){
     child.stdout.on('data', (chunk: Buffer) => {
       chunks.push(chunk);
+      console.log('chunks:', chunks);
     })
-    console.log('chunks:', chunks);
 
     child.stdout.on('end', () => {
       const data: string = Buffer.concat(chunks).toString();
       console.log('data is: ', data);
       const lines: string[] = data.split('\n');
-      const headers: string[] = lines[0].split(/\s+/);
+
+      console.log('lines are: ', lines);
+      const headers: string[] = lines[0].split(/\s{2,}/);
+      console.log('headers are:', headers);
       const results: any[] = [];
 
       for (let i = 1; i < lines.length; i++) {
-        const values: string[] = lines[i].split(/\s+/);
+        const values: string[] = lines[i].split(/\s{2,}/);
         if (values.length === headers.length) {
-          const row: any = {};
+
+          const pod: any = {};
+
           for (let j = 0; j < headers.length; j++) {
-            row[headers[j]] = values[j];
+            pod[headers[j]] = values[j];
           }
-          results.push(row);
+          results.push(pod);
+
         }
       }
       console.log('results are: ', results);
-      
+
       res.locals.pods = results;
       return next();
     })
-
+    }
     // child.stdout.on('data', (data: Buffer) => {
     //   console.log('data:', data);
     //   const response = JSON.parse(data.toString());
@@ -57,6 +63,6 @@ console.log('INSIDE GETPODS MIDDLEWARE');
     };
     return next(errMessage);
   }
+}
 };
-
 export { podController };

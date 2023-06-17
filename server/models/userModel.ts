@@ -10,7 +10,7 @@ const userSchema = new Schema({
   password: { type: String, required: true },
 });
 
-const SALT_WORK_FACTOR: number = 10;
+const SALT_WORK_FACTOR = 10;
 
 // pre hook runs a function before the document is saved to the collection
 userSchema.pre('save', function (next) {

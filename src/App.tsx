@@ -10,14 +10,12 @@ import { store } from './store'
 
 function App(): ReactElement {
   return (
-    <Provider store={store}>
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login/loginRequest" element={<LoginPage />} />
         <Route path="/login/signupRequest" element={<SignupPage />} />
         <Route path="/home" element={<HomePage />} />
       </Routes>
-    </Provider>
   );
 }
 
