@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
-const grafanaController : any = {};
 
-grafanaController.nodeExporter = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+const grafanaController = {
+nodeExporter: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     const username = 'admin';
     const password = 'prom-operator';
     console.log('Inside grafanaController.nodeExporter');
@@ -35,6 +35,6 @@ grafanaController.nodeExporter = async (_req: Request, res: Response, next: Next
       }
       return next(errMessage);
     }
-}
-
+},
+};
 export { grafanaController };

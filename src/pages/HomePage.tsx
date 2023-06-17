@@ -1,25 +1,28 @@
 import { Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Sidebar from '../components/Sidebar.tsx';
 import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from '../components/Dashboard.tsx';
+// import Pods from '../components/Pods.tsx';
 import { useState, useEffect } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import '../css/HomePage.css';
 import { LightDarkTheme } from '../../types.ts';
-
+import Sidebar from '../components/Sidebar.tsx';
 const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [dashboardClicked, setDashboardClicked] = useState<boolean>(false);
+  const [podClicked, setPodClicked] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [userId, setUserId] = useState<string>('');
 
   const navigate: NavigateFunction = useNavigate();
 
   // Set the value of dashboardClicked to the opposite of its current value using func
-  const handleDashboard = ():void =>
+  const handleDashboard = (): void =>
     setDashboardClicked((prevDashboardClicked) => !prevDashboardClicked);
 
+  const handlePod = (): void =>
+    setPodClicked((prevPodClicked) => !prevPodClicked);
   // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
   // if they are not logged in we will receive a 303 and send them to the loginPage
   useEffect(() => {
@@ -29,7 +32,7 @@ const HomePage = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-          },
+          }, 
           credentials: 'include',
           body: JSON.stringify({}),
         });
@@ -47,7 +50,6 @@ const HomePage = () => {
     };
     checkLoggedIn();
   }, [navigate]);
-
   const darkTheme: LightDarkTheme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
@@ -64,15 +66,17 @@ const HomePage = () => {
         //pass props to the children
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
-          <Grid className='homePage' data-testid='screenComponent'>
+          <Grid className="homePage" data-testid="screenComponent">
             <Sidebar
               dashboardClicked={dashboardClicked}
               handleDashboard={handleDashboard}
+              podClicked={podClicked}
+              handlePod={handlePod}
               darkMode={darkMode}
               setDarkMode={setDarkMode}
               userId={userId}
             />
-            <Dashboard dashboardClicked={dashboardClicked} />
+            <Dashboard dashboardClicked={dashboardClicked} podClicked={podClicked}/>
           </Grid>
         </ThemeProvider>
       )}
@@ -81,5 +85,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
