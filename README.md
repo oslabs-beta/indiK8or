@@ -1,6 +1,5 @@
 
-<img width="959" alt="Screenshot 2023-06-16 at 4 59 07 PM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/2530d773-8e61-4969-8431-886757e1013b">
-
+<img width="959" alt="Screenshot 2023-06-16 at 4 59 07 PM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/1183119b-c4bf-4bac-82f0-e3538af90831">
 
 # Built With
 ![JavaScript](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -33,8 +32,10 @@
 
 # indiK8or
 
+
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
+<img src="https://github.com/oslabs-beta/indiK8or/blob/Ivy-ts/src/assets/appDemo.gif" height="450"/>
 # Getting Started
 
 indiK8or functionality assumes that you have Docker and Kubernetes already installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
@@ -72,8 +73,9 @@ ________________________________________________________________________________
       enabled: true
       [dataproxy]
       timeout: 600 
-    ```
-10. Apply the yaml file, and replace 'filePath' with the path of your yaml file
+    ```  
+    <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/cf928d70-129e-4ca7-9faa-16091aa8c785" width="350" height="300"/>
+11. Apply the yaml file, and replace 'filePath' with the path of your yaml file
     ` kubectl apply -f 'filePath' `
     
     Here is an example if your yaml file resides in your desktop foler:
