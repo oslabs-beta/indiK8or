@@ -50,20 +50,31 @@ ________________________________________________________________________________
    ` minikube delete `
 3. Start the minikube service with the following command:
    ` minikube start --cpus 4 --memory 8192 --vm-driver Docker `
+   
    Note: it may take a while to fully install. Please be patient
 4. Make sure you have kubectl installed to add deployments 
-   ` brew install kubectl `
-5. install helm
-   ` brew install helm `
-6. copy the code snippet below into your terminal and run it
+   - If you use macOS, run: ` brew install kubectl `
+   - If you use Windows, run: ` choco install kubernetes-cli `
+   - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
+5. Install helm
+   - If you use macOS, run: ` brew install helm `
+   - If you use Windows, run: ` choco install kubernetes-helm `
+   - If you use Linux, run:
+     ``` $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+         $ chmod 700 get_helm.sh
+         $ ./get_helm.sh 
+    NOTE: Refer to this link for more details: 
+   https://kubernetes.io/docs/tasks/tools/
+6. Copy the code snippet below into your terminal and run it
    ```
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update 
     ```
-7. install prometheus
+7. Install Prometheus 
+
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
-8. configure a yaml file for grafana, replace the part of 'yourChoiceOfName' with the name you want for your yaml file.
+8. Configure a yaml file for grafana, replace the part of 'yourChoiceOfName' with the name you want for your yaml file.
     ` kubectl get configmap prometheus-grafana -o yaml > yourChoiceOfName.yaml `
 9. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
@@ -73,9 +84,10 @@ ________________________________________________________________________________
       enabled: true
       [dataproxy]
       timeout: 600 
-    ```  
+   ```
+      
     <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/cf928d70-129e-4ca7-9faa-16091aa8c785" width="350" height="300"/>
-11. Apply the yaml file, and replace 'filePath' with the path of your yaml file
+10. Apply the yaml file, and replace 'filePath' with the path of your yaml file
     ` kubectl apply -f 'filePath' `
     
     Here is an example if your yaml file resides in your desktop foler:
