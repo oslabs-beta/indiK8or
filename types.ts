@@ -11,6 +11,8 @@ export type ServerError = {
 export type DashProps = {
   dashboardClicked: boolean;
   podClicked: boolean;
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type SidebarProps = {

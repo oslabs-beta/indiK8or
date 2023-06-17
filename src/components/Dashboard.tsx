@@ -15,19 +15,31 @@ import Scan from './Scan';
 
 //pass props from parent component (HomePage)
 export default function Dashboard(props: DashProps): ReactElement {
-  const { dashboardClicked } = props;
-  const { podClicked } = props;
+  const { dashboardClicked, podClicked, darkMode, setDarkMode } = props;
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
   const [scannedImage, setScannedImage] = useState('');
   const [podName, setPodName] = useState('');
   const [loading, setLoading] = useState(true);
-
+  const [darkModeToggled, setDarkModeToggled] = useState(false);
+  console.log('props', props)
   const handleOpen = () => {
+    if (darkMode){
+    setDarkMode(false);
+    setDarkModeToggled(true);
+    }
     setScannedImage('');
     setLoading(true);
     setOpen(true);
+  }
+
+  const handleClose = () => {
+    if (darkModeToggled) {
+      setDarkMode(true);
+      setDarkModeToggled(false);
+    }
+    setOpen(false);
   }
 
   const getImages = async (): Promise<void> => {
@@ -63,8 +75,6 @@ export default function Dashboard(props: DashProps): ReactElement {
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open]);
-
-  const handleClose = () => setOpen(false);
 
   async function fetchDashBoardData() {
     try {

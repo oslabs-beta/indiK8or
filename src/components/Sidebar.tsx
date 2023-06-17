@@ -19,7 +19,6 @@ import { SidebarProps } from '../../types';
 const Sidebar = (props: SidebarProps): ReactElement => {
   // deconstruct props
   const { userId, darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode } = props;
-  console.log('props', props)
   // State variables to control the visibility of different texts in the sidebar
   const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
   const [showThemeText, setShowThemeText] = useState<boolean>(false);
