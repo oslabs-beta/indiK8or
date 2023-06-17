@@ -20,8 +20,36 @@ export default function Dashboard(props: DashProps): ReactElement {
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Array<object>>([{}]);
   const [open, setOpen] = useState(false);
+  const [scannedImage, setScannedImage] = useState('');
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+  console.log('Handle Open Called')
+  const getImages = async (): Promise<void> => {
+    try {
+      const response = await fetch('http://localhost:4000/pod/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // include cookies from cross origin request
+        credentials: 'include',
+        body: JSON.stringify({}),
+      });
+      if (response.ok) {
+        // Handle success response
+        console.log('succesful post')
+        const images: string = await response.json();
+        setScannedImage(images);
+        console.log(scannedImage)
+      }
+    } catch (error) {
+        // Handle any errors
+        console.error(error);
+      }
+    };
+    getImages();
+  setOpen(true);
+}
   const handleClose = () => setOpen(false);
 
   async function fetchDashBoardData() {
