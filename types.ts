@@ -55,3 +55,26 @@ export type PodRow = {
   READINESS: string;
   GATES: string;
 }
+
+export type Pod = {
+  NAME: string;
+  READY: string;
+  STATUS: string;
+  RESTARTS: string;
+  AGE: string;
+  IP: string;
+  NODE: string;
+}
+
+export type Match = {
+  vulnerability: {
+    id: string;
+    description: string;
+    severity: string;
+  };
+}
+export type ScanProps = {
+  scannedImage: {
+    matches: Match[]
+  }
+}
