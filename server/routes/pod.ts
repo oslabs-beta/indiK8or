@@ -14,7 +14,7 @@ podRouter.post('/', (req: Request, res: Response) => {
         "matches": [
          {
           "vulnerability": {
-           "id": "CVE-2022-28391",
+           "id": "Chicken",
            "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-28391",
            "namespace": "nvd:cpe",
            "severity": "High",

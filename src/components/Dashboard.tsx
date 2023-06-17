@@ -22,8 +22,11 @@ export default function Dashboard(props: DashProps): ReactElement {
   const [open, setOpen] = useState(false);
   const [scannedImage, setScannedImage] = useState('');
   const [podName, setPodName] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const handleOpen = () => {
+    setScannedImage('');
+    setLoading(true);
     setOpen(true);
   }
 
@@ -40,7 +43,7 @@ export default function Dashboard(props: DashProps): ReactElement {
           podName: podName
         }),
       });
-      if (response) {
+      if (response.ok) {
         // Handle success response
         const images: string = await response.json();
         setScannedImage(images);
@@ -49,13 +52,17 @@ export default function Dashboard(props: DashProps): ReactElement {
     } catch (error) {
         // Handle any errors
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     
     useEffect(() => {
+      if (open) {
       getImages();
+      }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [open === true]);
+    }, [open]);
 
   const handleClose = () => setOpen(false);
 
@@ -150,8 +157,12 @@ export default function Dashboard(props: DashProps): ReactElement {
                       onClose={handleClose}
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
-                    >
-                      <Scan scannedImage={scannedImage} />
+                    > 
+                      {loading ? (
+                        <div>Loading...</div>
+                      ) : (
+                        <Scan scannedImage={scannedImage} />
+                      )}
                     </Modal>
                   </TableCell>
                 </TableRow>
