@@ -42,7 +42,7 @@ export type OAuthUser = {
   __v: number;
 }
 
-export type PodRow = {
+export type Pod = {
   [key: string]: string;
   NAME: string;
   READY: string;
@@ -51,7 +51,6 @@ export type PodRow = {
   AGE: string;
   IP: string;
   NODE: string;
-  NOMINATED: string;
-  READINESS: string;
-  GATES: string;
+  NOMINATED NODE: string;
+  READINESS GATES: string;
 }

@@ -1,6 +1,6 @@
 import { spawn, ChildProcess } from 'child_process';
 import { Request, Response, NextFunction } from 'express';
-import { PodRow } from '../../types';
+// import { Pod } from '../../types';
 
 const podController = {
 getPods: (_req: Request, res: Response, next: NextFunction): void => {
@@ -34,7 +34,6 @@ console.log('INSIDE GETPODS MIDDLEWARE');
             pod[headers[j]] = values[j];
           }
           results.push(pod);
-
         }
       }
       console.log('results are: ', results);
@@ -43,17 +42,6 @@ console.log('INSIDE GETPODS MIDDLEWARE');
       return next();
     })
     }
-    // child.stdout.on('data', (data: Buffer) => {
-    //   console.log('data:', data);
-    //   const response = JSON.parse(data.toString());
-    //   console.log('response:', response);
-    //   res.locals.pods = response;
-    //   return next();
-    // });
-
-    // child.on('error', (error: any) => {
-    //     console.log(`command error ${error.errMessage}`);
-    // })
   } catch (error) {
     console.log(`error ${error}`);
     const errMessage = {
