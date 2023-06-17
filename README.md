@@ -1,7 +1,8 @@
 
-<img width="959" alt="Screenshot 2023-06-16 at 4 59 07 PM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/1183119b-c4bf-4bac-82f0-e3538af90831">
+![Screenshot 2023-06-17 at 11 13 09 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/3c4128be-a2f6-4d27-a998-fd162597118c)
 
-❤️❤️❤️ IF YOU FOUND OUR PRODUCT HELPFUL, PLEASE GIVE US A ⭐️ TO SUPPORT US!  ❤️❤️❤️
+
+❤️❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️❤️
 
 # Built With
 ![JavaScript](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -137,5 +138,5 @@ You can check our amazing medium article here.
 # License Information
 Distributed under the MIT License. See LICENSE for more information.
 
-❤️❤️❤️ IF YOU FOUND OUR PRODUCT HELPFUL, PLEASE GIVE US A ⭐️ TO SUPPORT US!  ❤️❤️❤️
+❤️❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️❤️
 
