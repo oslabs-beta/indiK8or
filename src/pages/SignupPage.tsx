@@ -128,8 +128,8 @@ const SignupPage = (): ReactElement => {
     <div className='signup-back'>
     <Grid container className="signup-grid" alignItems="center" justifyContent="center">
     <Paper className='signup-paper'>
-        <Grid>
-            <Avatar className='signup-avatar'>
+        <Grid className='signup-head'>
+            <Avatar id='signup-avatar'>
                 <AddCircleOutlineOutlinedIcon />
             </Avatar >
             <h2 className='signup-heading'> Sign Up</h2>

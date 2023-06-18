@@ -1,4 +1,4 @@
-@import 'Variables.scss';
+  @import 'Variables.scss';
   
   body .signup-back {
     background: $gradient;
@@ -6,7 +6,7 @@
     animation: $gradAnimation;
     height: $gradHeight;
   }
-  
+
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
@@ -30,7 +30,7 @@
     transform: translate(-50%, -50%); /* Move the element back by half of its width and height */
   }
   
-  .signup-avatar {
+  #signup-avatar {
     /* Add styles for the Avatar component */
     background-color: #1bbd7e !important;
   }
@@ -45,4 +45,9 @@
     margin-top: 10px !important;
   }
 
-  
+  .signup-head {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column !important;
+  }

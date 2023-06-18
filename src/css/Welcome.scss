@@ -11,7 +11,7 @@ body,
 .logo {
   position: relative !important;
   padding-bottom: 0 !important;
-  right: 21% !important;
+  right: 5% !important;
   top: 5% !important;
   height: 200px !important;
 }
@@ -81,7 +81,7 @@ body,
   background: $gradient;
   background-size: $gradSize;
   animation: $gradAnimation;
-  height: 120%;
+  height: 120vh;
 }
 
 @keyframes gradient {
@@ -96,3 +96,9 @@ body,
   }
 }
 
+.welcome-container {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  flex-direction: column !important;
+}

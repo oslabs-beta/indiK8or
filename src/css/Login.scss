@@ -32,7 +32,7 @@ body .login-back {
     left: 50%; /* Position the element horizontally in the middle */
     transform: translate(-50%, -50%); /* Move the element back by half of its width and height */
 }
-  
+
 .login-avatar {
 background-color: #1bbd7e !important;
 }
@@ -55,3 +55,9 @@ bottom: 10px !important;
 left: 10px !important;
 }
 
+.signIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+}

@@ -70,7 +70,7 @@ const LoginPage = (): ReactElement => {
       justifyContent="center"
     >
       <Paper className="login-paper">
-        <Grid>
+        <Grid className='signIn'>
           <Avatar className="login-avatar">
             <LoginIcon />
           </Avatar>
