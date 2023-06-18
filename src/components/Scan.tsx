@@ -48,7 +48,7 @@ const Scan = React.forwardRef((props: ScanProps, ref) => {
           {vulnerabilities.map((vulnerability: Vulnerabilities, index: number) => (
             <TableRow key={index}>
               <TableCell id='v-id'>{vulnerability.id}</TableCell>
-              <TableCell id='v-desc' >{vulnerability.description}</TableCell>
+              <TableCell id='v-desc'>{vulnerability.description}</TableCell>
               <TableCell id='v-sev' className={getSeverityClassName(vulnerability.severity)}>
                 {vulnerability.severity}
               </TableCell>
