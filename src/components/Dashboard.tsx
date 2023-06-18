@@ -15,7 +15,7 @@ export default function Dashboard(props: DashProps): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
 
   const handleOpen = (): void => {
-    setScannedImage('');
+    getImages();
     setLoading(true);
     setOpen(true);
   }
@@ -51,12 +51,12 @@ export default function Dashboard(props: DashProps): ReactElement {
       }
     };
     
-    useEffect((): void => {
-      if (open) {
-      getImages();
-      }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [open]);
+    // useEffect((): void => {
+    //   if (open) {
+    //   getImages();
+    //   }
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [open]);
 
   async function fetchDashBoardData(): Promise<void> {
     try {
@@ -149,12 +149,12 @@ export default function Dashboard(props: DashProps): ReactElement {
                       onClose={handleClose}
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
-                      className='scanModal'
+                      className="scanModal"
                     > 
                       {loading ? (
-                        <div id='videoContainer'>
-                          <video id='nowScanning' autoPlay loop>
-                            <source src='src/assets/Scan.mp4' type='video/mp4'/>
+                        <div id="videoContainer">
+                          <video id="nowScanning" autoPlay loop>
+                            <source src="src/assets/Scan.mp4" type="video/mp4"/>
                           </video>
                         </div>
                       ) : (
