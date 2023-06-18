@@ -2,42 +2,26 @@ import { exec, ChildProcess } from 'child_process';
 import { Request, Response, NextFunction } from 'express';
 
 const scanController = {
-  getImages: async (_req: Request, _res: Response, next: NextFunction) => {
-    console.log('INSIDE SCANIMAGES MIDDLEWARE');
-    // const { podName } = req.body;
+  getImages: async (req: Request, res: Response, next: NextFunction) => {
+    console.log('INSIDE GETIMAGES MIDDLEWARE');
+    const { podName } = req.body;
+
     try {
-      const command =
-        "kubectl get pods --all-namespaces -o jsonpath=\"{range .items[*]}{'\\n'}{.metadata.name}{':\\t'}{range .spec.containers[*]}{.image}{', '}{end}{end}\" | sort";
-        // kubectl get pod alertmanager-prometheus-kube-prometheus-alertmanager-0 -o jsonpath='{.spec.containers[*].image}'
+      const command = `kubectl get pod ${podName} -o jsonpath='{.spec.containers[*].image}'`;
       const child: ChildProcess = exec(command);
       const chunks: Buffer[] = [];
       if (child.stdout) {
         child.stdout.on('data', (chunk: Buffer) => {
           chunks.push(chunk);
-          console.log('chunks:', chunk);
         });
         child.stdout.on('end', () => {
-          const data: string = chunks.toString();
-          console.log('data is: ', data);
-          const lines: string[] = data.split('\n');
-          console.log('lines are: ', lines);
-          const newLines: string[] = lines.slice(1, -1);
-          console.log('newLines are: ', newLines);
-          const result: any[] = [];
-          newLines.forEach((line) => {
-            const [podName, images] = line.split(':\t');
-            console.log('pod is: ', podName);
-            console.log('images are: ', images);
-            const imageArr = images.split(',').map((image) => image.trim());
-            const imageObj = {[podName]: imageArr};
-            result.push(imageObj);
-          })
-          console.log('result is: ', result);
+          const images: string[] = chunks[0].toString().split(' ');
+          //   console.log('images are: ', images);
+          res.locals.images = images;
           return next();
         });
       }
     } catch (error) {
-      console.log(`error ${error}`);
       const errMessage = {
         log: 'Error occurred from getting images',
         status: 500,
@@ -46,5 +30,34 @@ const scanController = {
       return next(errMessage);
     }
   },
+
+  scanImage: async (_req: Request, res: Response, next: NextFunction) => {
+    console.log('INSIDE SCANIMAGE MIDDLEWARE');
+
+    try {
+      const command = `grype ${res.locals.images[0]} -o json`;
+      const child: ChildProcess = exec(command);
+      let chunks = '';
+      if (child.stdout) {
+        child.stdout.on('data', (chunk: Buffer) => {
+          chunks += chunk.toString();
+        });
+        child.stdout.on('end', () => {
+          const scanned = JSON.parse(chunks);
+          res.locals.scanned = scanned;
+          console.log('res.locals.scanned: ', res.locals.scanned);
+          return next();
+        });
+      }
+    } catch (error) {
+      const errMessage = {
+        log: 'Error occurred from scanning image',
+        status: 500,
+        message: `${error} error occured in scanController.scanImage`,
+      };
+      return next(errMessage);
+    }
+  },
 };
+
 export { scanController };

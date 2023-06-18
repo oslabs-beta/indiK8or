@@ -42,7 +42,7 @@ export type OAuthUser = {
   __v: number;
 }
 
-export type Pod = {
+export type PodRow = {
   [key: string]: string;
   NAME: string;
   READY: string;
@@ -51,6 +51,29 @@ export type Pod = {
   AGE: string;
   IP: string;
   NODE: string;
-  NOMINATED NODE: string;
-  READINESS GATES: string;
+  NOMINATED: string;
+  READINESS: string;
+}
+
+export type Pod = {
+  NAME: string;
+  READY: string;
+  STATUS: string;
+  RESTARTS: string;
+  AGE: string;
+  IP: string;
+  NODE: string;
+}
+
+export type Match = {
+  vulnerability: {
+    id: string;
+    description: string;
+    severity: string;
+  };
+}
+export type ScanProps = {
+  scannedImage: {
+    matches: Match[]
+  }
 }

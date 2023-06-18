@@ -1,5 +1,8 @@
 
-<img width="959" alt="Screenshot 2023-06-16 at 4 59 07 PM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/1183119b-c4bf-4bac-82f0-e3538af90831">
+![Screenshot 2023-06-17 at 11 13 09 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/3c4128be-a2f6-4d27-a998-fd162597118c)
+
+
+❤️❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️❤️
 
 # Built With
 ![JavaScript](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -36,13 +39,14 @@
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
 <img src="https://github.com/oslabs-beta/indiK8or/blob/Ivy-ts/src/assets/appDemo.gif" height="450"/>
+
 # Getting Started
 
 indiK8or functionality assumes that you have Docker and Kubernetes already installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
 
 If you do not have a Kubernetes cluster up and running, use Minikube to quickly set one up, The instructions are laid out below.
 
-NOTE: ONLY RUN STEP 1-13 IF THIS IS YOUR VERY FIRST TIME RUNNING INDIK8TOR!
+NOTE: ONLY RUN STEP 1-10 IF THIS IS YOUR VERY FIRST TIME RUNNING INDIK8TOR!
 ____________________________________________________________________________________________________________________________________________________
 
 1. Make sure you have Docker installed on your local machine.
@@ -62,20 +66,19 @@ ________________________________________________________________________________
    - If you use Linux, run:
      ``` $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
          $ chmod 700 get_helm.sh
-         $ ./get_helm.sh 
-    NOTE: Refer to this link for more details: 
-   https://kubernetes.io/docs/tasks/tools/
+         $ ./get_helm.sh ```
+     NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
 6. Copy the code snippet below into your terminal and run it
    ```
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update 
-    ```
 7. Install Prometheus 
 
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
-8. Configure a yaml file for grafana, replace the part of 'yourChoiceOfName' with the name you want for your yaml file.
-    ` kubectl get configmap prometheus-grafana -o yaml > yourChoiceOfName.yaml `
+8. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
+
+   ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
 9. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
       [security]
@@ -110,6 +113,22 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
     ` npm run start `
 14. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
+
+# Contributing
+## How to contribute
+
+Contributions are an incredibly important part of the open source community. Any contributions you make are greatly appreciated!
+
+- Fork the project
+- Create your feature branch (git checkout -b feature/AmazingFeature)
+- Commit your changes (git commit -m 'Add some AmazingFeature')
+- Push to the branch (git push origin feature/AmazingFeature)
+- Open a pull request (from feature/AmazingFeature to dev)
+- Create a new issue on GitHub
+
+# Publications
+You can check our amazing medium article here.
+
 # Contributors
 
 |  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) |  ![Screenshot 2023-06-16 at 4 22 30 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/120f2037-7659-461d-a762-1c81421ad5e7) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
@@ -118,4 +137,6 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 
 # License Information
 Distributed under the MIT License. See LICENSE for more information.
+
+❤️❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️❤️
 

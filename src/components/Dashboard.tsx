@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material';
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css';
-import { DashProps } from '../../types';
+import { DashProps, Pod } from '../../types';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,10 +18,47 @@ export default function Dashboard(props: DashProps): ReactElement {
   const { dashboardClicked } = props;
   const { podClicked } = props;
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
-  const [pods, setPods] = useState<Array<object>>([{}]);
+  const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
+  const [scannedImage, setScannedImage] = useState('');
+  const [podName, setPodName] = useState('');
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const getImages = async (): Promise<void> => {
+    try {
+      const response = await fetch('http://localhost:4000/scan/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // include cookies from cross origin request
+        credentials: 'include',
+        body: JSON.stringify({
+          podName: podName,
+        }),
+      });
+      if (response) {
+        // Handle success response
+        const images: string = await response.json();
+        setScannedImage(images);
+        console.log('scanned image', scannedImage);
+      }
+    } catch (error) {
+      // Handle any errors
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      getImages();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
   const handleClose = () => setOpen(false);
 
   async function fetchDashBoardData() {
@@ -36,14 +73,11 @@ export default function Dashboard(props: DashProps): ReactElement {
   }
 
   async function fetchPodData() {
-    console.log('INSIDE FETCH-POD-DATA');
     try {
       const response = await fetch('http://localhost:4000/pod');
       if (response.ok) {
         const data = await response.json();
-        console.log('data is: ', data);
         setPods(data);
-        console.log('pods are:', pods);
       }
     } catch (error) {
       console.error('error on fetching pods data: ', error);
@@ -77,7 +111,7 @@ export default function Dashboard(props: DashProps): ReactElement {
         alignItems="center"
         justifyContent="center"
       >
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="pod-table">
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -92,9 +126,9 @@ export default function Dashboard(props: DashProps): ReactElement {
               </TableRow>
             </TableHead>
             <TableBody>
-              {pods.map((pod: any) => (
+              {pods.map((pod: Pod, index: number) => (
                 <TableRow
-                  key={pod.NAME}
+                  key={index}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
@@ -107,7 +141,11 @@ export default function Dashboard(props: DashProps): ReactElement {
                   <TableCell align="left">{pod.IP}</TableCell>
                   <TableCell align="left">{pod.NODE}</TableCell>
                   <TableCell align="left">
-                    <Button variant="contained" onClick={handleOpen}>
+                    <Button
+                      variant="contained"
+                      onClick={handleOpen}
+                      onClickCapture={() => setPodName(pod.NAME)}
+                    >
                       Scan
                     </Button>
                     <Modal
@@ -116,7 +154,7 @@ export default function Dashboard(props: DashProps): ReactElement {
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                     >
-                      <Scan />
+                      <Scan scannedImage={scannedImage} />
                     </Modal>
                   </TableCell>
                 </TableRow>

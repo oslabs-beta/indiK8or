@@ -1,6 +1,6 @@
 import { spawn, ChildProcess } from 'child_process';
 import { Request, Response, NextFunction } from 'express';
-// import { Pod } from '../../types';
+import { PodRow } from '../../types';
 
 const podController = {
 getPods: (_req: Request, res: Response, next: NextFunction): void => {
@@ -22,13 +22,13 @@ console.log('INSIDE GETPODS MIDDLEWARE');
       console.log('lines are: ', lines);
       const headers: string[] = lines[0].split(/\s{2,}/);
       console.log('headers are:', headers);
-      const results: any[] = [];
+      const results: PodRow[] = [];
 
       for (let i = 1; i < lines.length; i++) {
         const values: string[] = lines[i].split(/\s{2,}/);
         if (values.length === headers.length) {
 
-          const pod: any = {};
+          const pod: PodRow = {} as PodRow;
 
           for (let j = 0; j < headers.length; j++) {
             pod[headers[j]] = values[j];
