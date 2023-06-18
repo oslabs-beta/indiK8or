@@ -19,12 +19,12 @@ export default function Dashboard(props: DashProps): ReactElement {
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
-  const [scannedImage, setScannedImage] = useState('');
-  const [podName, setPodName] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [darkModeToggled, setDarkModeToggled] = useState(false);
+  const [scannedImage, setScannedImage] = useState<string>('');
+  const [podName, setPodName] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [darkModeToggled, setDarkModeToggled] = useState<boolean>(false);
   console.log('props', props)
-  const handleOpen = () => {
+  const handleOpen = (): void => {
     if (darkMode){
     setDarkMode(false);
     setDarkModeToggled(true);
@@ -34,7 +34,7 @@ export default function Dashboard(props: DashProps): ReactElement {
     setOpen(true);
   }
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     if (darkModeToggled) {
       setDarkMode(true);
       setDarkModeToggled(false);
@@ -69,14 +69,14 @@ export default function Dashboard(props: DashProps): ReactElement {
       }
     };
     
-    useEffect(() => {
+    useEffect((): void => {
       if (open) {
       getImages();
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open]);
 
-  async function fetchDashBoardData() {
+  async function fetchDashBoardData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/dashboard/');
       const data: string = await response.json();
@@ -87,7 +87,7 @@ export default function Dashboard(props: DashProps): ReactElement {
     }
   }
 
-  async function fetchPodData() {
+  async function fetchPodData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/pod');
       if (response.ok) {
@@ -99,7 +99,7 @@ export default function Dashboard(props: DashProps): ReactElement {
     }
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     fetchDashBoardData(), fetchPodData();
   }, []);
 

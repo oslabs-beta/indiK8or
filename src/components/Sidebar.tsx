@@ -106,7 +106,7 @@ const Sidebar = (props: SidebarProps): ReactElement => {
   };
 
   // Function to handle theme toggle
-  const handleThemeToggle = () => {
+  const handleThemeToggle = (): void => {
     // Set dark mode to opposite of current mode using prevState
     setDarkMode((prevDarkMode: boolean) => !prevDarkMode);
   };
