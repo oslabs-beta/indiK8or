@@ -15,30 +15,21 @@ import Scan from './Scan';
 
 //pass props from parent component (HomePage)
 export default function Dashboard(props: DashProps): ReactElement {
-  const { dashboardClicked, podClicked, darkMode, setDarkMode } = props;
+  const { dashboardClicked, podClicked } = props;
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
   const [scannedImage, setScannedImage] = useState<string>('');
   const [podName, setPodName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
-  const [darkModeToggled, setDarkModeToggled] = useState<boolean>(false);
   console.log('props', props)
   const handleOpen = (): void => {
-    if (darkMode){
-    setDarkMode(false);
-    setDarkModeToggled(true);
-    }
     setScannedImage('');
     setLoading(true);
     setOpen(true);
   }
 
   const handleClose = (): void => {
-    if (darkModeToggled) {
-      setDarkMode(true);
-      setDarkModeToggled(false);
-    }
     setOpen(false);
   }
 
@@ -167,9 +158,14 @@ export default function Dashboard(props: DashProps): ReactElement {
                       onClose={handleClose}
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
+                      className='scanModal'
                     > 
                       {loading ? (
-                        <div>Loading...</div>
+                        <div id='videoContainer'>
+                          <video id='nowScanning' autoPlay loop>
+                            <source src='src/assets/Scan.mp4' type='video/mp4'/>
+                          </video>
+                        </div>
                       ) : (
                         <Scan scannedImage={scannedImage} />
                       )}

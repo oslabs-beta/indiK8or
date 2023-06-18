@@ -51,6 +51,14 @@
   width: 90% !important;
 }  
   
+.scanModal {
+  background-color: gray;
+}  
   
-  
-  
+#videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+

@@ -79,7 +79,7 @@ const HomePage = () => {
               setDarkMode={setDarkMode}
               userId={userId}
             />
-            <Dashboard dashboardClicked={dashboardClicked} podClicked={podClicked} setDarkMode={setDarkMode} darkMode={darkMode}/>
+            <Dashboard dashboardClicked={dashboardClicked} podClicked={podClicked}/>
           </Grid>
         </ThemeProvider>
       )}

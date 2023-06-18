@@ -17,7 +17,7 @@ podRouter.post('/', (req: Request, res: Response) => {
            "id": "Chicken",
            "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-28391",
            "namespace": "nvd:cpe",
-           "severity": "High",
+           "severity": "Negligible",
            "urls": [
             "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
             "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
@@ -210,7 +210,7 @@ podRouter.post('/', (req: Request, res: Response) => {
            "id": "GHSA-vvpx-j8f3-3w6h",
            "dataSource": "https://github.com/advisories/GHSA-vvpx-j8f3-3w6h",
            "namespace": "github:language:go",
-           "severity": "High",
+           "severity": "Low",
            "urls": [
             "https://github.com/advisories/GHSA-vvpx-j8f3-3w6h"
            ],
@@ -312,7 +312,308 @@ podRouter.post('/', (req: Request, res: Response) => {
             "mainModule": "github.com/prometheus/alertmanager"
            }
           }
-         }
+         },
+         {
+            "vulnerability": {
+             "id": "Chicken",
+             "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-28391",
+             "namespace": "nvd:cpe",
+             "severity": "Critical",
+             "urls": [
+              "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
+              "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
+              "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661"
+             ],
+             "description": "BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.",
+             "cvss": [
+              {
+               "source": "nvd@nist.gov",
+               "type": "Primary",
+               "version": "2.0",
+               "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+               "metrics": {
+                "baseScore": 6.8,
+                "exploitabilityScore": 8.6,
+                "impactScore": 6.4
+               },
+               "vendorMetadata": {}
+              },
+              {
+               "source": "nvd@nist.gov",
+               "type": "Primary",
+               "version": "3.1",
+               "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+               "metrics": {
+                "baseScore": 8.8,
+                "exploitabilityScore": 2.8,
+                "impactScore": 5.9
+               },
+               "vendorMetadata": {}
+              }
+             ],
+             "fix": {
+              "versions": [],
+              "state": "unknown"
+             },
+             "advisories": []
+            },
+            "relatedVulnerabilities": [],
+            "matchDetails": [
+             {
+              "type": "cpe-match",
+              "matcher": "stock-matcher",
+              "searchedBy": {
+               "namespace": "nvd:cpe",
+               "cpes": [
+                "cpe:2.3:a:busybox:busybox:1.34.1:*:*:*:*:*:*:*"
+               ]
+              },
+              "found": {
+               "vulnerabilityID": "CVE-2022-28391",
+               "versionConstraint": "<= 1.35.0 (unknown)",
+               "cpes": [
+                "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
+               ]
+              }
+             }
+            ],
+            "artifact": {
+             "id": "7e7f175e7d1ab63a",
+             "name": "busybox",
+             "version": "1.34.1",
+             "type": "binary",
+             "locations": [
+              {
+               "path": "/bin/[",
+               "layerID": "sha256:ccc85b40696f6f8b1c8be7f930dd911eaa195a8964638a665b754b4be79c15b0"
+              }
+             ],
+             "language": "",
+             "licenses": [],
+             "cpes": [
+              "cpe:2.3:a:busybox:busybox:1.34.1:*:*:*:*:*:*:*",
+              "cpe:2.3:a:busybox:busybox:1.34.1:*:*:*:*:*:*:*"
+             ],
+             "purl": "",
+             "upstreams": []
+            }
+           },
+           {
+            "vulnerability": {
+             "id": "GHSA-vvpx-j8f3-3w6h",
+             "dataSource": "https://github.com/advisories/GHSA-vvpx-j8f3-3w6h",
+             "namespace": "github:language:go",
+             "severity": "Medium",
+             "urls": [
+              "https://github.com/advisories/GHSA-vvpx-j8f3-3w6h"
+             ],
+             "description": "Uncontrolled Resource Consumption",
+             "cvss": [
+              {
+               "version": "3.1",
+               "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+               "metrics": {
+                "baseScore": 7.5,
+                "exploitabilityScore": 3.9,
+                "impactScore": 3.6
+               },
+               "vendorMetadata": {
+                "base_severity": "High",
+                "status": "N/A"
+               }
+              }
+             ],
+             "fix": {
+              "versions": [
+               "0.7.0"
+              ],
+              "state": "fixed"
+             },
+             "advisories": []
+            },
+            "relatedVulnerabilities": [
+             {
+              "id": "CVE-2022-41723",
+              "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-41723",
+              "namespace": "nvd:cpe",
+              "severity": "High",
+              "urls": [
+               "https://go.dev/cl/468135",
+               "https://go.dev/cl/468295",
+               "https://go.dev/issue/57855",
+               "https://groups.google.com/g/golang-announce/c/V0aBFqaFs_E",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/4MA5XS5DAOJ5PKKNG5TUXKPQOFHT5VBC/",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/RGW7GE2Z32ZT47UFAQFDRQE33B7Q7LMT/",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/RLBQ3A7ROLEQXQLXFDLNJ7MYPKG5GULE/",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XX3IMUTZKRQ73PBZM4E2JP4BKYH4C6XE/",
+               "https://pkg.go.dev/vuln/GO-2023-1571"
+              ],
+              "description": "A maliciously crafted HTTP/2 stream could cause excessive CPU consumption in the HPACK decoder, sufficient to cause a denial of service from a small number of small requests.",
+              "cvss": [
+               {
+                "source": "nvd@nist.gov",
+                "type": "Primary",
+                "version": "3.1",
+                "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "metrics": {
+                 "baseScore": 7.5,
+                 "exploitabilityScore": 3.9,
+                 "impactScore": 3.6
+                },
+                "vendorMetadata": {}
+               }
+              ]
+             }
+            ],
+            "matchDetails": [
+             {
+              "type": "exact-direct-match",
+              "matcher": "go-module-matcher",
+              "searchedBy": {
+               "language": "go",
+               "namespace": "github:language:go"
+              },
+              "found": {
+               "versionConstraint": "<0.7.0 (unknown)",
+               "vulnerabilityID": "GHSA-vvpx-j8f3-3w6h"
+              }
+             }
+            ],
+            "artifact": {
+             "id": "cf2f86c828e14c41",
+             "name": "golang.org/x/net",
+             "version": "v0.4.0",
+             "type": "go-module",
+             "locations": [
+              {
+               "path": "/bin/alertmanager",
+               "layerID": "sha256:381de408a68bc2c64d2a6fe4b6fbd8c78e3009d5e6e78d7e255a2a6912164c64"
+              }
+             ],
+             "language": "go",
+             "licenses": [],
+             "cpes": [
+              "cpe:2.3:a:golang:x/net:v0.4.0:*:*:*:*:*:*:*"
+             ],
+             "purl": "pkg:golang/golang.org/x/net@v0.4.0",
+             "upstreams": [],
+             "metadataType": "GolangBinMetadata",
+             "metadata": {
+              "goCompiledVersion": "go1.19.4",
+              "architecture": "amd64",
+              "h1Digest": "h1:Q5QPcMlvfxFTAPV0+07Xz/MpK9NTXu2VDUuy0FeMfaU=",
+              "mainModule": "github.com/prometheus/alertmanager"
+             }
+            }
+           },
+           {
+            "vulnerability": {
+             "id": "GHSA-vvpx-j8f3-3w6h",
+             "dataSource": "https://github.com/advisories/GHSA-vvpx-j8f3-3w6h",
+             "namespace": "github:language:go",
+             "severity": "High",
+             "urls": [
+              "https://github.com/advisories/GHSA-vvpx-j8f3-3w6h"
+             ],
+             "description": "Uncontrolled Resource Consumption",
+             "cvss": [
+              {
+               "version": "3.1",
+               "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+               "metrics": {
+                "baseScore": 7.5,
+                "exploitabilityScore": 3.9,
+                "impactScore": 3.6
+               },
+               "vendorMetadata": {
+                "base_severity": "High",
+                "status": "N/A"
+               }
+              }
+             ],
+             "fix": {
+              "versions": [
+               "0.7.0"
+              ],
+              "state": "fixed"
+             },
+             "advisories": []
+            },
+            "relatedVulnerabilities": [
+             {
+              "id": "CVE-2022-41723",
+              "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-41723",
+              "namespace": "nvd:cpe",
+              "severity": "High",
+              "urls": [
+               "https://go.dev/cl/468135",
+               "https://go.dev/cl/468295",
+               "https://go.dev/issue/57855",
+               "https://groups.google.com/g/golang-announce/c/V0aBFqaFs_E",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/4MA5XS5DAOJ5PKKNG5TUXKPQOFHT5VBC/",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/RGW7GE2Z32ZT47UFAQFDRQE33B7Q7LMT/",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/RLBQ3A7ROLEQXQLXFDLNJ7MYPKG5GULE/",
+               "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XX3IMUTZKRQ73PBZM4E2JP4BKYH4C6XE/",
+               "https://pkg.go.dev/vuln/GO-2023-1571"
+              ],
+              "description": "A maliciously crafted HTTP/2 stream could cause excessive CPU consumption in the HPACK decoder, sufficient to cause a denial of service from a small number of small requests.",
+              "cvss": [
+               {
+                "source": "nvd@nist.gov",
+                "type": "Primary",
+                "version": "3.1",
+                "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "metrics": {
+                 "baseScore": 7.5,
+                 "exploitabilityScore": 3.9,
+                 "impactScore": 3.6
+                },
+                "vendorMetadata": {}
+               }
+              ]
+             }
+            ],
+            "matchDetails": [
+             {
+              "type": "exact-direct-match",
+              "matcher": "go-module-matcher",
+              "searchedBy": {
+               "language": "go",
+               "namespace": "github:language:go"
+              },
+              "found": {
+               "versionConstraint": "<0.7.0 (unknown)",
+               "vulnerabilityID": "GHSA-vvpx-j8f3-3w6h"
+              }
+             }
+            ],
+            "artifact": {
+             "id": "acf66e545a09316e",
+             "name": "golang.org/x/net",
+             "version": "v0.4.0",
+             "type": "go-module",
+             "locations": [
+              {
+               "path": "/bin/amtool",
+               "layerID": "sha256:5f1e726ad5f3c498d839619a5b52f99f3726f058cd045371b39c3cfba2865bad"
+              }
+             ],
+             "language": "go",
+             "licenses": [],
+             "cpes": [
+              "cpe:2.3:a:golang:x/net:v0.4.0:*:*:*:*:*:*:*"
+             ],
+             "purl": "pkg:golang/golang.org/x/net@v0.4.0",
+             "upstreams": [],
+             "metadataType": "GolangBinMetadata",
+             "metadata": {
+              "goCompiledVersion": "go1.19.4",
+              "architecture": "amd64",
+              "h1Digest": "h1:Q5QPcMlvfxFTAPV0+07Xz/MpK9NTXu2VDUuy0FeMfaU=",
+              "mainModule": "github.com/prometheus/alertmanager"
+             }
+            }
+           }
         ],
         "source": {
          "type": "image",
@@ -463,7 +764,11 @@ podRouter.post('/', (req: Request, res: Response) => {
          "timestamp": "2023-06-17T11:44:31.777106-04:00"
         }
        }
-    res.status(200).json(response);
+    setTimeout(() => {
+        console.log('stalling')
+        res.status(200).json(response);
+    }, 10000)
+    
 })
 
 
