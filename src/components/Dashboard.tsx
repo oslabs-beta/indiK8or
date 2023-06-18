@@ -20,14 +20,14 @@ export default function Dashboard(props: DashProps): ReactElement {
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
-  const [scannedImage, setScannedImage] = useState('');
+  const [scannedResults, setScannedResults] = useState('');
   const [podName, setPodName] = useState('');
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const getImages = async (): Promise<void> => {
+  const getScannedResults = async (): Promise<void> => {
     try {
       const response = await fetch('http://localhost:4000/scan/', {
         method: 'POST',
@@ -42,9 +42,9 @@ export default function Dashboard(props: DashProps): ReactElement {
       });
       if (response) {
         // Handle success response
-        const images: string = await response.json();
-        setScannedImage(images);
-        console.log('scanned image', scannedImage);
+        const scannedResults: string = await response.json();
+        setScannedResults(scannedResults);
+        console.log('scanned results', scannedResults);
       }
     } catch (error) {
       // Handle any errors
@@ -54,7 +54,7 @@ export default function Dashboard(props: DashProps): ReactElement {
 
   useEffect(() => {
     if (open) {
-      getImages();
+      getScannedResults();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
@@ -154,7 +154,7 @@ export default function Dashboard(props: DashProps): ReactElement {
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                     >
-                      <Scan scannedImage={scannedImage} />
+                      <Scan scannedImage={scannedResults} />
                     </Modal>
                   </TableCell>
                 </TableRow>
