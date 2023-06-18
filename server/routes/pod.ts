@@ -767,7 +767,7 @@ podRouter.post('/', (req: Request, res: Response) => {
     setTimeout(() => {
         console.log('stalling')
         res.status(200).json(response);
-    }, 10000)
+    }, 5000)
     
 })
 

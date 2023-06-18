@@ -2,7 +2,7 @@ import { Container, Button, IconButton } from '@mui/material';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import '../css/Welcome.css';
+import '../css/Welcome.scss';
 import logo from '../assets/logo1.png';
 
 const WelcomePage = () => {

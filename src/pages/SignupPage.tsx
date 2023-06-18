@@ -2,7 +2,7 @@ import { useState, useRef, ReactElement, ChangeEvent, FormEvent} from 'react';
 import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import '../css/Signup.css';
+import '../css/Signup.scss';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const SignupPage = (): ReactElement => {

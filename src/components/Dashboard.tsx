@@ -1,16 +1,7 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Modal } from '@mui/material';
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css';
 import { DashProps, Pod } from '../../types';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
 import Scan from './Scan';
 
 //pass props from parent component (HomePage)
