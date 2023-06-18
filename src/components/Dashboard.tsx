@@ -13,7 +13,7 @@ export default function Dashboard(props: DashProps): ReactElement {
   const [scannedImage, setScannedImage] = useState<string>('');
   const [podName, setPodName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
-  console.log('props', props)
+
   const handleOpen = (): void => {
     setScannedImage('');
     setLoading(true);

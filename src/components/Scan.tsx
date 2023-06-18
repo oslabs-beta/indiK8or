@@ -21,7 +21,7 @@ const Scan = React.forwardRef((props: ScanProps, ref) => {
   const vulnerabilities = scannedImage.matches.map((el: any) => el.vulnerability)
   console.log('vulnerabilities', vulnerabilities);
 
-  const getSeverityClassName = (severity: string) => {
+  const getSeverityClassName = (severity: string): string => {
     if (severity === 'Negligible') { return 'severity-negligible';}
     else if (severity === 'Low') { return 'severity-low';}
     else if (severity === 'Medium') { return 'severity-medium';}
