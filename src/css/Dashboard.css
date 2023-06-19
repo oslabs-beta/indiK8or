@@ -62,3 +62,7 @@
   height: 100%;
 }
 
+#nowScanning {
+  height: 30%;
+  width: 30%;
+}

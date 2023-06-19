@@ -10,9 +10,7 @@ import '../css/Sidebar.css';
 import { SidebarProps } from '../../types';
 
 // Pass the props component from the parent component (HomePage)
-const Sidebar = (props: SidebarProps): ReactElement => {
-  // deconstruct props
-  const { userId, darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode } = props;
+const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode }: SidebarProps): ReactElement => {
   // State variables to control the visibility of different texts in the sidebar
   const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
   const [showThemeText, setShowThemeText] = useState<boolean>(false);

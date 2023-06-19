@@ -14,13 +14,11 @@ interface Vulnerabilities {
   severity: string;
 }
 
-const Scan = React.forwardRef((props: ScanProps, ref) => {
+const Scan = React.forwardRef(({ scannedImage }: ScanProps, ref) => {
   console.log(ref);
-  const { scannedImage } = props;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const vulnerabilities = scannedImage.matches.map((el: any) => el.vulnerability)
   console.log('vulnerabilities', vulnerabilities);
-
   const getSeverityClassName = (severity: string): string => {
     if (severity === 'Negligible') { return 'severity-negligible';}
     else if (severity === 'Low') { return 'severity-low';}

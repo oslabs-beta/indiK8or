@@ -5,8 +5,7 @@ import { DashProps, Pod } from '../../types';
 import Scan from './Scan';
 
 //pass props from parent component (HomePage)
-export default function Dashboard(props: DashProps): ReactElement {
-  const { dashboardClicked, podClicked } = props;
+export default function Dashboard({ dashboardClicked, podClicked }: DashProps): ReactElement {
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
@@ -51,13 +50,6 @@ export default function Dashboard(props: DashProps): ReactElement {
       }
     };
     
-    // useEffect((): void => {
-    //   if (open) {
-    //   getImages();
-    //   }
-    // // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [open]);
-
   async function fetchDashBoardData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/dashboard/');
@@ -74,6 +66,7 @@ export default function Dashboard(props: DashProps): ReactElement {
       const response = await fetch('http://localhost:4000/pod');
       if (response.ok) {
         const data = await response.json();
+        console.log('incoming pods', data);
         setPods(data);
       }
     } catch (error) {
