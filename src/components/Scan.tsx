@@ -15,8 +15,9 @@ interface Vulnerabilities {
 }
 
 const Scan = React.forwardRef(({ scannedImage }: ScanProps, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
   console.log('Inside Scan scanned image', scannedImage);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const vulnerabilities = scannedImage.matches.map((el: any) => el.vulnerability)
   console.log('vulnerabilities', vulnerabilities);
   const getSeverityClassName = (severity: string): string => {
