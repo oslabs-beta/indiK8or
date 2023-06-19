@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const scanSchema = new Schema({
-  imageName: { type: String, required: true },
-  scannedResult: { type: String, required: true },
+const scannedResultSchema = new Schema({
+  imageName: { type: String, required: true, unique: true },
+  scannedResult: { type: Object, required: true },
 });
 
-export const Session = mongoose.model('Scanned', scanSchema);
+export const ScannedResult = mongoose.model('ScannedResult', scannedResultSchema);
