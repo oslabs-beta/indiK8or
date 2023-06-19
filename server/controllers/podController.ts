@@ -35,7 +35,6 @@ console.log('INSIDE GETPODS MIDDLEWARE');
             pod[headers[j]] = values[j];
           }
           results.push(pod);
-
         }
       }
       console.log('results are: ', results);

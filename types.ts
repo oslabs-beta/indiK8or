@@ -53,7 +53,6 @@ export type PodRow = {
   NODE: string;
   NOMINATED: string;
   READINESS: string;
-  GATES: string;
 }
 
 export type Pod = {
