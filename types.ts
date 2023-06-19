@@ -79,3 +79,4 @@ export type ScanProps = {
     matches: Match[]
   }
 }
+

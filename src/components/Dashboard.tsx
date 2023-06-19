@@ -40,7 +40,6 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         // Handle success response
         const images: string = await response.json();
         setScannedImage(images);
-        console.log('scanned image', scannedImage)
       }
     } catch (error) {
         // Handle any errors
@@ -66,7 +65,6 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
       const response = await fetch('http://localhost:4000/pod');
       if (response.ok) {
         const data = await response.json();
-        console.log('incoming pods', data);
         setPods(data);
       }
     } catch (error) {
@@ -102,7 +100,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         justifyContent="center"
       >
         <TableContainer component={Paper} className='pod-table'>
-          <Table sx={{ minWidth: 650,}} aria-label="simple table" >
+          <Table sx={{ minWidth: 650,}} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>NAME</TableCell>

@@ -6,20 +6,17 @@ import '../css/Scan.css';
 interface ScanProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   scannedImage: any;
-
 }
 interface Vulnerabilities {
   id: string;
   description: string;
   severity: string;
+  dataSource: string;
 }
 
 const Scan = React.forwardRef(({ scannedImage }: ScanProps, ref) => {
-  
-  console.log('Inside Scan scanned image', scannedImage);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const vulnerabilities = scannedImage.matches.map((el: any) => el.vulnerability)
-  console.log('vulnerabilities', vulnerabilities);
   const getSeverityClassName = (severity: string): string => {
     if (severity === 'Negligible') { return 'severity-negligible';}
     else if (severity === 'Low') { return 'severity-low';}
@@ -44,15 +41,23 @@ const Scan = React.forwardRef(({ scannedImage }: ScanProps, ref) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {vulnerabilities.map((vulnerability: Vulnerabilities, index: number) => (
+          {vulnerabilities.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={3} id='no-vul-found'>
+                No Vulnerabilities Found
+              </TableCell>
+            </TableRow>
+          ) : (
+          vulnerabilities.map((vulnerability: Vulnerabilities, index: number) => (
             <TableRow key={index}>
-              <TableCell id='v-id'>{vulnerability.id}</TableCell>
+              <TableCell id='v-id'><a href={vulnerability.dataSource} target='_blank'>{vulnerability.id}</a></TableCell>
               <TableCell id='v-desc'>{vulnerability.description}</TableCell>
               <TableCell id='v-sev' className={getSeverityClassName(vulnerability.severity)}>
                 {vulnerability.severity}
               </TableCell>
             </TableRow>
-          ))}
+            ))
+          )}
         </TableBody>
       </Table>
     </TableContainer>

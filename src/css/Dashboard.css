@@ -49,6 +49,8 @@
  
 .pod-table {
   width: 90% !important;
+  overflow-y: scroll !important;
+  max-height: 80%;
 }  
   
 .scanModal {

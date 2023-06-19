@@ -1,6 +1,6 @@
 .modal {
- height: fit-content !important;
  background-color: #212234;
+ overflow-y: auto !important;
 }
 
 #modal-modal-title {
@@ -39,4 +39,9 @@
 
 .severity-critical {
   color: red !important;
+}
+
+#no-vul-found {
+  column-span: 3 !important;
+  color: green;
 }
