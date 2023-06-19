@@ -10,7 +10,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
   const [scannedImage, setScannedImage] = useState<string>('');
-  const [podName, setPodName] = useState<string>('');
+  const [imageName, setImageName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
   const handleOpen = (): void => {
@@ -25,7 +25,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
 
   const getImages = async (): Promise<void> => {
     try {
-      const response = await fetch('http://localhost:4000/pod/', {
+      const response = await fetch('http://localhost:4000/scan/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         // include cookies from cross origin request
         credentials: 'include',
         body: JSON.stringify({
-          podName: podName
+          imageName: imageName
         }),
       });
       if (response.ok) {
@@ -112,7 +112,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
                 <TableCell>AGE</TableCell>
                 <TableCell>IP</TableCell>
                 <TableCell>NODE</TableCell>
-                <TableCell>VULNERABILITY</TableCell>
+                <TableCell className='scan-cell'>IMAGES  & VULNERABILITY SCAN</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -131,12 +131,19 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
                   <TableCell align="left">{pod.IP}</TableCell>
                   <TableCell align="left">{pod.NODE}</TableCell>
                   <TableCell align="left">
-                    <Button 
+                    {pod.IMAGES.map ((image: string, index: number) =>(
+                      <div key={index} className='images'>
+                        {image}
+                        <Button
+                      className='scan-button'  
+                      size='small'   
                       variant="contained" onClick={handleOpen}
-                      onClickCapture={() => setPodName(pod.NAME)}
+                      onClickCapture={() => setImageName(image)}
                     >
                       Scan
                     </Button>
+                      </div>
+                    ))}
                     <Modal
                       open={open}
                       onClose={handleClose}
