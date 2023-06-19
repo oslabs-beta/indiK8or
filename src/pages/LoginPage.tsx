@@ -134,6 +134,7 @@ const LoginPage = (): ReactElement => {
             size="large"
             variant="contained"
             color="secondary"
+            className="oauth"
             onClick={() => {
               const githubLoginUrl = 'http://localhost:4000/auth/github';
               window.location.href = githubLoginUrl;
