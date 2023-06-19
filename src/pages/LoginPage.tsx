@@ -1,21 +1,9 @@
-import { useState, useRef, ChangeEvent, ReactElement, FormEvent} from 'react';
-import {
-  IconButton,
-  InputAdornment,
-  TextField,
-  Button,
-  Grid,
-  Paper,
-  Avatar,
-  Typography,
-  Snackbar,
-  Alert,
-  Link,
-} from '@mui/material';
+import { useState, useRef, ChangeEvent, ReactElement, FormEvent } from 'react';
+import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert, Link } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LoginIcon from '@mui/icons-material/Login';
 import GitHubIcon from '@mui/icons-material/GitHub'
-import '../css/Login.css';
+import '../css/Login.scss';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const LoginPage = (): ReactElement => {
@@ -82,7 +70,7 @@ const LoginPage = (): ReactElement => {
       justifyContent="center"
     >
       <Paper className="login-paper">
-        <Grid>
+        <Grid className='signIn'>
           <Avatar className="login-avatar">
             <LoginIcon />
           </Avatar>

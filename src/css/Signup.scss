@@ -1,10 +1,12 @@
-  body .signup-back {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    height: 100vh;
-  }
+  @import 'Variables.scss';
   
+  body .signup-back {
+    background: $gradient;
+    background-size: $gradSize;
+    animation: $gradAnimation;
+    height: $gradHeight;
+  }
+
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
@@ -28,7 +30,7 @@
     transform: translate(-50%, -50%); /* Move the element back by half of its width and height */
   }
   
-  .signup-avatar {
+  #signup-avatar {
     /* Add styles for the Avatar component */
     background-color: #1bbd7e !important;
   }
@@ -43,4 +45,9 @@
     margin-top: 10px !important;
   }
 
-  
+  .signup-head {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column !important;
+  }

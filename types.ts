@@ -63,6 +63,7 @@ export type Pod = {
   AGE: string;
   IP: string;
   NODE: string;
+  IMAGES: string[];
 }
 
 export type Match = {
@@ -77,3 +78,4 @@ export type ScanProps = {
     matches: Match[]
   }
 }
+
