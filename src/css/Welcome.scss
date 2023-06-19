@@ -1,3 +1,5 @@
+@import 'Variables.scss';
+
 html,
 body,
 #root {
@@ -9,7 +11,7 @@ body,
 .logo {
   position: relative !important;
   padding-bottom: 0 !important;
-  right: 21% !important;
+  right: 5% !important;
   top: 5% !important;
   height: 200px !important;
 }
@@ -76,10 +78,10 @@ body,
 }
 
 #back {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 120%;
+  background: $gradient;
+  background-size: $gradSize;
+  animation: $gradAnimation;
+  height: 120vh;
 }
 
 @keyframes gradient {
@@ -94,3 +96,9 @@ body,
   }
 }
 
+.welcome-container {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  flex-direction: column !important;
+}

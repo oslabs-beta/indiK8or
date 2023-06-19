@@ -1,9 +1,10 @@
-import { spawn, ChildProcess } from 'child_process';
+import { spawn, ChildProcess, exec } from 'child_process';
 import { Request, Response, NextFunction } from 'express';
 import { PodRow } from '../../types';
+import { promisify } from 'util';
 
 const podController = {
-getPods: (_req: Request, res: Response, next: NextFunction): void => {
+getPods: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
 console.log('INSIDE GETPODS MIDDLEWARE');
   try {
     const child: ChildProcess = spawn('kubectl', [ 'get', 'pod', '-o', 'wide']);
@@ -51,6 +52,32 @@ console.log('INSIDE GETPODS MIDDLEWARE');
     };
     return next(errMessage);
   }
+},
+
+getImages: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const pods = res.locals.pods;
+    // create promise based version of exec func
+    const execPromise = promisify(exec);
+    for (let i = 0; i < pods.length; i++) {
+      const command = `kubectl get pod ${pods[i].NAME} -o jsonpath='{.spec.containers[*].image}'`;
+      const { stdout } = await execPromise(command);
+      // removed leading or trailing whitespace and split into array of strings
+      const images: string[] = stdout.trim().split(' ');
+      // initialize images property with value of images array
+      pods[i].IMAGES = images;
+    }
+    return next();
+  } catch (error) {
+    console.log(`error ${error}`);
+    const errMessage = {
+      log: 'Error occurred from getting images',
+      status: 500,
+      message: `${error} error occured in podController.getImages`,
+    };
+    return next(errMessage);
+  }
 }
 };
 export { podController };
+

@@ -5,8 +5,6 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import WelcomePage from './pages/WelcomePage';
-import { Provider } from "react-redux"
-import { store } from './store'
 
 function App(): ReactElement {
   return (
