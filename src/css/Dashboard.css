@@ -47,9 +47,35 @@
   background-color: white;
 }
  
+.pod-table {
+  width: 90% !important;
+}  
   
+.scanModal {
+  background-color: gray;
+}  
   
-  
-  
-  
-  
+#videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#nowScanning {
+  height: 30%;
+  width: 30%;
+}
+
+.scan-button {
+  align-items: flex-end !important;
+}
+
+.images {
+  display: flex !important;
+  justify-content:space-between !important;
+  align-items: flex-start !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  margin-top: 1em;
+}

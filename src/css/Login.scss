@@ -1,8 +1,10 @@
+@import 'Variables.scss';
+
 body .login-back {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
+  background: $gradient;
+  background-size: $gradSize;
+  animation: $gradAnimation;
+  height: $gradHeight;
 }
 
 @keyframes gradient {
@@ -30,7 +32,7 @@ body .login-back {
     left: 50%; /* Position the element horizontally in the middle */
     transform: translate(-50%, -50%); /* Move the element back by half of its width and height */
 }
-  
+
 .login-avatar {
 background-color: #1bbd7e !important;
 }
@@ -53,3 +55,9 @@ bottom: 10px !important;
 left: 10px !important;
 }
 
+.signIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+}

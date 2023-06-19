@@ -1,12 +1,6 @@
 import { ReactElement, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
+import { Box, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -16,9 +10,7 @@ import '../css/Sidebar.css';
 import { SidebarProps } from '../../types';
 
 // Pass the props component from the parent component (HomePage)
-const Sidebar = (props: SidebarProps): ReactElement => {
-  // deconstruct props
-  const { userId, darkMode, handleDashboard, handlePod, setDarkMode } = props;
+const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode }: SidebarProps): ReactElement => {
   // State variables to control the visibility of different texts in the sidebar
   const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
   const [showThemeText, setShowThemeText] = useState<boolean>(false);
@@ -91,16 +83,22 @@ const Sidebar = (props: SidebarProps): ReactElement => {
 
   // Function to handle dashboard toggle
   const handleDashToggle = (): void => {
+    if (podClicked) {
+      handlePod();
+    }
     handleDashboard();
   };
 
   // Function to handle pod toggle
   const handlePodClicked = (): void => {
+    if (dashboardClicked) {
+      handleDashboard();
+    }
     handlePod();
   };
 
   // Function to handle theme toggle
-  const handleThemeToggle = () => {
+  const handleThemeToggle = (): void => {
     // Set dark mode to opposite of current mode using prevState
     setDarkMode((prevDarkMode: boolean) => !prevDarkMode);
   };

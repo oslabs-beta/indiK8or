@@ -51,7 +51,7 @@ const HomePage = () => {
       }
     };
     checkLoggedIn();
-  }, [dispatch, navigate]);
+  }, [navigate]);
 
   const darkTheme: LightDarkTheme = createTheme({
     palette: {
