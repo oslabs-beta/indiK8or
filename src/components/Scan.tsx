@@ -1,6 +1,5 @@
-import Box from '@mui/material/Box';
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from '@mui/material';
 import '../css/Scan.css';
 
 interface ScanProps {
