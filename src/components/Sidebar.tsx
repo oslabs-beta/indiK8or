@@ -1,11 +1,11 @@
 import { ReactElement, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Box, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import LogoutIcon from '@mui/icons-material/Logout';
 import '../css/Sidebar.css';
 import { SidebarProps } from '../../types';
 

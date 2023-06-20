@@ -1,5 +1,5 @@
-import { spawn, ChildProcess, exec } from 'child_process';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import { ChildProcess, exec, spawn } from 'child_process';
 import { PodRow } from '../../types';
 import { promisify } from 'util';
 

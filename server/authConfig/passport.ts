@@ -1,8 +1,8 @@
-import passport from "passport";
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import { NextFunction } from "express";
 import dotenv from 'dotenv';
 import { GitUser, IGitUser} from '../models/gitUser'
-import { NextFunction } from "express";
+import passport from "passport";
+import { Strategy as GitHubStrategy } from 'passport-github2';
 
 dotenv.config();
 

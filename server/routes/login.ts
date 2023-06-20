@@ -1,8 +1,10 @@
 import express from 'express';
 import {Request, Response} from 'express';
-import { userController } from '../controllers/userController';
-import { sessionController } from '../controllers/sessionController';
 import { cookieController } from '../controllers/cookieController';
+import { sessionController } from '../controllers/sessionController';
+import { userController } from '../controllers/userController';
+
+
 
 const loginRouter = express.Router();
 

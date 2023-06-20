@@ -1,8 +1,9 @@
-import { expect, test} from 'vitest'
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter as Router } from "react-router-dom";
-import WelcomePage from '../src/pages/WelcomePage';
 import React from 'react'
+import { BrowserRouter as Router } from "react-router-dom";
+import { render, screen } from '@testing-library/react';
+import { expect, test} from 'vitest'
+import WelcomePage from '../src/pages/WelcomePage';
+
 
 test('renders welcome page correctly', () => {
     render(

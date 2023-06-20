@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 // setSSIDCookie - store the user id in a cookie
 const cookieController = {

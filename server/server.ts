@@ -1,18 +1,18 @@
 import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import session from 'express-session';
+import mongoose from 'mongoose';
+import passport from 'passport';
+import './authConfig/passport';
+import { startExecCommand, stopChildProcess } from './childProcesses/execCommand';
+import { oAuthRouter } from './routes/oAuth';
+import grafanaRouter from './routes/grafana';
 import { loginRouter } from './routes/login';
 import { logoutRouter } from './routes/logout';
-import { oAuthRouter } from './routes/oAuth';
 import { podRouter } from './routes/pod';
 import { scanRouter } from './routes/scan';
-import grafanaRouter from './routes/grafana';
-import cookieParser from 'cookie-parser';
-import passport from 'passport';
-import session from 'express-session';
-import { startExecCommand, stopChildProcess } from './childProcesses/execCommand';
-import './authConfig/passport';
 import { ServerError } from '../types';
 
 // require .env files in

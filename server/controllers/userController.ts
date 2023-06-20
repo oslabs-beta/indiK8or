@@ -1,7 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
-import { User } from '../models/userModel';
+import { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
+import { User } from '../models/userModel';
 import { ServerError } from '../../types';
+
 const userController = {
 // Verifying if an account exists
 verifyAccount: (req: Request, res: Response, next: NextFunction): void => {

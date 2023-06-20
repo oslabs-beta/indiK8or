@@ -1,8 +1,9 @@
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { expect, test, vi, SpyInstance } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from '../src/components/Sidebar';
-import React from 'react';
+
 
 const sidebarProps = {
   userId: 'exampleUserId',

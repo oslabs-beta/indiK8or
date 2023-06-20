@@ -1,7 +1,7 @@
-import { expect, test, vi } from 'vitest';
-import { render, screen, waitFor} from '@testing-library/react';
-import Dashboard from '../src/components/Dashboard';
 import React from 'react';
+import { render, screen, waitFor} from '@testing-library/react';
+import { expect, test, vi } from 'vitest';
+import Dashboard from '../src/components/Dashboard';
 
 test('renders iframe when dashboardClicked is true', async () => {
     const dashboardUid = 'dashboard123';

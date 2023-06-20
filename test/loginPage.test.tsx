@@ -1,8 +1,9 @@
-import { render, screen, fireEvent, waitFor} from "@testing-library/react";
-import { expect, test, vi, SpyInstance } from 'vitest'
-import { BrowserRouter as Router } from "react-router-dom";
-import LoginPage from '../src/pages/LoginPage';
 import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+import { fireEvent, render, screen, waitFor} from "@testing-library/react";
+import { expect, SpyInstance, test, vi } from 'vitest'
+import LoginPage from '../src/pages/LoginPage';
+
 
 test("renders the login form", () => {
   render(
