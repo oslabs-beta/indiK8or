@@ -81,7 +81,6 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
     setShowThemeText(false);
   };
 
-  // Function to handle dashboard toggle
   const handleDashToggle = (): void => {
     if (podClicked) {
       handlePod();
@@ -89,7 +88,6 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
     handleDashboard();
   };
 
-  // Function to handle pod toggle
   const handlePodClicked = (): void => {
     if (dashboardClicked) {
       handleDashboard();
@@ -97,7 +95,6 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
     handlePod();
   };
 
-  // Function to handle theme toggle
   const handleThemeToggle = (): void => {
     // Set dark mode to opposite of current mode using prevState
     setDarkMode((prevDarkMode: boolean) => !prevDarkMode);
@@ -110,7 +107,6 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
       <List className="list">
         {/* Dashboard button */}
         <ListItemButton
-          //onMouse*** is property when cursor is hovering over element
           data-testid="DashboardButton"
           onMouseEnter={handleMouseEnterDash}
           onMouseLeave={handleMouseLeaveDash}

@@ -4,12 +4,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from '../src/components/Sidebar';
 import React from 'react';
 
+// TODO: two props are missing here. you can add these in the sideboarProps object by uncomment them
 const sidebarProps = {
   userId: 'exampleUserId',
   darkMode: false,
   handleDashboard: vi.fn(),
   setDarkMode: vi.fn(),
-  dashboardClicked: false
+  dashboardClicked: false //,
+  // handlePod: () => null,
+  // podClicked: false
 };
 
 // Test to check if sidebar component renders
@@ -20,6 +23,7 @@ test('should render the logo element renders', () => {
     </Router>
   );
 
+  // TODO: Delete all of the "as HTMLInputElement"
   // Find the sidebar button elements
   const logoElement = screen.getByAltText('logo') as HTMLInputElement;
   const dashboardButton = screen.getByTestId('DashboardButton') as HTMLInputElement;

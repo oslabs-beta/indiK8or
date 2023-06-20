@@ -1,22 +1,23 @@
-import Box from '@mui/material/Box';
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import '../css/Scan.css';
 
 interface ScanProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  scannedImage: any;
+  scannedImages: any;
 }
-interface Vulnerabilities {
+
+interface VulnerabilityProps {
   id: string;
   description: string;
   severity: string;
   dataSource: string;
 }
 
-const Scan = React.forwardRef(({ scannedImage }: ScanProps, ref) => {
+const Scan = React.forwardRef(({ scannedImages }: ScanProps, ref) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const vulnerabilities = scannedImage.matches.map((el: any) => el.vulnerability)
+  const vulnerabilities = scannedImages.matches.map((el: any) => el.vulnerability)
+
   const getSeverityClassName = (severity: string): string => {
     if (severity === 'Negligible') { return 'severity-negligible';}
     else if (severity === 'Low') { return 'severity-low';}
@@ -48,7 +49,7 @@ const Scan = React.forwardRef(({ scannedImage }: ScanProps, ref) => {
               </TableCell>
             </TableRow>
           ) : (
-          vulnerabilities.map((vulnerability: Vulnerabilities, index: number) => (
+          vulnerabilities.map((vulnerability: VulnerabilityProps, index: number) => (
             <TableRow key={index}>
               <TableCell id='v-id'><a href={vulnerability.dataSource} target='_blank'>{vulnerability.id}</a></TableCell>
               <TableCell id='v-desc'>{vulnerability.description}</TableCell>

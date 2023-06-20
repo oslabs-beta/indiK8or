@@ -1,12 +1,11 @@
-import { Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Modal } from '@mui/material';
 import { useState, useEffect, ReactElement } from 'react';
+import { Button, Grid, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import '../css/Dashboard.css';
-import { DashProps, Pod } from '../../types';
 import Scan from './Scan';
+import { DashProps, Pod } from '../../types';
 
-//pass props from parent component (HomePage)
 export default function Dashboard({ dashboardClicked, podClicked }: DashProps): ReactElement {
-  const [dashboardUid, setDashboardUid] = useState<string | null>(null);
+  const [dashboardUid, setDashboardUid] = useState<string>('');
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
   const [scannedImage, setScannedImage] = useState<string>('');
@@ -37,12 +36,10 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         }),
       });
       if (response.ok) {
-        // Handle success response
         const images: string = await response.json();
         setScannedImage(images);
       }
     } catch (error) {
-        // Handle any errors
         console.error(error);
       } finally {
         setLoading(false);
@@ -55,7 +52,6 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
       const data: string = await response.json();
       setDashboardUid(data);
     } catch (error) {
-      // Handle any errors
       console.error('Error:', error);
     }
   }
@@ -156,7 +152,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
                           </video>
                         </div>
                       ) : (
-                        <Scan scannedImage={scannedImage} />
+                        <Scan scannedImages={scannedImage} />
                       )}
                     </Modal>
                   </TableCell>

@@ -1,8 +1,11 @@
+// TODO: follow the import best practices like mentioned before
 import { render, screen, fireEvent, waitFor} from "@testing-library/react";
 import { expect, test, vi, SpyInstance } from 'vitest'
 import { BrowserRouter as Router } from "react-router-dom";
 import LoginPage from '../src/pages/LoginPage';
 import React from 'react';
+
+// TODO: Delete all of the "as HTMLInputElement" and "as string"
 
 test("renders the login form", () => {
   render(
@@ -45,6 +48,7 @@ test("input fields capture user input correctly", () => {
   fireEvent.change(passwordInput, { target: { value: testPassword } });
 
   // Assert that the input values are updated correctly
+  // TODO: here after you delete all of the as HTMLElement, change the following lines like so "expect((usernameInput as HTMLInputElement).value).toBe(testUsername);"
   expect(usernameInput.value).toBe(testUsername);
   expect(passwordInput.value).toBe(testPassword);
 });

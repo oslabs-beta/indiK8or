@@ -12,6 +12,7 @@ test('renders welcome page correctly', () => {
       );
 
     // Assert Header and button links work
+    // TODO: Delete all of the "as HTMLInputElement"
     expect(screen.getByText('Introducing indiK8or: Simplify and Visualize Your Kubernetes Environment')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Sign in' }) as HTMLInputElement).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Sign up' }) as HTMLInputElement).toBeInTheDocument();
