@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { Session } from '../models/sessionModel.js';
-import { OAuthUser } from '../../types.js';
+import { Session } from '../models/sessionModel';
+import { OAuthUser } from '../../types';
 
 const sessionController = {
 // isLoggedIn - find appropriate session for this request in DB - verify whether or not session is still valid

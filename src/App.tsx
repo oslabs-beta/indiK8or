@@ -6,7 +6,6 @@ import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import WelcomePage from './pages/WelcomePage';
 
-
 function App(): ReactElement {
   return (
       <Routes>

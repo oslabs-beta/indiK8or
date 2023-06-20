@@ -1,30 +1,70 @@
-import { Grid, Typography } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Modal,
+} from '@mui/material';
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css';
-import { DashProps } from '../../types';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
+import { DashProps, Pod } from '../../types';
 import Scan from './Scan';
 
 //pass props from parent component (HomePage)
-export default function Dashboard(props: DashProps): ReactElement {
-  const { dashboardClicked } = props;
-  const { podClicked } = props;
+export default function Dashboard({
+  dashboardClicked,
+  podClicked,
+}: DashProps): ReactElement {
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
-  const [pods, setPods] = useState<Array<object>>([{}]);
+  const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
+  const [scannedImage, setScannedImage] = useState<string>('');
+  const [imageName, setImageName] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = (): void => {
+    getImages();
+    setLoading(true);
+    setOpen(true);
+  };
 
-  async function fetchDashBoardData() {
+  const handleClose = (): void => {
+    setOpen(false);
+  };
+
+  const getImages = async (): Promise<void> => {
+    try {
+      const response = await fetch('http://localhost:4000/scan/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // include cookies from cross origin request
+        credentials: 'include',
+        body: JSON.stringify({
+          imageName: imageName,
+        }),
+      });
+      if (response.ok) {
+        // Handle success response
+        const images: string = await response.json();
+        setScannedImage(images);
+      }
+    } catch (error) {
+      // Handle any errors
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  async function fetchDashBoardData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/dashboard/');
       const data: string = await response.json();
@@ -35,22 +75,19 @@ export default function Dashboard(props: DashProps): ReactElement {
     }
   }
 
-  async function fetchPodData() {
-    console.log('INSIDE FETCH-POD-DATA');
+  async function fetchPodData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/pod');
       if (response.ok) {
         const data = await response.json();
-        console.log('data is: ', data);
         setPods(data);
-        console.log('pods are:', pods);
       }
     } catch (error) {
       console.error('error on fetching pods data: ', error);
     }
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     fetchDashBoardData(), fetchPodData();
   }, []);
 
@@ -77,24 +114,26 @@ export default function Dashboard(props: DashProps): ReactElement {
         alignItems="center"
         justifyContent="center"
       >
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer component={Paper} className="pod-table">
+          <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell>NAME</TableCell>
-                <TableCell>READY</TableCell>
-                <TableCell>STATUS</TableCell>
-                <TableCell>RESTARTS</TableCell>
-                <TableCell>AGE</TableCell>
-                <TableCell>IP</TableCell>
-                <TableCell>NODE</TableCell>
-                <TableCell>VULNERABILITY</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>NAME</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>READY</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>STATUS</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>RESTARTS</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>AGE</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>IP</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>NODE</TableCell>
+                <TableCell className="scan-cell" sx={{ fontWeight: 'bold' }}>
+                  IMAGES & VULNERABILITY SCAN
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {pods.map((pod: any) => (
+              {pods.map((pod: Pod, podIndex: number) => (
                 <TableRow
-                  key={pod.NAME}
+                  key={podIndex}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
@@ -107,16 +146,39 @@ export default function Dashboard(props: DashProps): ReactElement {
                   <TableCell align="left">{pod.IP}</TableCell>
                   <TableCell align="left">{pod.NODE}</TableCell>
                   <TableCell align="left">
-                    <Button variant="contained" onClick={handleOpen}>
-                      Scan
-                    </Button>
+                    {pod.IMAGES.map((image: string, imageIndex: number) => (
+                      <div key={imageIndex} className="images">
+                        {image}
+                        <Button
+                          className="scan-button"
+                          size="small"
+                          variant="contained"
+                          onClick={handleOpen}
+                          onClickCapture={() => setImageName(image)}
+                        >
+                          Scan
+                        </Button>
+                      </div>
+                    ))}
                     <Modal
                       open={open}
                       onClose={handleClose}
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
+                      className="scanModal"
                     >
-                      <Scan />
+                      {loading ? (
+                        <div id="videoContainer">
+                          <video id="nowScanning" autoPlay loop>
+                            <source
+                              src="src/assets/Scan.mp4"
+                              type="video/mp4"
+                            />
+                          </video>
+                        </div>
+                      ) : (
+                        <Scan scannedImage={scannedImage} />
+                      )}
                     </Modal>
                   </TableCell>
                 </TableRow>

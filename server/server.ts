@@ -6,6 +6,7 @@ import { loginRouter } from './routes/login';
 import { logoutRouter } from './routes/logout';
 import { oAuthRouter } from './routes/oAuth';
 import { podRouter } from './routes/pod';
+import { scanRouter } from './routes/scan';
 import grafanaRouter from './routes/grafana';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
@@ -57,6 +58,7 @@ app.use('/dashboard', grafanaRouter);
 app.use('/logout', logoutRouter);
 app.use('/auth', oAuthRouter);
 app.use('/pod', podRouter);
+app.use('/scan', scanRouter);
 
 // catch-all handler
 app.use((_req: Request, res: Response) =>
