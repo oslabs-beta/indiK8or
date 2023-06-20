@@ -29,16 +29,19 @@ const Scan = React.forwardRef(({ scannedImages }: ScanProps, ref) => {
 
   return (
     <Box className="modal">
-      <Typography id="modal-modal-title" variant="h6" component="h2">
-        Vulnerabilities
-      </Typography>
+
        <TableContainer id="modal-modal-description">
-      <Table>
-        <TableHead>
+      <Table stickyHeader aria-label="sticky table">
+        <TableHead >
+        <TableRow>
+        <TableCell className='vulnerability' sx={{ fontWeight: 'bold' }}>Vulnerability</TableCell>
+        <TableCell className='vulnerability'></TableCell>
+        <TableCell className='vulnerability'></TableCell>
+          </TableRow>
           <TableRow>
-            <TableCell className='modal-table-row-head'>ID</TableCell>
-            <TableCell className='modal-table-row-head'>Description</TableCell>
-            <TableCell className='modal-table-row-head'>Severity</TableCell>
+            <TableCell className='modal-table-row-head' sx={{ fontWeight: 'bold' }}>ID</TableCell>
+            <TableCell className='modal-table-row-head' sx={{ fontWeight: 'bold' }}>Description</TableCell>
+            <TableCell className='modal-table-row-head' sx={{ fontWeight: 'bold' }}>Severity</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

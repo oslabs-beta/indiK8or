@@ -178,7 +178,7 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
             )}
           </ListItemIcon>
           <ListItemText
-            primary={showThemeText ? 'Light/Dark' : ''}
+            primary={showThemeText ? 'Dark/Light' : ''}
             className="listItemText"
             primaryTypographyProps={{ fontSize: '20px', fontWeight: 'bold' }}
           />

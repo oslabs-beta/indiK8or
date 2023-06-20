@@ -36,7 +36,7 @@ body,
 
 .button-container {
   position: relative !important;
-  width: 1000px !important;
+  width: 90% !important;
   top: 200px !important;
   margin: 0 !important;
   padding-left: 0 !important;
@@ -57,7 +57,14 @@ body,
 }
 
 .linkedin {
-  padding-left: 0px !important;
+  padding: 0 !important;
+  position: 0 !important
+}
+
+.github {
+  padding: 0px !important;
+  padding-right: 5px !important;
+  background-color: transparent !important;
 }
 
 .signin {

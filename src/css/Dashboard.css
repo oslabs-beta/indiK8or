@@ -32,8 +32,8 @@
   }
 
 .grafanaDashboard-dashboardExtended{
-  width: 90%;
-  height: 80%;
+  width: 95%;
+  height: 90%;
   }
 
 .modal {
@@ -48,10 +48,13 @@
 }
  
 .pod-table {
-  width: 90% !important;
-  overflow-y: scroll !important;
-  max-height: 80%;
-}  
+  width: 95% !important;
+  height: 90% !important;
+}
+
+.css-n4zdj-MuiTableCell-root {
+  background-color: rgb(198, 198, 198) !important;
+}
   
 .scanModal {
   background-color: gray;
