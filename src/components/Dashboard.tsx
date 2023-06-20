@@ -1,11 +1,26 @@
-import { Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Modal } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Modal,
+} from '@mui/material';
 import { useState, useEffect, ReactElement } from 'react';
 import '../css/Dashboard.css';
 import { DashProps, Pod } from '../../types';
 import Scan from './Scan';
 
 //pass props from parent component (HomePage)
-export default function Dashboard({ dashboardClicked, podClicked }: DashProps): ReactElement {
+export default function Dashboard({
+  dashboardClicked,
+  podClicked,
+}: DashProps): ReactElement {
   const [dashboardUid, setDashboardUid] = useState<string | null>(null);
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
@@ -17,11 +32,11 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
     getImages();
     setLoading(true);
     setOpen(true);
-  }
+  };
 
   const handleClose = (): void => {
     setOpen(false);
-  }
+  };
 
   const getImages = async (): Promise<void> => {
     try {
@@ -33,7 +48,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         // include cookies from cross origin request
         credentials: 'include',
         body: JSON.stringify({
-          imageName: imageName
+          imageName: imageName,
         }),
       });
       if (response.ok) {
@@ -42,13 +57,13 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         setScannedImage(images);
       }
     } catch (error) {
-        // Handle any errors
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
+      // Handle any errors
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   async function fetchDashBoardData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/dashboard/');
@@ -99,24 +114,26 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         alignItems="center"
         justifyContent="center"
       >
-        <TableContainer component={Paper} className='pod-table'>
-          <Table sx={{ minWidth: 650,}} aria-label="simple table">
+        <TableContainer component={Paper} className="pod-table">
+          <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell>NAME</TableCell>
-                <TableCell>READY</TableCell>
-                <TableCell>STATUS</TableCell>
-                <TableCell>RESTARTS</TableCell>
-                <TableCell>AGE</TableCell>
-                <TableCell>IP</TableCell>
-                <TableCell>NODE</TableCell>
-                <TableCell className='scan-cell'>IMAGES  & VULNERABILITY SCAN</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>NAME</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>READY</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>STATUS</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>RESTARTS</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>AGE</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>IP</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>NODE</TableCell>
+                <TableCell className="scan-cell" sx={{ fontWeight: 'bold' }}>
+                  IMAGES & VULNERABILITY SCAN
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {pods.map((pod: Pod, index: number) => (
+              {pods.map((pod: Pod, podIndex: number) => (
                 <TableRow
-                  key={index}
+                  key={podIndex}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
@@ -129,17 +146,18 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
                   <TableCell align="left">{pod.IP}</TableCell>
                   <TableCell align="left">{pod.NODE}</TableCell>
                   <TableCell align="left">
-                    {pod.IMAGES.map ((image: string, index: number) =>(
-                      <div key={index} className='images'>
+                    {pod.IMAGES.map((image: string, imageIndex: number) => (
+                      <div key={imageIndex} className="images">
                         {image}
                         <Button
-                      className='scan-button'  
-                      size='small'   
-                      variant="contained" onClick={handleOpen}
-                      onClickCapture={() => setImageName(image)}
-                    >
-                      Scan
-                    </Button>
+                          className="scan-button"
+                          size="small"
+                          variant="contained"
+                          onClick={handleOpen}
+                          onClickCapture={() => setImageName(image)}
+                        >
+                          Scan
+                        </Button>
                       </div>
                     ))}
                     <Modal
@@ -148,11 +166,14 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                       className="scanModal"
-                    > 
+                    >
                       {loading ? (
                         <div id="videoContainer">
                           <video id="nowScanning" autoPlay loop>
-                            <source src="src/assets/Scan.mp4" type="video/mp4"/>
+                            <source
+                              src="src/assets/Scan.mp4"
+                              type="video/mp4"
+                            />
                           </video>
                         </div>
                       ) : (

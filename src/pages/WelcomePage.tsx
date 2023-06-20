@@ -2,6 +2,7 @@ import { Container, Button, IconButton } from '@mui/material';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import '../css/Welcome.scss';
 import logo from '../assets/logo1.png';
 
@@ -26,11 +27,11 @@ const WelcomePage = () => {
           navigate('/home');
         }
       } catch (error) {
-          // Handle any errors
-          console.error(error);
-        }
-      };
-      checkLoggedIn();
+        // Handle any errors
+        console.error(error);
+      }
+    };
+    checkLoggedIn();
   }, [navigate]);
 
   return (
@@ -59,11 +60,7 @@ const WelcomePage = () => {
           Sign up
         </Button>
         <Container className="button-container">
-          <Button
-            className="authors"
-            variant="text"
-            disabled={true}
-          >
+          <Button className="authors" variant="text" disabled={true}>
             Our engineers:
           </Button>
           <Button className="name" variant="text" disabled={true}>
@@ -75,6 +72,12 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
+          <IconButton
+            className="github"
+            href="https://github.com/WandefulWorld"
+          >
+            <GitHubIcon></GitHubIcon>
+          </IconButton>
           <Button className="name" variant="text" disabled={true}>
             Julian Babon
           </Button>
@@ -83,6 +86,12 @@ const WelcomePage = () => {
             href="https://www.linkedin.com/in/julianbabon/"
           >
             <LinkedInIcon></LinkedInIcon>
+          </IconButton>
+          <IconButton
+            className="github"
+            href="https://github.com/babonjmc"
+          >
+            <GitHubIcon></GitHubIcon>
           </IconButton>
           <Button className="name" variant="text" disabled={true}>
             Tadd LeRocque
@@ -93,6 +102,12 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
+          <IconButton
+            className="github"
+            href="https://github.com/LeRocque"
+          >
+            <GitHubIcon></GitHubIcon>
+          </IconButton>
           <Button className="name" variant="text" disabled={true}>
             Yueran Li
           </Button>
@@ -101,6 +116,12 @@ const WelcomePage = () => {
             href="https://www.linkedin.com/in/yueran-li-ba79bb46/"
           >
             <LinkedInIcon></LinkedInIcon>
+          </IconButton>
+          <IconButton
+            className="github"
+            href="https://github.com/kneazle714"
+          >
+            <GitHubIcon></GitHubIcon>
           </IconButton>
         </Container>
       </Container>

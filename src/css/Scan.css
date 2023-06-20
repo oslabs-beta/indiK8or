@@ -10,7 +10,8 @@
 }
 
 .modal-table-row-head {
-  color: #07f !important;
+  color: rgb(0, 145, 255) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 #v-id {
@@ -26,11 +27,11 @@
 }
 
 .severity-low {
-  color: rgb(61, 61, 255) !important;
+  color: rgb(146, 227, 66) !important;
 }
 
 .severity-medium {
-  color: rgb(202, 202, 47) !important;
+  color: rgb(202, 194, 47) !important;
 }
 
 .severity-high {
@@ -44,4 +45,10 @@
 #no-vul-found {
   column-span: 3 !important;
   color: green;
+}
+
+.vulnerability {
+  color: red !important;
+  font-size: large !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
