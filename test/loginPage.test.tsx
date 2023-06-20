@@ -1,11 +1,8 @@
-// TODO: follow the import best practices like mentioned before
 import { render, screen, fireEvent, waitFor} from "@testing-library/react";
 import { expect, test, vi, SpyInstance } from 'vitest'
 import { BrowserRouter as Router } from "react-router-dom";
 import LoginPage from '../src/pages/LoginPage';
 import React from 'react';
-
-// TODO: Delete all of the "as HTMLInputElement" and "as string"
 
 test("renders the login form", () => {
   render(
@@ -42,13 +39,12 @@ test("input fields capture user input correctly", () => {
 
   // Create fake input values
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-  const testUsername = "testuser" as string;
-  const testPassword = "testpassword" as string;
+  const testUsername = "testuser";
+  const testPassword = "testpassword";
   fireEvent.change(usernameInput, { target: { value: testUsername } });
   fireEvent.change(passwordInput, { target: { value: testPassword } });
 
   // Assert that the input values are updated correctly
-  // TODO: here after you delete all of the as HTMLElement, change the following lines like so "expect((usernameInput as HTMLInputElement).value).toBe(testUsername);"
   expect(usernameInput.value).toBe(testUsername);
   expect(passwordInput.value).toBe(testPassword);
 });
@@ -63,7 +59,6 @@ test('submits the login form and sends a fetch POST request', async () => {
   const usernameInput = screen.getByPlaceholderText('Enter your username') as HTMLInputElement;
   const passwordInput = screen.getByPlaceholderText('Enter your password') as HTMLInputElement;
   const loginButton = screen.getByText('Login') as HTMLInputElement;
-
   fireEvent.change(usernameInput, { target: { value: 'testuser' } });
   fireEvent.change(passwordInput, { target: { value: 'testpassword'} });
 

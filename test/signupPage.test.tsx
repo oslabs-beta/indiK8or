@@ -4,8 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import SignupPage from '../src/pages/SignupPage';
 import React from 'react';
 
-// TODO: Fix all import orders and delete all of the "as HTMLInputElement".
-
 test('renders signup form', () => {
     render(
         <Router>
@@ -50,7 +48,6 @@ test('handles input field changes', () => {
   fireEvent.change(confirmPasswordInput, { target: { value: 'password' } });
 
   // Expect that the form fields have the correct values
-  // TODO: here after you delete all of the as HTMLElement, change the following lines like so "expect((firstNameInput as HTMLInputElement).value).toBe('John');"
   expect(firstNameInput.value).toBe('John');
   expect(lastNameInput.value).toBe('Doe');
   expect(usernameInput.value).toBe('johndoe');

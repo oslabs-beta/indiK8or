@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, } from '@mui/material';
 import '../css/Scan.css';
 
 interface ScanProps {
@@ -13,8 +13,8 @@ interface VulnerabilityProps {
   severity: string;
   dataSource: string;
 }
-
-const Scan = React.forwardRef(({ scannedImages }: ScanProps, ref) => {
+  // eslint-disable-next-line
+const Scan = React.forwardRef(({ scannedImages }: ScanProps, _ref) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const vulnerabilities = scannedImages.matches.map((el: any) => el.vulnerability)
 
@@ -29,9 +29,8 @@ const Scan = React.forwardRef(({ scannedImages }: ScanProps, ref) => {
 
   return (
     <Box className="modal">
-
        <TableContainer id="modal-modal-description">
-      <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="sticky table">
         <TableHead >
         <TableRow>
         <TableCell className='vulnerability' sx={{ fontWeight: 'bold' }}>Vulnerability</TableCell>

@@ -12,7 +12,6 @@ describe('sidebar', () => {
       </MemoryRouter>
     );
   });
-// TODO: Delete "as HTMLInputElement"
   test('does not render Sidebar and Dashboard components if isLoggedIn state is false', async () => {
     await waitFor(() => {
       const screenComponent = screen.queryByTestId('screenComponent') as HTMLInputElement;

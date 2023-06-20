@@ -4,7 +4,6 @@ import { ScannedResult } from '../models/scanModel';
 
 const scanController = {
   isScanned: async (req: Request, res: Response, next: NextFunction) => {
-    console.log('INSIDE ISSCANNED MIDDLEWARE');
     const { imageName } = req.body;
     try {
       const scanned = await ScannedResult.findOne({ imageName });
@@ -25,9 +24,7 @@ const scanController = {
   // if not found return next(), if found res.200.return saved json on this database document
 
   scanImage: async (req: Request, res: Response, next: NextFunction) => {
-    console.log('INSIDE SCANIMAGE MIDDLEWARE');
     const { imageName } = req.body;
-    console.log('imageName', imageName);
     try {
       const command = `grype ${imageName} -o json`;
       const child: ChildProcess = exec(command);

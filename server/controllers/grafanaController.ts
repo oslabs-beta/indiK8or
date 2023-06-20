@@ -5,7 +5,6 @@ const grafanaController = {
 nodeExporter: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     const username = 'admin';
     const password = 'prom-operator';
-    console.log('Inside grafanaController.nodeExporter');
     // Encode username and password (required to send via fetch)
     const encodedCredentials = btoa(`${username}:${password}`);
     try {
@@ -20,7 +19,6 @@ nodeExporter: async (_req: Request, res: Response, next: NextFunction): Promise<
   
       if (response.ok) {
         const data = await response.json();
-        console.log('successful api fetch, data.uid', data[0].uid)
         res.locals.node = data[0].uid;
         return next();
       } else {
