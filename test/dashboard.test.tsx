@@ -15,7 +15,7 @@ test('renders iframe when dashboardClicked is true', async () => {
         json: () => Promise.resolve(dashboardUid),
       } as Response);
   
-    render(<Dashboard dashboardClicked={dashboardClicked} />);
+    render(<Dashboard dashboardClicked={dashboardClicked} podClicked={dashboardClicked}/>);
   
     // Wait for the async operation to complete
     await waitFor(async () => {
@@ -31,7 +31,7 @@ test('renders iframe when dashboardClicked is true', async () => {
   test('renders Typography when dashboardClicked is false', () => {
     const dashboardClicked = false as boolean;
   
-    render(<Dashboard dashboardClicked={dashboardClicked} />);
+    render(<Dashboard dashboardClicked={dashboardClicked} podClicked={dashboardClicked}/>);
   
     // Assert that the Typography component is rendered with the correct text
     const typography: HTMLElement = screen.getByText('indiK8or makes viewing your cluster metrics easy!');

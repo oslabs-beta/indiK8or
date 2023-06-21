@@ -4,20 +4,19 @@ import dotenv from 'dotenv';
 import { GitUser, IGitUser} from '../models/gitUser'
 import { NextFunction } from "express";
 
+//load environment variables from a .env file
 dotenv.config();
 
-/* eslint-disable no-undef */
 const clientID = process.env.GitHubClientID;
 const clientSecret = process.env.GitHubClientSecret;
 
+//define types
 interface GitUser {
   id?: string;
 }
-
 interface doneFunction extends NextFunction {
   (arg1: null, arg2: GitUser ): void
 }
-
 interface GitHubProfile {
   username: string
 }
@@ -37,30 +36,25 @@ passport.deserializeUser(async (id: string, done) => {
   }
 });
 
-/* eslint-disable no-undef */
+//create a new instance of a GitHub authentication strategy for Passport.js
 const strategy = new GitHubStrategy({
   clientID: clientID as string,
   clientSecret: clientSecret as string,
   callbackURL: 'http://localhost:4000/auth/github/callback'
 },
+//define a callback function that is executed after a user is authenticated using the GitHub authentication strategy 
 async (_accessToken: string, _refreshToken: string, profile: GitHubProfile, done:doneFunction) => {
   const { username } = profile;
-  console.log('Authenticated user profile', profile);
   try {
     const existingUser = await GitUser.findOne({ username });
-
     if (existingUser) {
-      console.log('user already exists', existingUser);
-
       return done(null, existingUser);
     }
     const newUser = await GitUser.create({
       username: profile.username,
     });
-    console.log('new user created', newUser);
     return done(null, newUser);
   } catch (err) {
-    console.error(`Error occurred during the auth process ${err}`);
     return done(`Error occured during the auth process ${err}`);
   }
 });

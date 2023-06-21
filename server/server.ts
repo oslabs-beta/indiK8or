@@ -17,27 +17,26 @@ import { ServerError } from '../types';
 
 // require .env files in
 dotenv.config();
-//create an Express application 
+// create an Express application 
 const app = express();
 const port = 4000;
-/* eslint-disable no-undef */
 // provide default value of empty string when env variables are undefined or null
 const mongoURI: string = process.env.MONGO_URI ?? '';
 const sessionSecret: string = process.env.SESSION_SECRET ?? '';
-// mongoose.connect(mongoURI);
+// connect to database
 mongoose
   .connect(mongoURI)
   .then(() => console.log('Connected to Mongo DB'))
   .catch((err: string) => console.log(err));
 
-// allow cors
+// allow cors to connect frontend and backend server
 app.use(
   cors({
     origin: 'http://localhost:5000',
     credentials: true,
   })
 );
-
+// initializes and configures session 
 app.use(
   session({
     secret: sessionSecret,
@@ -45,11 +44,15 @@ app.use(
     saveUninitialized: false,
   })
 );
-
+// initialize passport and set it up for authentication
 app.use(passport.initialize());
+// provides session-based authentication support
 app.use(passport.session());
+// parse incoming requests
 app.use(express.json());
+// parse incoming requests with url-encoded payloads
 app.use(express.urlencoded({ extended: true }));
+// parse cookie hears from incoming requests
 app.use(cookieParser());
 
 // route handlers
@@ -98,7 +101,7 @@ process.on('exit', async () => {
   await stopChildProcess();
 });
 
-// server listening
+// server listening on port
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
