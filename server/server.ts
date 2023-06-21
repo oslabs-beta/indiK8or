@@ -17,7 +17,7 @@ import { ServerError } from '../types';
 
 // require .env files in
 dotenv.config();
-
+//create an Express application 
 const app = express();
 const port = 4000;
 /* eslint-disable no-undef */
