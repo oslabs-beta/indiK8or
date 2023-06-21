@@ -36,8 +36,8 @@
 
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
-<img width="500" alt="Screenshot 2023-06-21 at 9 37 55 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
-<img width="500" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
+<img width="450" alt="Screenshot 2023-06-21 at 9 37 55 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
+<img width="450" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
 
 
 # Features
