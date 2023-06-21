@@ -7,8 +7,8 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start2": "concurrently \"vite\" \" tsx ./server/server.ts\"",
-    "start": "tsx ./server/server.ts",
+    "start": "concurrently \"vite\" \" tsx ./server/server.ts\"",
+    "start2": "tsx ./server/server.ts",
     "test": "vitest",
     "dev": "vite & nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm --no-warnings' server/server.ts"
   },
