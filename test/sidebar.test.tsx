@@ -11,7 +11,7 @@ const sidebarProps = {
   handleDashboard: vi.fn(),
   setDarkMode: vi.fn(),
   dashboardClicked: false,
-  handlePod: () => null,
+  handlePod: vi.fn(),
   podClicked: false
 };
 

@@ -16,11 +16,10 @@ import { scanRouter } from './routes/scan';
 import { ServerError } from '../types';
 // require .env files in
 dotenv.config();
-// create an express app
+// create an Express application 
 const app = express();
 // specify server port as 4000
 const port = 4000;
-
 // provide default value of empty string when env variables are undefined or null
 const mongoURI: string = process.env.MONGO_URI ?? '';
 const sessionSecret: string = process.env.SESSION_SECRET ?? '';
@@ -36,7 +35,7 @@ app.use(
     credentials: true,
   })
 );
-// When Oauth is used to signin, Passport will serialize the user into a session
+// initializes and configures session 
 app.use(
   session({
     secret: sessionSecret,
@@ -44,11 +43,15 @@ app.use(
     saveUninitialized: false,
   })
 );
-
+// initialize passport and set it up for authentication
 app.use(passport.initialize());
+// provides session-based authentication support
 app.use(passport.session());
+// parse incoming requests
 app.use(express.json());
+// parse incoming requests with url-encoded payloads
 app.use(express.urlencoded({ extended: true }));
+// parse cookie hears from incoming requests
 app.use(cookieParser());
 // route handlers
 app.use('/login', loginRouter);
@@ -92,7 +95,7 @@ process.on('exit', async () => {
   await stopChildProcess();
 });
 
-// server listening
+// server listening on port
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 
-
 const grafanaController = {
 nodeExporter: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     const username = 'admin';
@@ -8,6 +7,7 @@ nodeExporter: async (_req: Request, res: Response, next: NextFunction): Promise<
     // Encode username and password (required to send via fetch)
     const encodedCredentials = btoa(`${username}:${password}`);
     try {
+      // fetching grafana api
       const response = await fetch('http://localhost:3000/api/search?query=Node%20Exporter%20/%20Nodes', {
         method: 'GET',
         headers: {
@@ -16,13 +16,13 @@ nodeExporter: async (_req: Request, res: Response, next: NextFunction): Promise<
           Authorization: `Basic ${encodedCredentials}`,
         },
       });
-  
+      // if response received, save the uid on the response body to res.local
       if (response.ok) {
         const data = await response.json();
         res.locals.node = data[0].uid;
         return next();
       } else {
-        console.error('Failed to fetch dashboard:', response.status, response.statusText);
+        // if response is not received, send status code 500
         res.sendStatus(500);
       }
     } catch (error) {

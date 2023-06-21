@@ -8,10 +8,11 @@ isLoggedIn: (req: Request, res: Response, next: NextFunction): void => {
   // finding the session which cookieId matches the cookie ssid sent along with the request
   Session.findOne({ cookieId: req.cookies.ssid })
     .then((session) => {
-      // redirect to signup page if session does not exist
+      // if session is not found, send status code 303 to frond-end
       if (!session) {
         res.status(303).json('No active session exists');
       } else {
+      // if session is found, save cookie ssid in res.locals and return next()
         res.locals.userId = req.cookies.ssid;
         return next();
       }
@@ -86,7 +87,7 @@ startGitSession: (req: Request, _res: Response, next: NextFunction) => {
       })
     })
 },
-
+//middleware to log out user from homePage
 logout: async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userId } = req.body;
