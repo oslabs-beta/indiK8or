@@ -1,8 +1,8 @@
-import passport from "passport";
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import { NextFunction } from "express";
 import dotenv from 'dotenv';
 import { GitUser, IGitUser} from '../models/gitUser'
-import { NextFunction } from "express";
+import passport from "passport";
+import { Strategy as GitHubStrategy } from 'passport-github2';
 
 dotenv.config();
 
@@ -21,7 +21,6 @@ interface doneFunction extends NextFunction {
 interface GitHubProfile {
   username: string
 }
-
 // Serialize the user object into a session
 passport.serializeUser((user: GitUser, done) => {
   done(null, user.id);
@@ -45,19 +44,14 @@ const strategy = new GitHubStrategy({
 },
 async (_accessToken: string, _refreshToken: string, profile: GitHubProfile, done:doneFunction) => {
   const { username } = profile;
-  console.log('Authenticated user profile', profile);
   try {
     const existingUser = await GitUser.findOne({ username });
-
     if (existingUser) {
-      console.log('user already exists', existingUser);
-
       return done(null, existingUser);
     }
     const newUser = await GitUser.create({
       username: profile.username,
     });
-    console.log('new user created', newUser);
     return done(null, newUser);
   } catch (err) {
     console.error(`Error occurred during the auth process ${err}`);

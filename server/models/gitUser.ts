@@ -1,4 +1,4 @@
-import { Schema, Document, Model, model} from 'mongoose';
+import {Document, Model, Schema, model} from 'mongoose';
 
 interface IGitUser extends Document {
   username: string;

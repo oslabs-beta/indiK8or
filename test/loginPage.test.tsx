@@ -1,8 +1,9 @@
-import { render, screen, fireEvent, waitFor} from "@testing-library/react";
-import { expect, test, vi, SpyInstance } from 'vitest'
-import { BrowserRouter as Router } from "react-router-dom";
-import LoginPage from '../src/pages/LoginPage';
 import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+import { fireEvent, render, screen, waitFor} from "@testing-library/react";
+import { expect, SpyInstance, test, vi } from 'vitest'
+import LoginPage from '../src/pages/LoginPage';
+
 
 test("renders the login form", () => {
   render(
@@ -39,8 +40,8 @@ test("input fields capture user input correctly", () => {
 
   // Create fake input values
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-  const testUsername = "testuser" as string;
-  const testPassword = "testpassword" as string;
+  const testUsername = "testuser";
+  const testPassword = "testpassword";
   fireEvent.change(usernameInput, { target: { value: testUsername } });
   fireEvent.change(passwordInput, { target: { value: testPassword } });
 
@@ -59,7 +60,6 @@ test('submits the login form and sends a fetch POST request', async () => {
   const usernameInput = screen.getByPlaceholderText('Enter your username') as HTMLInputElement;
   const passwordInput = screen.getByPlaceholderText('Enter your password') as HTMLInputElement;
   const loginButton = screen.getByText('Login') as HTMLInputElement;
-
   fireEvent.change(usernameInput, { target: { value: 'testuser' } });
   fireEvent.change(passwordInput, { target: { value: 'testpassword'} });
 

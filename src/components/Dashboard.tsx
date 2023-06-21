@@ -1,43 +1,37 @@
-import {
-  Grid,
-  Typography,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Button,
-  Modal,
-} from '@mui/material';
 import { useState, useEffect, ReactElement } from 'react';
+import { Button, Grid, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import '../css/Dashboard.css';
-import { DashProps, Pod } from '../../types';
 import Scan from './Scan';
+import { DashProps, Pod } from '../../types';
 
-//pass props from parent component (HomePage)
-export default function Dashboard({
-  dashboardClicked,
-  podClicked,
-}: DashProps): ReactElement {
-  const [dashboardUid, setDashboardUid] = useState<string | null>(null);
+export default function Dashboard({ dashboardClicked, podClicked }: DashProps): ReactElement {
+  const [dashboardUid, setDashboardUid] = useState<string>('');
   const [pods, setPods] = useState<Pod[]>([]);
   const [open, setOpen] = useState(false);
   const [scannedImage, setScannedImage] = useState<string>('');
   const [imageName, setImageName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
+  /* 
+  When SCAN button is clicked, fetch image scans from backend and set as scannedImage state.
+  While images are being scanned, set Loading to true, then set open to true.
+  Finally, after images are received from backend, set Loading to false.
+  */
   const handleOpen = (): void => {
     getImages();
     setLoading(true);
     setOpen(true);
   };
-
+  // When outside of modal is clicked, set Open to false
   const handleClose = (): void => {
     setOpen(false);
   };
 
+  /*
+  When getImages is called by clicking SCAN button, send POST to backend with imageName as request body.
+  If request is successful, set scannedImage with returned JSON result.
+  Finally, set Loading to false
+  */
   const getImages = async (): Promise<void> => {
     try {
       const response = await fetch('http://localhost:4000/scan/', {
@@ -52,29 +46,27 @@ export default function Dashboard({
         }),
       });
       if (response.ok) {
-        // Handle success response
         const images: string = await response.json();
         setScannedImage(images);
       }
     } catch (error) {
-      // Handle any errors
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+  // GET dashboard id from backend and store in dashboardUid state
   async function fetchDashBoardData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/dashboard/');
       const data: string = await response.json();
       setDashboardUid(data);
     } catch (error) {
-      // Handle any errors
       console.error('Error:', error);
     }
   }
-
+  // GET pods from backend and store in pods state
   async function fetchPodData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/pod');
@@ -86,7 +78,7 @@ export default function Dashboard({
       console.error('error on fetching pods data: ', error);
     }
   }
-
+  // When page loads, call fetchDashBoardData and fetchPodData
   useEffect((): void => {
     fetchDashBoardData(), fetchPodData();
   }, []);
@@ -115,7 +107,7 @@ export default function Dashboard({
         justifyContent="center"
       >
         <TableContainer component={Paper} className="pod-table">
-          <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
+          <Table className='pod-table-head' stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontWeight: 'bold' }}>NAME</TableCell>
@@ -139,13 +131,13 @@ export default function Dashboard({
                   <TableCell component="th" scope="row">
                     {pod.NAME}
                   </TableCell>
-                  <TableCell align="left">{pod.READY}</TableCell>
-                  <TableCell align="left">{pod.STATUS}</TableCell>
-                  <TableCell align="left">{pod.RESTARTS}</TableCell>
-                  <TableCell align="left">{pod.AGE}</TableCell>
-                  <TableCell align="left">{pod.IP}</TableCell>
-                  <TableCell align="left">{pod.NODE}</TableCell>
-                  <TableCell align="left">
+                  <TableCell className='body-rows'>{pod.READY}</TableCell>
+                  <TableCell className='body-rows'>{pod.STATUS}</TableCell>
+                  <TableCell className='body-rows'>{pod.RESTARTS}</TableCell>
+                  <TableCell className='body-rows'>{pod.AGE}</TableCell>
+                  <TableCell className='body-rows'>{pod.IP}</TableCell>
+                  <TableCell className='body-rows'>{pod.NODE}</TableCell>
+                  <TableCell className='body-rows'>
                     {pod.IMAGES.map((image: string, imageIndex: number) => (
                       <div key={imageIndex} className="images">
                         {image}
@@ -177,7 +169,7 @@ export default function Dashboard({
                           </video>
                         </div>
                       ) : (
-                        <Scan scannedImage={scannedImage} />
+                        <Scan scannedImages={scannedImage} />
                       )}
                     </Modal>
                   </TableCell>

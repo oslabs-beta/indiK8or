@@ -1,28 +1,22 @@
-import { spawn, ChildProcess, exec } from 'child_process';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import { ChildProcess, exec, spawn } from 'child_process';
 import { PodRow } from '../../types';
 import { promisify } from 'util';
 
 const podController = {
 getPods: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
-console.log('INSIDE GETPODS MIDDLEWARE');
   try {
     const child: ChildProcess = spawn('kubectl', [ 'get', 'pod', '-o', 'wide']);
     const chunks: Buffer[] = [];
     if (child.stdout){
     child.stdout.on('data', (chunk: Buffer) => {
       chunks.push(chunk);
-      console.log('chunks:', chunks);
     })
 
     child.stdout.on('end', () => {
       const data: string = Buffer.concat(chunks).toString();
-      console.log('data is: ', data);
       const lines: string[] = data.split('\n');
-
-      console.log('lines are: ', lines);
       const headers: string[] = lines[0].split(/\s{2,}/);
-      console.log('headers are:', headers);
       const results: PodRow[] = [];
 
       for (let i = 1; i < lines.length; i++) {
@@ -37,8 +31,6 @@ console.log('INSIDE GETPODS MIDDLEWARE');
           results.push(pod);
         }
       }
-      console.log('results are: ', results);
-
       res.locals.pods = results;
       return next();
     })

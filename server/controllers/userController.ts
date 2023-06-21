@@ -1,11 +1,11 @@
-import { Request, Response, NextFunction } from 'express';
-import { User } from '../models/userModel';
+import { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
+import { User } from '../models/userModel';
 import { ServerError } from '../../types';
+
 const userController = {
 // Verifying if an account exists
 verifyAccount: (req: Request, res: Response, next: NextFunction): void => {
-  console.log('----- SUCCESS! INSIDE verifyAccount middleware -----');
   const { username } = req.body;
   // creating a new user and save the user's id to res.locals
   User.findOne({ username })
@@ -27,7 +27,6 @@ verifyAccount: (req: Request, res: Response, next: NextFunction): void => {
 
 // Creating a new user
 createUser: (req: Request, res: Response, next: NextFunction): void => {
-  console.log('----- SUCCESS! INSIDE createUser middleware -----');
   const { firstName, lastName, username, password } = req.body;
   // creating a new user and save the user's id to res.locals
   User.create({ firstName, lastName, username, password })
@@ -45,7 +44,6 @@ createUser: (req: Request, res: Response, next: NextFunction): void => {
 },
 // Verifying an existing user
 verifyUser: (req: Request, res: Response, next: NextFunction): void => {
-  console.log('----- SUCCESS! INSIDE verifyUser middleware -----');
   const { username, password } = req.body;
   // both username and password needs to be provided by client
   if (!username || !password) {

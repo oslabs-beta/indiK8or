@@ -1,15 +1,18 @@
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { expect, test, vi, SpyInstance } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from '../src/components/Sidebar';
-import React from 'react';
+
 
 const sidebarProps = {
   userId: 'exampleUserId',
   darkMode: false,
   handleDashboard: vi.fn(),
   setDarkMode: vi.fn(),
-  dashboardClicked: false
+  dashboardClicked: false,
+  handlePod: () => null,
+  podClicked: false
 };
 
 // Test to check if sidebar component renders
