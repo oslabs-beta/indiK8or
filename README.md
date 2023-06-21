@@ -11,12 +11,9 @@
 ![ReactRouter](https://img.shields.io/badge/-ReactRouter-white?style=for-the-badge&logo=ReactRouter&logoColor=blue)
 ![Node](https://img.shields.io/badge/-node-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/-Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![RestfulAPI](https://img.shields.io/badge/-RestfulAPI-000000?style=for-the-badge&logo=RestfulAPI&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-000000?style=for-the-badge&logo=MongoDB&logoColor=green)
 ![Mongoose](https://img.shields.io/badge/-Mongoose-white?style=for-the-badge&logo=Mongoose&logoColor=brown)
-![Bcrypt](https://img.shields.io/badge/-Bcrypt-B65FCF?style=for-the-badge&logo=Bcrypt&logoColor=white)
 ![Passport](https://img.shields.io/badge/-Passport-black?style=for-the-badge&logo=Passport&logoColor=green)
-![OAuth](https://img.shields.io/badge/-OAuth-white?style=for-the-badge&logo=OAuth&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white)
@@ -26,6 +23,7 @@
 ![MUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-white?style=for-the-badge&logo=sass3&logoColor=pink)
 ![Jest](https://img.shields.io/badge/-jest-white?style=for-the-badge&logo=jest&logoColor=red)
 ![Supertest](https://img.shields.io/badge/-Supertest-C21325?style=for-the-badge&logo=Supertest&logoColor=white)
 ![Vitest](https://img.shields.io/badge/-Vitest-white?style=for-the-badge&logo=Vitest&logoColor=yellow)
@@ -38,7 +36,16 @@
 
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
-<img src="https://github.com/oslabs-beta/indiK8or/blob/Ivy-ts/src/assets/appDemo.gif" height="450"/>
+<img width="450" alt="Screenshot 2023-06-21 at 9 37 55 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
+<img width="450" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
+
+
+# Features
+
+- indiK8or provides an intuitive K8s cluster visualization, making it easy for users to understand their cluster's topology and access key details about each pod without running kubectl commands.
+- Our app can conduct security scan of the pods in your K8s containers and display their vulnerabilities.
+- The built-in Prometheus integration allows users to excute queries and easily monitor cluster performance without the need for additional configuration.
+- Zero-setup Grafana integration provides users access to insightful visualizations of valuable cluster metrics.
 
 # Getting Started
 
@@ -95,26 +102,43 @@ ________________________________________________________________________________
     
     Here is an example if your yaml file resides in your desktop foler:
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
-_________________________________________________________________________________________________________________________________________
+
+11. Install grype, you can find the instruction [here](https://github.com/anchore/grype)
+_____________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 
-11. Restart minikube by running below commands separately
+1. Restart minikube by running below commands separately
     ` minikube stop `
     ` minikube start `
 
-12. Open your browser and go to http://localhost:3000 and sign in to your grafana with
+2. Open your browser and go to http://localhost:3000 and sign in to your grafana with
    default user: admin
    default password: prom-operator
    
    NOTE: You do not have to do step 15 if you have previously logged before.
    
-13. In your terminal, run this command
+3. In your terminal, run this command
     ` npm run start `
-14. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+4. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+
+# Usage Guidelines
+
+## Dashboard
+This page of the application will provide a visual overview of your kubernetes cluster. The visualization will show the control plane, namespaces, pods, services, deployments and nodes. 
+
+ <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/bf10b707-b72b-4b7e-8604-f96767da9d0b" width="700" height="400"/>
+
+## Pods
+This page will show you the health and status of the pods, it provides the details including image's name, ready, status, age, and IP. It additionally offers images & vulnerability scan.
+
+ <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/13cd8a06-3849-4a95-8853-b0833db0899a" width="700" height="400"/>
 
 
 # Contributing
+
+This product is open source, being actively maintained, and open to contributions. Please inform us of any features or bugs you'd like to see addressed.
+
 ## How to contribute
 
 Contributions are an incredibly important part of the open source community. Any contributions you make are greatly appreciated!
@@ -123,8 +147,8 @@ Contributions are an incredibly important part of the open source community. Any
 - Create your feature branch (git checkout -b feature/AmazingFeature)
 - Commit your changes (git commit -m 'Add some AmazingFeature')
 - Push to the branch (git push origin feature/AmazingFeature)
-- Open a pull request (from feature/AmazingFeature to dev)
-- Create a new issue on GitHub
+- Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
+
 
 # Publications
 You can check our amazing medium article here.

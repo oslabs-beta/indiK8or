@@ -1,8 +1,8 @@
-import passport from "passport";
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import { NextFunction } from "express";
 import dotenv from 'dotenv';
 import { GitUser, IGitUser} from '../models/gitUser'
-import { NextFunction } from "express";
+import passport from "passport";
+import { Strategy as GitHubStrategy } from 'passport-github2';
 
 //load environment variables from a .env file
 dotenv.config();
@@ -20,7 +20,6 @@ interface doneFunction extends NextFunction {
 interface GitHubProfile {
   username: string
 }
-
 // Serialize the user object into a session
 passport.serializeUser((user: GitUser, done) => {
   done(null, user.id);

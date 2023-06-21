@@ -13,14 +13,12 @@ export type DashProps = {
   podClicked: boolean;
 };
 
-export type SidebarProps = {
+export type SidebarProps = DashProps & {
   userId: string,
   darkMode: boolean,
   handleDashboard: () => void;
   handlePod: () => void;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  dashboardClicked: boolean;
-  podClicked: boolean;
 };
 
 export type LightDarkTheme = Theme & {
@@ -71,6 +69,7 @@ export type Match = {
     id: string;
     description: string;
     severity: string;
+    dataSource: string;
   };
 }
 export type ScanProps = {
@@ -79,3 +78,36 @@ export type ScanProps = {
   }
 }
 
+export type VulnerabilityProps = {
+  id: string;
+  description: string;
+  severity: string;
+  dataSource: string;
+}
+
+export type Matches = {
+  vulnerability: VulnerabilityProps;
+  relatedVulnerabilities: object[];
+  matchDetails: string[];
+  artifact: object;
+}
+
+export type Source = {
+  type: string;
+  target: {
+    userInput: string;
+    imageID: string;
+    manifestDigest: string;
+    mediaType: string;
+    tags: string[];
+    imageSize: number;
+    layers: string[];
+    manifest: string;
+    config: string;
+  };
+}
+
+export type JSONresult = {
+  matches: Matches[];
+  source: Source;
+}

@@ -1,8 +1,8 @@
-import { useState, useRef, ChangeEvent, ReactElement, FormEvent } from 'react';
-import { IconButton, InputAdornment, TextField, Button, Grid, Paper, Avatar, Typography, Snackbar, Alert, Link } from '@mui/material';
+import { ChangeEvent, FormEvent, ReactElement, useState, useRef } from 'react';
+import { Alert, Avatar, Button, Grid, IconButton, InputAdornment, Link, Paper, Snackbar, TextField, Typography } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import LoginIcon from '@mui/icons-material/Login';
 import GitHubIcon from '@mui/icons-material/GitHub'
+import LoginIcon from '@mui/icons-material/Login';
 import '../css/Login.scss';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 

@@ -1,29 +1,29 @@
 import { ReactElement, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Box, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import LogoutIcon from '@mui/icons-material/Logout';
 import '../css/Sidebar.css';
 import { SidebarProps } from '../../types';
 
-// Pass the props component from the parent component (HomePage)
+
 const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode }: SidebarProps): ReactElement => {
-  // State variables to control the visibility of different texts in the sidebar
   const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
   const [showThemeText, setShowThemeText] = useState<boolean>(false);
   const [showDashText, setShowDashText] = useState<boolean>(false);
   const [showPodText, setShowPodText] = useState<boolean>(false);
 
-  // React Router hook for navigation
   const navigate: NavigateFunction = useNavigate();
 
-  // Handles the logout button click
+  /*
+  when logout button is clicked, send POST to backend with userId as body,
+  if response is ok, alert user logged out and redirect them to homepage.
+  */
   const handleLogout = async (): Promise<void> => {
     try {
-      // Send logout request to the backend
       const response: Response = await fetch('http://localhost:4000/logout', {
         method: 'POST',
         headers: {
@@ -34,21 +34,17 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
           userId: userId,
         }),
       });
-
       if (response.ok) {
-        // Handle successful logout
         alert(
           'You have been successfully logged out. Redirecting to Welcome Page'
         );
         navigate('/');
       }
     } catch (error) {
-      // Handle error
       console.error(error);
     }
   };
 
-  // Event handlers for mouse hover text visibility on icons
   const handleMouseEnterDash = (): void => {
     setShowDashText(true);
   };
@@ -81,23 +77,22 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
     setShowThemeText(false);
   };
 
-  // Function to handle dashboard toggle
   const handleDashToggle = (): void => {
+  // when handleDashToggle is called, check if podClicked is truthy, if so call handlePod to turn off pod
     if (podClicked) {
       handlePod();
     }
     handleDashboard();
   };
 
-  // Function to handle pod toggle
   const handlePodClicked = (): void => {
+    // when handePodClicked is called, check if dashboardClicked is truthy, if so call handleDashboard to turn off dashboard
     if (dashboardClicked) {
       handleDashboard();
     }
     handlePod();
   };
 
-  // Function to handle theme toggle
   const handleThemeToggle = (): void => {
     // Set dark mode to opposite of current mode using prevState
     setDarkMode((prevDarkMode: boolean) => !prevDarkMode);
@@ -110,7 +105,6 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
       <List className="list">
         {/* Dashboard button */}
         <ListItemButton
-          //onMouse*** is property when cursor is hovering over element
           data-testid="DashboardButton"
           onMouseEnter={handleMouseEnterDash}
           onMouseLeave={handleMouseLeaveDash}

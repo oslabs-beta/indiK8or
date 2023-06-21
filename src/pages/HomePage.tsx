@@ -1,13 +1,14 @@
-import { Grid } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Dashboard from '../components/Dashboard.tsx';
-// import Pods from '../components/Pods.tsx';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { LightDarkTheme } from '../../types';
+import CssBaseline from '@mui/material/CssBaseline';
+import Dashboard from '../components/Dashboard';
+import Sidebar from '../components/Sidebar';
 import '../css/HomePage.css';
-import { LightDarkTheme } from '../../types.ts';
-import Sidebar from '../components/Sidebar.tsx';
+
+
 const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [dashboardClicked, setDashboardClicked] = useState<boolean>(false);

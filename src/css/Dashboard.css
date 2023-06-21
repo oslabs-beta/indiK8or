@@ -51,6 +51,13 @@
   width: 95% !important;
   height: 90% !important;
 }
+.pod-table-head {
+  min-width: 650px;
+}
+
+.body-rows {
+  text-align: left !important;
+}
 
 .css-n4zdj-MuiTableCell-root {
   background-color: rgb(198, 198, 198) !important;

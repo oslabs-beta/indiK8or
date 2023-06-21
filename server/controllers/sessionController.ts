@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { Session } from '../models/sessionModel';
 import { OAuthUser } from '../../types';
 

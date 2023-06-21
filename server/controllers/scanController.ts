@@ -1,5 +1,5 @@
-import { exec, ChildProcess } from 'child_process';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import { ChildProcess, exec } from 'child_process';
 import { ScannedResult } from '../models/scanModel';
 
 const scanController = {
