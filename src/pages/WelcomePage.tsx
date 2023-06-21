@@ -8,7 +8,10 @@ import logo from '../assets/logo1.png';
 
 const WelcomePage = () => {
   const navigate: NavigateFunction = useNavigate();
-
+  /*
+  When welcome page loads, check to see if active session exists for user based off of SSID cookie. 
+  If active session is found, redirect user to HomePage
+  */
   useEffect(() => {
     const checkLoggedIn = async (): Promise<void> => {
       try {
@@ -22,12 +25,9 @@ const WelcomePage = () => {
           body: JSON.stringify({}),
         });
         if (response.status === 302) {
-          // Handle success response
-          // Update the state to indicate user creation success
           navigate('/home');
         }
       } catch (error) {
-        // Handle any errors
         console.error(error);
       }
     };

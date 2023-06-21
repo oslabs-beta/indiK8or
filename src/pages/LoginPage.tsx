@@ -32,6 +32,11 @@ const LoginPage = (): ReactElement => {
     setShowErrorAlert(false);
   };
 
+  /*
+  When user clicks login, send their credentials to the backend.
+  If they succesfully logged in, redirect them to HomePage.
+  If password or username was incorrect, notify user.
+  */
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
