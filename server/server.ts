@@ -14,7 +14,7 @@ import { logoutRouter } from './routes/logout';
 import { podRouter } from './routes/pod';
 import { scanRouter } from './routes/scan';
 import { ServerError } from '../types';
-// import path from 'path';
+import path from 'path';
 
 // require .env files in
 dotenv.config();
@@ -65,10 +65,10 @@ app.use('/pod', podRouter);
 app.use('/scan', scanRouter);
 // catch-all handler
 
-// app.use(express.static(path.join(path.resolve(), 'dist')));
-//   app.get('/*', function (req, res) {
-//     res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
-//   });
+app.use(express.static(path.join(path.resolve(), 'dist')));
+  app.get('/*', function (req, res) {
+    res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
+  });
 
 app.use((_req: Request, res: Response) =>
   res.status(404).send('Invalid endpoint')
