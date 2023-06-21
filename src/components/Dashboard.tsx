@@ -131,13 +131,13 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
                   <TableCell component="th" scope="row">
                     {pod.NAME}
                   </TableCell>
-                  <TableCell align="left">{pod.READY}</TableCell>
-                  <TableCell align="left">{pod.STATUS}</TableCell>
-                  <TableCell align="left">{pod.RESTARTS}</TableCell>
-                  <TableCell align="left">{pod.AGE}</TableCell>
-                  <TableCell align="left">{pod.IP}</TableCell>
-                  <TableCell align="left">{pod.NODE}</TableCell>
-                  <TableCell align="left">
+                  <TableCell className='body-rows'>{pod.READY}</TableCell>
+                  <TableCell className='body-rows'>{pod.STATUS}</TableCell>
+                  <TableCell className='body-rows'>{pod.RESTARTS}</TableCell>
+                  <TableCell className='body-rows'>{pod.AGE}</TableCell>
+                  <TableCell className='body-rows'>{pod.IP}</TableCell>
+                  <TableCell className='body-rows'>{pod.NODE}</TableCell>
+                  <TableCell className='body-rows'>
                     {pod.IMAGES.map((image: string, imageIndex: number) => (
                       <div key={imageIndex} className="images">
                         {image}
