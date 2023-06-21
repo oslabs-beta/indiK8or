@@ -1,0 +1,70 @@
+@import 'Variables.scss';
+
+body .login-back {
+  background: $gradient;
+  background-size: $gradSize;
+  animation: $gradAnimation;
+  height: $gradHeight;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.login-grid {
+  height: 100vh;
+}
+
+.login-paper {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) !important;
+  padding: 30px 20px !important;
+  width: 300px !important;
+  position: fixed; /* Use a fixed position to center the element */
+  top: 50%; /* Position the element vertically in the middle */
+  left: 50%; /* Position the element horizontally in the middle */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Move the element back by half of its width and height */
+}
+
+.login-avatar {
+  background-color: #1bbd7e !important;
+}
+
+.login-heading {
+  margin: 0 !important;
+}
+
+.login-form {
+  margin-top: 10px !important;
+}
+
+.login-form .form-field {
+  margin-bottom: 10px !important;
+}
+
+.snackbar-container {
+  position: fixed !important;
+  bottom: 10px !important;
+  left: 10px !important;
+}
+
+.signIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+}
+
+.oauth {
+  background-color: rgb(117, 117, 117) !important;
+}

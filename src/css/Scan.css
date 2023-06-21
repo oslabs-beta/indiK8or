@@ -1,0 +1,54 @@
+.modal {
+ background-color: #212234;
+ overflow-y: auto !important;
+}
+
+#modal-modal-title {
+  padding-left: 1em;
+  padding-top: .5em;
+  color: #d21a27;
+}
+
+.modal-table-row-head {
+  color: rgb(0, 145, 255) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+#v-id {
+  color: gray !important;
+}
+
+#v-desc {
+  color: white !important;
+}
+
+.severity-negligible {
+  color: lightgreen !important;
+}
+
+.severity-low {
+  color: rgb(146, 227, 66) !important;
+}
+
+.severity-medium {
+  color: rgb(202, 194, 47) !important;
+}
+
+.severity-high {
+  color: rgb(255, 166, 0) !important;
+}
+
+.severity-critical {
+  color: red !important;
+}
+
+#no-vul-found {
+  column-span: 3 !important;
+  color: green;
+}
+
+.vulnerability {
+  color: red !important;
+  font-size: large !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
