@@ -18,6 +18,10 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
 
   const navigate: NavigateFunction = useNavigate();
 
+  /*
+  when logout button is clicked, send POST to backend with userId as body,
+  if response is ok, alert user logged out and redirect them to homepage.
+  */
   const handleLogout = async (): Promise<void> => {
     try {
       const response: Response = await fetch('http://localhost:4000/logout', {
