@@ -2,7 +2,7 @@
 ![Screenshot 2023-06-17 at 11 13 09 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/3c4128be-a2f6-4d27-a998-fd162597118c)
 
 
-❤️❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️❤️
+❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
 
 # Built With
 ![JavaScript](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -167,5 +167,5 @@ You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a
 # License Information
 Distributed under the MIT License. See LICENSE for more information.
 
-❤️❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️❤️
+❤️ IF YOU FIND OUR PRODUCT HELPFUL, YOU CAN SHOW YOUR SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
 
