@@ -40,7 +40,7 @@ const LoginPage = (): ReactElement => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-    const response = await fetch('http://localhost:4000/login/loginRequest', {
+    const response = await fetch('/login/loginRequest', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ const LoginPage = (): ReactElement => {
             color="secondary"
             className="oauth"
             onClick={() => {
-              const githubLoginUrl = 'http://localhost:4000/auth/github';
+              const githubLoginUrl = '/auth/github';
               window.location.href = githubLoginUrl;
             }}
             >
