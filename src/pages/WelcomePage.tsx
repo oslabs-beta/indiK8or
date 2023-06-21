@@ -37,7 +37,7 @@ const WelcomePage = () => {
   return (
     <div id="back">
       <Container className="welcome-container">
-        <img className="logo" src={logo}></img>
+        {/* <img className="logo" src={logo}></img> */}
         <h1 className="intro-heading">
           Introducing indiK8or: Simplify and Visualize Your Kubernetes
           Environment
