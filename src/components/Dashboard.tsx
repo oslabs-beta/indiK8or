@@ -28,7 +28,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
   };
 
   /*
-  When getImages by clicking SCAN button, send POST to backend with imageName as request body.
+  When getImages is called by clicking SCAN button, send POST to backend with imageName as request body.
   If request is successful, set scannedImage with returned JSON result.
   Finally, set Loading to false
   */
