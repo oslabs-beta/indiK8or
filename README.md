@@ -36,10 +36,11 @@
 
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
-<img width="450" alt="Screenshot 2023-06-21 at 9 37 55 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
-<img width="450" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
-<img width="450" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://media.discordapp.net/attachments/1110193909281333310/1121103686656086016/Screenshot_2023-06-21_at_11.43.58_AM.png?width=1410&height=780">
-<img width="450" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://media.discordapp.net/attachments/1110193909281333310/1121103709833805976/Screenshot_2023-06-21_at_11.45.21_AM.png?width=1410&height=632">
+<img width="450" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
+<img width="450" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
+<img width="900" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/33249af8-ae02-45d5-81f8-b39cae52e9d4">
+
+
 
 
 # Features
@@ -157,9 +158,11 @@ You can check our amazing medium article here.
 
 # Contributors
 
-|  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) |  ![Screenshot 2023-06-16 at 4 22 30 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/120f2037-7659-461d-a762-1c81421ad5e7) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
+
+
+|  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) | ![Screenshot 2023-06-21 at 12 08 12 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/7d6f4638-f815-4337-87b3-853fe26fe454) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
 | ------------- | ------------- |------------- | ------------- |
-| Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/98962b4e-c4e9-4664-82ab-2fe3f0abbd36" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
+| Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
 
 
 # License Information
