@@ -4,7 +4,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import '../css/Welcome.scss';
-// import logo from '../assets/logo1.png';
+import logo from '../assets/logo1.png';
 
 const WelcomePage = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -37,7 +37,7 @@ const WelcomePage = () => {
   return (
     <div id="back">
       <Container className="welcome-container">
-        {/* <img className="logo" src={logo}></img> */}
+        <img className="logo" src={logo}></img>
         <h1 className="intro-heading">
           Introducing indiK8or: Simplify and Visualize Your Kubernetes
           Environment
