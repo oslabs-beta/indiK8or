@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { LightDarkTheme } from '../../types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from '../components/Dashboard';
 import Sidebar from '../components/Sidebar';
 import '../css/HomePage.css';
-import { LightDarkTheme } from '../../types';
+
 
 const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
@@ -23,7 +24,6 @@ const HomePage = () => {
 
   const handlePod = (): void =>
     setPodClicked((prevPodClicked) => !prevPodClicked);
-
   // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
   // if they are not logged in we will receive a 303 and send them to the loginPage
   useEffect(() => {
@@ -33,7 +33,7 @@ const HomePage = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-          },
+          }, 
           credentials: 'include',
           body: JSON.stringify({}),
         });
@@ -51,7 +51,6 @@ const HomePage = () => {
     };
     checkLoggedIn();
   }, [navigate]);
-
   const darkTheme: LightDarkTheme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',

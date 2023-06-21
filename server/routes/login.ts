@@ -7,22 +7,21 @@ import { userController } from '../controllers/userController';
 
 
 const loginRouter = express.Router();
-
 // authorizing user who has already logged in
 loginRouter.post('/isLoggedIn', sessionController.isLoggedIn, (_req: Request, res: Response) => {
-  return res.status(302).json(res.locals.userId);
+    return res.status(302).json(res.locals.userId);
   }
 )
-
-// login
-loginRouter.post('/loginRequest', userController.verifyUser, sessionController.startSession, cookieController.setSSIDCookie, (_req: Request, res: Response) => {
-  return res.status(200).json('You are logged in');
+// loginRouter to handle login request
+loginRouter.post('/loginRequest', userController.verifyUser, sessionController.startSession, cookieController.setSSIDCookie,
+  (_req: Request, res: Response) => {
+    return res.status(200).json('You are logged in');
   }
 );
-
-// signup
-loginRouter.post('/signupRequest', userController.verifyAccount, userController.createUser, (_req: Request, res: Response) => {
-  return res.status(201).json('You have signed up');
+// loginRouter to handle sign up request
+loginRouter.post('/signupRequest', userController.verifyAccount, userController.createUser,
+  (_req: Request, res: Response) => {
+    return res.status(201).json('You have signed up');
   }
 );
 

@@ -9,7 +9,7 @@ const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
-
+//specify a level of work factor for the bcrypt hashing algorithm.
 const SALT_WORK_FACTOR = 10;
 
 // pre hook runs a function before the document is saved to the collection

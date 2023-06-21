@@ -37,7 +37,6 @@ const startExecCommand = () => {
   this event is trigered when the childProcess object has finished and is about to exit the shell.
   The provided callback will be exected when this event occurs 
   */
-
   childProcess.on('close', (code: number) => {
     console.log(`kubectl process exited with code ${code}`);
   });

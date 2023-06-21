@@ -4,20 +4,19 @@ import { GitUser, IGitUser} from '../models/gitUser'
 import passport from "passport";
 import { Strategy as GitHubStrategy } from 'passport-github2';
 
+//load environment variables from a .env file
 dotenv.config();
 
-/* eslint-disable no-undef */
 const clientID = process.env.GitHubClientID;
 const clientSecret = process.env.GitHubClientSecret;
 
+//define types
 interface GitUser {
   id?: string;
 }
-
 interface doneFunction extends NextFunction {
   (arg1: null, arg2: GitUser ): void
 }
-
 interface GitHubProfile {
   username: string
 }
@@ -36,12 +35,13 @@ passport.deserializeUser(async (id: string, done) => {
   }
 });
 
-/* eslint-disable no-undef */
+//create a new instance of a GitHub authentication strategy for Passport.js
 const strategy = new GitHubStrategy({
   clientID: clientID as string,
   clientSecret: clientSecret as string,
   callbackURL: 'http://localhost:4000/auth/github/callback'
 },
+//define a callback function that is executed after a user is authenticated using the GitHub authentication strategy 
 async (_accessToken: string, _refreshToken: string, profile: GitHubProfile, done:doneFunction) => {
   const { username } = profile;
   try {
@@ -54,7 +54,6 @@ async (_accessToken: string, _refreshToken: string, profile: GitHubProfile, done
     });
     return done(null, newUser);
   } catch (err) {
-    console.error(`Error occurred during the auth process ${err}`);
     return done(`Error occured during the auth process ${err}`);
   }
 });
