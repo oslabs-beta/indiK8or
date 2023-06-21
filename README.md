@@ -38,7 +38,16 @@
 
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
 
-<img src="https://github.com/oslabs-beta/indiK8or/blob/Ivy-ts/src/assets/appDemo.gif" height="450"/>
+<img width="500" alt="Screenshot 2023-06-21 at 9 37 55 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
+<img width="500" alt="Screenshot 2023-06-21 at 9 38 10 AM" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
+
+
+# Features
+
+- indiK8or provides an intuitive K8s cluster visualization, making it easy for users to understand their cluster's topology and access key details about each pod without running kubectl commands.
+- Our app can conduct security scan of the pods in your K8s containers and display their vulnerabilities.
+- The built-in Prometheus integration allows users to excute queries and easily monitor cluster performance without the need for additional configuration.
+- Zero-setup Grafana integration provides users access to insightful visualizations of valuable cluster metrics.
 
 # Getting Started
 
@@ -113,8 +122,23 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
     ` npm run start `
 14. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
+# Usage Guidelines
+
+## Dashboard
+This page of the application will provide a visual overview of your kubernetes cluster. The visualization will show the control plane, namespaces, pods, services, deployments and nodes. 
+
+ <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/bf10b707-b72b-4b7e-8604-f96767da9d0b" width="700" height="400"/>
+
+## Pods
+This page will show you the health and status of the pods, it provides the details including image's name, ready, status, age, and IP. It additionally offers images & vulnerability scan.
+
+ <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/13cd8a06-3849-4a95-8853-b0833db0899a" width="700" height="400"/>
+
 
 # Contributing
+
+This product is open source, being actively maintained, and open to contributions. Please inform us of any features or bugs you'd like to see addressed.
+
 ## How to contribute
 
 Contributions are an incredibly important part of the open source community. Any contributions you make are greatly appreciated!
@@ -123,8 +147,8 @@ Contributions are an incredibly important part of the open source community. Any
 - Create your feature branch (git checkout -b feature/AmazingFeature)
 - Commit your changes (git commit -m 'Add some AmazingFeature')
 - Push to the branch (git push origin feature/AmazingFeature)
-- Open a pull request (from feature/AmazingFeature to dev)
-- Create a new issue on GitHub
+- Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
+
 
 # Publications
 You can check our amazing medium article here.
