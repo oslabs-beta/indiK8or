@@ -1,11 +1,14 @@
 @import 'Variables.scss';
 
-html,
-body,
-#root {
-  height: 100%;
+body{
+  height: 100%; 
   width: 100%;
   margin: 0;
+}
+
+#root {
+  height: 100vh; 
+  width: 100%;
 }
 
 .logo {
@@ -13,82 +16,87 @@ body,
   padding-bottom: 0 !important;
   right: 5% !important;
   top: 5% !important;
-  height: 200px !important;
+  height: 12vw !important;
 }
 
-.intro-heading {
-  position: relative !important;
-  width: 1000px !important;
-  margin-top: 0 !important;
-  font-size: 55px;
-  top: 150px !important;
-  text-align: left;
+.welcome-gif {
+  display: block;
+  margin: 0 auto;
+  max-width: 70%;
+  border-radius: 1vw; // Rounded corners using vw units
+  box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, 0.2); // Shadow effect using vw units
 }
 
-.intro {
-  position: relative !important;
-  width: 1000px !important;
-  color: black !important;
-  font-size: 30px;
-  top: 150px !important;
-  text-align: left;
+.team-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2vw;
+
+  .authors {
+    font-size: 1.5vw !important;
+    color: black !important;
+    padding-left: 0 !important;
+    text-align: left;
+    white-space: nowrap;
+  }
 }
 
-.button-container {
-  position: relative !important;
-  width: 90% !important;
-  top: 200px !important;
-  margin: 0 !important;
-  padding-left: 0 !important;
-  text-align: left;
+.team-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 11vw;
+  padding: 1vw;
+
+  img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1vw;
+  }
+
+  .MuiTypography-subtitle1 {
+    margin-bottom: 0.5vw;
+    font-style: italic;
+  }
+
+  .MuiButtonBase-root {
+    margin-right: 0.5vw;
+  }
 }
 
-.authors {
-  font-size: 20px !important;
-  color: black !important;
-  padding-left: 0 !important;
-  text-align: left;
-}
-
-.name {
-  font-size: 20px !important;
-  color: black !important;
-  padding-right: 0px !important;
-}
-
-.linkedin {
-  padding: 0 !important;
-  position: 0 !important
-}
-
-.github {
-  padding: 0px !important;
-  padding-right: 5px !important;
-  background-color: transparent !important;
-}
 
 .signin {
   position: absolute !important;
-  top: 20px !important;
-  right: 140px !important;
+  top: 1vw !important;
+  right: 7vw !important;
   background-color: white !important;
   color: black !important;
-  width: 90px !important;
+  width: 5vw !important;
 }
 
 .signup {
   position: absolute !important;
-  top: 20px !important;
-  right: 35px !important;
+  top: 1vw !important;
+  right: 1vw !important;
   background-color: rgb(96, 88, 88) !important;
   color: white !important;
+  width: 5vw !important;
 }
 
 #back {
   background: $gradient;
   background-size: $gradSize;
   animation: $gradAnimation;
-  height: 120vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 @keyframes gradient {
@@ -108,4 +116,8 @@ body,
   justify-content: flex-start !important;
   align-items: flex-start !important;
   flex-direction: column !important;
+
+  .MuiGrid-item {
+    margin-bottom: 1.6vw; 
+  }
 }
