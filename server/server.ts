@@ -34,7 +34,7 @@ mongoose
 
 app.use(
   cors({
-    origin: 'http://localhost:5000',
+    origin: 'https://indik8or-359561821b26.herokuapp.com/',
     credentials: true,
   })
 );
@@ -66,7 +66,7 @@ app.use('/scan', scanRouter);
 // catch-all handler
 
 app.use(express.static(path.join(path.resolve(), 'dist')));
-  app.get('/*', function (req, res) {
+  app.get('/*', function (_req, res) {
     res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
   });
 

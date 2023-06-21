@@ -6,8 +6,13 @@ export default defineConfig({
   server: {
     port: 5000,
     proxy: {
-      '/login/**': { target: 'http://localhost:4000/' },
-      '/auth': 'http://localhost:4000/',
+      '/login': 'http://localhost:5000',
+      '/logout': 'http://localhost:5000',
+      '/pods': 'http://localhost:5000',
+      '/dashboard': 'http://localhost:5000',
+      '/auth': 'http://localhost:5000',
+      '/scan': 'http://localhost:5000',
+      '/home': 'http://localhost:5000',
     },
   },
 });
