@@ -1,1 +1,2 @@
-web: bin/start-nginx-solo
+web: npm run build && npm run start
+
