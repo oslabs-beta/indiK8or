@@ -86,7 +86,6 @@
 .images {
   display: flex !important;
   justify-content:space-between !important;
-  align-items: flex-start !important;
   flex-direction: row !important;
   align-items: center !important;
   margin-top: 1em;
