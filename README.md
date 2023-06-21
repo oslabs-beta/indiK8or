@@ -40,6 +40,13 @@ indiK8or is a Kubernetes Cluster Visualization Tool that will display your clust
 
 <img src="https://github.com/oslabs-beta/indiK8or/blob/Ivy-ts/src/assets/appDemo.gif" height="450"/>
 
+# Features
+
+- indiK8or provides an intuitive K8s cluster visualization, making it easy for users to understand their cluster's topology and access key details about each pod without running kubectl commands.
+- Our app can conduct security scan of the pods in your K8s containers and display their vulnerabilities.
+- The built-in Prometheus integration allows users to excute queries and easily monitor cluster performance without the need for additional configuration.
+- Zero-setup Grafana integration provides users access to insightful visualizations of valuable cluster metrics.
+
 # Getting Started
 
 indiK8or functionality assumes that you have Docker and Kubernetes already installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
