@@ -18,14 +18,16 @@ const HomePage = () => {
 
   const navigate: NavigateFunction = useNavigate();
 
-  // Set the value of dashboardClicked to the opposite of its current value using func
   const handleDashboard = (): void =>
     setDashboardClicked((prevDashboardClicked) => !prevDashboardClicked);
 
   const handlePod = (): void =>
     setPodClicked((prevPodClicked) => !prevPodClicked);
-  // check to see if user is logged in, if they are we set loggedIn to true and render ThemeProvider
-  // if they are not logged in we will receive a 303 and send them to the loginPage
+  /*
+  When HomePage loads, check to see if active session exists for user.
+  If so set userId with their id, then display HomePage components.
+  If no session is found, redirect user to LoginPage.
+  */
   useEffect(() => {
     const checkLoggedIn = async (): Promise<void> => {
       try {
@@ -64,7 +66,6 @@ const HomePage = () => {
   return (
     <>
       {loggedIn && (
-        //pass props to the children
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <Grid className="homePage" data-testid="screenComponent">

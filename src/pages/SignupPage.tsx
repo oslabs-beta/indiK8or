@@ -6,7 +6,6 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import '../css/Signup.scss';
 
 const SignupPage = (): ReactElement => {
-  // State variables to hold form data
   const [username, setUsername] = useState<string>('');
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
@@ -17,13 +16,10 @@ const SignupPage = (): ReactElement => {
   const [passwordError, setPasswordError] = useState<string>('');
   const [showSuccessAlert, setShowSuccessAlert] = useState<boolean>(false);
   const [showConflictAlert, setShowConflictAlert] = useState<boolean>(false);
-
-  // Refs for password confirmation and password input fields
   const passwordConfirmationRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const navigate: NavigateFunction = useNavigate();
   
-  // Event handlers for input field changes
   const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
   };
@@ -44,27 +40,22 @@ const SignupPage = (): ReactElement => {
     setPasswordConfirmation(event.target.value);
   };
 
-  // Toggle password visibility
   const handleShowPasswordToggle = (): void => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  // Toggle password confirmation visibility
   const handleShowPasswordConfirmationToggle = (): void => {
     setShowPasswordConfirmation((prevShowPasswordConfirmation) => !prevShowPasswordConfirmation);
   };
 
-  // Reset the state to hide the success alert
   const handleSnackbarClose = (): void => {
     setShowSuccessAlert(false); 
   };
 
-  // Reset the state to hide the fail alert
   const handleConflictSnackbarClose = (): void => {
     setShowConflictAlert(false);
   };
  
-  // Form submission handler
   const handleSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
@@ -76,7 +67,6 @@ const SignupPage = (): ReactElement => {
         return;
     }
 
-    // Regular expression for password validation
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     // Check if password meets the required criteria
@@ -86,8 +76,11 @@ const SignupPage = (): ReactElement => {
         passwordRef.current?.focus();
         return;
     }
-
-    // Make the POST request to your server here using username, firstName, lastName, and password
+    /*
+    Send user info to backend.
+    If user is successfully created, redirect them to LoginPage.
+    If user was not created, show conflict.
+    */
     try {
       const response = await fetch('http://localhost:4000/login/signupRequest', {
         method: 'POST',
@@ -97,12 +90,9 @@ const SignupPage = (): ReactElement => {
         body: JSON.stringify({ username, firstName, lastName, password }),
       });
       if (response.ok) {
-          // Handle success response
-          // Update the state to indicate user creation success
           setShowSuccessAlert(true);
           navigate('/login/loginRequest');
       } else if (response.status === 409) {
-        // Handle the case where the account already exists
         setShowConflictAlert(true);
         setUsername('');
         setPassword('');
@@ -113,10 +103,8 @@ const SignupPage = (): ReactElement => {
         console.error('Server error:', response.statusText)
       }
   } catch(error) {
-      // Handle any errors
       console.error(error);
     }
-    // Clear the form fields
     setUsername('');
     setFirstName('');
     setLastName('');
@@ -145,7 +133,6 @@ const SignupPage = (): ReactElement => {
             placeholder='Enter your first name' 
             type="text" 
             value={firstName}
-            // Call handleFirstNameChange on input change 
             onChange={handleFirstNameChange} />
 
             <TextField className='form-field'
@@ -156,7 +143,6 @@ const SignupPage = (): ReactElement => {
             placeholder='Enter your last name' 
             type="text" 
             value={lastName} 
-            // Call handleLastNameChange on input change
             onChange={handleLastNameChange}/>
 
             <TextField className='form-field'
@@ -167,7 +153,6 @@ const SignupPage = (): ReactElement => {
             placeholder='Enter your username' 
             type="text" 
             value={username} 
-            // Call handleUsernameChange on input change
             onChange={handleUsernameChange}/>
 
             <TextField className='form-field'
@@ -178,11 +163,9 @@ const SignupPage = (): ReactElement => {
             placeholder='Enter your password' 
             type={showPassword ? 'text' : 'password'} 
             value={password}
-            // Call handlePasswordChange on input change 
             onChange={handlePasswordChange} 
             helperText={passwordError || '*Password should be at least 8 characters long and include a capital letter, a number, and a symbol.'} 
             error={Boolean(passwordError)}
-            // Set the reference for password input field 
             inputRef={passwordRef}
               InputProps={{
                 endAdornment: (
@@ -201,11 +184,9 @@ const SignupPage = (): ReactElement => {
             placeholder='Confirm your password' 
             type={showPasswordConfirmation ? 'text' : 'password'} 
             value={passwordConfirmation}
-            // Call handlePasswordConfirmationChange on input change 
             onChange={handlePasswordConfirmationChange} 
             error={Boolean(passwordError)} 
             helperText={passwordError}
-            // Set the reference for password confirmation input field 
             inputRef={passwordConfirmationRef}
               InputProps={{
                 endAdornment: (
