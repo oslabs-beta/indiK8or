@@ -36,6 +36,7 @@ const scanController = {
         child.stdout.on('end', async () => {
           const scanned = JSON.parse(chunks);
           res.locals.scanned = scanned;
+          console.log('scanned here', scanned)
           // save the imageName and res.locals.scanned to database
           try {
             await ScannedResult.create(

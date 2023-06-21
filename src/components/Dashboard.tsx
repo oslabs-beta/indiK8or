@@ -12,16 +12,26 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
   const [imageName, setImageName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
+  /* 
+  When SCAN button is clicked, fetch image scans from backend and set as scannedImage state.
+  While images are being scanned, set Loading to true, then set open to true.
+  Finally, after images are received from backend, set Loading to false.
+  */
   const handleOpen = (): void => {
     getImages();
     setLoading(true);
     setOpen(true);
   };
-
+  // When outside of modal is clicked, set Open to false
   const handleClose = (): void => {
     setOpen(false);
   };
 
+  /*
+  When getImages by clicking SCAN button, send POST to backend with imageName as request body.
+  If request is successful, set scannedImage with returned JSON result.
+  Finally, set Loading to false
+  */
   const getImages = async (): Promise<void> => {
     try {
       const response = await fetch('http://localhost:4000/scan/', {
@@ -45,7 +55,8 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         setLoading(false);
       }
     };
-    
+  
+  // GET dashboard id from backend and store in dashboardUid state
   async function fetchDashBoardData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/dashboard/');
@@ -55,7 +66,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
       console.error('Error:', error);
     }
   }
-
+  // GET pods from backend and store in pods state
   async function fetchPodData(): Promise<void> {
     try {
       const response = await fetch('http://localhost:4000/pod');
@@ -67,7 +78,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
       console.error('error on fetching pods data: ', error);
     }
   }
-
+  // When page loads, call fetchDashBoardData and fetchPodData
   useEffect((): void => {
     fetchDashBoardData(), fetchPodData();
   }, []);
@@ -96,7 +107,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
         justifyContent="center"
       >
         <TableContainer component={Paper} className="pod-table">
-          <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
+          <Table className='pod-table-head' stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontWeight: 'bold' }}>NAME</TableCell>

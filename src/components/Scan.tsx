@@ -1,23 +1,11 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, } from '@mui/material';
 import '../css/Scan.css';
+import {  JSONresult, VulnerabilityProps } from '../../types';
 
-interface ScanProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  scannedImages: any;
-}
-
-interface VulnerabilityProps {
-  id: string;
-  description: string;
-  severity: string;
-  dataSource: string;
-}
-  // eslint-disable-next-line
-const Scan = React.forwardRef(({ scannedImages }: ScanProps, _ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const vulnerabilities = scannedImages.matches.map((el: any) => el.vulnerability)
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Scan = forwardRef(({ scannedImages }: { scannedImages?: JSONresult | string}, _ref) => {
+  const vulnerabilities = (typeof scannedImages === 'string' ? [] : scannedImages?.matches?.map((el) => el.vulnerability)) || [];
   const getSeverityClassName = (severity: string): string => {
     if (severity === 'Negligible') { return 'severity-negligible';}
     else if (severity === 'Low') { return 'severity-low';}
@@ -31,7 +19,7 @@ const Scan = React.forwardRef(({ scannedImages }: ScanProps, _ref) => {
     <Box className="modal">
        <TableContainer id="modal-modal-description">
         <Table stickyHeader aria-label="sticky table">
-        <TableHead >
+        <TableHead>
         <TableRow>
         <TableCell className='vulnerability' sx={{ fontWeight: 'bold' }}>Vulnerability</TableCell>
         <TableCell className='vulnerability'></TableCell>
@@ -44,7 +32,7 @@ const Scan = React.forwardRef(({ scannedImages }: ScanProps, _ref) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {vulnerabilities.length === 0 ? (
+          {vulnerabilities.length === 0  ? (
             <TableRow>
               <TableCell colSpan={3} id='no-vul-found'>
                 No Vulnerabilities Found

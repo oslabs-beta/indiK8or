@@ -13,25 +13,12 @@ export type DashProps = {
   podClicked: boolean;
 };
 
-// TODO: instead of repeating dashboardClicked and podClicked you can write
-/* 
-export type SidebarProps = DashProps & { 
-  userId: string,
-  darkMode: boolean,
-  handleDashboard: () => void;
-  handlePod: () => void;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>; 
-}
-*/
-
-export type SidebarProps = {
+export type SidebarProps = DashProps & {
   userId: string,
   darkMode: boolean,
   handleDashboard: () => void;
   handlePod: () => void;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  dashboardClicked: boolean;
-  podClicked: boolean;
 };
 
 export type LightDarkTheme = Theme & {
@@ -53,14 +40,6 @@ export type OAuthUser = {
   __v: number;
 }
 
-// TODO: for PodRow you can write
-/* 
-export type PodRow = Omit<Pod, 'IMAGES'> & {
-  [key: string]: string; // btw, if you are using generic type like this, not sure if the rest of the types still regester
-  NOMINATED: string;
-  READINESS: string;
-}
-*/
 export type PodRow = {
   [key: string]: string;
   NAME: string;
@@ -90,6 +69,7 @@ export type Match = {
     id: string;
     description: string;
     severity: string;
+    dataSource: string;
   };
 }
 export type ScanProps = {
@@ -98,3 +78,36 @@ export type ScanProps = {
   }
 }
 
+export type VulnerabilityProps = {
+  id: string;
+  description: string;
+  severity: string;
+  dataSource: string;
+}
+
+export type Matches = {
+  vulnerability: VulnerabilityProps;
+  relatedVulnerabilities: object[];
+  matchDetails: string[];
+  artifact: object;
+}
+
+export type Source = {
+  type: string;
+  target: {
+    userInput: string;
+    imageID: string;
+    manifestDigest: string;
+    mediaType: string;
+    tags: string[];
+    imageSize: number;
+    layers: string[];
+    manifest: string;
+    config: string;
+  };
+}
+
+export type JSONresult = {
+  matches: Matches[];
+  source: Source;
+}
