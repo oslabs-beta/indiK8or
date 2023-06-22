@@ -7,8 +7,9 @@ import { Strategy as GitHubStrategy } from 'passport-github2';
 //load environment variables from a .env file
 dotenv.config();
 
-const clientID = process.env.GitHubClientID;
-const clientSecret = process.env.GitHubClientSecret;
+// if ClientID or Secret are undefined, default to an empty string
+const clientID = process.env.GitHubClientID ?? '';
+const clientSecret = process.env.GitHubClientSecret ?? '';
 
 //define types
 interface GitUser {
