@@ -113,8 +113,8 @@ ________________________________________________________________________________
       [dataproxy]
       timeout: 600 
    ```
-      
-    <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/cf928d70-129e-4ca7-9faa-16091aa8c785" width="350" height="300"/>
+   
+    
 14. Apply the yaml file, and replace 'filePath' with the path of your yaml file
     ` kubectl apply -f 'filePath' `
     
