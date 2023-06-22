@@ -34,7 +34,7 @@
 # indiK8or
 
 
-indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and display the vulnerabilities.
+indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and displaying the vulnerabilities.
 
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
@@ -46,7 +46,7 @@ indiK8or is a Kubernetes Cluster Visualization Tool that will display your clust
 # Features
 
 - indiK8or provides an intuitive K8s cluster visualization, making it easy for users to understand their cluster's topology and access key details about each pod without running kubectl commands.
-- Our app can conduct security scan of the pods in your K8s containers and display their vulnerabilities.
+- Our app can conduct security scans of the pods in your K8s containers and display their vulnerabilities.
 - The built-in Prometheus integration allows users to excute queries and easily monitor cluster performance without the need for additional configuration.
 - Zero-setup Grafana integration provides users access to insightful visualizations of valuable cluster metrics.
 
@@ -61,11 +61,11 @@ ________________________________________________________________________________
 
 1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
 2. Run ` npm i` to install all packages dependencies.
-3. Create a MongoDB database and Github OAuth credentials to use within your app.
+3. Create a MongoDB database and Github OAuth credentials to use within the app.
 4. create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
    ```env
        MONGO_URI=''
-       SESSION_SECRET='' 
+       SESSION_SECRET='(Randomly generated string)' 
        GitHubClientID=''
        GitHubClientSecret=''
    
@@ -119,7 +119,7 @@ ________________________________________________________________________________
     Here is an example if your yaml file resides in your desktop foler:
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
-15. Install grype, you can find the instruction [here](https://github.com/anchore/grype)
+15. Install grype, you can find the instructions [here](https://github.com/anchore/grype)
 _____________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
@@ -128,15 +128,18 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
     ` minikube stop `
     ` minikube start `
 
-2. Open your browser and go to http://localhost:3000 and sign in to your grafana with
+2. Begin port forwarding Grafana with the following command:
+   ```kubectl port-forward deployment/prometheus-grafana 3000```
+   Open your browser and go to http://localhost:3000 and sign in to grafana with
    default user: admin
    default password: prom-operator
+   finally stop the port forwarding of Grafana (shell commands will execute this automatically every time you start the server)
    
-   NOTE: You do not have to do step 15 if you have previously logged before.
+   NOTE: You do not have to do step 2 if you have previously logged before.
    
-3. In your terminal, run this command
+4. In your terminal, run this command
     ` npm run dev `
-4. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
 # Usage Guidelines
 
