@@ -31,7 +31,7 @@
 
 </div>
 
-# indiK8or
+# About indiK8or
 
 
 indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and displaying the vulnerabilities.
