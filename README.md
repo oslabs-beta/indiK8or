@@ -61,7 +61,7 @@ ________________________________________________________________________________
 
 1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
 2. Run ` npm i` to install all packages dependencies.
-3. Create a MongoDB database and Google OAuth credentials to use within your app.
+3. Create a MongoDB database and Github OAuth credentials to use within your app.
 4. create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
    ```env
        MONGO_URI=''
@@ -132,7 +132,7 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
    NOTE: You do not have to do step 15 if you have previously logged before.
    
 3. In your terminal, run this command
-    ` npm run start `
+    ` npm run dev `
 4. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
 # Usage Guidelines
