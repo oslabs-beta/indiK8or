@@ -118,7 +118,7 @@ ________________________________________________________________________________
 14. Apply the yaml file, and replace 'filePath' with the path of your yaml file
     ` kubectl apply -f 'filePath' `
     
-    Here is an example if your yaml file resides in your desktop foler:
+    Here is an example if your yaml file resides in your desktop folder:
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
 15. Install grype, you can find the instructions [here](https://github.com/anchore/grype)
