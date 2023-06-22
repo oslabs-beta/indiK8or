@@ -99,9 +99,11 @@ ________________________________________________________________________________
 11. Install Prometheus 
 
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
+   
 12. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
 
    ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
+   
 13. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
       [security]
