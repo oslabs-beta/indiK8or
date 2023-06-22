@@ -91,7 +91,7 @@ ________________________________________________________________________________
      
 10. Copy the code snippet below into your terminal and run it
    ```
-   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update
    ```
@@ -134,16 +134,17 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
    
    Open your browser and go to http://localhost:3000 and sign in to grafana with
    
-   default user: admin 
+   default user: admin
+   
    default password: prom-operator
    
    finally stop the port forwarding of Grafana (shell commands will execute this automatically every time you start the server)
    
    NOTE: You do not have to do step 2 if you have previously logged before.
    
-3. In your terminal, run this command
+4. In your terminal, run this command
     ` npm run dev `
-4. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
 # Usage Guidelines
 
