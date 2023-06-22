@@ -56,7 +56,7 @@ indiK8or functionality assumes that you have Docker and Kubernetes already insta
 
 If you do not have a Kubernetes cluster up and running, use Minikube to quickly set one up, The instructions are laid out below.
 
-NOTE: ONLY RUN STEP 1-12 IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
+NOTE: ONLY RUN STEP 1-15 IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
 ____________________________________________________________________________________________________________________________________________________
 
 1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
@@ -69,18 +69,18 @@ ________________________________________________________________________________
        GitHubClientID=''
        GitHubClientSecret=''
    
-6. Make sure you have Docker installed on your local machine.
-7. Once Docker is installed, run the following command:
+5. Make sure you have Docker installed on your local machine.
+6. Once Docker is installed, run the following command:
    ` minikube delete `
-8. Start the minikube service with the following command:
+7. Start the minikube service with the following command:
    ` minikube start --cpus 4 --memory 8192 --vm-driver Docker `
    
    Note: it may take a while to fully install. Please be patient
-9. Make sure you have kubectl installed to add deployments 
+8. Make sure you have kubectl installed to add deployments 
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
-10. Install helm
+9. Install helm
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
    - If you use Linux, run:
@@ -88,18 +88,21 @@ ________________________________________________________________________________
          $ chmod 700 get_helm.sh
          $ ./get_helm.sh ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
-11. Copy the code snippet below into your terminal and run it
+     
+10. Copy the code snippet below into your terminal and run it
    ```
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-    helm repo update 
+    helm repo update
+   ```
+
 11. Install Prometheus 
 
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
-11. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
+12. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
 
    ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
-11. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
+13. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
       [security]
       allow_embedding: true
@@ -110,13 +113,13 @@ ________________________________________________________________________________
    ```
       
     <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/cf928d70-129e-4ca7-9faa-16091aa8c785" width="350" height="300"/>
-11. Apply the yaml file, and replace 'filePath' with the path of your yaml file
+14. Apply the yaml file, and replace 'filePath' with the path of your yaml file
     ` kubectl apply -f 'filePath' `
     
     Here is an example if your yaml file resides in your desktop foler:
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
-12. Install grype, you can find the instruction [here](https://github.com/anchore/grype)
+15. Install grype, you can find the instruction [here](https://github.com/anchore/grype)
 _____________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
