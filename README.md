@@ -142,7 +142,7 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
    
    finally stop the port forwarding of Grafana (shell commands will execute this automatically every time you start the server)
    
-   NOTE: You do not have to do step 2 if you have previously logged before.
+   NOTE: You do not have to do step 2 if you have previously logged in before.
    
 4. In your terminal, run this command
     ` npm run dev `
