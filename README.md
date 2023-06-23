@@ -61,26 +61,28 @@ ________________________________________________________________________________
 
 1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
 2. Run ` npm i` to install all packages dependencies.
-3. Create a MongoDB database and Github OAuth credentials to use within the app.
-4. create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
+3. Create a MongoDB database and set up Github OAuth credentials to use within the app.
+4. The Homepage url should be http://localhost:5000, and the authorization callback URL should be       
+   http://localhost:4000/auth/github/callback.
+5. Create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
    ```env
        MONGO_URI=''
        SESSION_SECRET='(Randomly generated string)' 
        GitHubClientID=''
        GitHubClientSecret=''
    
-5. Make sure you have Docker installed on your local machine.
-6. Once Docker is installed, run the following command:
+6. Make sure you have Docker installed on your local machine.
+7. Once Docker is installed, run the following command:
    ` minikube delete `
-7. Start the minikube service with the following command:
+8. Start the minikube service with the following command:
    ` minikube start --cpus 4 --memory 8192 --vm-driver Docker `
    
    Note: it may take a while to fully install. Please be patient
-8. Make sure you have kubectl installed to add deployments 
+9. Make sure you have kubectl installed to add deployments 
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
-9. Install helm
+10. Install helm
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
    - If you use Linux, run:
@@ -89,7 +91,7 @@ ________________________________________________________________________________
          $ ./get_helm.sh ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
      
-10. Copy the code snippet below into your terminal and run it
+11. Copy the code snippet below into your terminal and run it
    ```
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
