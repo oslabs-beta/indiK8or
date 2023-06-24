@@ -92,7 +92,7 @@ test('handles form submission', async () => {
     await waitFor(() => {
       expect(fetchMockSuccess).toHaveBeenCalled();
       expect(fetchMockSuccess).toHaveBeenCalledWith(
-        'http://localhost:4000/login/signupRequest',
+        '/login/signupRequest',
         {
           method: 'POST',
           headers: {
