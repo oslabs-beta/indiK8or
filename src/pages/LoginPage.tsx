@@ -130,7 +130,7 @@ const LoginPage = (): ReactElement => {
           </Button>
           <Typography variant="body2" align="center">
             Dont have an account?{' '}
-            <Link href="/login/signupRequest">Sign up</Link>
+            <Link onClick={() => navigate('/login/signupRequest')}>Sign up</Link>
           </Typography>
         </form>
         <Grid container justifyContent="center" marginTop="1em">
