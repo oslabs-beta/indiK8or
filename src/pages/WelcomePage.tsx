@@ -15,7 +15,7 @@ const WelcomePage = () => {
   useEffect(() => {
     const checkLoggedIn = async (): Promise<void> => {
       try {
-        const response = await fetch('http://localhost:4000/login/isLoggedIn', {
+        const response = await fetch('/login/isLoggedIn', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,13 +49,13 @@ const WelcomePage = () => {
           status, and performance of your Kubernetes environment, empowering you
           to make informed decisions and optimize your infrastructure.
         </h2>
-        <Button className="signin" variant="text" href="/login/loginRequest">
+        <Button className="signin" variant="text" onClick={() => navigate('/login/loginRequest')}>
           Sign in
         </Button>
         <Button
           className="signup"
           variant="outlined"
-          href="/login/signupRequest"
+          onClick={() => navigate('/login/signupRequest')}
         >
           Sign up
         </Button>

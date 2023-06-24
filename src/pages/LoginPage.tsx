@@ -40,7 +40,7 @@ const LoginPage = (): ReactElement => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-    const response = await fetch('http://localhost:4000/login/loginRequest', {
+    const response = await fetch('/login/loginRequest', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ const LoginPage = (): ReactElement => {
           </Button>
           <Typography variant="body2" align="center">
             Dont have an account?{' '}
-            <Link href="/login/signupRequest">Sign up</Link>
+            <Link onClick={() => navigate('/login/signupRequest')}>Sign up</Link>
           </Typography>
         </form>
         <Grid container justifyContent="center" marginTop="1em">
@@ -141,7 +141,7 @@ const LoginPage = (): ReactElement => {
             color="secondary"
             className="oauth"
             onClick={() => {
-              const githubLoginUrl = 'http://localhost:4000/auth/github';
+              const githubLoginUrl = '/auth/github';
               window.location.href = githubLoginUrl;
             }}
             >

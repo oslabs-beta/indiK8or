@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import session from 'express-session';
 import mongoose from 'mongoose';
+import path from 'path';
 import passport from 'passport';
 import './authConfig/passport';
 import { startExecCommand, stopChildProcess } from './childProcesses/execCommand';
@@ -14,6 +15,7 @@ import { logoutRouter } from './routes/logout';
 import { podRouter } from './routes/pod';
 import { scanRouter } from './routes/scan';
 import { ServerError } from '../types';
+
 // require .env files in
 dotenv.config();
 // create an Express application 
@@ -60,6 +62,15 @@ app.use('/logout', logoutRouter);
 app.use('/auth', oAuthRouter);
 app.use('/pod', podRouter);
 app.use('/scan', scanRouter);
+
+// If env is Production, serve our static bundle
+if (process.env.Node_env === 'production') {
+  app.use(express.static(path.join(path.resolve(), 'dist')));
+    app.get('/*', function (_req, res) {
+      res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
+    });
+  }
+
 // catch-all handler
 app.use((_req: Request, res: Response) =>
   res.status(404).send('Invalid endpoint')

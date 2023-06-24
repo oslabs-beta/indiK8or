@@ -99,7 +99,7 @@ test('should handle logout button click', async () => {
     // Assert that fetchMockSuccess is called with the expected arguments
     expect(fetchMockSuccess).toHaveBeenCalled();
     expect(fetchMockSuccess).toHaveBeenCalledWith(
-      'http://localhost:4000/logout',
+      '/logout',
       expect.objectContaining({
         method: 'POST',
         headers: {
