@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "cross-env NODE_ENV=production vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "concurrently \"vite\" \"nodemon ./server/server.ts\"",
+    "start": "cross-env NODE_ENV=production tsx server/server.ts",
     "test": "vitest",
-    "dev": "vite & nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm --no-warnings' server/server.ts"
+    "dev": "cross-env NODE_ENV=development vite & nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm --no-warnings' server/server.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -21,6 +21,7 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.1.0",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
@@ -34,7 +35,8 @@
     "react-redux": "^8.1.0",
     "sass": "^1.63.4",
     "tree-kill": "^1.2.2",
-    "ts-loader": "^9.4.3"
+    "ts-loader": "^9.4.3",
+    "tsx": "^3.12.7"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
