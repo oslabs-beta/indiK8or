@@ -6,8 +6,13 @@ export default defineConfig({
   server: {
     port: 5000,
     proxy: {
-      '/login/**': { target: 'http://localhost:4000/' },
-      '/auth': 'http://localhost:4000/',
-    },
+      "/login": "http://localhost:4000/",
+      "/logout": "http://localhost:4000/",
+      "/dashboard": "http://localhost:4000/",
+      "/pod": "http://localhost:4000/",
+      "/scan": "http://localhost:4000/",
+      "/grafana": "http://localhost:4000/",
+      "/auth": "http://localhost:4000/",
+    }
   },
-});
+})
