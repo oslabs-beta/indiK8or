@@ -34,7 +34,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
   */
   const getImages = async (): Promise<void> => {
     try {
-      const response = await fetch('http://localhost:4000/scan/', {
+      const response = await fetch('/scan/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
   // GET dashboard id from backend and store in dashboardUid state
   async function fetchDashBoardData(): Promise<void> {
     try {
-      const response = await fetch('http://localhost:4000/dashboard/');
+      const response = await fetch('/dashboard/');
       const data: string = await response.json();
       setDashboardUid(data);
     } catch (error) {
@@ -69,7 +69,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
   // GET pods from backend and store in pods state
   async function fetchPodData(): Promise<void> {
     try {
-      const response = await fetch('http://localhost:4000/pod');
+      const response = await fetch('/pod');
       if (response.ok) {
         const data = await response.json();
         setPods(data);

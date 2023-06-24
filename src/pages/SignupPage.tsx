@@ -82,7 +82,7 @@ const SignupPage = (): ReactElement => {
     If user was not created, show conflict.
     */
     try {
-      const response = await fetch('http://localhost:4000/login/signupRequest', {
+      const response = await fetch('/login/signupRequest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

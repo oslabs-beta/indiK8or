@@ -24,7 +24,7 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
   */
   const handleLogout = async (): Promise<void> => {
     try {
-      const response: Response = await fetch('http://localhost:4000/logout', {
+      const response: Response = await fetch('/logout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
