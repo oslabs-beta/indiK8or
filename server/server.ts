@@ -64,7 +64,7 @@ app.use('/pod', podRouter);
 app.use('/scan', scanRouter);
 
 // If env is Production, serve our static bundle
-if (process.env.Node_env === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(path.resolve(), 'dist')));
     app.get('/*', function (_req, res) {
       res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
