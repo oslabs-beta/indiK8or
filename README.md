@@ -145,7 +145,6 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 <br />
 
 # Usage Guidelines
-
 ## Dashboard
 This page of the application will provide a visual overview of your kubernetes cluster. The visualization will show the control plane, namespaces, pods, services, deployments and nodes. 
 
@@ -155,7 +154,6 @@ This page of the application will provide a visual overview of your kubernetes c
 This page will show you the health and status of the pods, it provides the details including image's name, ready, status, age, and IP. It additionally offers images & vulnerability scan.
 
  <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/13cd8a06-3849-4a95-8853-b0833db0899a" width="700" height="400"/>
-
  <br />
 
 # Contributing
