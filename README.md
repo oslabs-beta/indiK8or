@@ -43,6 +43,7 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 - indiK8or allows users to scan images of each pod in the cluster and provides a comprehensive display of any vulnerabilities detected.
 - The built-in Prometheus integration allows users to easily monitor cluster performance with no need for additional configuration.
 - Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
+<br>
 
 # Getting started
 indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
@@ -141,7 +142,7 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 4. In your terminal, run this command
     ` npm run dev `
 5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
-<br />
+<br>
 
 # Usage Guidelines
 ## Dashboard
@@ -153,7 +154,7 @@ This page of the application will provide a visual overview of your kubernetes c
 This page will show you the health and status of the pods, it provides the details including image's name, ready, status, age, and IP. It additionally offers images & vulnerability scan.
 
  <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/13cd8a06-3849-4a95-8853-b0833db0899a" width="700" height="400"/>
- <br />
+<br>
 
 # Contributing
 
@@ -170,16 +171,15 @@ Contributions are an incredibly important part of the open source community. Any
 
 # Publications
 You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
-<br />
+<br>
 
 # Contributors
 |  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) | ![Screenshot 2023-06-21 at 12 08 12 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/7d6f4638-f815-4337-87b3-853fe26fe454) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
 | ------------- | ------------- |------------- | ------------- |
 | Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
-<br />
+<br>
 
 # License Information
 Distributed under the MIT License. See LICENSE for more information.
 
 ❤️ IF YOU FIND OUR PRODUCT HELPFUL, YOU CAN SHOW YOUR SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
-
