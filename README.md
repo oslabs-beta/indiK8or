@@ -142,7 +142,7 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
     ` npm run dev `
 5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
-# Usage guidelines
+# User guide
 ## Dashboard
 This page of the application will provide a visual overview of your kubernetes cluster. The visualization will show the control plane, namespaces, pods, services, deployments and nodes. 
 
