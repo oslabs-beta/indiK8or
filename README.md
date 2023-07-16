@@ -53,7 +53,7 @@ NOTE: ONLY RUN STEP 1-16 IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
 ____________________________________________________________________________________________________________________________________________________
 
 1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
-2. Run ` npm i` to install all packages dependencies.
+2. Run ` npm i` to install all package dependencies.
 3. Create a MongoDB database and set up Github OAuth credentials to use within the app.
 4. The Homepage url should be http://localhost:5000, and the authorization callback URL should be       
    http://localhost:4000/auth/github/callback.
@@ -140,7 +140,7 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
    
 4. In your terminal, run this command
     ` npm run dev `
-5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
+5. Now visit http://localhost:5000 and Voila! You will see your kubernetes cluster come alive monitoring real-time data!
 
 # User guide
 ## Dashboard
