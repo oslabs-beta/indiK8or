@@ -40,7 +40,6 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 <br />
 
 # Features
-
 - indiK8or provides an intuitive K8s cluster visualization, making it easy for users to access key metrics on their clusters without manually running kubectl commands.
 - indiK8or allows users to scan images of each pod in the cluster and provides a comprehensive display of any vulnerabilities detected.
 - The built-in Prometheus integration allows users to easily monitor cluster performance with no need for additional configuration.
@@ -48,12 +47,11 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 <br />
 
 # Getting started
-
 indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
 
 If you do not have a Kubernetes cluster up and running, use Minikube to quickly set one up, The instructions are laid out below.
 
-NOTE: ONLY RUN STEP 1-15 IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
+NOTE: ONLY RUN STEP 1-16 IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
 ____________________________________________________________________________________________________________________________________________________
 
 1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
@@ -87,7 +85,6 @@ ________________________________________________________________________________
          $ chmod 700 get_helm.sh
          $ ./get_helm.sh ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
-     
 11. Copy the code snippet below into your terminal and run it
    ```
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -95,15 +92,15 @@ ________________________________________________________________________________
     helm repo update
    ```
 
-11. Install Prometheus 
+12. Install Prometheus 
 
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
    
-12. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
+13. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
 
    ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
    
-13. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
+14. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
       [security]
       allow_embedding: true
@@ -112,15 +109,14 @@ ________________________________________________________________________________
       [dataproxy]
       timeout: 600 
    ```
-   
-    
-14. Apply the yaml file, and replace 'filePath' with the path of your yaml file
+
+15. Apply the yaml file, and replace 'filePath' with the path of your yaml file
     ` kubectl apply -f 'filePath' `
     
     Here is an example if your yaml file resides in your desktop folder:
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
-15. Install grype, you can find the instructions [here](https://github.com/anchore/grype)
+16. Install grype, you can find the instructions [here](https://github.com/anchore/grype)
 _____________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
@@ -146,7 +142,6 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 4. In your terminal, run this command
     ` npm run dev `
 5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
-
 <br />
 
 # Usage Guidelines
@@ -168,7 +163,6 @@ This page will show you the health and status of the pods, it provides the detai
 This product is open source, being actively maintained, and open to contributions. Please inform us of any features or bugs you'd like to see addressed.
 
 ## How to contribute
-
 Contributions are an incredibly important part of the open source community. Any contributions you make are greatly appreciated!
 
 - Fork the project
@@ -176,20 +170,16 @@ Contributions are an incredibly important part of the open source community. Any
 - Commit your changes (git commit -m 'Add some AmazingFeature')
 - Push to the branch (git push origin feature/AmazingFeature)
 - Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
-
 <br />
 
 # Publications
 You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
-
 <br />
 
 # Contributors
-
 |  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) | ![Screenshot 2023-06-21 at 12 08 12 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/7d6f4638-f815-4337-87b3-853fe26fe454) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
 | ------------- | ------------- |------------- | ------------- |
 | Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
-
 <br />
 
 # License Information
