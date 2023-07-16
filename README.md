@@ -3,8 +3,10 @@
 
 
 ❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️
+<br />
+<br />
 
-# Built With
+# Built with
 ![JavaScript](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/-react-white?style=for-the-badge&logo=react&logoColor=blue)
@@ -28,31 +30,30 @@
 ![Supertest](https://img.shields.io/badge/-Supertest-C21325?style=for-the-badge&logo=Supertest&logoColor=white)
 ![Vitest](https://img.shields.io/badge/-Vitest-white?style=for-the-badge&logo=Vitest&logoColor=yellow)
 
+<br />
 
-</div>
+# Introduction
 
-# About indiK8or
-
-
-indiK8or is a Kubernetes Cluster Visualization Tool that will display your cluster metrics in real-time, it also provides the ability show security metrics by scanning your pods and displaying the vulnerabilities.
+Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With real-time display of your cluster metrics, you can stay informed about its performance at all times. In addition, indiK8or goes a step further by scanning your pods and presenting any vulnerabilities, which ensures your cluster remains fortified against potential threats. Experience seamless monitoring and enhanced security with indiK8or today!
 
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
 <img width="800" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/33249af8-ae02-45d5-81f8-b39cae52e9d4">
 
-
-
+<br />
 
 # Features
 
-- indiK8or provides an intuitive K8s cluster visualization, making it easy for users to understand their cluster's topology and access key details about each pod without running kubectl commands.
-- Our app can conduct security scans of the pods in your K8s containers and display their vulnerabilities.
-- The built-in Prometheus integration allows users to excute queries and easily monitor cluster performance without the need for additional configuration.
-- Zero-setup Grafana integration provides users access to insightful visualizations of valuable cluster metrics.
+- indiK8or provides an intuitive K8s cluster visualization, making it easy for users to access key metrics on their clusters without manually running kubectl commands.
+- indiK8or allows users to scan images of each pod in the cluster and provides a comprehensive display of any vulnerabilities detected.
+- The built-in Prometheus integration allows users to easily monitor cluster performance with no need for additional configuration.
+- Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
 
-# Getting Started
+<br />
 
-indiK8or functionality assumes that you have Docker and Kubernetes already installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
+# Getting started
+
+indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
 
 If you do not have a Kubernetes cluster up and running, use Minikube to quickly set one up, The instructions are laid out below.
 
@@ -150,6 +151,8 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
     ` npm run dev `
 5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
 
+<br />
+
 # Usage Guidelines
 
 ## Dashboard
@@ -162,6 +165,7 @@ This page will show you the health and status of the pods, it provides the detai
 
  <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/13cd8a06-3849-4a95-8853-b0833db0899a" width="700" height="400"/>
 
+ <br />
 
 # Contributing
 
@@ -177,17 +181,20 @@ Contributions are an incredibly important part of the open source community. Any
 - Push to the branch (git push origin feature/AmazingFeature)
 - Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
 
+<br />
 
 # Publications
 You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
 
-# Contributors
+<br />
 
+# Contributors
 
 |  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) | ![Screenshot 2023-06-21 at 12 08 12 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/7d6f4638-f815-4337-87b3-853fe26fe454) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
 | ------------- | ------------- |------------- | ------------- |
 | Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
 
+<br />
 
 # License Information
 Distributed under the MIT License. See LICENSE for more information.
