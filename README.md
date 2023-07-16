@@ -43,7 +43,6 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 - indiK8or allows users to scan images of each pod in the cluster and provides a comprehensive display of any vulnerabilities detected.
 - The built-in Prometheus integration allows users to easily monitor cluster performance with no need for additional configuration.
 - Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
-<br>
 
 # Getting started
 indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
@@ -142,9 +141,8 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 4. In your terminal, run this command
     ` npm run dev `
 5. Now visit http://localhost:5000 and Voila! Your will see your kubernetes cluster come alive monitoring real-time data!
-<br>
 
-# Usage Guidelines
+# Usage guidelines
 ## Dashboard
 This page of the application will provide a visual overview of your kubernetes cluster. The visualization will show the control plane, namespaces, pods, services, deployments and nodes. 
 
@@ -169,10 +167,10 @@ Contributions are an incredibly important part of the open source community. Any
 - Commit your changes (git commit -m 'Add some AmazingFeature')
 - Push to the branch (git push origin feature/AmazingFeature)
 - Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
+<br>
 
 # Publications
 You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
-<br>
 <br>
 
 # Contributors
