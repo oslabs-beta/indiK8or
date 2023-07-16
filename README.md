@@ -28,7 +28,7 @@
 ![Jest](https://img.shields.io/badge/-jest-white?style=for-the-badge&logo=jest&logoColor=red)
 ![Supertest](https://img.shields.io/badge/-Supertest-C21325?style=for-the-badge&logo=Supertest&logoColor=white)
 ![Vitest](https://img.shields.io/badge/-Vitest-white?style=for-the-badge&logo=Vitest&logoColor=yellow)
-<br />
+<br>
 
 # Introduction
 Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With real-time display of your cluster metrics, you can stay informed about its performance at all times. In addition, indiK8or goes a step further by scanning your pods and presenting any vulnerabilities, which ensures your cluster remains fortified against potential threats. Experience seamless monitoring and enhanced security with indiK8or today!
@@ -36,7 +36,7 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
 <img width="800" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/33249af8-ae02-45d5-81f8-b39cae52e9d4">
-<br />
+<br>
 
 # Features
 - indiK8or provides an intuitive K8s cluster visualization, making it easy for users to access key metrics on their clusters without manually running kubectl commands.
