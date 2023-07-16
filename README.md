@@ -167,7 +167,6 @@ Contributions are an incredibly important part of the open source community. Any
 - Commit your changes (git commit -m 'Add some AmazingFeature')
 - Push to the branch (git push origin feature/AmazingFeature)
 - Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
-<br>
 
 # Publications
 You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
