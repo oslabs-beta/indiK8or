@@ -82,7 +82,8 @@ ________________________________________________________________________________
    - If you use Linux, run:
      ``` $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
          $ chmod 700 get_helm.sh
-         $ ./get_helm.sh ```
+         $ ./get_helm.sh 
+     ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
 11. Copy the code snippet below into your terminal and run it
    ```
