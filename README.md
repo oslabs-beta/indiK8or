@@ -88,7 +88,6 @@ ________________________________________________________________________________
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update
    ```
-
 10. Install Prometheus by running below command: <br>
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
    
