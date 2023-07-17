@@ -1,11 +1,9 @@
 
 ![Screenshot 2023-06-17 at 11 13 09 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/3c4128be-a2f6-4d27-a998-fd162597118c)
 
-
-❤️ IF YOU LIKE OUR PRODUCT, SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
 <br>
 
-# Built with
+# Built With
 ![JavaScript](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/-react-white?style=for-the-badge&logo=react&logoColor=blue)
@@ -44,10 +42,10 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 - The built-in Prometheus integration allows users to easily monitor cluster performance with no need for additional configuration.
 - Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
 
-# Getting started
+# Getting Started
 indiK8or assumes that you have Docker installed on your machine. For demonstration purpose, use [minikube](https://minikube.sigs.k8s.io/docs/start/) to quickly start a local Kubernetes cluster.
 
-NOTE: FOLLOW STEP 1-14 ONLY IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
+NOTE: FOLLOW STEP 1-14 ONLY IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR.
 ____________________________________________________________________________________________________________________________________________________
 
 1. Fork and clone this repo to your local.
@@ -136,7 +134,7 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
    
 3. Run ` npm run dev ` and visit http://localhost:5000. Voila! You are now able to sign in and view your K8s cluster real-time data!
 
-# User guide
+# Usage Guidelines
 ## Dashboard
 This page of the application will provide a visual overview of your kubernetes cluster's metrics. The dashboard shows metrics on CPU usage, memory, disk, network, etc. 
 
@@ -151,18 +149,15 @@ This page will display the health and status of each pod, providing pod details 
 
 # Contributing
 
-This product is open source, being actively maintained, and open to contributions. Please inform us of any features or bugs you'd like to see addressed.
-
-## How to contribute
-Contributions play a vital role in the open-source community. Any contributions you make are greatly appreciated!
+Contributions play a vital role in the open-source community. Any contributions are greatly appreciated!
 
 - Fork the project.
-- Work off of your feature branch.
+- Create and work off of your feature branch.
 - Create a pull request with detailed description of your changes from your feature branch to dev branch.
 - Inform us upon PR submission. Once the changes are reviewed and approved, we will merge your code into the main repository.
 
 # Publications
-Check our amazing Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6)!
+Check our Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
 <br>
 
 # Team
@@ -171,4 +166,7 @@ Check our amazing Medium article [here](https://medium.com/@wanwangbtb/a-new-gam
 | Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
 
 # License
-Distributed under the [MIT License](https://github.com/oslabs-beta/indiK8or/blob/main/LICENSE).
+Distributed under the [MIT License](https://github.com/oslabs-beta/indiK8or/blob/main/LICENSE).<br>
+
+
+❤️ IF OUR PRODUCT HELPED YOU, SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
