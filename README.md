@@ -71,8 +71,7 @@ ________________________________________________________________________________
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
-   <br><br>
-
+   <br>
 8. Install helm:
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
@@ -82,7 +81,7 @@ ________________________________________________________________________________
          $ ./get_helm.sh 
      ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
-      <br><br>
+      <br>
 
 9. Run below code snippet in your terminal:
    ```
@@ -168,5 +167,5 @@ Check our Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player
 # License
 Distributed under the [MIT License](https://github.com/oslabs-beta/indiK8or/blob/main/LICENSE).<br>
 
-
+#
 ❤️ IF OUR PRODUCT HELPED YOU, SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
