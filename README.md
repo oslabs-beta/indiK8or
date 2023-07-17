@@ -144,12 +144,12 @@ NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 
 # User guide
 ## Dashboard
-This page of the application will provide a visual overview of your kubernetes cluster. The visualization will show the control plane, namespaces, pods, services, deployments and nodes. 
+This page of the application will provide a visual overview of your kubernetes cluster's metrics. The dashboard shows metrics on CPU usage, memory, disk, network, etc. 
 
  <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/bf10b707-b72b-4b7e-8604-f96767da9d0b" width="700" height="400"/>
 
 ## Pods
-This page will show you the health and status of the pods, it provides the details including image's name, ready, status, age, and IP. It additionally offers images & vulnerability scan.
+This page will display the health and status of each pod, providing pod details such as name, status, age, IP, and associated images. Click on the 'SCAN' button to check each image for potential vulnerabilities. Once the scanning process is complete, a pop-up window will list any existing vulnerabilities, if found.
 
  <img src="https://github.com/oslabs-beta/indiK8or/assets/112515781/13cd8a06-3849-4a95-8853-b0833db0899a" width="700" height="400"/>
 <br>
@@ -160,25 +160,24 @@ This page will show you the health and status of the pods, it provides the detai
 This product is open source, being actively maintained, and open to contributions. Please inform us of any features or bugs you'd like to see addressed.
 
 ## How to contribute
-Contributions are an incredibly important part of the open source community. Any contributions you make are greatly appreciated!
+Contributions play a vital role in the open-source community. Any contributions you make are greatly appreciated!
 
-- Fork the project
-- Create your feature branch (git checkout -b feature/AmazingFeature)
-- Commit your changes (git commit -m 'Add some AmazingFeature')
-- Push to the branch (git push origin feature/AmazingFeature)
-- Open a pull request with clear descriptions of changes (from feature/AmazingFeature to dev)
+- Fork the project.
+- Work off of your feature branch.
+- Create a pull request with detailed description of your changes from your feature branch to dev branch.
+- Inform us upon PR submission. Once the changes are reviewed and approved, we will merge your code into the main repository.
 
 # Publications
-You can check our amazing medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
+Check our amazing Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6)!
 <br>
 
-# Contributors
+# Team
 |  ![Screenshot 2023-06-16 at 4 23 00 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/5d6998e9-07cf-4189-81d9-291b09188063) | ![Screenshot 2023-06-16 at 4 20 50 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/176051e8-ef3e-410f-bc76-b808f36c28df) | ![Screenshot 2023-06-21 at 12 08 12 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/7d6f4638-f815-4337-87b3-853fe26fe454) |  ![Screenshot 2023-06-16 at 4 23 29 PM](https://github.com/oslabs-beta/indiK8or/assets/112515781/794a60b7-b0b2-461c-b0de-f698ee506387) |
 | ------------- | ------------- |------------- | ------------- |
 | Tadd Lerocque [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/LeRocque)  [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/taddlerocque/)| Ivy Wang [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/WandefulWorld) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/wanwang12/) | Yueran Li  [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/kneazle714) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/yueranli/)  | Julian Babon [<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="30px" >](https://github.com/babonjmc) [<img src="https://www.freeiconspng.com/uploads/linkedin-icon-19.png" width="30px" >](https://www.linkedin.com/in/julianbabon/) |
 
-# License Information
-Distributed under the MIT License. See LICENSE for more information.
+# License
+Distributed under the [MIT License](https://github.com/oslabs-beta/indiK8or/blob/main/LICENSE).
 
 <br>
 ❤️ IF YOU FIND OUR PRODUCT HELPFUL, YOU CAN SHOW YOUR SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
