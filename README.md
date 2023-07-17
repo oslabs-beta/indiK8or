@@ -66,14 +66,16 @@ ________________________________________________________________________________
        GitHubClientSecret=''
    ```
 
-6. Start minikube with command: ` minikube start ` <br>
+6. Start minikube by running below command: <br>
+` minikube start `
 
-7. Make sure you have kubectl installed to add deployments 
+7. Install kubectl:
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
+   <br><br>
 
-8. Install helm
+8. Install helm:
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
    - If you use Linux, run:
@@ -82,18 +84,19 @@ ________________________________________________________________________________
          $ ./get_helm.sh 
      ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
+      <br><br>
 
-9. Copy the code snippet below into your terminal and run it
+9. Run below code snippet in your terminal:
    ```
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update
    ```
 
-10. Install Prometheus by running below command
+10. Install Prometheus by running below command: <br>
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
    
-11. Configure a yaml file for grafana by running below command, and replace 'yourFile' with the name you want for your yaml file
+11. Configure a yaml file for grafana by running below command, and replace 'yourFile' with the name you want for your yaml file. <br>
    ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
    
 12. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
@@ -106,10 +109,10 @@ ________________________________________________________________________________
       timeout: 600 
    ```
 
-13. Apply the yaml file by running below command, and replace 'filePath' with the path of your yaml file
+13. Apply the yaml file by running below command, and replace 'filePath' with the path of your yaml file. <br>
     ` kubectl apply -f 'filePath' `
     
-    Here is an example if your yaml file resides in your desktop folder:
+    Here is an example if your yaml file resides in your desktop folder:<br>
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
 14. Install [grype](https://github.com/anchore/grype).
@@ -117,26 +120,21 @@ ________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 
-1. Restart minikube by running below commands separately
-    ` minikube stop `
+1. Restart minikube by running below commands:<br>
+    ` minikube stop `<br>
     ` minikube start `
 
-2. Begin port forwarding Grafana with the following command:
+2. Begin port forwarding Grafana with the following command:<br>
+   `kubectl port-forward deployment/prometheus-grafana 3000`
    
-   ```kubectl port-forward deployment/prometheus-grafana 3000```
+   Go to http://localhost:3000 and sign in to grafana with below credentials:
    
-   Open your browser and go to http://localhost:3000 and sign in to grafana with
-   
-   default user: admin
-   
+   default user: admin<br>
    default password: prom-operator
    
    NOTE: You do not have to do step 2 if you have previously logged in before.
    
-3. In your terminal, run this command
-    ` npm run dev `
-
-4. Now visit http://localhost:5000 and Voila! You will see your kubernetes cluster come alive monitoring real-time data!
+3. Run ` npm run dev ` and visit http://localhost:5000. Voila! You are now able to sign in and view your K8s cluster real-time data!
 
 # User guide
 ## Dashboard
