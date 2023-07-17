@@ -45,37 +45,37 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 - Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
 
 # Getting started
-indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
+indiK8or assumes that you have Docker installed on your machine. For demonstration purpose, use [minikube](https://minikube.sigs.k8s.io/docs/start/) to quickly start a local Kubernetes cluster.
 
-If you do not have a Kubernetes cluster up and running, use Minikube to quickly set one up, The instructions are laid out below.
-
-NOTE: ONLY RUN STEP 1-16 IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
+NOTE: FOLLOW STEP 1-14 ONLY IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
 ____________________________________________________________________________________________________________________________________________________
 
-1. Make sure you have node.js installed, you can check if you have it by running ` node -v `
-2. Run ` npm i` to install all package dependencies.
-3. Create a MongoDB database and set up Github OAuth credentials to use within the app.
-4. The Homepage url should be http://localhost:5000, and the authorization callback URL should be       
-   http://localhost:4000/auth/github/callback.
+1. Fork and clone this repo to your local.
+
+2. Run `npm i` to install all package dependencies.
+
+3. Create a MongoDB database to obtain your MONGO_URI.
+
+4. To enable GitHub OAuth, go to your GitHub profile -> Settings -> Developer settings and register indiK8or as a new OAuth application. The Homepage url should be http://localhost:5000, and the authorization callback URL should be http://localhost:4000/auth/github/callback.
+
 5. Create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
    ```env
        MONGO_URI=''
        SESSION_SECRET='(Randomly generated string)' 
        GitHubClientID=''
        GitHubClientSecret=''
-   
-6. Make sure you have Docker installed on your local machine.
-7. Once Docker is installed, run the following command:
-   ` minikube delete `
-8. Start the minikube service with the following command:
-   ` minikube start --cpus 4 --memory 8192 --vm-driver Docker `
-   
-   Note: it may take a while to fully install. Please be patient
-9. Make sure you have kubectl installed to add deployments 
+   ```
+
+6. Start minikube by running below command: <br>
+` minikube start `
+
+7. Install kubectl:
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
-10. Install helm
+   <br><br>
+
+8. Install helm:
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
    - If you use Linux, run:
@@ -84,22 +84,22 @@ ________________________________________________________________________________
          $ ./get_helm.sh 
      ```
      NOTE: Refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
-11. Copy the code snippet below into your terminal and run it
+      <br><br>
+
+9. Run below code snippet in your terminal:
    ```
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update
    ```
 
-12. Install Prometheus 
-
+10. Install Prometheus by running below command: <br>
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
    
-13. Configure a yaml file for grafana, replace the part of 'yourFile' with the name you want for your yaml file
-
+11. Configure a yaml file for grafana by running below command, and replace 'yourFile' with the name you want for your yaml file. <br>
    ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
    
-14. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
+12. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
       [security]
       allow_embedding: true
@@ -109,38 +109,32 @@ ________________________________________________________________________________
       timeout: 600 
    ```
 
-15. Apply the yaml file, and replace 'filePath' with the path of your yaml file
+13. Apply the yaml file by running below command, and replace 'filePath' with the path of your yaml file. <br>
     ` kubectl apply -f 'filePath' `
     
-    Here is an example if your yaml file resides in your desktop folder:
+    Here is an example if your yaml file resides in your desktop folder:<br>
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
-16. Install grype, you can find the instructions [here](https://github.com/anchore/grype)
+14. Install [grype](https://github.com/anchore/grype).
 _____________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
 
-1. Restart minikube by running below commands separately
-    ` minikube stop `
+1. Restart minikube by running below commands:<br>
+    ` minikube stop `<br>
     ` minikube start `
 
-2. Begin port forwarding Grafana with the following command:
+2. Begin port forwarding Grafana with the following command:<br>
+   `kubectl port-forward deployment/prometheus-grafana 3000`
    
-   ```kubectl port-forward deployment/prometheus-grafana 3000```
+   Go to http://localhost:3000 and sign in to grafana with below credentials:
    
-   Open your browser and go to http://localhost:3000 and sign in to grafana with
-   
-   default user: admin
-   
+   default user: admin<br>
    default password: prom-operator
-   
-   finally stop the port forwarding of Grafana (shell commands will execute this automatically every time you start the server)
    
    NOTE: You do not have to do step 2 if you have previously logged in before.
    
-4. In your terminal, run this command
-    ` npm run dev `
-5. Now visit http://localhost:5000 and Voila! You will see your kubernetes cluster come alive monitoring real-time data!
+3. Run ` npm run dev ` and visit http://localhost:5000. Voila! You are now able to sign in and view your K8s cluster real-time data!
 
 # User guide
 ## Dashboard
