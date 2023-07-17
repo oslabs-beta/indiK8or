@@ -14,8 +14,8 @@ test('renders welcome page correctly', () => {
 
     // Assert Header and button links work
     expect(screen.getByText('Introducing indiK8or: Simplify and Visualize Your Kubernetes Environment')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Sign in' }) as HTMLInputElement).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Sign up' }) as HTMLInputElement).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Sign in' }) as HTMLInputElement).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Sign up' }) as HTMLInputElement).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Ivy Wang' }) as HTMLInputElement).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Julian Babon' }) as HTMLInputElement).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Yueran Li' }) as HTMLInputElement).toBeInTheDocument();

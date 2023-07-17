@@ -23,7 +23,7 @@ test('renders iframe when dashboardClicked is true', async () => {
     });
   
     // Assert that fetch is called with the correct URL
-    expect(fetchMockSuccess).toHaveBeenCalledWith('http://localhost:4000/dashboard/');
+    expect(fetchMockSuccess).toHaveBeenCalledWith('/dashboard/');
   });
   
   test('renders Typography when dashboardClicked is false', () => {
