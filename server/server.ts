@@ -74,10 +74,10 @@ if (process.env.NODE_ENV === 'production') {
 
 // catch-all handler
 
-app.use(express.static(path.join(path.resolve(), 'dist')));
-  app.get('/*', function (_req, res) {
-    res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
-  });
+// app.use(express.static(path.join(path.resolve(), 'dist')));
+//   app.get('/*', function (_req, res) {
+//     res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
+//   });
 
 app.use((_req: Request, res: Response) =>
   res.status(404).send('Invalid endpoint')
