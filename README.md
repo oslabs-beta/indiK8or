@@ -164,3 +164,6 @@ Check our Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player
 
 # License
 Distributed under the [MIT License](https://github.com/oslabs-beta/indiK8or/blob/main/LICENSE).
+
+#
+❤️ IF OUR PRODUCT HELPED YOU, SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
