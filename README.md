@@ -2,7 +2,7 @@
 ![Screenshot 2023-06-17 at 11 13 09 AM](https://github.com/oslabs-beta/indiK8or/assets/112515781/3c4128be-a2f6-4d27-a998-fd162597118c)
 
 
-❤️❤️ IF YOU LIKE OUR PRODUCT, YOU CAN SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️❤️
+❤️ IF YOU LIKE OUR PRODUCT, SHOW LOVE AND SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
 <br>
 
 # Built with
@@ -178,6 +178,3 @@ Check our amazing Medium article [here](https://medium.com/@wanwangbtb/a-new-gam
 
 # License
 Distributed under the [MIT License](https://github.com/oslabs-beta/indiK8or/blob/main/LICENSE).
-
-<br>
-❤️ IF YOU FIND OUR PRODUCT HELPFUL, YOU CAN SHOW YOUR SUPPORT BY ⭐️ THIS REPOSITORY!  ❤️
