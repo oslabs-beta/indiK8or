@@ -45,7 +45,7 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 - Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
 
 # Getting started
-indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
+indiK8or assumes that you have Docker and Kubernetes installed and running on your machine. The simplest way to install both is to follow the instructions for [Docker Desktop](https://www.docker.com/get-started) installation, then enable Kubernetes from the Settings menu.
 
 If you do not have a Kubernetes cluster up and running, use Minikube to quickly set one up, The instructions are laid out below.
 
