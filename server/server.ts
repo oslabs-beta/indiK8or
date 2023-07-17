@@ -21,7 +21,7 @@ dotenv.config();
 // create an Express application 
 const app = express();
 // specify server port as 4000
-const port = 4000;
+const port = process.env.PORT || 4000;
 // provide default value of empty string when env variables are undefined or null
 const mongoURI: string = process.env.MONGO_URI ?? '';
 const sessionSecret: string = process.env.SESSION_SECRET ?? '';
@@ -31,9 +31,10 @@ mongoose
   .then(() => console.log('Connected to Mongo DB'))
   .catch((err: string) => console.log(err));
 // allow cors to connect frontend and backend server
+
 app.use(
   cors({
-    origin: 'http://localhost:5000',
+    origin: 'https://indik8or-359561821b26.herokuapp.com/',
     credentials: true,
   })
 );
@@ -72,6 +73,12 @@ if (process.env.NODE_ENV === 'production') {
   }
 
 // catch-all handler
+
+app.use(express.static(path.join(path.resolve(), 'dist')));
+  app.get('/*', function (_req, res) {
+    res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
+  });
+
 app.use((_req: Request, res: Response) =>
   res.status(404).send('Invalid endpoint')
 );

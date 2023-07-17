@@ -22,7 +22,7 @@ oAuthRouter.get('/github/callback', passport.authenticate('github', { failureRed
     if (req.user && (req.user as OAuthUser)._id){
       const userId = (req.user as OAuthUser)._id;
     res.cookie('ssid', userId, { httpOnly: true });
-    return res.redirect('http://localhost:5000/home');
+    return res.redirect('/home');
     }
   }
 );

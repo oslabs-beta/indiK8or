@@ -15,4 +15,4 @@ export default defineConfig({
       "/auth": "http://localhost:4000/",
     }
   },
-})
+});
