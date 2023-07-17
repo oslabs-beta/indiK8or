@@ -149,7 +149,7 @@ Contributions play a vital role in the open-source community. Any contributions 
 - Inform us upon PR submission. Once the changes are reviewed and approved, we will merge your code into the main repository.
 
 # Publications
-Check out our Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
+Check out our [Medium article](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
 <br>
 
 # Meet the Team
