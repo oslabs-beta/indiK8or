@@ -71,7 +71,6 @@ ________________________________________________________________________________
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
-   <br>
 8. Install helm:
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
