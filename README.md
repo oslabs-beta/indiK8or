@@ -41,20 +41,18 @@ Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With re
 - Seamless Grafana integration allows access to insightful visualizations of critical cluster metrics without any setup hassles.
 
 # Getting Started
-indiK8or assumes that you have Docker installed on your machine. For demonstration purpose, use [minikube](https://minikube.sigs.k8s.io/docs/start/) to quickly start a local Kubernetes cluster.
+Install and start [Docker](https://www.docker.com/products/docker-desktop/). For demonstration purpose, use [minikube](https://minikube.sigs.k8s.io/docs/start/) to quickly start a local Kubernetes cluster. Start minikube by running `minikube start`.
 
-NOTE: FOLLOW STEP 1-14 ONLY IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
+NOTE: FOLLOW STEP 1-12 ONLY IF THIS IS YOUR **VERY FIRST TIME** USING INDIK8TOR!
 ____________________________________________________________________________________________________________________________________________________
 
-1. Fork and clone this repo to your local.
+1. Fork this repo. Run `npm i` to install all package dependencies.
 
-2. Run `npm i` to install all package dependencies.
+2. Create a MongoDB database to obtain your MONGO_URI.
 
-3. Create a MongoDB database to obtain your MONGO_URI.
+3. To enable GitHub OAuth, go to your GitHub profile -> Settings -> Developer settings and register indiK8or as a new OAuth application. The Homepage url should be http://localhost:5000, and the authorization callback URL should be http://localhost:4000/auth/github/callback.
 
-4. To enable GitHub OAuth, go to your GitHub profile -> Settings -> Developer settings and register indiK8or as a new OAuth application. The Homepage url should be http://localhost:5000, and the authorization callback URL should be http://localhost:4000/auth/github/callback.
-
-5. Create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
+4. Create a .env file and assign the following environment variables according to your MongoDB and OAuth set up.
    ```env
        MONGO_URI=''
        SESSION_SECRET='(Randomly generated string)' 
@@ -62,16 +60,13 @@ ________________________________________________________________________________
        GitHubClientSecret=''
    ```
 
-6. Start minikube by running below command: <br>
-` minikube start `
-
-7. Install kubectl:
+5. Install kubectl:
    - If you use macOS, run: ` brew install kubectl `
    - If you use Windows, run: ` choco install kubernetes-cli `
    - If you use Linux, run: ` sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl `
    <br><br>
 
-8. Install helm:
+6. Install helm:
    - If you use macOS, run: ` brew install helm `
    - If you use Windows, run: ` choco install kubernetes-helm `
    - If you use Linux, run:
@@ -82,20 +77,20 @@ ________________________________________________________________________________
      NOTE: refer to this link for more details: https://kubernetes.io/docs/tasks/tools/
       <br><br>
 
-9. Run below code snippet in your terminal:
+7. Run below code snippet in your terminal:
    ```
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     helm repo update
    ```
 
-10. Install Prometheus by running below command: <br>
+8. Install Prometheus by running below command: <br>
    ` helm install prometheus prometheus-community/kube-prometheus-stack `
    
-11. Configure a yaml file for grafana by running below command, and replace 'yourFile' with the name you want for your yaml file. <br>
+9. Configure a yaml file for grafana by running below command, and replace 'yourFile' with the name you want for your yaml file. <br>
    ` kubectl get configmap prometheus-grafana -o yaml > yourFile.yaml `
    
-12. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
+10. Once you generated this yaml file, open it and paste the code below into your yaml file inside of grafana.ini
    ```yaml
       [security]
       allow_embedding: true
@@ -105,13 +100,13 @@ ________________________________________________________________________________
       timeout: 600 
    ```
 
-13. Apply the yaml file by running below command, and replace 'filePath' with the path of your yaml file. <br>
+11. Apply the yaml file by running below command, and replace 'filePath' with the path of your yaml file. <br>
     ` kubectl apply -f 'filePath' `
     
     Here is an example if your yaml file resides in your desktop folder:<br>
     ` kubectl apply -f /Users/Ivy/Desktop/newMap.yaml `
 
-14. Install [grype](https://github.com/anchore/grype).
+12. Install [grype](https://github.com/anchore/grype).
 _____________________________________________________________________________________________________________________________________
 
 NOTE: START HERE IF YOU HAVE COMPLETED THE INITIAL SETUP
@@ -154,7 +149,7 @@ Contributions play a vital role in the open-source community. Any contributions 
 - Inform us upon PR submission. Once the changes are reviewed and approved, we will merge your code into the main repository.
 
 # Publications
-Check our Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
+Check out our Medium article [here](https://medium.com/@wanwangbtb/a-new-game-player-indik8or-237daac583d6).
 <br>
 
 # Team
