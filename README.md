@@ -31,7 +31,7 @@
 <br>
 
 # Introduction
-Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With real-time display of your cluster metrics, you can stay informed about its performance at all times. In addition, indiK8or goes a step further by scanning your pods and presenting any vulnerabilities, which ensures your cluster remains fortified against potential threats. Experience seamless monitoring and enhanced security with indiK8or today!
+Welcome to indiK8or, the ultimate Kubernetes Cluster Visualization Tool. With real-time display of your cluster metrics, you can stay informed about its performance at all times. In addition, indiK8or scans your pods and presents any vulnerabilities, which ensures your cluster remains fortified against potential threats. Experience seamless monitoring and enhanced security with indiK8or today!
 
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/049f991a-a41f-44ce-9018-79593beb97b1">
 <img width="400" src="https://github.com/oslabs-beta/indiK8or/assets/112515781/ce3e3b5a-220d-4f8f-966b-c5a0c84c594c">
