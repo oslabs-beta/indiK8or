@@ -57,7 +57,7 @@ export default function Dashboard({ dashboardClicked, podClicked }: DashProps): 
     };
   
   // GET dashboard id from backend and store in dashboardUid state
-  const fetchDashBoardData = async (): Promise<void> => {
+  fetchDashBoardData = async (): Promise<void> => {
   try {
       const response = await fetch('/dashboard/');
       const data: string = await response.json();
