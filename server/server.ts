@@ -3,7 +3,6 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import session from 'express-session';
-import mongoose from 'mongoose';
 import path from 'path';
 import passport from 'passport';
 import './authConfig/passport';
@@ -23,13 +22,8 @@ const app = express();
 // specify server port as 4000
 const port = 4000;
 // provide default value of empty string when env variables are undefined or null
-const mongoURI: string = process.env.MONGO_URI ?? '';
 const sessionSecret: string = process.env.SESSION_SECRET ?? '';
-// connect to database
-mongoose
-  .connect(mongoURI)
-  .then(() => console.log('Connected to Mongo DB'))
-  .catch((err: string) => console.log(err));
+
 // allow cors to connect frontend and backend server
 app.use(
   cors({
