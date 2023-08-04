@@ -22,6 +22,7 @@ oAuthRouter.get('/github/callback', passport.authenticate('github', { failureRed
     if (req.user && (req.user as OAuthUser)._id){
       const userId = (req.user as OAuthUser)._id;
     res.cookie('ssid', userId, { httpOnly: true });
+    // if in production mode, redirect to home, otherise redirect to 5000/home
     if (process.env.NODE_ENV === 'production') {
     return res.redirect('/home');
     } else {
