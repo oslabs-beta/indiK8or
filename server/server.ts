@@ -24,8 +24,6 @@ const port = process.env.PORT || 4000;
 // provide default value of empty string when env variables are undefined or null
 const sessionSecret: string = process.env.SESSION_SECRET ?? '';
 
-
-
 // allow cors to connect frontend and backend server
 app.use(
   cors({
