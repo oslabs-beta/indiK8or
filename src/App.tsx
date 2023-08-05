@@ -40,7 +40,7 @@ function App(): ReactElement {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login/loginRequest" element={<LoginPage />} />
         <Route path="/login/signupRequest" element={<SignupPage />} />
-        <Route path="/home" element={isAuthenticated ? <HomePage /> : <Navigate to="/login/loginRequest"/>}
+        <Route path="/home" element={isAuthenticated ? <HomePage /> : <Navigate to="/"/>}
         />
       </Routes>
   );
