@@ -10,7 +10,7 @@ import '../css/Sidebar.css';
 import { SidebarProps } from '../../types';
 
 
-const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode }: SidebarProps): ReactElement => {
+const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode }: SidebarProps): ReactElement => {
   const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
   const [showThemeText, setShowThemeText] = useState<boolean>(false);
   const [showDashText, setShowDashText] = useState<boolean>(false);
@@ -30,9 +30,7 @@ const Sidebar = ({ userId, darkMode, dashboardClicked, podClicked, handleDashboa
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify({
-          userId: userId,
-        }),
+        body: JSON.stringify({}),
       });
       if (response.ok) {
         alert(

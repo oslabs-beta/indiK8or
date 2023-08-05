@@ -93,8 +93,10 @@ startGitSession: (req: Request, _res: Response, next: NextFunction) => {
 //middleware to log out user from homePage
 logout: async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { userId } = req.body;
-    const loggedOutUser = await Session.findOneAndDelete({cookieId: userId});
+    console.log('logout hit');
+    const { ssid } = req.cookies;
+    console.log('userid', ssid)
+    const loggedOutUser = await Session.findOneAndDelete({cookieId: ssid});
     if (loggedOutUser) {
       // clear HttpOnly cookie
       res.clearCookie('ssid', { httpOnly: true });

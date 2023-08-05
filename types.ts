@@ -14,7 +14,6 @@ export type DashProps = {
 };
 
 export type SidebarProps = DashProps & {
-  userId: string,
   darkMode: boolean,
   handleDashboard: () => void;
   handlePod: () => void;
