@@ -3,10 +3,16 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const mongoURI: string = process.env.MONGO_URI ?? "";
 // connect to database
-mongoose
-  .connect(mongoURI)
-  .then(() => console.log("Connected to Mongo DB"))
-  .catch((err: string) => console.log(err));
+async function connectToMongoDB() {
+  try {
+    await mongoose.connect(mongoURI);
+    console.log("Connected to Mongo DB");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+connectToMongoDB();
 
 const sessionSchema = new Schema({
   cookieId: { type: String, required: true, unique: true },

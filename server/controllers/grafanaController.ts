@@ -34,9 +34,11 @@ const grafanaController = {
       }
     } catch (error) {
       const errMessage = {
-        log: "Error occurred during grafana node-exporter fetch",
+        log: `Error occurred during grafana node-exporter fetch ${error}`,
         status: 500,
-        message: `${error} error occured in grafanaController.nodeExporter`,
+        message: {
+          err: `Unable to reach Grafana`,
+        },
       };
       return next(errMessage);
     }

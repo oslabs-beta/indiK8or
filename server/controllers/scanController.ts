@@ -17,15 +17,19 @@ const scanController = {
       }
     } catch (error) {
       const errMessage = {
-        log: "Error occurred from looking for scanned results",
+        log: `Error occurred scanController.isScanned ${error}`,
         status: 500,
-        message: `${error} error occured in scanController.isScanned`,
+        message: { err: "Error occured scanning images" },
       };
       return next(errMessage);
     }
   },
   //middleware to scan vulnerability for images
-  scanImage: async (req: Request, res: Response, next: NextFunction) => {
+  scanImage: async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     const { imageName } = req.body;
     try {
       //use childProcess to execute a shell command on the image per frontend requested
@@ -50,9 +54,11 @@ const scanController = {
             return next();
           } catch (error) {
             const errMessage = {
-              log: "Error occurred from creating scannedResults",
+              log: `Error occurred in scanController.scanImage ${error}`,
               status: 500,
-              message: `${error} error occured in scanController.scanImage`,
+              message: {
+                err: "Error occured while scanning images",
+              },
             };
             return next(errMessage);
           }
@@ -60,9 +66,9 @@ const scanController = {
       }
     } catch (error) {
       const errMessage = {
-        log: "Error occurred from scanning image",
+        log: `Error occurred in scanController.scanImage ${error}`,
         status: 500,
-        message: `${error} error occured in scanController.scanImage`,
+        message: { err: "Error occured while scanning images" },
       };
       return next(errMessage);
     }

@@ -53,9 +53,9 @@ const podController = {
       }
     } catch (error) {
       const errMessage = {
-        log: "Error occurred from getting pods",
+        log: `Error occurred in podController.getPods ${error}`,
         status: 500,
-        message: `${error} error occured in podController.getPods`,
+        message: { err: "Error occured while getting pods" },
       };
       return next(errMessage);
     }
@@ -81,9 +81,9 @@ const podController = {
       return next();
     } catch (error) {
       const errMessage = {
-        log: "Error occurred from getting images",
+        log: `Error occurred in podController.getImages ${error}`,
         status: 500,
-        message: `${error} error occured in podController.getImages`,
+        message: { err: "Error occured while getting images" },
       };
       return next(errMessage);
     }

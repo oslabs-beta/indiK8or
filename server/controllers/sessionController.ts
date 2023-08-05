@@ -4,100 +4,116 @@ import { OAuthUser } from "../../types";
 
 const sessionController = {
   // isLoggedIn - find appropriate session for this request in DB - verify whether or not session is still valid
-  isLoggedIn: (req: Request, res: Response, next: NextFunction): void => {
+  isLoggedIn: async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     const { ssid } = req.cookies;
     // finding the session which cookieId matches the cookie ssid sent along with the request
-    Session.findOne({ cookieId: ssid })
-      .then((session) => {
-        // if session is not found, send status code 303 to frond-end
-        if (!session) {
-          res.status(303).json("No active session exists");
-        } else {
-          // if session is found, save cookie ssid in res.locals and return next()
-          res.locals.userId = ssid;
-          return next();
-        }
-      })
-      .catch((err) => {
-        return next({
-          log: `isLoggedIn: ${err}`,
-          status: 500,
-          message: { err: "error occurred in sessionController.isLoggedIn" },
-        });
+
+    try {
+      const session = await Session.findOne({ cookieId: ssid });
+      // if session is not found, send status code 303 to frond-end
+      if (!session) {
+        res.status(303).json("No active session exists");
+      } else {
+        // if session is found, save cookie ssid in res.locals and return next()
+        res.locals.userId = ssid;
+        return next();
+      }
+    } catch (err) {
+      return next({
+        log: `Error occured in sessionController.isLoggedIn ${err}`,
+        status: 500,
+        message: { err: "Unable to find session" },
       });
+    }
   },
 
   // startSession - create and save a new Session into the database.
-  startSession: (_req: Request, res: Response, next: NextFunction) => {
+  startSession: async (
+    _req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     const { user } = res.locals;
     // check if session already exists for user
-    Session.findOne({ cookieId: user })
-      .then((session) => {
-        if (session) {
+
+    try {
+      const session = await Session.findOne({ cookieId: user });
+      if (session) {
+        return next();
+      } else {
+        // creating a session with a cookieId equals to the user id saved in res.locals
+
+        try {
+          await Session.create({ cookieId: user });
           return next();
-        } else {
-          // creating a session with a cookieId equals to the user id saved in res.locals
-          Session.create({ cookieId: user })
-            .then(() => {
-              return next();
-            })
-            .catch((err) => {
-              return next({
-                log: `startSession: ${err}`,
-                status: 500,
-                message: {
-                  err: "error occurred in sessionController.startSession",
-                },
-              });
-            });
+        } catch (err) {
+          return next({
+            log: `Error occured in sessionsController.startSession ${err}`,
+            status: 500,
+            message: {
+              err: "Unable to create session",
+            },
+          });
         }
-      })
-      .catch((err) => {
-        return next({
-          log: `startSession: ${err}`,
-          status: 500,
-          message: { err: "error occurred in sessionController.startSession" },
-        });
+      }
+    } catch (err) {
+      return next({
+        log: `Error occurred in sessionController.startSession ${err}`,
+        status: 500,
+        message: { err: "Unable to create session" },
       });
+    }
   },
 
   // startSession - create and save a new Session into the database.
-  startGitSession: (req: Request, _res: Response, next: NextFunction) => {
+  startGitSession: async (
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     // check if session already exists for user
     const { _id } = req.user as OAuthUser;
-    Session.findOne({ cookieId: _id })
-      .then((session) => {
-        if (session) {
+
+    try {
+      const session = await Session.findOne({ cookieId: _id });
+      if (session) {
+        return next();
+      } else {
+        // creating a session with a cookieId equals to the user id saved in res.locals
+
+        try {
+          await Session.create({ cookieId: _id });
           return next();
-        } else {
-          // creating a session with a cookieId equals to the user id saved in res.locals
-          Session.create({ cookieId: _id })
-            .then(() => {
-              return next();
-            })
-            .catch((err) => {
-              return next({
-                log: `startSession: ${err}`,
-                status: 500,
-                message: {
-                  err: "error occurred in sessionController.startSession",
-                },
-              });
-            });
+        } catch (err) {
+          return next({
+            log: `Error occured in sessionController.startSession ${err}`,
+            status: 500,
+            message: {
+              err: "Unable to create session",
+            },
+          });
         }
-      })
-      .catch((err) => {
-        return next({
-          log: `startSession: ${err}`,
-          status: 500,
-          message: { err: "error occurred in sessionController.startSession" },
-        });
+      }
+    } catch (err) {
+      return next({
+        log: `Error occured in sessionController.startSession ${err}`,
+        status: 500,
+        message: { err: "Unable to create session" },
       });
+    }
   },
   //middleware to log out user from homePage
-  logout: async (req: Request, res: Response, next: NextFunction) => {
+  logout: async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { ssid } = req.cookies;
     try {
-      const { ssid } = req.cookies;
       const loggedOutUser = await Session.findOneAndDelete({ cookieId: ssid });
       if (loggedOutUser) {
         // clear HttpOnly cookie
@@ -109,9 +125,9 @@ const sessionController = {
       }
     } catch (err) {
       return next({
-        log: `logout: ${err}`,
+        log: `error occurred in sessionController.logout ${err}`,
         status: 500,
-        message: { err: "error occurred in sessionController.logout" },
+        message: { err: "Unable to logout" },
       });
     }
   },
