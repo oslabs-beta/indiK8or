@@ -27,7 +27,6 @@ const HomePage = () => {
       },
     },
   });
-  // only render ThemeProvider if loggedIn is true, otherwise render nothing
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />

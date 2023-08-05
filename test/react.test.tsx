@@ -12,12 +12,12 @@ describe("sidebar", () => {
       </MemoryRouter>,
     );
   });
-  test("does not render Sidebar and Dashboard components if isLoggedIn state is false", async () => {
+  test("Sidebar and Dashboard components should render", async () => {
     await waitFor(() => {
       const screenComponent = screen.queryByTestId(
         "screenComponent",
       ) as HTMLInputElement;
-      expect(screenComponent).toBe(null);
+      expect(screenComponent).not.toBe(null);
     });
   });
 
