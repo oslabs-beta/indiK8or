@@ -10,7 +10,6 @@ import '../css/HomePage.css';
 
 
 const HomePage = () => {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [dashboardClicked, setDashboardClicked] = useState<boolean>(false);
   const [podClicked, setPodClicked] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -40,12 +39,11 @@ const HomePage = () => {
           body: JSON.stringify({}),
         });
         if (response.status === 303) {
-          alert('You must be logged in to view this page');
-          navigate('/login/loginRequest');
+          // alert('You must be logged in to view this page');
+          // navigate('/login/loginRequest');
         } else {
           const userId: string = await response.json();
           setUserId(userId);
-          setLoggedIn(true);
         }
       } catch (error) {
         console.error(error);
@@ -64,8 +62,6 @@ const HomePage = () => {
   });
   // only render ThemeProvider if loggedIn is true, otherwise render nothing
   return (
-    <>
-      {loggedIn && (
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <Grid className="homePage" data-testid="screenComponent">
@@ -81,8 +77,6 @@ const HomePage = () => {
             <Dashboard dashboardClicked={dashboardClicked} podClicked={podClicked}/>
           </Grid>
         </ThemeProvider>
-      )}
-    </>
   );
 };
 

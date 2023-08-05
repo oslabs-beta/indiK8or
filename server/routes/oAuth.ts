@@ -26,7 +26,7 @@ oAuthRouter.get('/github/callback', passport.authenticate('github', { failureRed
     if (process.env.NODE_ENV === 'production') {
     return res.redirect('/home');
     } else {
-      return res.redirect('http://localhost:5000/home');
+      return res.redirect('http://localhost:5000/');
     }
     }
   }
