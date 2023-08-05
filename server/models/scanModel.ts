@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -7,4 +7,7 @@ const scannedResultSchema = new Schema({
   scannedResult: { type: Object, required: true },
 });
 
-export const ScannedResult = mongoose.model('ScannedResult', scannedResultSchema);
+export const ScannedResult = mongoose.model(
+  "ScannedResult",
+  scannedResultSchema,
+);

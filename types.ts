@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme } from '@mui/material'
+import { Theme } from "@mui/material";
 import { PaletteMode } from "@mui/material";
 
 export type ServerError = {
@@ -14,8 +14,7 @@ export type DashProps = {
 };
 
 export type SidebarProps = DashProps & {
-  userId: string,
-  darkMode: boolean,
+  darkMode: boolean;
   handleDashboard: () => void;
   handlePod: () => void;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,20 +37,20 @@ export type OAuthUser = {
   username: string;
   createdAt: string;
   __v: number;
-}
+};
 
 export type PodRow = {
   [key: string]: string;
   NAME: string;
   READY: string;
   STATUS: string;
-  RESTARTS:string;
+  RESTARTS: string;
   AGE: string;
   IP: string;
   NODE: string;
   NOMINATED: string;
   READINESS: string;
-}
+};
 
 export type Pod = {
   NAME: string;
@@ -62,7 +61,7 @@ export type Pod = {
   IP: string;
   NODE: string;
   IMAGES: string[];
-}
+};
 
 export type Match = {
   vulnerability: {
@@ -71,26 +70,26 @@ export type Match = {
     severity: string;
     dataSource: string;
   };
-}
+};
 export type ScanProps = {
   scannedImage: {
-    matches: Match[]
-  }
-}
+    matches: Match[];
+  };
+};
 
 export type VulnerabilityProps = {
   id: string;
   description: string;
   severity: string;
   dataSource: string;
-}
+};
 
 export type Matches = {
   vulnerability: VulnerabilityProps;
   relatedVulnerabilities: object[];
   matchDetails: string[];
   artifact: object;
-}
+};
 
 export type Source = {
   type: string;
@@ -105,9 +104,9 @@ export type Source = {
     manifest: string;
     config: string;
   };
-}
+};
 
 export type JSONresult = {
   matches: Matches[];
   source: Source;
-}
+};

@@ -1,5 +1,5 @@
-import bcrypt from 'bcryptjs';
-import mongoose from 'mongoose';
+import bcrypt from "bcryptjs";
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -13,7 +13,7 @@ const userSchema = new Schema({
 const SALT_WORK_FACTOR = 10;
 
 // pre hook runs a function before the document is saved to the collection
-userSchema.pre('save', function (next) {
+userSchema.pre("save", function (next) {
   // hash the user password using bcrypt and store the hashed result in database
   bcrypt.hash(this.password, SALT_WORK_FACTOR, (err, hash) => {
     if (err) {
@@ -24,6 +24,6 @@ userSchema.pre('save', function (next) {
   });
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model("user", userSchema);
 
 export { User };
