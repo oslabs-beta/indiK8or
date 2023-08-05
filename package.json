@@ -6,9 +6,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "preview": "vite preview",
     "start": "cross-env NODE_ENV=production tsx server/server.ts",
-    "test": "cross-env NODE_ENV=test vitest", 
+    "test": "cross-env NODE_ENV=test vitest",
     "dev": "cross-env NODE_ENV=development vite & nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm --no-warnings' server/server.ts"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "mongoose": "^7.2.2",
     "passport": "^0.6.0",
     "passport-github2": "^0.1.12",
+    "prettier": "^3.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

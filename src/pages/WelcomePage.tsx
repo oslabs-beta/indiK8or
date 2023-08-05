@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import { Button, Container, IconButton } from '@mui/material';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import '../css/Welcome.scss';
-import logo from '../assets/logo1.png';
+import { useEffect } from "react";
+import { Button, Container, IconButton } from "@mui/material";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import "../css/Welcome.scss";
+import logo from "../assets/logo1.png";
 
 const WelcomePage = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -15,17 +15,17 @@ const WelcomePage = () => {
   useEffect(() => {
     const checkLoggedIn = async (): Promise<void> => {
       try {
-        const response = await fetch('/login/isLoggedIn', {
-          method: 'POST',
+        const response = await fetch("/login/isLoggedIn", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           // include cookies from cross origin request
-          credentials: 'include',
+          credentials: "include",
           body: JSON.stringify({}),
         });
         if (response.status === 302) {
-          navigate('/home');
+          navigate("/home");
         }
       } catch (error) {
         console.error(error);
@@ -49,13 +49,17 @@ const WelcomePage = () => {
           status, and performance of your Kubernetes environment, empowering you
           to make informed decisions and optimize your infrastructure.
         </h2>
-        <Button className="signin" variant="text" onClick={() => navigate('/login/loginRequest')}>
+        <Button
+          className="signin"
+          variant="text"
+          onClick={() => navigate("/login/loginRequest")}
+        >
           Sign in
         </Button>
         <Button
           className="signup"
           variant="outlined"
-          onClick={() => navigate('/login/signupRequest')}
+          onClick={() => navigate("/login/signupRequest")}
         >
           Sign up
         </Button>
@@ -87,10 +91,7 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
-          <IconButton
-            className="github"
-            href="https://github.com/babonjmc"
-          >
+          <IconButton className="github" href="https://github.com/babonjmc">
             <GitHubIcon></GitHubIcon>
           </IconButton>
           <Button className="name" variant="text" disabled={true}>
@@ -102,10 +103,7 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
-          <IconButton
-            className="github"
-            href="https://github.com/LeRocque"
-          >
+          <IconButton className="github" href="https://github.com/LeRocque">
             <GitHubIcon></GitHubIcon>
           </IconButton>
           <Button className="name" variant="text" disabled={true}>
@@ -117,10 +115,7 @@ const WelcomePage = () => {
           >
             <LinkedInIcon></LinkedInIcon>
           </IconButton>
-          <IconButton
-            className="github"
-            href="https://github.com/kneazle714"
-          >
+          <IconButton className="github" href="https://github.com/kneazle714">
             <GitHubIcon></GitHubIcon>
           </IconButton>
         </Container>

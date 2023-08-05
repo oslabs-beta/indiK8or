@@ -1,4 +1,4 @@
-import {Document, Model, Schema, model} from 'mongoose';
+import { Document, Model, Schema, model } from "mongoose";
 
 interface IGitUser extends Document {
   username: string;
@@ -23,6 +23,6 @@ const gitSchema = new Schema<IGitUser>({
   },
 });
 
-const GitUser: GitUserModel = model<IGitUser>('gituser', gitSchema);
+const GitUser: GitUserModel = model<IGitUser>("gituser", gitSchema);
 
 export { GitUser, IGitUser };

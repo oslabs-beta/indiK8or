@@ -1,16 +1,28 @@
-import { ReactElement, useState } from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Box, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import LogoutIcon from '@mui/icons-material/Logout';
-import '../css/Sidebar.css';
-import { SidebarProps } from '../../types';
+import { ReactElement, useState } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import {
+  Box,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import LogoutIcon from "@mui/icons-material/Logout";
+import "../css/Sidebar.css";
+import { SidebarProps } from "../../types";
 
-
-const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, handlePod, setDarkMode }: SidebarProps): ReactElement => {
+const Sidebar = ({
+  darkMode,
+  dashboardClicked,
+  podClicked,
+  handleDashboard,
+  handlePod,
+  setDarkMode,
+}: SidebarProps): ReactElement => {
   const [showLogoutText, setShowLogoutText] = useState<boolean>(false);
   const [showThemeText, setShowThemeText] = useState<boolean>(false);
   const [showDashText, setShowDashText] = useState<boolean>(false);
@@ -24,19 +36,19 @@ const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, hand
   */
   const handleLogout = async (): Promise<void> => {
     try {
-      const response: Response = await fetch('/logout', {
-        method: 'POST',
+      const response: Response = await fetch("/logout", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify({}),
       });
       if (response.ok) {
         alert(
-          'You have been successfully logged out. Redirecting to Welcome Page'
+          "You have been successfully logged out. Redirecting to Welcome Page",
         );
-        navigate('/');
+        navigate("/");
       }
     } catch (error) {
       console.error(error);
@@ -76,7 +88,7 @@ const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, hand
   };
 
   const handleDashToggle = (): void => {
-  // when handleDashToggle is called, check if podClicked is truthy, if so call handlePod to turn off pod
+    // when handleDashToggle is called, check if podClicked is truthy, if so call handlePod to turn off pod
     if (podClicked) {
       handlePod();
     }
@@ -113,9 +125,9 @@ const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, hand
           </ListItemIcon>
           <ListItemText
             // primary is the content of the ListItemText, which is a conditional in this case
-            primary={showDashText ? 'Dashboard' : ''}
+            primary={showDashText ? "Dashboard" : ""}
             className="listItemText"
-            primaryTypographyProps={{ fontSize: '20px', fontWeight: 'bold' }}
+            primaryTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
           />
         </ListItemButton>
         {/* Pod button */}
@@ -131,9 +143,9 @@ const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, hand
           </ListItemIcon>
           <ListItemText
             // primary is the content of the ListItemText, which is a conditional in this case
-            primary={showPodText ? 'Pods' : ''}
+            primary={showPodText ? "Pods" : ""}
             className="listItemText"
-            primaryTypographyProps={{ fontSize: '20px', fontWeight: 'bold' }}
+            primaryTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
           />
         </ListItemButton>
         {/* Logout button */}
@@ -147,9 +159,9 @@ const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, hand
             <LogoutIcon sx={{ fontSize: 50 }} />
           </ListItemIcon>
           <ListItemText
-            primary={showLogoutText ? 'Logout' : ''}
+            primary={showLogoutText ? "Logout" : ""}
             className="listItemText"
-            primaryTypographyProps={{ fontSize: '20px', fontWeight: 'bold' }}
+            primaryTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
           />
         </ListItemButton>
         {/* Theme (Icon is conditional based on the current state)*/}
@@ -174,9 +186,9 @@ const Sidebar = ({ darkMode, dashboardClicked, podClicked, handleDashboard, hand
             )}
           </ListItemIcon>
           <ListItemText
-            primary={showThemeText ? 'Dark/Light' : ''}
+            primary={showThemeText ? "Dark/Light" : ""}
             className="listItemText"
-            primaryTypographyProps={{ fontSize: '20px', fontWeight: 'bold' }}
+            primaryTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
           />
         </ListItemButton>
       </List>
