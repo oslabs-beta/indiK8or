@@ -5,15 +5,16 @@ import { OAuthUser } from '../../types';
 const sessionController = {
 // isLoggedIn - find appropriate session for this request in DB - verify whether or not session is still valid
 isLoggedIn: (req: Request, res: Response, next: NextFunction): void => {
+  const { ssid } = req.cookies;
   // finding the session which cookieId matches the cookie ssid sent along with the request
-  Session.findOne({ cookieId: req.cookies.ssid })
+  Session.findOne({ cookieId: ssid })
     .then((session) => {
       // if session is not found, send status code 303 to frond-end
       if (!session) {
         res.status(303).json('No active session exists');
       } else {
       // if session is found, save cookie ssid in res.locals and return next()
-        res.locals.userId = req.cookies.ssid;
+        res.locals.userId = ssid;
         return next();
       }
     })
@@ -28,14 +29,15 @@ isLoggedIn: (req: Request, res: Response, next: NextFunction): void => {
 
 // startSession - create and save a new Session into the database.
 startSession: (_req: Request, res: Response, next: NextFunction) => {
+  const { user } = res.locals;
   // check if session already exists for user
-  Session.findOne({cookieId: res.locals.user})
+  Session.findOne({cookieId: user})
     .then((session) => {
       if (session) {
         return next();
       } else {
          // creating a session with a cookieId equals to the user id saved in res.locals
-        Session.create({ cookieId: res.locals.user })
+        Session.create({ cookieId: user })
         .then(() => {
           return next();
         })
@@ -60,13 +62,14 @@ startSession: (_req: Request, res: Response, next: NextFunction) => {
 // startSession - create and save a new Session into the database.
 startGitSession: (req: Request, _res: Response, next: NextFunction) => {
   // check if session already exists for user
-  Session.findOne({cookieId: (req.user as OAuthUser)._id})
+  const { _id } = (req.user as OAuthUser);
+  Session.findOne({cookieId: _id})
     .then((session) => {
       if (session) {
         return next();
       } else {
          // creating a session with a cookieId equals to the user id saved in res.locals
-        Session.create({ cookieId: (req.user as OAuthUser)._id})
+        Session.create({ cookieId: _id})
         .then(() => {
           return next();
         })

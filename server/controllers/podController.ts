@@ -54,7 +54,7 @@ getPods: async (_req: Request, res: Response, next: NextFunction): Promise<void>
 //middleware to get images on each pod
 getImages: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const pods = res.locals.pods;
+    const { pods } = res.locals;
     // create promise based version of exec func
     const execPromise = promisify(exec);
     for (let i = 0; i < pods.length; i++) {
