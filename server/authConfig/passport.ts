@@ -57,7 +57,7 @@ const strategy = new GitHubStrategy(
         return done(null, existingUser);
       }
       const newUser = await GitUser.create({
-        username: profile.username,
+        username: username,
       });
       return done(null, newUser);
     } catch (err) {

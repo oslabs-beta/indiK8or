@@ -63,6 +63,16 @@ export type Pod = {
   IMAGES: string[];
 };
 
+export type PodTableProps = {
+  pods: Pod[];
+  handleOpen: () => void;
+  handleClose: () => void;
+  loading: boolean;
+  scannedImage: string;
+  setImageName: (imageName: string) => void;
+  open: boolean;
+};
+
 export type Match = {
   vulnerability: {
     id: string;

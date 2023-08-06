@@ -11,17 +11,7 @@ import {
   TableRow,
 } from "@mui/material";
 import Scan from "./Scan";
-import { Pod } from "../../types";
-
-interface PodTableProps {
-  pods: Pod[];
-  handleOpen: () => void;
-  handleClose: () => void;
-  loading: boolean;
-  scannedImage: string;
-  setImageName: (imageName: string) => void;
-  open: boolean;
-}
+import { Pod, PodTableProps } from "../../types";
 
 const PodTable: React.FC<PodTableProps> = ({
   pods,

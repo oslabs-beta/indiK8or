@@ -60,7 +60,7 @@ const stopChildProcess = (): Promise<void> => {
           console.error("Error stopping exec command:", err);
           reject(err);
         } else {
-        /* 
+          /* 
        If there is no error, it means the child process was stopped successfully. A log message is printed to the console indicating that the exec command has been stopped.
        The promise is resolved to indicate the successful completion of stopping the child process.
        */

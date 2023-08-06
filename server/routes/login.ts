@@ -20,7 +20,7 @@ loginRouter.post(
   sessionController.startSession,
   cookieController.setSSIDCookie,
   (_req: Request, res: Response) => {
-    return res.status(200).json("You are logged in");
+    return res.status(200).send("You are logged in");
   },
 );
 // loginRouter to handle sign up request
@@ -29,7 +29,7 @@ loginRouter.post(
   userController.verifyAccount,
   userController.createUser,
   (_req: Request, res: Response) => {
-    return res.status(201).json("You have signed up");
+    return res.status(201).send("You have signed up");
   },
 );
 
