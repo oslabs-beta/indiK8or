@@ -67,14 +67,14 @@ app.use("/scan", scanRouter);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(path.resolve(), "dist")));
   app.get("/*", function (_req, res) {
-    res.sendFile(path.join(path.resolve(), "dist", "index.html"));
+    return res.sendFile(path.join(path.resolve(), "dist", "index.html"));
   });
 }
 
 // catch-all handler
-app.use((_req: Request, res: Response) =>
-  res.status(404).send("Invalid endpoint"),
-);
+app.use((_req: Request, res: Response) => {
+  return res.status(404).send("Invalid endpoint");
+});
 
 // global handler
 app.use((err: ServerError, _req: Request, res: Response) => {

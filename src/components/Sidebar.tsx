@@ -14,6 +14,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import "../css/Sidebar.css";
 import { SidebarProps } from "../../types";
+import indiK8orLogo from "../assets/logo1.png";
 
 const Sidebar = ({
   darkMode,
@@ -110,7 +111,7 @@ const Sidebar = ({
 
   return (
     <Box className="sidebar">
-      <img id="logo" src="src/assets/logo1.png" alt="logo" />
+      <img id="logo" src={indiK8orLogo} alt="logo" />
       {/* Navigation List */}
       <List className="list">
         {/* Dashboard button */}

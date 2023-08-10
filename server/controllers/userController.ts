@@ -38,11 +38,13 @@ const userController = {
     // creating a new user and save the user's id to res.locals
 
     try {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
       const newUser = await User.create({
         firstName,
         lastName,
         username,
-        password,
+        password: hashedPassword,
       });
       res.locals.user = newUser.id;
       return next();
