@@ -11,4 +11,4 @@ grafanaRouter.get(
   },
 );
 
-export default grafanaRouter;
+export { grafanaRouter };
