@@ -10,12 +10,12 @@ import {
   startExecCommand,
   stopChildProcess,
 } from "./childProcesses/execCommand";
-import { oAuthRouter } from "./routes/oAuth";
-import grafanaRouter from "./routes/grafana";
-import { loginRouter } from "./routes/login";
-import { logoutRouter } from "./routes/logout";
-import { podRouter } from "./routes/pod";
-import { scanRouter } from "./routes/scan";
+import { oAuthRouter } from "./routes/oAuthRouter";
+import { grafanaRouter } from "./routes/grafanaRouter";
+import { loginRouter } from "./routes/loginRouter";
+import { logoutRouter } from "./routes/logoutRouter";
+import { podRouter } from "./routes/podRouter";
+import { scanRouter } from "./routes/scanRouter";
 import { ServerError } from "../types";
 
 // require .env files in
