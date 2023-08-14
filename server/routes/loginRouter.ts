@@ -6,7 +6,7 @@ import { userController } from "../controllers/userController";
 
 const loginRouter = express.Router();
 // authorizing user who has already logged in
-loginRouter.post(
+loginRouter.get(
   "/isLoggedIn",
   sessionController.isLoggedIn,
   (_req: Request, res: Response) => {

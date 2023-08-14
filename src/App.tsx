@@ -13,12 +13,7 @@ function App(): ReactElement {
     const checkLoggedIn = async () => {
       try {
         const response = await fetch("/login/isLoggedIn", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           credentials: "include",
-          body: JSON.stringify({}),
         });
 
         if (response.status === 303) {

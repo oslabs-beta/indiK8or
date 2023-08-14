@@ -38,12 +38,7 @@ const Sidebar = ({
   const handleLogout = async (): Promise<void> => {
     try {
       const response: Response = await fetch("/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         credentials: "include",
-        body: JSON.stringify({}),
       });
       if (response.ok) {
         alert(
