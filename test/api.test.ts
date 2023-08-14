@@ -13,7 +13,7 @@ const server = request("http://localhost:4000") as testTs;
 
 describe("API Routes", () => {
   it("isLoggedIn should return a 303 status code", async () => {
-    const response = await server.post("/login/isLoggedIn");
+    const response = await server.get("/login/isLoggedIn");
     expect(response.statusCode).toBe(303);
   });
   it("signupRequest should return a 500 status code", async () => {
@@ -29,7 +29,7 @@ describe("API Routes", () => {
     expect(response.statusCode).toBe(200);
   });
   it("logout should return User session not found. Unable to logout ", async () => {
-    const response = await server.post("/logout");
+    const response = await server.get("/logout");
     expect(response.text).toBe("User session not found. Unable to logout");
   });
 });

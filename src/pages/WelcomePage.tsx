@@ -16,13 +16,8 @@ const WelcomePage = () => {
     const checkLoggedIn = async (): Promise<void> => {
       try {
         const response = await fetch("/login/isLoggedIn", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           // include cookies from cross origin request
           credentials: "include",
-          body: JSON.stringify({}),
         });
         if (response.status === 302) {
           navigate("/home");

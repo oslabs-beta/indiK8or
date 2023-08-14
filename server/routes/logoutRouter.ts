@@ -4,7 +4,7 @@ import { sessionController } from "../controllers/sessionController";
 
 const logoutRouter = express.Router();
 //route to log user out
-logoutRouter.post(
+logoutRouter.get(
   "/",
   sessionController.logout,
   (_req: Request, res: Response) => {
