@@ -29,7 +29,7 @@ loginRouter.post(
   userController.verifyAccount,
   userController.createUser,
   (_req: Request, res: Response) => {
-    return res.status(201).send("You have signed up");
+    return res.status(201).json({ userId: res.locals.userId });
   },
 );
 

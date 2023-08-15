@@ -36,7 +36,13 @@ const userController = {
   ): Promise<void> => {
     const { firstName, lastName, username, password } = req.body;
     // creating a new user and save the user's id to res.locals
-
+    if (!firstName || !lastName || !username || !password) {
+      return next({
+        log: "Error in userController.createUser. Missing input fields",
+        status: 400,
+        message: { err: "All fields required" },
+      });
+    }
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
@@ -46,7 +52,7 @@ const userController = {
         username,
         password: hashedPassword,
       });
-      res.locals.user = newUser.id;
+      res.locals.userId = newUser.id;
       return next();
     } catch (err) {
       return next({
