@@ -27,7 +27,27 @@ const userController = {
       });
     }
   },
+  // delete user
+  deleteUser: async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { username } = req.body;
+    // creating a new user and save the user's id to res.locals
 
+    try {
+      const user = await User.findOneAndDelete({ username });
+      res.locals.deletedUser = user;
+      return next();
+    } catch (err) {
+      return next({
+        log: `Error occurred in userController.verifyAccount ${err}`,
+        status: 500,
+        message: { err: "Unable to verify account" },
+      });
+    }
+  },
   // Creating a new user
   createUser: async (
     req: Request,

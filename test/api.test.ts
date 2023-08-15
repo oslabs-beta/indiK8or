@@ -7,6 +7,7 @@ interface testTs extends SupertestTest {
   post: (url: string) => testTs;
   get: (url: string) => testTs;
   send: (requestBody: object) => testTs;
+  delete: (url: string) => testTs;
   statusCode: number;
   message: string;
   text: string;
@@ -41,18 +42,17 @@ describe("API Routes", () => {
 
 describe("Login Routes", () => {
   let testUserName;
-  beforeEach(async () => {
-    testUserName = await faker.internet.userName();
-  });
 
-  afterEach(async () => {
-    // try {
-    //   await User.findOneAndDelete({ username: testUserName });
-    // } catch (err) {
-    //   console.log(`Error deleteing ${err}`);
-    // }
-  });
   describe("given a username, firstName, lastName, and password", () => {
+    beforeEach(async () => {
+      testUserName = await faker.internet.userName();
+    });
+
+    afterEach(async () => {
+      await server.delete("/logout").send({
+        username: testUserName,
+      });
+    });
     it("should respond with a 201 status code", async () => {
       const response = await server.post("/login/signupRequest").send({
         username: testUserName,
@@ -82,20 +82,18 @@ describe("Login Routes", () => {
     });
   });
 
-  describe("when firstname, lastname, or password are missing", () => {
+  describe("when input fields are missing", () => {
     let testUserName;
     beforeEach(async () => {
-      testUserName = faker.internet.userName();
+      testUserName = await faker.internet.userName();
     });
 
     afterEach(async () => {
-      // try {
-      //   await User.findOneAndDelete({ username: testUserName });
-      // } catch (err) {
-      //   console.log(`Error deleteing ${err}`);
-      // }
+      await server.delete("/logout").send({
+        username: testUserName,
+      });
     });
-    it("should respond with a 400 status code", async () => {
+    it("should respond with a 400 status code when firstName, lastName, or password are missing", async () => {
       const bodyData = [
         { username: testUserName },
         { username: testUserName, firstName: "firstnameTest" },
@@ -106,6 +104,14 @@ describe("Login Routes", () => {
         const response = await server.post("/login/signupRequest").send(body);
         expect(response.statusCode).toBe(400);
       }
+    });
+    it("should respond with a 409 status code when username is missing", async () => {
+      const response = await server.post("/login/signupRequest").send({
+        firstName: "firstnameTest",
+        lastName: "lastnameTest",
+        password: "passwordTest",
+      });
+      expect(response.statusCode).toBe(400);
     });
   });
 });
