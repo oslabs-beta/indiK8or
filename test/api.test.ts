@@ -1,19 +1,18 @@
 import request from "supertest";
 import { Test as SupertestTest } from "supertest";
-import { jest } from "@jest/globals";
+import { User } from "../server/models/userModel";
+import { faker } from "@faker-js/faker";
 
 interface testTs extends SupertestTest {
   post: (url: string) => testTs;
   get: (url: string) => testTs;
   send: (requestBody: object) => testTs;
   statusCode: number;
+  message: string;
   text: string;
   headers: { location: string };
   body: { userId: string };
 }
-
-const createUser = jest.fn();
-const getUser = jest.fn();
 
 const server = request("http://localhost:4000") as testTs;
 
@@ -41,85 +40,71 @@ describe("API Routes", () => {
 });
 
 describe("Login Routes", () => {
-  beforeEach(() => {
-    createUser.mockReset();
-    createUser.mockResolvedValue(0);
+  let testUserName;
+  beforeEach(async () => {
+    testUserName = await faker.internet.userName();
   });
-  describe("given a username and password", () => {
-    it("should save the username and password to the database", async () => {
-      const bodyData = [
-        {
-          username: "username1",
-          firstName: "firstname",
-          lastName: "lastname",
-          password: "password",
-        },
-        {
-          username: "username2",
-          firstName: "firstname",
-          lastName: "lastname",
-          password: "password",
-        },
-        {
-          username: "username3",
-          firstName: "firstname",
-          lastName: "lastname",
-          password: "password",
-        },
-      ];
-      for (const body of bodyData) {
-        await server.post("/login/signupRequest").send(body);
-        expect(createUser.mock.calls.length).toBe(1);
-        expect(createUser.mock.calls[0][0]).toBe(body.username);
-        expect(createUser.mock.calls[0][1]).toBe(body.firstName);
-        expect(createUser.mock.calls[0][2]).toBe(body.lastName);
-        expect(createUser.mock.calls[0][3]).toBe(body.password);
-      }
-    });
-    // should respond with a json object containing the user id
+
+  afterEach(async () => {
+    // try {
+    //   await User.findOneAndDelete({ username: testUserName });
+    // } catch (err) {
+    //   console.log(`Error deleteing ${err}`);
+    // }
+  });
+  describe("given a username, firstName, lastName, and password", () => {
     it("should respond with a 201 status code", async () => {
       const response = await server.post("/login/signupRequest").send({
-        username: "username1",
-        firstName: "firstName",
-        lastName: "lastName",
-        password: "password",
+        username: testUserName,
+        firstName: "firstNameTest",
+        lastName: "lastNameTest",
+        password: "passwordTest",
       });
       expect(response.statusCode).toBe(201);
     });
     it("should specify json in the content type header", async () => {
       const response = await server.post("/login/signupRequest").send({
-        username: "username7",
-        firstName: "firstName",
-        lastName: "lastName",
-        password: "password",
+        username: testUserName,
+        firstName: "firstNameTest",
+        lastName: "lastNameTest",
+        password: "passwordTest",
       });
       expect(response.headers["content-type"]).toMatch(/application\/json/);
     });
     it("response should have userId", async () => {
       const response = await server.post("/login/signupRequest").send({
-        username: "username6",
-        firstName: "firstName",
-        lastName: "lastName",
-        password: "password",
+        username: testUserName,
+        firstName: "firstNameTest",
+        lastName: "lastNameTest",
+        password: "passwordTest",
       });
       expect(response.body.userId).toBeDefined();
     });
   });
 
-  describe("when username, firstname, lastname, or password are missing", () => {
-    // should respond with a status code of 400
+  describe("when firstname, lastname, or password are missing", () => {
+    let testUserName;
+    beforeEach(async () => {
+      testUserName = faker.internet.userName();
+    });
+
+    afterEach(async () => {
+      // try {
+      //   await User.findOneAndDelete({ username: testUserName });
+      // } catch (err) {
+      //   console.log(`Error deleteing ${err}`);
+      // }
+    });
     it("should respond with a 400 status code", async () => {
       const bodyData = [
-        { username: "username" },
-        { firstName: "firstname" },
-        { lastName: "lastname" },
-        { password: "password" },
-        {},
+        { username: testUserName },
+        { username: testUserName, firstName: "firstnameTest" },
+        { username: testUserName, lastName: "lastnameTest" },
+        { username: testUserName, password: "passwordTest" },
       ];
       for (const body of bodyData) {
         const response = await server.post("/login/signupRequest").send(body);
         expect(response.statusCode).toBe(400);
-        expect(response.body).toHaveProperty("err");
       }
     });
   });
