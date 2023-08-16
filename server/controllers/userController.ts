@@ -33,7 +33,7 @@ const userController = {
     res: Response,
     next: NextFunction,
   ): Promise<void> => {
-    const { username } = req.body;
+    const { username } = req.params;
     // creating a new user and save the user's id to res.locals
 
     try {

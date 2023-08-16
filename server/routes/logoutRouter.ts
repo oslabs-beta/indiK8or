@@ -12,9 +12,9 @@ logoutRouter.get(
     return res.status(202).send(`Successful logout`);
   },
 );
-
+// delete user for testing purposes
 logoutRouter.delete(
-  "/",
+  "/:username",
   userController.deleteUser,
   (_req: Request, res: Response) => {
     return res.status(202).json(res.locals.deletedUser);
