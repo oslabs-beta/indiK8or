@@ -95,7 +95,7 @@ const userController = {
       return next({
         log: `Error occurred in userController.verifyUser ${err}`,
         status: 500,
-        message: { err: "Unable to verify user" },
+        message: { err: 'Unable to verify user' },
       });
     }
   },
