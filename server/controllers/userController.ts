@@ -35,16 +35,18 @@ const userController = {
   ): Promise<void> => {
     const { username } = req.params;
     // creating a new user and save the user's id to res.locals
-
+    if (!username) {
+      res.status(400).send("Please provide a username");
+    }
     try {
       const user = await User.findOneAndDelete({ username });
       res.locals.deletedUser = user;
       return next();
     } catch (err) {
       return next({
-        log: `Error occurred in userController.verifyAccount ${err}`,
+        log: `Error occurred in userController.deleteUser ${err}`,
         status: 500,
-        message: { err: "Unable to verify account" },
+        message: { err: "Unable to delete user" },
       });
     }
   },

@@ -52,6 +52,27 @@ describe("API Routes with no inputs", () => {
   });
 });
 
+// Tests for delete user
+describe("Delete route", async () => {
+  const testUserName = await faker.internet.userName();
+  // create new fake user
+  it("Should be able to create a new fake user", async () => {
+    const response = await server.post("/login/signupRequest").send({
+      username: testUserName,
+      firstName: "firstNameTest",
+      lastName: "lastNameTest",
+      password: "passwordTest",
+    });
+    expect(response.statusCode).toBe(201);
+  });
+  // delete fake user
+  it("Should be able to delete fake user", async () => {
+    const response = await server.delete(`/logout/${testUserName}`);
+    expect(response.statusCode).toBe(202);
+    expect(response.headers["content-type"]).toMatch(/application\/json/);
+  });
+});
+
 // Tests for signup
 describe("Signup Routes", () => {
   let testUserName;
