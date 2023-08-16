@@ -121,7 +121,7 @@ const sessionController = {
         res.locals.loggedOut = loggedOutUser;
         return next();
       } else {
-        res.send("User session not found. Unable to logout");
+        res.status(400).send("User session not found. Unable to logout");
       }
     } catch (err) {
       return next({

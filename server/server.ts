@@ -85,7 +85,6 @@ app.use((err: ServerError, _req: Request, res: Response) => {
   };
   const errorObj: ServerError = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
-  // return res.status(errorObj.status).json(errorObj.message);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
