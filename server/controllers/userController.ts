@@ -34,7 +34,6 @@ const userController = {
     next: NextFunction,
   ): Promise<void> => {
     const { username } = req.params;
-    // creating a new user and save the user's id to res.locals
     if (!username) {
       res.status(400).send("Please provide a username");
     }
