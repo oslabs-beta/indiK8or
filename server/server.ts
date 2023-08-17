@@ -1,25 +1,28 @@
 import express, { Request, Response } from "express";
+import connectToMongoDB, { store } from "./models/databaseModel";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import session from "express-session";
 import path from "path";
 import passport from "passport";
+import session from "express-session";
 import "./authConfig/passport";
 import {
   startExecCommand,
   stopChildProcess,
 } from "./childProcesses/execCommand";
-import { oAuthRouter } from "./routes/oAuthRouter";
+import { ServerError } from "../types";
 import { grafanaRouter } from "./routes/grafanaRouter";
 import { loginRouter } from "./routes/loginRouter";
 import { logoutRouter } from "./routes/logoutRouter";
+import { oAuthRouter } from "./routes/oAuthRouter";
 import { podRouter } from "./routes/podRouter";
 import { scanRouter } from "./routes/scanRouter";
-import { ServerError } from "../types";
 
 // require .env files in
 dotenv.config();
+//connect to database
+connectToMongoDB();
 // create an Express application
 const app = express();
 // specify server port as 4000
@@ -41,6 +44,7 @@ app.use(
     secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
+    store: store,
   }),
 );
 
