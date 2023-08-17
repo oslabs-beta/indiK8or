@@ -4,7 +4,7 @@ import treeKill from "tree-kill";
 // initialize childProcess variable
 let childProcess: ChildProcess | null = null;
 // declare a function to start the grafana port forwarding command. We want this as a function that we are able to call it anytime we reset the server or Nodemon restarts due to changes
-const startExecCommand = () => {
+const startExecCommand = (): void => {
   /*
   Execute kubectl port-forward shell command
   Exec method will spawn a shell and execute the specified command within that shell
@@ -77,4 +77,23 @@ const stopChildProcess = (): Promise<void> => {
   });
 };
 
-export { startExecCommand, stopChildProcess };
+/*
+ Listen for SIGUSR2 signal (Nodemon restart event)
+ The process.once() method is used instead of process.on() to ensure that the listener function is executed only once for the first occurrence of the SIGUSR2 signal.
+*/
+const nodemonReset = (): void => {
+  process.once("SIGUSR2", async () => {
+    // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
+    await stopChildProcess();
+    // Restart the server after stopping the child process
+    process.kill(process.pid, "SIGUSR2");
+  });
+
+  // Handle the process exit event
+  process.on("exit", async () => {
+    // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
+    await stopChildProcess();
+  });
+};
+
+export { nodemonReset, startExecCommand, stopChildProcess };

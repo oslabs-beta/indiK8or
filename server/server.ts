@@ -7,10 +7,7 @@ import path from "path";
 import passport from "passport";
 import session from "express-session";
 import "./authConfig/passport";
-import {
-  startExecCommand,
-  stopChildProcess,
-} from "./childProcesses/execCommand";
+import { nodemonReset, startExecCommand } from "./childProcesses/execCommand";
 import { ServerError } from "../types";
 import { grafanaRouter } from "./routes/grafanaRouter";
 import { loginRouter } from "./routes/loginRouter";
@@ -94,23 +91,8 @@ app.use((err: ServerError, _req: Request, res: Response) => {
 
 // call startExecCommand to start port forwarding of Grafana on 3000
 startExecCommand();
-
-/*
- Listen for SIGUSR2 signal (Nodemon restart event)
- The process.once() method is used instead of process.on() to ensure that the listener function is executed only once for the first occurrence of the SIGUSR2 signal.
-*/
-process.once("SIGUSR2", async () => {
-  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
-  await stopChildProcess();
-  // Restart the server after stopping the child process
-  process.kill(process.pid, "SIGUSR2");
-});
-
-// Handle the process exit event
-process.on("exit", async () => {
-  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
-  await stopChildProcess();
-});
+// call nodemonReset to handle asyncronous behavior of stopping and resetting port forwarding of Grafana any time Nodemon restarts
+nodemonReset();
 
 // server listening on port
 app.listen(port, () => {
