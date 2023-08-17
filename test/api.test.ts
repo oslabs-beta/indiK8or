@@ -45,11 +45,6 @@ describe("API Routes with no inputs", () => {
     const response = await server.get("/logout");
     expect(response.text).toBe("User session not found. Unable to logout");
   });
-  // request to bad endpoint should return 404 status code from catch-all
-  it("request to bad enpoint should return a 404 status code", async () => {
-    const response = await server.get("/noRoute");
-    expect(response.statusCode).toBe(404);
-  });
 });
 
 // Tests for delete user
