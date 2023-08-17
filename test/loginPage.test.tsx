@@ -4,10 +4,13 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { expect, SpyInstance, test, vi } from "vitest";
 import LoginPage from "../src/pages/LoginPage";
 
+type SetIsAuthenticatedFunction = (value: boolean) => void;
+const mockSetIsAuthenticated: SetIsAuthenticatedFunction = vi.fn();
+
 test("renders the login form", () => {
   render(
     <Router>
-      <LoginPage />
+      <LoginPage setIsAuthenticated={mockSetIsAuthenticated} />
     </Router>,
   );
 
@@ -33,7 +36,7 @@ test("renders the login form", () => {
 test("input fields capture user input correctly", () => {
   render(
     <Router>
-      <LoginPage />
+      <LoginPage setIsAuthenticated={mockSetIsAuthenticated} />
     </Router>,
   );
 
@@ -60,7 +63,7 @@ test("input fields capture user input correctly", () => {
 test("submits the login form and sends a fetch POST request", async () => {
   render(
     <Router>
-      <LoginPage />
+      <LoginPage setIsAuthenticated={mockSetIsAuthenticated} />
     </Router>,
   );
 
@@ -100,7 +103,7 @@ test("submits the login form and sends a fetch POST request", async () => {
       }),
     });
   });
-  // Assert that the URL has changed to the homepage
+  // Assert that the URL has changed to home
   expect(window.location.pathname).toBe("/home");
   // Restore the original implementation of fetch
   fetchMockSuccess.mockRestore();
