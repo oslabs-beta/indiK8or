@@ -1,17 +1,5 @@
 import { ChangeEvent, FormEvent, ReactElement, useState, useRef } from "react";
-import {
-  Alert,
-  Avatar,
-  Button,
-  Grid,
-  IconButton,
-  InputAdornment,
-  Link,
-  Paper,
-  Snackbar,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Alert, Avatar, Button, Grid, IconButton, InputAdornment, Link, Paper, Snackbar, TextField, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LoginIcon from "@mui/icons-material/Login";

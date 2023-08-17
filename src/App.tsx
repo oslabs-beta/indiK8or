@@ -26,7 +26,6 @@ function App(): ReactElement {
         setIsAuthenticated(false);
       }
     };
-
     checkLoggedIn();
   }, []);
 
