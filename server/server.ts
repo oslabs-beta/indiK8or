@@ -6,10 +6,7 @@ import session from "express-session";
 import path from "path";
 import passport from "passport";
 import "./authConfig/passport";
-import {
-  startExecCommand,
-  stopChildProcess,
-} from "./childProcesses/execCommand";
+import { startExecCommand, stopChildProcess } from "./childProcesses/execCommand";
 import { oAuthRouter } from "./routes/oAuthRouter";
 import { grafanaRouter } from "./routes/grafanaRouter";
 import { loginRouter } from "./routes/loginRouter";
@@ -18,11 +15,10 @@ import { podRouter } from "./routes/podRouter";
 import { scanRouter } from "./routes/scanRouter";
 import { ServerError } from "../types";
 
-// require .env files in
+// require .env files
 dotenv.config();
-// create an Express application
+
 const app = express();
-// specify server port as 4000
 const port = process.env.PORT || 4000;
 // provide default value of empty string when env variables are undefined or null
 const sessionSecret: string = process.env.SESSION_SECRET ?? "";
@@ -93,8 +89,8 @@ app.use((err: ServerError, _req: Request, res: Response) => {
 startExecCommand();
 
 /*
- Listen for SIGUSR2 signal (Nodemon restart event)
- The process.once() method is used instead of process.on() to ensure that the listener function is executed only once for the first occurrence of the SIGUSR2 signal.
+ Listen for SIGUSR2 signal
+ The process.once() method is used to ensure that the listener function is executed only once for the first occurrence of the SIGUSR2 signal.
 */
 process.once("SIGUSR2", async () => {
   // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding

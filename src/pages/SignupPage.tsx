@@ -23,8 +23,7 @@ const SignupPage = (): ReactElement => {
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] =
-    useState<boolean>(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<string>("");
   const [showSuccessAlert, setShowSuccessAlert] = useState<boolean>(false);
   const [showConflictAlert, setShowConflictAlert] = useState<boolean>(false);
@@ -79,7 +78,7 @@ const SignupPage = (): ReactElement => {
   ): Promise<void> => {
     event.preventDefault();
 
-    // Check if passwords match, if it does not change state of password error and clear the input field
+    // Check if passwords match, if it does not, change state of password error and clear the input field
     if (password !== passwordConfirmation) {
       setPasswordError("Passwords does not match");
       setPasswordConfirmation("");

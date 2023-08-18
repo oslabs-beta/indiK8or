@@ -11,12 +11,14 @@ import {
 import "../css/Scan.css";
 import { JSONresult, VulnerabilityProps } from "../../types";
 
-// deconstruct scannedImages from props, scannedImages is either type JSONresult or string
+// deconstruct scannedImages from props, scannedImages is either type JSON result or string
 const Scan = forwardRef(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ scannedImages }: { scannedImages?: JSONresult | string }, _ref) => {
     /* 
-  if vulnerabilities is a string, assign its value to an empty array, otherwise if scannedImages exists and has a property matches, iterate over the matches property and return an array of each property that matches vulnerability. Otherwise if scannedImages is null or undefined or the matches property does not exist, return an empty array
+  if vulnerabilities is a string, assign its value to an empty array, 
+  else if scannedImages exists and has a property matches, iterate over the matches property and return an array of each property that matches vulnerability. 
+  else if scannedImages is null or undefined or the matches property does not exist, return an empty array
   */
     const vulnerabilities =
       (typeof scannedImages === "string"

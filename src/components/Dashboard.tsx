@@ -32,7 +32,7 @@ export default function Dashboard({
 
   /*
   When getImages is called by clicking SCAN button, send POST to backend with imageName as request body.
-  If request is successful, set scannedImage with returned JSON result.
+  If successful, set scannedImage with returned JSON object.
   Finally, set Loading to false
   */
   const getImages = async (): Promise<void> => {
@@ -124,7 +124,7 @@ export default function Dashboard({
     return (
       <Grid container alignItems="center" justifyContent="center">
         <Typography variant="h3" className="dash-typography">
-          indiK8or makes viewing your cluster metrics easy!
+          Visualize Your Kubernetes Environment with a Click of Button!
         </Typography>
       </Grid>
     );

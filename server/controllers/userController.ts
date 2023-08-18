@@ -3,14 +3,13 @@ import { User } from "../models/userModel";
 import bcrypt from "bcryptjs";
 
 const userController = {
-  // Verifying if an account exists
+  // Verifying if an account exists already
   verifyAccount: async (
     req: Request,
     res: Response,
     next: NextFunction,
   ): Promise<void> => {
     const { username } = req.body;
-    // creating a new user and save the user's id to res.locals
 
     try {
       const user = await User.findOne({ username });
@@ -36,7 +35,6 @@ const userController = {
   ): Promise<void> => {
     const { firstName, lastName, username, password } = req.body;
     // creating a new user and save the user's id to res.locals
-
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);

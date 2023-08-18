@@ -1,12 +1,6 @@
 import { ReactElement, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Box, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import DashboardIcon from "@mui/icons-material/Dashboard";
