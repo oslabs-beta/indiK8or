@@ -23,6 +23,7 @@ oAuthRouter.get(
   },
   sessionController.startGitSession,
   (req: Request, res: Response) => {
+    // if user is logged in, assign a cookie with the value of their userID
     if (req.user && (req.user as OAuthUser)._id) {
       const { _id } = req.user as OAuthUser;
       res.cookie("ssid", _id, { httpOnly: true });

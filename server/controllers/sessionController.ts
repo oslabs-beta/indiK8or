@@ -117,7 +117,9 @@ const sessionController = {
       const loggedOutUser = await Session.findOneAndDelete({ cookieId: ssid });
       if (loggedOutUser) {
         // clear HttpOnly cookie
-        res.clearCookie("ssid", { httpOnly: true });
+        res
+          .clearCookie("ssid", { httpOnly: true })
+          .clearCookie("connect.sid", { httpOnly: true });
         res.locals.loggedOut = loggedOutUser;
         return next();
       } else {
