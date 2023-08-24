@@ -41,7 +41,7 @@ const strategy = new GitHubStrategy(
   {
     clientID: clientID as string,
     clientSecret: clientSecret as string,
-    callbackURL: "http://localhost:4000/auth/github/callback",
+    callbackURL: "/auth/github/callback",
   },
   //define a callback function that is executed after a user is authenticated using the GitHub authentication strategy
   async (
