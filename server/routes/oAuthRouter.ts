@@ -5,7 +5,7 @@ import { OAuthUser } from "../../types";
 
 const oAuthRouter = express.Router();
 
-//define a GET route at the endpoint '/github' to handle the OAuth authentication with GitHub.
+//route to access Github API, sending our client ID, secret, and callbackURI to Github and requesting the users profile info
 oAuthRouter.get(
   "/github",
   passport.authenticate("github", { scope: ["user:email"] }),
@@ -13,7 +13,7 @@ oAuthRouter.get(
     return res.status(202).send(`Successful Oauth Signup/Login`);
   },
 );
-//route to handle the OAuth authentication process with GitHub using Passport.js library.
+//redirect route that Github will send user profile info to as a query param including users profile
 oAuthRouter.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/auth/error" }),
@@ -24,8 +24,8 @@ oAuthRouter.get(
   sessionController.startGitSession,
   (req: Request, res: Response) => {
     if (req.user && (req.user as OAuthUser)._id) {
-      const userId = (req.user as OAuthUser)._id;
-      res.cookie("ssid", userId, { httpOnly: true });
+      const { _id } = req.user as OAuthUser;
+      res.cookie("ssid", _id, { httpOnly: true });
       // if in production mode, redirect to home, otherise redirect to 5000/home
       if (process.env.NODE_ENV === "production") {
         return res.redirect("/home");

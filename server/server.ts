@@ -30,7 +30,6 @@ const sessionSecret: string = process.env.SESSION_SECRET ?? "";
 // allow cors to connect frontend and backend server
 app.use(
   cors({
-    origin: "https://indik8or-359561821b26.herokuapp.com/",
     credentials: true,
   }),
 );

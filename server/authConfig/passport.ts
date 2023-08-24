@@ -21,12 +21,13 @@ interface doneFunction extends NextFunction {
 interface GitHubProfile {
   username: string;
 }
-// Serialize the user object into a session
+// After the user is either created or confirmed to exist in our GitHubStrategy callback, they will be passed here.
+// We then create a cookie with their userID here, then pass the userID into done again, which will call the deserializeUser func
 passport.serializeUser((user: GitUser, done) => {
   done(null, user.id);
 });
 
-// Deserialize the user object from a session
+// Search for user in our database, then pass user to next middleware
 passport.deserializeUser(async (id: string, done) => {
   try {
     const user: IGitUser | null = await GitUser.findById(id);
@@ -44,6 +45,7 @@ const strategy = new GitHubStrategy(
     callbackURL: "/auth/github/callback",
   },
   //define a callback function that is executed after a user is authenticated using the GitHub authentication strategy
+  //this function takes the username from the returned Github profile, it will then store that user in our database, if they don't already exist
   async (
     _accessToken: string,
     _refreshToken: string,
