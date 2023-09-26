@@ -6,7 +6,11 @@ import LoginIcon from "@mui/icons-material/Login";
 import "../css/Login.scss";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 
-const LoginPage = (): ReactElement => {
+const LoginPage = ({
+  setIsAuthenticated,
+}: {
+  setIsAuthenticated: (value: boolean) => void;
+}): ReactElement => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -52,6 +56,7 @@ const LoginPage = (): ReactElement => {
       if (response.ok) {
         setUsername("");
         setPassword("");
+        setIsAuthenticated(true);
         navigate("/home");
       } else if (response.status === 404) {
         setLoginError("Invalid username or password");

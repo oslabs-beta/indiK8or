@@ -10,6 +10,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import loadingMP4 from '../assets/Scan.mp4';
 import Scan from "./Scan";
 import { Pod, PodTableProps } from "../../types";
 
@@ -79,7 +80,7 @@ const PodTable: React.FC<PodTableProps> = ({
                   {loading ? (
                     <div id="videoContainer">
                       <video id="nowScanning" autoPlay loop>
-                        <source src="src/assets/Scan.mp4" type="video/mp4" />
+                        <source src={loadingMP4} type="video/mp4" />
                       </video>
                     </div>
                   ) : (

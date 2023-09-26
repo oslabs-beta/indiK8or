@@ -1,23 +1,26 @@
 import express, { Request, Response } from "express";
+import connectToMongoDB, { store } from "./models/databaseModel";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import session from "express-session";
 import path from "path";
 import passport from "passport";
+import session from "express-session";
 import "./authConfig/passport";
-import { startExecCommand, stopChildProcess } from "./childProcesses/execCommand";
-import { oAuthRouter } from "./routes/oAuthRouter";
+import { nodemonReset, startExecCommand } from "./childProcesses/execCommand";
+import { ServerError } from "../types";
 import { grafanaRouter } from "./routes/grafanaRouter";
 import { loginRouter } from "./routes/loginRouter";
 import { logoutRouter } from "./routes/logoutRouter";
+import { oAuthRouter } from "./routes/oAuthRouter";
 import { podRouter } from "./routes/podRouter";
 import { scanRouter } from "./routes/scanRouter";
-import { ServerError } from "../types";
 
 // require .env files
 dotenv.config();
-
+//connect to database
+connectToMongoDB();
+// create an Express application
 const app = express();
 const port = process.env.PORT || 4000;
 // provide default value of empty string when env variables are undefined or null
@@ -37,6 +40,7 @@ app.use(
     secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
+    store: store,
   }),
 );
 
@@ -81,29 +85,13 @@ app.use((err: ServerError, _req: Request, res: Response) => {
   };
   const errorObj: ServerError = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
-  // return res.status(errorObj.status).json(errorObj.message);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
 // call startExecCommand to start port forwarding of Grafana on 3000
 startExecCommand();
-
-/*
- Listen for SIGUSR2 signal
- The process.once() method is used to ensure that the listener function is executed only once for the first occurrence of the SIGUSR2 signal.
-*/
-process.once("SIGUSR2", async () => {
-  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
-  await stopChildProcess();
-  // Restart the server after stopping the child process
-  process.kill(process.pid, "SIGUSR2");
-});
-
-// Handle the process exit event
-process.on("exit", async () => {
-  // awaiting the stopChildProcess will ensure that the child process has stopped before proceeding
-  await stopChildProcess();
-});
+// call nodemonReset to handle asyncronous behavior of stopping and resetting port forwarding of Grafana any time Nodemon restarts
+nodemonReset();
 
 // server listening on port
 app.listen(port, () => {

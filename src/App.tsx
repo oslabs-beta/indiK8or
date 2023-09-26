@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage";
 import WelcomePage from "./pages/WelcomePage";
 
 function App(): ReactElement {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -32,7 +32,10 @@ function App(): ReactElement {
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />
-      <Route path="/login/loginRequest" element={<LoginPage />} />
+      <Route
+        path="/login/loginRequest"
+        element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
+      />
       <Route path="/login/signupRequest" element={<SignupPage />} />
       <Route
         path="/home"
