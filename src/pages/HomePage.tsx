@@ -3,7 +3,8 @@ import { Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { LightDarkTheme } from "../../types";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Dashboard, Sidebar} from "../components";
+import Dashboard from "../components/Dashboard";
+import Sidebar from "../components/Sidebar";
 import "../css/HomePage.css";
 
 const HomePage = () => {
