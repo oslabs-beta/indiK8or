@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import HomePage from "./pages/HomePage";
 import WelcomePage from "./pages/WelcomePage";
+import { ROUTES } from "./constants/routes";
 
 function App(): ReactElement {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -32,14 +33,14 @@ function App(): ReactElement {
 
   return (
     <Routes>
-      <Route path="/" element={<WelcomePage />} />
+      <Route path={ROUTES.ROOT} element={<WelcomePage />} />
       <Route
-        path="/login/loginRequest"
+        path={ROUTES.LOGIN}
         element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
       />
-      <Route path="/login/signupRequest" element={<SignupPage />} />
+      <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
       <Route
-        path="/home"
+        path={ROUTES.HOME}
         element={isAuthenticated ? <HomePage /> : <Navigate to="/" />}
       />
     </Routes>
