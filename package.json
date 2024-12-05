@@ -35,6 +35,7 @@
     "prettier": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.14.1",
     "sass": "^1.63.4",
     "tree-kill": "^1.2.2",
