@@ -49,7 +49,6 @@ app.use(
 app.use(passport.initialize());
 // provides session-based authentication support
 app.use(passport.session());
-// parse incoming requests
 app.use(express.json());
 // parse incoming requests with url-encoded payloads
 app.use(express.urlencoded({ extended: true }));
