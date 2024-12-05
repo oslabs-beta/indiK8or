@@ -31,6 +31,12 @@ const WelcomePage: React.FC = () => {
         </div>
       )}
 
+      {error && (
+        <div className="error-message">
+          <p>Something went wrong: {error.message}</p>
+        </div>
+      )}
+
       <div id="back">
         <Container className="welcome-container">
           <img className="logo" src={logo} alt='indiK8or-logo' loading='eager'></img>
